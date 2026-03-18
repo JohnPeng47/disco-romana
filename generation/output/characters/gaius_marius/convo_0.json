@@ -1,0 +1,238 @@
+{
+  "id": "gaius_marius_convo_0",
+  "npcId": "gaius_marius",
+  "phaseId": "social_war",
+  "sequenceIndex": 0,
+  "preconditions": [],
+  "entryNodeId": "gaius_marius_convo_0_n01",
+  "nodes": {
+    "gaius_marius_convo_0_n01": {
+      "type": "active",
+      "id": "gaius_marius_convo_0_n01",
+      "npcDialogue": "I beat the Cimbri when every other general Rome sent came home in a box. Seven consulships. And now they want to give my command to a man who was drinking wine in Athens while I was burying legions in the mud of Gaul. So tell me — why should I listen to you?",
+      "options": [
+        {
+          "playerDialogue": "Because you need allies who haven't already chosen sides. I'm still free to choose mine.",
+          "nextNodeId": "gaius_marius_convo_0_n02"
+        },
+        {
+          "playerDialogue": "Because Sulla is organizing faster than you are, and someone needs to tell you that.",
+          "nextNodeId": "gaius_marius_convo_0_n03"
+        },
+        {
+          "playerDialogue": "Because I served under your standard at Vercellae. I know what you're capable of.",
+          "visibilityRequirement": { "trait": "audacia", "minValue": 4 },
+          "nextNodeId": "gaius_marius_convo_0_n04"
+        }
+      ]
+    },
+    "gaius_marius_convo_0_n02": {
+      "type": "noop",
+      "id": "gaius_marius_convo_0_n02",
+      "npcDialogue": "Free to choose. That's a luxury most men in this city have already spent. The optimates have their lists, the populares have their martyrs, the Italians have their grievances. A man who hasn't committed is either wise or useless. Which are you?",
+      "options": [
+        { "playerDialogue": "Let me prove which one I am.", "nextNodeId": "gaius_marius_convo_0_n05" }
+      ]
+    },
+    "gaius_marius_convo_0_n03": {
+      "type": "noop",
+      "id": "gaius_marius_convo_0_n03",
+      "npcDialogue": "I know exactly how fast Sulla is moving. I've been watching him since he served under me in Africa — an adequate officer with an inadequate bloodline and unlimited ambition. He learned everything he knows from me, and he thinks that makes him my equal. It doesn't.",
+      "options": [
+        { "playerDialogue": "Then what's your plan to stop him?", "nextNodeId": "gaius_marius_convo_0_n05" }
+      ]
+    },
+    "gaius_marius_convo_0_n04": {
+      "type": "noop",
+      "id": "gaius_marius_convo_0_n04",
+      "npcDialogue": "Vercellae. That was the last day Rome was Rome. Every man in that line knew he might die, and not one of them broke. I remember the men who stood. Sit. We have things to discuss.",
+      "options": [
+        { "playerDialogue": "I'm listening.", "nextNodeId": "gaius_marius_convo_0_n05" }
+      ]
+    },
+    "gaius_marius_convo_0_n05": {
+      "type": "passive",
+      "id": "gaius_marius_convo_0_n05",
+      "npcDialogue": "The Mithridatic command is everything. Whoever leads Rome's legions against the eastern king controls the treasury of Asia Minor. That's not just military glory — it's the power to reshape the Republic. Sulla thinks it's his. The senate will try to give it to him. What do you think should happen?",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 5,
+          "playerDialogue": "The senate assigned the command by law. Overturning that sets a precedent worse than Sulla himself.",
+          "nextNodeId": "gaius_marius_convo_0_n06"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "I think you and Sulla should share the command. A divided war is better than a civil one.",
+          "nextNodeId": "gaius_marius_convo_0_n06"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 5,
+          "playerDialogue": "Take it. You earned it at Vercellae. Let Sulla argue with your legions.",
+          "nextNodeId": "gaius_marius_convo_0_n07"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 5,
+          "playerDialogue": "Use the tribunes. Sulpicius can transfer the command through legislative action. Perfectly legal, technically.",
+          "nextNodeId": "gaius_marius_convo_0_n07"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "I think Rome should decide, not one man's ambition.",
+        "nextNodeId": "gaius_marius_convo_0_n06"
+      }
+    },
+    "gaius_marius_convo_0_n06": {
+      "type": "convergence",
+      "id": "gaius_marius_convo_0_n06",
+      "npcDialogue": "You speak like a man who hasn't watched his life's work stolen by a patrician with better dinner invitations. Let me ask you something more direct.",
+      "routes": [
+        {
+          "condition": { "type": "faction_standing", "factionId": "populares", "min": 2 },
+          "nextNodeId": "gaius_marius_convo_0_n08"
+        },
+        {
+          "condition": { "type": "reputation_dominant", "trait": "audacia" },
+          "nextNodeId": "gaius_marius_convo_0_n07"
+        }
+      ],
+      "fallbackNodeId": "gaius_marius_convo_0_n09"
+    },
+    "gaius_marius_convo_0_n07": {
+      "type": "active",
+      "id": "gaius_marius_convo_0_n07",
+      "npcDialogue": "I like your instincts. Sulpicius is already drafting the legislation. When the vote comes, it will be chaos — the optimates will try to obstruct with religious declarations, the tribunes will push through anyway. I need someone in the forum who can hold a crowd. Not with speeches. With presence.",
+      "options": [
+        {
+          "playerDialogue": "I'll be in the forum. Point me at the crowd you need held.",
+          "roll": {
+            "dice": { "count": 2, "sides": 6 },
+            "baseThreshold": 7,
+            "factors": { "personalFavor": 1, "factionAlignment": 1, "force": 2, "wealth": 0 },
+            "reputationBonus": { "trait": "audacia", "weight": 1 }
+          },
+          "onSuccess": { "nextNodeId": "gaius_marius_convo_0_n10" },
+          "onFailure": { "nextNodeId": "gaius_marius_convo_0_n11" }
+        },
+        {
+          "playerDialogue": "Crowds are unpredictable. I'd rather work the senators' clients directly.",
+          "nextNodeId": "gaius_marius_convo_0_n08"
+        }
+      ]
+    },
+    "gaius_marius_convo_0_n08": {
+      "type": "active",
+      "id": "gaius_marius_convo_0_n08",
+      "npcDialogue": "The populares are my natural base, but they're not enough. I need the Italian veterans — men who remember serving under me. They're citizens now, or close enough. If I could guarantee their vote in the assemblies, Sulla's senate backing means nothing. Can you reach those men?",
+      "options": [
+        {
+          "playerDialogue": "I have contacts among the Italian veterans in the city. I'll sound them out.",
+          "roll": {
+            "dice": { "count": 2, "sides": 6 },
+            "baseThreshold": 8,
+            "factors": { "personalFavor": 2, "factionAlignment": 1, "force": 0, "wealth": 1 },
+            "reputationBonus": { "trait": "calliditas", "weight": 1 }
+          },
+          "onSuccess": { "nextNodeId": "gaius_marius_convo_0_n10" },
+          "onFailure": { "nextNodeId": "gaius_marius_convo_0_n11" }
+        },
+        {
+          "playerDialogue": "The Italian veterans are a weapon that cuts both ways. I won't be the one who lights that fire.",
+          "nextNodeId": "gaius_marius_convo_0_n09"
+        }
+      ]
+    },
+    "gaius_marius_convo_0_n09": {
+      "type": "convergence",
+      "id": "gaius_marius_convo_0_n09",
+      "npcDialogue": "I see. You keep your distance. That's your right. But understand this — in the months ahead, distance will not protect you. Everyone in Rome will be forced to declare, one way or another.",
+      "routes": [
+        {
+          "condition": { "type": "visited_node", "nodeId": "gaius_marius_convo_0_n04" },
+          "nextNodeId": "gaius_marius_convo_0_n11"
+        }
+      ],
+      "fallbackNodeId": "gaius_marius_convo_0_n12"
+    },
+    "gaius_marius_convo_0_n10": {
+      "type": "exit",
+      "id": "gaius_marius_convo_0_n10",
+      "npcDialogue": "Good. You've shown me something today. I don't trust easily — the men I've trusted have a way of turning up on proscription lists. But you're useful, and you're willing. That's enough for now. When I move against Sulla, you'll know before the senate does.",
+      "exitStateId": "gaius_marius_convo_0_exit_trusted"
+    },
+    "gaius_marius_convo_0_n11": {
+      "type": "exit",
+      "id": "gaius_marius_convo_0_n11",
+      "npcDialogue": "You tried. That counts for something, even when the result falls short. Stay close. I have a long memory for men who make the effort, and a longer one for men who don't.",
+      "exitStateId": "gaius_marius_convo_0_exit_noted"
+    },
+    "gaius_marius_convo_0_n12": {
+      "type": "exit",
+      "id": "gaius_marius_convo_0_n12",
+      "npcDialogue": "Then go. Keep your clean hands and your careful neutrality. When Sulla marches his legions through the forum, we'll see how much good it does you.",
+      "exitStateId": "gaius_marius_convo_0_exit_dismissed"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "gaius_marius_convo_0_exit_trusted",
+      "narrativeLabel": "Marius's Agent",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "populares", "shift": 3, "reason": "Marius considers you a reliable operative" },
+            { "factionId": "sullan_faction", "shift": -2, "reason": "Sulla's network marks you as a Marian agent" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "audacia", "shift": 1, "reason": "Committed to the old general's dangerous gambit" }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "gaius_marius_convo_1"
+        }
+      ]
+    },
+    {
+      "id": "gaius_marius_convo_0_exit_noted",
+      "narrativeLabel": "On Marius's Ledger",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "populares", "shift": 1, "reason": "Marius notes your willingness, if not your success" }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "gaius_marius_convo_1"
+        }
+      ]
+    },
+    {
+      "id": "gaius_marius_convo_0_exit_dismissed",
+      "narrativeLabel": "Dismissed by Marius",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "populares", "shift": -1, "reason": "Marius has no time for fence-sitters" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "calliditas", "shift": 1, "reason": "Kept your options open at the cost of a powerful man's respect" }
+          ]
+        }
+      ]
+    }
+  ]
+}

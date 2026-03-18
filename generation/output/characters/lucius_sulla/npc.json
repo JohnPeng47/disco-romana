@@ -1,0 +1,13 @@
+{
+  "id": "lucius_sulla",
+  "name": "Lucius Cornelius Sulla",
+  "factionId": "sullan_faction",
+  "rank": "magistrate",
+  "reputationProfile": {
+    "severitas": 9,
+    "clementia": -3,
+    "audacia": 7,
+    "calliditas": 5
+  },
+  "conversationArcLength": 2
+}

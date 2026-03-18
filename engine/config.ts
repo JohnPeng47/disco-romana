@@ -1,12 +1,25 @@
+// ============================================
+// Generic ID types — setting-agnostic
+// ============================================
+
+export type FactionId = string;
+export type NpcId = string;
+export type ConversationId = string;
+export type NodeId = string;
+export type PhaseId = string;
+
+// ============================================
+// Game Config
+// ============================================
+
 /**
  * GameConfig defines the axes of a game instantiation.
  * All other generic types derive their type parameters from this.
  *
  * T = reputation trait axes
  * R = rank progression (ordered low → high)
- * C = context filters for passive resolution / patronage
  */
-export interface GameConfig<T extends string, R extends string, C extends string> {
+export interface GameConfig<T extends string, R extends string> {
   id: string;
   name: string;
   description: string;
@@ -15,8 +28,6 @@ export interface GameConfig<T extends string, R extends string, C extends string
   traits: readonly T[];
   /** Rank progression, ordered from lowest to highest */
   ranks: readonly R[];
-  /** Context filters — situations where passive resolution / patronage behaves differently */
-  contexts: readonly C[];
 
   /** Default reputation values for a new player */
   defaultReputation: Record<T, number>;

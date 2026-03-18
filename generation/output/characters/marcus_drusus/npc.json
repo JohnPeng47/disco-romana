@@ -1,0 +1,13 @@
+{
+  "id": "marcus_drusus",
+  "name": "Marcus Livius Drusus",
+  "factionId": "populares",
+  "rank": "magistrate",
+  "reputationProfile": {
+    "severitas": 4,
+    "clementia": 8,
+    "audacia": 3,
+    "calliditas": 2
+  },
+  "conversationArcLength": 1
+}

@@ -1,0 +1,261 @@
+{
+  "id": "power_shift",
+  "npcId": "narrator",
+  "phaseId": "social_war",
+  "sequenceIndex": 0,
+  "preconditions": [],
+  "entryNodeId": "ps_n01",
+  "nodes": {
+    "ps_n01": {
+      "type": "noop",
+      "id": "ps_n01",
+      "npcDialogue": "The legions have entered Rome. Smoke rises from the Esquiline. The senate house doors are barred — from the outside. Every alliance you've built, every promise you've made, every faction you've courted or betrayed — all of it narrows to this moment. The Republic is being remade in blood and iron, and you are standing in the middle of it.",
+      "options": [
+        { "playerDialogue": "I've prepared for this.", "nextNodeId": "ps_n02" }
+      ]
+    },
+    "ps_n02": {
+      "type": "convergence",
+      "id": "ps_n02",
+      "npcDialogue": "The question is which Rome emerges from the fire — and whether you emerge with it. The factions are making their final calculations, and your name appears on every ledger.",
+      "routes": [
+        {
+          "condition": { "type": "faction_standing", "factionId": "sullan_faction", "min": 4 },
+          "nextNodeId": "ps_n03"
+        },
+        {
+          "condition": { "type": "faction_standing", "factionId": "populares", "min": 4 },
+          "nextNodeId": "ps_n04"
+        },
+        {
+          "condition": { "type": "faction_standing", "factionId": "italian_allies", "min": 4 },
+          "nextNodeId": "ps_n05"
+        },
+        {
+          "condition": { "type": "faction_standing", "factionId": "optimates", "min": 4 },
+          "nextNodeId": "ps_n06"
+        }
+      ],
+      "fallbackNodeId": "ps_n07"
+    },
+    "ps_n03": {
+      "type": "active",
+      "id": "ps_n03",
+      "npcDialogue": "Sulla's men find you before dawn. Not soldiers — political officers. They bring you to a villa on the Palatine where the new government is being assembled. Sulla himself is there, dictating names. He looks up when you enter. 'Ah. The useful one. I have a list of offices that need filling. Men I can trust.' He slides a wax tablet across the table. Your name is already on it.",
+      "options": [
+        {
+          "playerDialogue": "I accept. Tell me where you need me.",
+          "nextNodeId": "ps_n08"
+        },
+        {
+          "playerDialogue": "Before I accept — I have names I need removed from the proscription lists. Men who don't deserve to die for this.",
+          "roll": {
+            "dice": { "count": 2, "sides": 6 },
+            "baseThreshold": 7,
+            "factors": { "personalFavor": 2, "factionAlignment": 2, "force": 0, "wealth": 1 },
+            "reputationBonus": { "trait": "calliditas", "weight": 1 }
+          },
+          "onSuccess": { "nextNodeId": "ps_n08" },
+          "onFailure": { "nextNodeId": "ps_n09" }
+        }
+      ]
+    },
+    "ps_n04": {
+      "type": "active",
+      "id": "ps_n04",
+      "npcDialogue": "The Marian remnants are scattered but alive. In a cellar beneath a Subura wine shop, what's left of the populares leadership gathers by lamplight. Faces you recognize — Cinna, Sertorius, a handful of tribunes. They look to you. 'Marius is fleeing to Africa. Sulpicius is dead — murdered on the road to Brundisium. Someone has to hold the cause together until Marius returns. The people trust you.'",
+      "options": [
+        {
+          "playerDialogue": "I'll lead the resistance. When Marius returns, Rome will be ready for him.",
+          "nextNodeId": "ps_n10"
+        },
+        {
+          "playerDialogue": "I'll go with Marius. The resistance needs leadership in exile, not martyrs in cellars.",
+          "nextNodeId": "ps_n10"
+        },
+        {
+          "playerDialogue": "We need to negotiate. Sulla won — fighting from the shadows only gets more people killed.",
+          "nextNodeId": "ps_n09"
+        }
+      ]
+    },
+    "ps_n05": {
+      "type": "active",
+      "id": "ps_n05",
+      "npcDialogue": "While Rome tears itself apart, a messenger arrives from the Italian confederacy. The Lex Julia has granted citizenship to those who laid down arms, but the implementation is stalling — Roman magistrates in Italian towns refuse to enroll new citizens. The Italians want you to serve as their advocate in whatever new government emerges. Poppaedius Silo himself endorses you. 'Be our voice in the Roman senate,' the messenger says. 'Whatever shape it takes.'",
+      "options": [
+        {
+          "playerDialogue": "Tell Poppaedius I accept. The Italians will have their voice.",
+          "nextNodeId": "ps_n10"
+        },
+        {
+          "playerDialogue": "I'll serve the Italian cause, but from within the system — as a Roman magistrate who ensures the Lex Julia is honored.",
+          "nextNodeId": "ps_n08"
+        }
+      ]
+    },
+    "ps_n06": {
+      "type": "active",
+      "id": "ps_n06",
+      "npcDialogue": "The old guard of the senate has survived — barely. Catulus meets you in the ruins of the curia. The benches are overturned, the marble floor scarred by hobnailed boots. 'We outlasted Marius,' he says. 'We'll outlast Sulla too. The senate endures because we endure. I need men who understand that to sit in these seats when they're restored. Will you be one of them?'",
+      "options": [
+        {
+          "playerDialogue": "I'll take the seat. The senate must survive, even under Sulla's shadow.",
+          "nextNodeId": "ps_n08"
+        },
+        {
+          "playerDialogue": "Only if the senate actually governs. I won't be a puppet in a dictator's theater.",
+          "roll": {
+            "dice": { "count": 2, "sides": 6 },
+            "baseThreshold": 8,
+            "factors": { "personalFavor": 1, "factionAlignment": 1, "force": 0, "wealth": 0 },
+            "reputationBonus": { "trait": "severitas", "weight": 2 }
+          },
+          "onSuccess": { "nextNodeId": "ps_n08" },
+          "onFailure": { "nextNodeId": "ps_n09" }
+        }
+      ]
+    },
+    "ps_n07": {
+      "type": "convergence",
+      "id": "ps_n07",
+      "npcDialogue": "No faction claims you. No powerful patron shields you. In the chaos of the march on Rome, you are alone — a citizen without a banner in a city where banners are the difference between life and death. Sulla's patrols are checking names against lists. The Marian underground is whispering passwords. The Italian delegates are packing their bags. You must find shelter or become another unnamed casualty of the Republic's death throes.",
+      "routes": [
+        {
+          "condition": { "type": "reputation_dominant", "trait": "audacia" },
+          "nextNodeId": "ps_n11"
+        },
+        {
+          "condition": { "type": "reputation_dominant", "trait": "calliditas" },
+          "nextNodeId": "ps_n11"
+        }
+      ],
+      "fallbackNodeId": "ps_n12"
+    },
+    "ps_n08": {
+      "type": "exit",
+      "id": "ps_n08",
+      "npcDialogue": "The new Rome takes shape around you. Whatever it becomes — Sulla's restoration, the senate's revival, the Italian integration — you are part of it. Your rank rises. Your name appears on the rolls of the magistracy. The Republic staggers forward, wounded but alive, and you stagger with it. Somewhere in the wreckage, there is a future. You've earned your seat at its table.",
+      "exitStateId": "ps_exit_magistrate"
+    },
+    "ps_n09": {
+      "type": "convergence",
+      "id": "ps_n09",
+      "npcDialogue": "Your gambit failed. The powerful men you tried to negotiate with see hesitation, not strategy. In the aftermath, you are neither trusted nor hunted — simply overlooked.",
+      "routes": [
+        {
+          "condition": { "type": "reputation_dominant", "trait": "calliditas" },
+          "nextNodeId": "ps_n11"
+        },
+        {
+          "condition": { "type": "reputation_dominant", "trait": "audacia" },
+          "nextNodeId": "ps_n11"
+        }
+      ],
+      "fallbackNodeId": "ps_n13"
+    },
+    "ps_n10": {
+      "type": "passive",
+      "id": "ps_n10",
+      "npcDialogue": "Your choice is made. But the crisis isn't over — it's accelerating. In the final hours, as Sulla's constitution takes hold and the proscription lists grow longer, one last test remains. A messenger arrives with news: your name has appeared on a preliminary list. Not confirmed — but the window to act is closing.",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 5,
+          "playerDialogue": "Let them put my name on their lists. I answer to the Republic, not to Sulla's clerks.",
+          "nextNodeId": "ps_n08"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "Send word to Catulus. He has influence over the lists. Ask him to intercede — not for my sake, but for the precedent.",
+          "nextNodeId": "ps_n08"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 5,
+          "playerDialogue": "I'll go to Sulla myself. Face to face. He respects boldness more than hiding.",
+          "nextNodeId": "ps_n08"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 5,
+          "playerDialogue": "I know who writes the lists. A quiet visit with the right incentive, and my name disappears before morning.",
+          "nextNodeId": "ps_n08"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "I need to get out of Rome. Now.",
+        "nextNodeId": "ps_n11"
+      }
+    },
+    "ps_n11": {
+      "type": "exit",
+      "id": "ps_n11",
+      "npcDialogue": "You slip through the Porta Capena as the last light fades. Behind you, Rome burns its principles along with its enemies. You survive — diminished, displaced, but alive. The next phase of the Republic's agony will find you somewhere on the Italian roads, rebuilding from nothing. But you have your life, your wits, and the knowledge of how Rome truly works. That's more than most.",
+      "exitStateId": "ps_exit_survived"
+    },
+    "ps_n12": {
+      "type": "exit",
+      "id": "ps_n12",
+      "npcDialogue": "The patrols find you at dawn. A man without a faction, without a patron, without a name on any list that matters. They don't know who you are — and in Sulla's Rome, that's the most dangerous thing to be. You disappear into the machinery of the proscriptions. Not as a target — as a footnote. The Republic devours its anonymous children first.",
+      "exitStateId": "ps_exit_destroyed"
+    },
+    "ps_n13": {
+      "type": "exit",
+      "id": "ps_n13",
+      "npcDialogue": "Overlooked. Dismissed. In the chaos of the power shift, you are simply... forgotten. No faction claims you, no patron protects you, no enemy hunts you. You drift through the new order as a ghost of the old one. The Republic moves on without you. There are worse fates — but not many that sting as deeply.",
+      "exitStateId": "ps_exit_forgotten"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "ps_exit_magistrate",
+      "narrativeLabel": "Rise to Magistrate",
+      "effects": [
+        {
+          "type": "rank_change",
+          "newRank": "magistrate",
+          "reason": "Your alliances and reputation earned you a seat in the new order"
+        }
+      ]
+    },
+    {
+      "id": "ps_exit_survived",
+      "narrativeLabel": "Survived the Crisis",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "calliditas", "shift": 1, "reason": "Escaped Rome with your life when others did not" }
+          ]
+        },
+        {
+          "type": "rank_change",
+          "newRank": "magistrate",
+          "reason": "Survival through crisis has hardened you — the next phase begins with the rank your experience deserves"
+        }
+      ]
+    },
+    {
+      "id": "ps_exit_destroyed",
+      "narrativeLabel": "Lost in the Proscriptions",
+      "effects": [
+        {
+          "type": "game_over",
+          "reason": "Without faction, patron, or reputation, you were consumed by the violence of Sulla's march on Rome"
+        }
+      ]
+    },
+    {
+      "id": "ps_exit_forgotten",
+      "narrativeLabel": "Forgotten by History",
+      "effects": [
+        {
+          "type": "game_over",
+          "reason": "The Republic moved on without you. Neither ally nor enemy, you faded into the anonymous mass of citizens who watched Rome change and did nothing to shape it"
+        }
+      ]
+    }
+  ]
+}

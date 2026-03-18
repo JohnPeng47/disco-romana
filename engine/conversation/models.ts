@@ -4,12 +4,12 @@ import type {
   NpcId,
   PhaseId,
   FactionId,
-  ReputationDelta,
-} from "../core/models";
-import type { RollConfig } from "../rolls/models";
-import type { CommitmentConstraint } from "../commitments/models";
-import type { PatronageSlot } from "../patronage/models";
-import type { ConditionalStub } from "../stubs/models";
+} from "../config";
+import type { RollConfig } from "./effects/rolls";
+import type { FactionDelta } from "./effects/faction";
+import type { ReputationDelta } from "./effects/reputation";
+import type { ConditionalStub } from "./stubs";
+import type { ConversationPrecondition } from "./preconditions";
 
 // ============================================
 // Conversation Structure
@@ -21,9 +21,9 @@ import type { ConditionalStub } from "../stubs/models";
  * convergence points. NOT a tree — nodes can have multiple
  * inbound edges (this is the funnel).
  *
- * T = reputation trait axes, R = rank progression, C = context filters
+ * T = reputation trait axes, R = rank progression
  */
-export interface Conversation<T extends string, R extends string, C extends string> {
+export interface Conversation<T extends string, R extends string> {
   id: ConversationId;
   npcId: NpcId;
   phaseId: PhaseId;
@@ -34,31 +34,18 @@ export interface Conversation<T extends string, R extends string, C extends stri
   /** The entry node — where the conversation starts */
   entryNodeId: NodeId;
   /** All nodes in the conversation graph */
-  nodes: Record<NodeId, ConversationNode<T, R, C>>;
+  nodes: Record<NodeId, ConversationNode<T>>;
   /** The exit states this conversation can produce */
-  exitStates: ExitState<T, C>[];
-}
-
-// comment: okay this class is very liable to change, lets design around that
-// - improve_suggestion: lets add
-export interface ConversationPrecondition<R extends string> {
-  type: "min_rank" | "faction_standing" | "prior_exit_state" | "phase_event" | "patronage";
-  factionId?: FactionId;
-  npcId?: NpcId;
-  conversationId?: ConversationId;
-  /** For prior_exit_state: which exit state(s) from a prior conversation enable this one */
-  requiredExitStateIds?: string[];
-  minRank?: R;
-  minStanding?: number;
+  exitStates: ExitState<T>[];
 }
 
 // ============================================
 // Conversation Nodes (the diamond lattice)
 // ============================================
 
-export type ConversationNode<T extends string, R extends string, C extends string> =
-  | PassiveNode<T, C>
-  | ActiveNode<T, C>
+export type ConversationNode<T extends string> =
+  | PassiveNode<T>
+  | ActiveNode<T>
   | NoopNode
   | ConvergenceNode<T>
   | ExitNode;
@@ -75,59 +62,52 @@ export interface NodeBase {
  * Passive: choice made FOR the player based on reputation.
  * This is the lock-in mechanic.
  */
-export interface PassiveNode<T extends string, C extends string> extends NodeBase {
+export interface PassiveNode<T extends string> extends NodeBase {
   type: "passive";
   /**
    * Ordered by priority. First matching threshold fires.
    * If none match, falls through to fallback.
    */
-  responses: PassiveResponse<T, C>[];
+  responses: PassiveResponse<T>[];
   fallbackResponse: {
     playerDialogue: string;
     nextNodeId: NodeId;
-    reputationDeltas: ReputationDelta<T>[];
   };
 }
 
-export interface PassiveResponse<T extends string, C extends string> {
+export interface PassiveResponse<T extends string> {
   /** Which trait drives this response */
   trait: T;
   /** Minimum trait value for this to fire */
   threshold: number;
-  /** Optional: only fires in certain contexts */
-  contextFilter?: C;
   playerDialogue: string;
   nextNodeId: NodeId;
-  reputationDeltas: ReputationDelta<T>[];
 }
 
 /**
  * Active: player chooses from options.
  * Each option may have a roll attached.
  */
-export interface ActiveNode<T extends string, C extends string> extends NodeBase {
+export interface ActiveNode<T extends string> extends NodeBase {
   type: "active";
-  options: DialogueOption<T, C>[];
+  options: DialogueOption<T>[];
 }
 
-export interface DialogueOption<T extends string, C extends string> {
+export interface DialogueOption<T extends string> {
   playerDialogue: string;
   /** If present, this option requires a roll to land */
   roll?: RollConfig<T>;
   /** Where to go on success (or if no roll required) */
   onSuccess: {
     nextNodeId: NodeId;
-    reputationDeltas: ReputationDelta<T>[];
   };
   /** Where to go on partial success (only if roll exists) */
   onPartial?: {
     nextNodeId: NodeId;
-    reputationDeltas: ReputationDelta<T>[];
   };
   /** Where to go on failure (only if roll exists) */
   onFailure?: {
     nextNodeId: NodeId;
-    reputationDeltas: ReputationDelta<T>[];
   };
   /** Skill/trait floor: option only visible if player meets this */
   visibilityRequirement?: {
@@ -186,21 +166,19 @@ export interface ExitNode extends NodeBase {
 // Exit States — the conversation's output
 // ============================================
 
-export interface ExitState<T extends string, C extends string> {
+export interface ExitState<T extends string> {
   id: string;
   /** Human-readable label for the LLM generation pass */
   narrativeLabel: string;
   /** Mechanical consequences */
-  effects: ExitEffect<T, C>[];
+  effects: ExitEffect<T>[];
 }
 
-export type ExitEffect<T extends string, C extends string> =
-  | { type: "faction_standing"; factionId: FactionId; delta: number }
-  | { type: "personal_favor"; npcId: NpcId; delta: number }
+export type ExitEffect<T extends string, R extends string = string> =
+  | { type: "faction_standing"; deltas: FactionDelta[] }
+  | { type: "reputation"; deltas: ReputationDelta<T>[] }
+  | { type: "turn_penalty"; shift: number; reason: string }
   | { type: "unlock_conversation"; conversationId: ConversationId }
   | { type: "lock_conversation"; conversationId: ConversationId }
-  | { type: "commitment"; description: string; constrains: CommitmentConstraint<T>[] }
-  | { type: "turn_penalty"; turns: number; reason: string }
-  | { type: "force_delta"; delta: number }
-  | { type: "wealth_delta"; delta: number }
-  | { type: "patronage_offered"; npcId: NpcId; patron: PatronageSlot<T, C> };
+  | { type: "rank_change"; newRank: R; reason: string }
+  | { type: "game_over"; reason: string };

@@ -1,0 +1,215 @@
+{
+  "id": "tiberius_longinus_convo_0",
+  "npcId": "tiberius_longinus",
+  "phaseId": "social_war",
+  "sequenceIndex": 0,
+  "preconditions": [],
+  "entryNodeId": "tiberius_longinus_convo_0_n01",
+  "nodes": {
+    "tiberius_longinus_convo_0_n01": {
+      "type": "active",
+      "id": "tiberius_longinus_convo_0_n01",
+      "npcDialogue": "Close the door. I don't conduct business in the open — not anymore. Since the Lex Varia, half the men I used to drink with are either in exile or pretending we never met. You're here because someone told you I know things. They were right. The question is what you'll pay for them.",
+      "options": [
+        {
+          "playerDialogue": "I'm not here to buy information. I'm here because we share a problem — and shared problems make better partnerships than money.",
+          "nextNodeId": "tiberius_longinus_convo_0_n02"
+        },
+        {
+          "playerDialogue": "Name your price. I don't have time for games.",
+          "nextNodeId": "tiberius_longinus_convo_0_n03"
+        },
+        {
+          "playerDialogue": "I know about your Italian connections. I'm not here to threaten you with that — I'm here because those connections are valuable.",
+          "visibilityRequirement": { "trait": "calliditas", "minValue": 5 },
+          "nextNodeId": "tiberius_longinus_convo_0_n04"
+        }
+      ]
+    },
+    "tiberius_longinus_convo_0_n02": {
+      "type": "noop",
+      "id": "tiberius_longinus_convo_0_n02",
+      "npcDialogue": "Partnerships. Pretty word. In my experience, partnerships between unequal men mean the smaller one does the work and the larger one takes the credit. But you're right that we share a problem — everyone in this city who isn't already committed to a faction is being squeezed. The optimates want loyalty, the populares want soldiers, and the Italians want blood. A man in the middle gets ground to paste.",
+      "options": [
+        { "playerDialogue": "Unless the man in the middle knows which way to step. That's where you come in.", "nextNodeId": "tiberius_longinus_convo_0_n05" }
+      ]
+    },
+    "tiberius_longinus_convo_0_n03": {
+      "type": "noop",
+      "id": "tiberius_longinus_convo_0_n03",
+      "npcDialogue": "Direct. I can work with direct. My price isn't money — I have family estates that handle that. What I need is protection. The Lex Varia tribunals are coming for men like me — men who brokered deals with Italian merchants before the war. I need someone who can whisper to the right judge that Tiberius Longinus is a loyal Roman whose business contacts are being mischaracterized.",
+      "options": [
+        { "playerDialogue": "I can do that. But only if what you're offering is worth the risk.", "nextNodeId": "tiberius_longinus_convo_0_n05" }
+      ]
+    },
+    "tiberius_longinus_convo_0_n04": {
+      "type": "active",
+      "id": "tiberius_longinus_convo_0_n04",
+      "npcDialogue": "Careful. That kind of knowledge has gotten men killed this month. Yes — I traded with Italian cities before the war. Grain, iron, textiles. Now those same trade routes are intelligence channels, if you know how to read them. The question is whether you're the kind of man who uses that for Rome's benefit or his own.",
+      "options": [
+        {
+          "playerDialogue": "Both. The best intelligence serves everyone who handles it.",
+          "nextNodeId": "tiberius_longinus_convo_0_n05"
+        },
+        {
+          "playerDialogue": "Rome's benefit, obviously. I'm a patriot, not a profiteer.",
+          "nextNodeId": "tiberius_longinus_convo_0_n05"
+        }
+      ]
+    },
+    "tiberius_longinus_convo_0_n05": {
+      "type": "passive",
+      "id": "tiberius_longinus_convo_0_n05",
+      "npcDialogue": "Here's what I have. The Italian confederacy isn't as united as Rome thinks. The Samnites and the Marsi disagree on everything except hating us. Poppaedius Silo wants citizenship within the Republic. The Samnites want independence from it. That crack can be exploited — but only by someone who knows where to put the chisel. What's your instinct?",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 5,
+          "playerDialogue": "Offer citizenship to those who lay down arms. Let the holdouts face the legions alone. Clean, legal, devastating.",
+          "nextNodeId": "tiberius_longinus_convo_0_n06"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "Negotiate with the Marsi separately. Give them what they want and isolate the Samnites diplomatically.",
+          "nextNodeId": "tiberius_longinus_convo_0_n06"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 5,
+          "playerDialogue": "Send agents into the Samnite camp spreading word that the Marsi are about to make a separate peace. Panic them into mistakes.",
+          "nextNodeId": "tiberius_longinus_convo_0_n07"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 5,
+          "playerDialogue": "Sell the intelligence to both the optimates and the populares. Let them bid against each other for the strategy, and we profit either way.",
+          "nextNodeId": "tiberius_longinus_convo_0_n07"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "I'd need to think about it. This isn't the kind of decision you make in a back room.",
+        "nextNodeId": "tiberius_longinus_convo_0_n06"
+      }
+    },
+    "tiberius_longinus_convo_0_n06": {
+      "type": "convergence",
+      "id": "tiberius_longinus_convo_0_n06",
+      "npcDialogue": "A measured approach. Let me think about how this serves us both.",
+      "routes": [
+        {
+          "condition": { "type": "faction_standing", "factionId": "optimates", "min": 2 },
+          "nextNodeId": "tiberius_longinus_convo_0_n08"
+        },
+        {
+          "condition": { "type": "faction_standing", "factionId": "italian_allies", "min": 1 },
+          "nextNodeId": "tiberius_longinus_convo_0_n09"
+        }
+      ],
+      "fallbackNodeId": "tiberius_longinus_convo_0_n09"
+    },
+    "tiberius_longinus_convo_0_n07": {
+      "type": "active",
+      "id": "tiberius_longinus_convo_0_n07",
+      "npcDialogue": "Now you're speaking my language. I have a specific opportunity. A grain shipment bound for the Samnite army is currently sitting in a Puteoli warehouse — my warehouse. I can redirect it to Rome's garrison or let it through to the Italians. Each choice has consequences. What do you advise?",
+      "options": [
+        {
+          "playerDialogue": "Redirect it to Rome. Starving the Samnites shortens the war.",
+          "nextNodeId": "tiberius_longinus_convo_0_n08"
+        },
+        {
+          "playerDialogue": "Let it through — but make sure Poppaedius knows it was your decision. That's leverage for later.",
+          "roll": {
+            "dice": { "count": 2, "sides": 6 },
+            "baseThreshold": 7,
+            "factors": { "personalFavor": 1, "factionAlignment": 0, "force": 0, "wealth": 2 },
+            "reputationBonus": { "trait": "calliditas", "weight": 2 }
+          },
+          "onSuccess": { "nextNodeId": "tiberius_longinus_convo_0_n09" },
+          "onFailure": { "nextNodeId": "tiberius_longinus_convo_0_n10" }
+        }
+      ]
+    },
+    "tiberius_longinus_convo_0_n08": {
+      "type": "exit",
+      "id": "tiberius_longinus_convo_0_n08",
+      "npcDialogue": "Done. The grain goes to Rome's garrison. I'll make sure the right people know who arranged it — including you. This is the beginning of a profitable relationship. I keep my debts and I keep my ledgers. You're in both now.",
+      "exitStateId": "tiberius_longinus_convo_0_exit_roman_agent"
+    },
+    "tiberius_longinus_convo_0_n09": {
+      "type": "exit",
+      "id": "tiberius_longinus_convo_0_n09",
+      "npcDialogue": "A gambler. I like gamblers — they're the only honest men in Rome. The grain goes through, and we both gain a chit with the Italians that may be worth more than a province when this war ends. Remember — I arranged this. You advised it. That distinction matters.",
+      "exitStateId": "tiberius_longinus_convo_0_exit_italian_gambit"
+    },
+    "tiberius_longinus_convo_0_n10": {
+      "type": "exit",
+      "id": "tiberius_longinus_convo_0_n10",
+      "npcDialogue": "The shipment got intercepted by a Roman patrol before it left port. Your plan, my warehouse, and now the garrison commander is asking questions. I'll handle it — I always do. But you owe me for the trouble. I'll collect when the time is right.",
+      "exitStateId": "tiberius_longinus_convo_0_exit_indebted"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "tiberius_longinus_convo_0_exit_roman_agent",
+      "narrativeLabel": "Longinus's Roman Connection",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "optimates", "shift": 2, "reason": "Redirected Italian supplies to Roman forces" },
+            { "factionId": "italian_allies", "shift": -1, "reason": "The grain never arrived — the Italians suspect treachery" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "severitas", "shift": 1, "reason": "Chose Roman interests over personal profit" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tiberius_longinus_convo_0_exit_italian_gambit",
+      "narrativeLabel": "Playing Both Sides",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "italian_allies", "shift": 2, "reason": "Facilitated supplies to the Italian confederacy" },
+            { "factionId": "optimates", "shift": -1, "reason": "Suspicions arise about your Italian sympathies" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "calliditas", "shift": 2, "reason": "Built leverage across enemy lines through commerce" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tiberius_longinus_convo_0_exit_indebted",
+      "narrativeLabel": "In Longinus's Debt",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "optimates", "shift": 1, "reason": "The grain seizure is seen as loyalty to Rome" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "calliditas", "shift": 1, "reason": "Attempted a scheme that went sideways — but learned from it" }
+          ]
+        },
+        {
+          "type": "turn_penalty",
+          "shift": -1,
+          "reason": "Cleaning up the mess from the botched grain deal costs you time"
+        }
+      ]
+    }
+  ]
+}

@@ -7,16 +7,9 @@ import type { GameConfig } from "../engine/config";
 export type RomanaTrait = "severitas" | "clementia" | "audacia" | "calliditas";
 
 export type CursusRank =
-  | "private_citizen"
-  | "military_tribune"
-  | "quaestor"
-  | "aedile"
-  | "praetor"
-  | "consul"
-  | "proconsul"
-  | "dictator";
-
-export type RomanaContext = "senate" | "military" | "commerce" | "religious" | "private";
+  | "citizen"
+  | "magistrate"
+  | "consul";
 
 export const romanaConfig = {
   id: "romana",
@@ -24,17 +17,7 @@ export const romanaConfig = {
   description: "Text-based grand strategy set ~130–27 BC. Disco Elysium meets Civ.",
 
   traits: ["severitas", "clementia", "audacia", "calliditas"],
-  ranks: [
-    "private_citizen",
-    "military_tribune",
-    "quaestor",
-    "aedile",
-    "praetor",
-    "consul",
-    "proconsul",
-    "dictator",
-  ],
-  contexts: ["senate", "military", "commerce", "religious", "private"],
+  ranks: ["citizen", "magistrate", "consul"],
 
   defaultReputation: {
     severitas: 0,
@@ -42,8 +25,8 @@ export const romanaConfig = {
     audacia: 0,
     calliditas: 0,
   },
-  startingRank: "private_citizen",
-} as const satisfies GameConfig<RomanaTrait, CursusRank, RomanaContext>;
+  startingRank: "citizen",
+} as const satisfies GameConfig<RomanaTrait, CursusRank>;
 
 // ============================================
 // Convenience type aliases for Roman game
@@ -51,8 +34,8 @@ export const romanaConfig = {
 
 import type { Conversation, ConversationNode, GameState, Phase, GenerationPrompt } from "../engine";
 
-export type RomanaConversation = Conversation<RomanaTrait, CursusRank, RomanaContext>;
-export type RomanaNode = ConversationNode<RomanaTrait, CursusRank, RomanaContext>;
-export type RomanaGameState = GameState<RomanaTrait, CursusRank, RomanaContext>;
-export type RomanaPhase = Phase<RomanaTrait, CursusRank, RomanaContext>;
-export type RomanaGenerationPrompt = GenerationPrompt<RomanaTrait, CursusRank, RomanaContext>;
+export type RomanaConversation = Conversation<RomanaTrait, CursusRank>;
+export type RomanaNode = ConversationNode<RomanaTrait>;
+export type RomanaGameState = GameState<RomanaTrait, CursusRank>;
+export type RomanaPhase = Phase<RomanaTrait, CursusRank>;
+export type RomanaGenerationPrompt = GenerationPrompt<RomanaTrait, CursusRank>;

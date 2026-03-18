@@ -1,0 +1,211 @@
+{
+  "id": "publius_sulpicius_convo_1",
+  "npcId": "publius_sulpicius",
+  "phaseId": "social_war",
+  "sequenceIndex": 1,
+  "preconditions": [
+    {
+      "type": "prior_exit_state",
+      "npcId": "publius_sulpicius",
+      "conversationId": "publius_sulpicius_convo_0",
+      "requiredExitStateIds": ["publius_sulpicius_convo_0_exit_recruited", "publius_sulpicius_convo_0_exit_acquaintance"]
+    }
+  ],
+  "entryNodeId": "publius_sulpicius_convo_1_n01",
+  "nodes": {
+    "publius_sulpicius_convo_1_n01": {
+      "type": "active",
+      "id": "publius_sulpicius_convo_1_n01",
+      "npcDialogue": "The vote passed. The Mithridatic command is transferred to Marius. You should see the look on the optimates' faces — like men watching their house burn while holding the deed. But Sulla won't accept this. My informants tell me his legions are already breaking camp at Nola. We have perhaps five days before Roman soldiers march on Roman soil against Roman citizens. I need to know right now: are you prepared for what comes next?",
+      "options": [
+        {
+          "playerDialogue": "I am. What do you need from me before Sulla reaches the gates?",
+          "nextNodeId": "publius_sulpicius_convo_1_n02"
+        },
+        {
+          "playerDialogue": "Can we still prevent this? Is there a deal that stops the march?",
+          "nextNodeId": "publius_sulpicius_convo_1_n03"
+        },
+        {
+          "playerDialogue": "Five days. I need to secure my family first. Then I'm yours.",
+          "nextNodeId": "publius_sulpicius_convo_1_n04"
+        }
+      ]
+    },
+    "publius_sulpicius_convo_1_n02": {
+      "type": "noop",
+      "id": "publius_sulpicius_convo_1_n02",
+      "npcDialogue": "Three things. First, the urban plebs need to be armed — not with swords, with roof tiles and paving stones. If Sulla enters street by street, every rooftop becomes a battlement. Second, the senate moderates need to be reminded that Sulla's march makes them all traitors if they submit. Third, I need someone to reach Marius and tell him to stop drinking and start planning.",
+      "options": [
+        { "playerDialogue": "Which of those three is most urgent?", "nextNodeId": "publius_sulpicius_convo_1_n05" }
+      ]
+    },
+    "publius_sulpicius_convo_1_n03": {
+      "type": "passive",
+      "id": "publius_sulpicius_convo_1_n03",
+      "npcDialogue": "A deal. You want to offer Sulla a deal after we legally stripped his command. Put yourself in his position — would you negotiate? The only deal Sulla accepts is total capitulation: rescind the vote, exile me, hand Marius over in chains. Is that what you're proposing?",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 5,
+          "playerDialogue": "No. The vote was legal. We don't surrender constitutional process to military threats.",
+          "nextNodeId": "publius_sulpicius_convo_1_n05"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "What about a shared arrangement? Sulla keeps his eastern command but Marius gets a separate commission.",
+          "nextNodeId": "publius_sulpicius_convo_1_n06"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 5,
+          "playerDialogue": "You're right — there's no deal. Let him come. We'll be ready.",
+          "nextNodeId": "publius_sulpicius_convo_1_n05"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 5,
+          "playerDialogue": "Send envoys. Not to negotiate — to delay. Every day we buy is a day to fortify.",
+          "nextNodeId": "publius_sulpicius_convo_1_n06"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "I don't know. But someone has to try.",
+        "nextNodeId": "publius_sulpicius_convo_1_n06"
+      }
+    },
+    "publius_sulpicius_convo_1_n04": {
+      "type": "noop",
+      "id": "publius_sulpicius_convo_1_n04",
+      "npcDialogue": "Your family. Yes — that's wise. When the proscriptions start, the families go first. Get them out of Rome. South, toward Capua — no, not Capua, that's Sulla's staging ground. Send them to Brundisium. By sea if you can manage it. Then come back. I need you here.",
+      "options": [
+        { "playerDialogue": "I'll have them on the road by morning. Now — what's the plan?", "nextNodeId": "publius_sulpicius_convo_1_n05" }
+      ]
+    },
+    "publius_sulpicius_convo_1_n05": {
+      "type": "active",
+      "id": "publius_sulpicius_convo_1_n05",
+      "npcDialogue": "The most urgent task: the senate. Half of them will fold the moment they see eagles on the Appian Way. I need you to visit three senators tonight — Scaevola, Cinna, and Antonius. Remind them that submitting to Sulla means endorsing military overthrow of civilian authority. Make them understand that if they fold now, there's no Republic left to save.",
+      "options": [
+        {
+          "playerDialogue": "I'll visit all three tonight. What arguments work on each?",
+          "roll": {
+            "dice": { "count": 2, "sides": 6 },
+            "baseThreshold": 8,
+            "factors": { "personalFavor": 1, "factionAlignment": 1, "force": 0, "wealth": 1 },
+            "reputationBonus": { "trait": "calliditas", "weight": 1 }
+          },
+          "onSuccess": { "nextNodeId": "publius_sulpicius_convo_1_n07" },
+          "onFailure": { "nextNodeId": "publius_sulpicius_convo_1_n08" }
+        },
+        {
+          "playerDialogue": "Forget the senators. Arm the plebs. The streets are where this will be decided, not the curia.",
+          "nextNodeId": "publius_sulpicius_convo_1_n08"
+        }
+      ]
+    },
+    "publius_sulpicius_convo_1_n06": {
+      "type": "convergence",
+      "id": "publius_sulpicius_convo_1_n06",
+      "npcDialogue": "Delay tactics. Shared commands. These are the ideas of a man who hasn't accepted what is about to happen.",
+      "routes": [
+        {
+          "condition": { "type": "faction_standing", "factionId": "populares", "min": 3 },
+          "nextNodeId": "publius_sulpicius_convo_1_n07"
+        }
+      ],
+      "fallbackNodeId": "publius_sulpicius_convo_1_n08"
+    },
+    "publius_sulpicius_convo_1_n07": {
+      "type": "active",
+      "id": "publius_sulpicius_convo_1_n07",
+      "npcDialogue": "The senators are wavering — your work bought us time but not certainty. Now hear this: I have word from the Esquiline. A column of Sulla's advance scouts has been spotted. This is no longer theoretical. I'm going to the rostra to address the people one last time. Will you stand beside me on the platform?",
+      "options": [
+        {
+          "playerDialogue": "I'll be at your shoulder. Let them see that we're not afraid.",
+          "nextNodeId": "publius_sulpicius_convo_1_n09"
+        },
+        {
+          "playerDialogue": "I'll be in the crowd, organizing. You speak — I'll make sure the right people hear it.",
+          "nextNodeId": "publius_sulpicius_convo_1_n10"
+        }
+      ]
+    },
+    "publius_sulpicius_convo_1_n08": {
+      "type": "active",
+      "id": "publius_sulpicius_convo_1_n08",
+      "npcDialogue": "The streets it is, then. The people of Rome have never seen legions turned against them. They're terrified. That fear can become paralysis or it can become resistance. I need you to be in the Subura when the first cohorts come through. Can you turn a crowd of frightened shopkeepers into a barricade?",
+      "options": [
+        {
+          "playerDialogue": "I'll hold the Subura. Give me your freedmen network and I'll have barricades on every corner.",
+          "roll": {
+            "dice": { "count": 2, "sides": 6 },
+            "baseThreshold": 8,
+            "factors": { "personalFavor": 1, "factionAlignment": 1, "force": 2, "wealth": 0 },
+            "reputationBonus": { "trait": "audacia", "weight": 1 }
+          },
+          "onSuccess": { "nextNodeId": "publius_sulpicius_convo_1_n09" },
+          "onFailure": { "nextNodeId": "publius_sulpicius_convo_1_n10" }
+        },
+        {
+          "playerDialogue": "Barricades won't stop legions. We need to get you and Marius out of the city before Sulla seals the gates.",
+          "nextNodeId": "publius_sulpicius_convo_1_n10"
+        }
+      ]
+    },
+    "publius_sulpicius_convo_1_n09": {
+      "type": "exit",
+      "id": "publius_sulpicius_convo_1_n09",
+      "npcDialogue": "Good. Whatever happens in the next three days, history will know that some Romans stood against the legions. That matters. Even if we lose — especially if we lose. Go now. I have speeches to write and a Republic to defend. We'll drink together when this is over, or they'll pour the wine on our tombs.",
+      "exitStateId": "publius_sulpicius_convo_1_exit_defiant"
+    },
+    "publius_sulpicius_convo_1_n10": {
+      "type": "exit",
+      "id": "publius_sulpicius_convo_1_n10",
+      "npcDialogue": "Perhaps you're right. Perhaps the Republic dies today and all I can do is make sure some of us survive to rebuild it. Help me get word to Marius — tell him the harbor at Ostia is still open. If we can't fight, we run, and we come back stronger. Go quickly. Sulla's scouts are already at the Colline Gate.",
+      "exitStateId": "publius_sulpicius_convo_1_exit_flight"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "publius_sulpicius_convo_1_exit_defiant",
+      "narrativeLabel": "Stood Against the March",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "populares", "shift": 3, "reason": "Stood publicly against Sulla's illegal march" },
+            { "factionId": "sullan_faction", "shift": -3, "reason": "Sulla's proscription lists include your name" },
+            { "factionId": "italian_allies", "shift": 1, "reason": "The Italians respect those who resist tyranny" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "audacia", "shift": 2, "reason": "Defied armed legions in the streets of Rome" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "publius_sulpicius_convo_1_exit_flight",
+      "narrativeLabel": "Organized the Retreat",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "populares", "shift": 1, "reason": "Helped Marian leaders escape Sulla's advance" },
+            { "factionId": "sullan_faction", "shift": -1, "reason": "Sulla's agents note your involvement in the evacuation" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "calliditas", "shift": 1, "reason": "Chose survival over martyrdom when the cause was lost" }
+          ]
+        }
+      ]
+    }
+  ]
+}

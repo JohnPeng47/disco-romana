@@ -1,33 +1,23 @@
-// Game config
-export type { GameConfig } from "./config";
-
-// Core primitives & IDs
+// Game config & IDs
 export type {
+  GameConfig,
   FactionId,
   NpcId,
   ConversationId,
   NodeId,
   PhaseId,
-  ReputationProfile,
-  ReputationDelta,
-} from "./core/models";
+} from "./config";
 
-// Roll system
-export type { RollFactors, RollConfig, RollOutcome } from "./rolls/models";
-
-// Commitments
-export type { CommitmentConstraint } from "./commitments/models";
-
-// Conditional stubs
-export type { ConditionalStub } from "./stubs/models";
-
-// Patronage
-export type { PatronageSlot } from "./patronage/models";
+// Conversation effects
+export type { ReputationProfile, ReputationDelta } from "./conversation/effects/reputation";
+export type { FactionDelta } from "./conversation/effects/faction";
+export type { RollFactors, RollConfig, RollOutcome } from "./conversation/effects/rolls";
 
 // Conversation graph
+export type { ConditionalStub } from "./conversation/stubs";
+export type { ConversationPrecondition } from "./conversation/preconditions";
 export type {
   Conversation,
-  ConversationPrecondition,
   ConversationNode,
   NodeBase,
   PassiveNode,
@@ -42,17 +32,15 @@ export type {
   ExitEffect,
 } from "./conversation/models";
 
-// Phases & power shifts
+// World — phases, factions, NPCs, power shifts
 export type {
   Phase,
   FactionDefinition,
   NpcDefinition,
-  PowerShift,
-  PowerShiftOutcome,
-} from "./phases/models";
+} from "./world/models";
 
 // Game state
-export type { GameState } from "./state/models";
+export type { GameState } from "./world/state";
 
 // Generation
-export type { GenerationPrompt } from "./generation/models";
+export type { GenerationPrompt } from "./world/generation";

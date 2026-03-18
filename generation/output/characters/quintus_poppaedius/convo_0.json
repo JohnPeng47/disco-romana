@@ -1,0 +1,224 @@
+{
+  "id": "quintus_poppaedius_convo_0",
+  "npcId": "quintus_poppaedius",
+  "phaseId": "social_war",
+  "sequenceIndex": 0,
+  "preconditions": [],
+  "entryNodeId": "quintus_poppaedius_convo_0_n01",
+  "nodes": {
+    "quintus_poppaedius_convo_0_n01": {
+      "type": "active",
+      "id": "quintus_poppaedius_convo_0_n01",
+      "npcDialogue": "A Roman. In my camp. My guards wanted to search you for weapons — I told them a Roman politician is more dangerous unarmed. Drusus is dead. The citizenship bill is dead. So tell me — why has a citizen of the Republic come to the Marsic war camp?",
+      "options": [
+        {
+          "playerDialogue": "Because the war doesn't have to happen. There are still men in Rome who want the same thing Drusus wanted.",
+          "nextNodeId": "quintus_poppaedius_convo_0_n02"
+        },
+        {
+          "playerDialogue": "Because I'd rather be talking to you than fighting you. And I think you'd rather the same.",
+          "nextNodeId": "quintus_poppaedius_convo_0_n03"
+        },
+        {
+          "playerDialogue": "Because whoever wins this war will need allies on both sides. I'm here to establish mine early.",
+          "visibilityRequirement": { "trait": "audacia", "minValue": 5 },
+          "nextNodeId": "quintus_poppaedius_convo_0_n04"
+        }
+      ]
+    },
+    "quintus_poppaedius_convo_0_n02": {
+      "type": "noop",
+      "id": "quintus_poppaedius_convo_0_n02",
+      "npcDialogue": "Men in Rome who want citizenship for the allies. I've been hearing that promise for thirty years. My father heard it before me. The Marsi have fought in every Roman war since Hannibal. Our blood is on every frontier from Hispania to Asia. And still we cannot vote for the magistrates who send us to die. The time for promises ended when Drusus's body hit the floor.",
+      "options": [
+        { "playerDialogue": "Then tell me what would satisfy you now.", "nextNodeId": "quintus_poppaedius_convo_0_n05" }
+      ]
+    },
+    "quintus_poppaedius_convo_0_n03": {
+      "type": "noop",
+      "id": "quintus_poppaedius_convo_0_n03",
+      "npcDialogue": "I would rather not fight Rome. I served with Romans. I drank with Romans. My children speak Latin before they speak Marsic. But when a man asks for bread and receives a stone for thirty years, eventually he picks up the stone and throws it. That is where we are.",
+      "options": [
+        { "playerDialogue": "Then let me see if I can find the bread. What would stop this?", "nextNodeId": "quintus_poppaedius_convo_0_n05" }
+      ]
+    },
+    "quintus_poppaedius_convo_0_n04": {
+      "type": "noop",
+      "id": "quintus_poppaedius_convo_0_n04",
+      "npcDialogue": "Honest. Dangerous, but honest. I respect a man who sees the battlefield before the first arrow. Yes — whoever emerges from this will need to rebuild, and rebuilding requires men who can talk to both sides without being killed. Sit. Let's see if you're that man.",
+      "options": [
+        { "playerDialogue": "What are your terms?", "nextNodeId": "quintus_poppaedius_convo_0_n05" }
+      ]
+    },
+    "quintus_poppaedius_convo_0_n05": {
+      "type": "passive",
+      "id": "quintus_poppaedius_convo_0_n05",
+      "npcDialogue": "Full citizenship. Not the scraps they offered — eight tribes, limited voting, second-class franchise. Full enrollment in all thirty-five tribes. Land redistribution for veterans. And the Lex Varia repealed — every Italian prosecuted under that abomination must be pardoned. Those are not negotiating positions. Those are the minimum.",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 5,
+          "playerDialogue": "Some of those demands would require constitutional amendments. It can be done, but only through proper channels.",
+          "nextNodeId": "quintus_poppaedius_convo_0_n06"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "Every one of those demands is just. I'll carry them to the senate myself.",
+          "nextNodeId": "quintus_poppaedius_convo_0_n07"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 5,
+          "playerDialogue": "The senate won't grant those terms unless you're winning on the battlefield. Are you?",
+          "nextNodeId": "quintus_poppaedius_convo_0_n07"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 5,
+          "playerDialogue": "Present them as three separate demands. The citizenship first — that one has sympathy. Build momentum.",
+          "nextNodeId": "quintus_poppaedius_convo_0_n08"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "I hear you. Let me think about how to present this in Rome.",
+        "nextNodeId": "quintus_poppaedius_convo_0_n06"
+      }
+    },
+    "quintus_poppaedius_convo_0_n06": {
+      "type": "convergence",
+      "id": "quintus_poppaedius_convo_0_n06",
+      "npcDialogue": "Proper channels. The channels that have been blocked for a generation. But I'll hear you out — what exactly are you proposing?",
+      "routes": [
+        {
+          "condition": { "type": "faction_standing", "factionId": "italian_allies", "min": 1 },
+          "nextNodeId": "quintus_poppaedius_convo_0_n08"
+        },
+        {
+          "condition": { "type": "faction_standing", "factionId": "populares", "min": 2 },
+          "nextNodeId": "quintus_poppaedius_convo_0_n07"
+        }
+      ],
+      "fallbackNodeId": "quintus_poppaedius_convo_0_n09"
+    },
+    "quintus_poppaedius_convo_0_n07": {
+      "type": "active",
+      "id": "quintus_poppaedius_convo_0_n07",
+      "npcDialogue": "Words from a Roman are wind until they become law. Prove to me you're different. I have ten thousand Marsic veterans ready to march. If I delay that march by one week for negotiations, and those negotiations fail, every death in that week is on my hands. Give me something concrete.",
+      "options": [
+        {
+          "playerDialogue": "I'll get you a meeting with Sulpicius. He has the tribunes' veto and the will to use it for your cause.",
+          "roll": {
+            "dice": { "count": 2, "sides": 6 },
+            "baseThreshold": 7,
+            "factors": { "personalFavor": 1, "factionAlignment": 2, "force": 0, "wealth": 0 },
+            "reputationBonus": { "trait": "clementia", "weight": 1 }
+          },
+          "onSuccess": { "nextNodeId": "quintus_poppaedius_convo_0_n10" },
+          "onFailure": { "nextNodeId": "quintus_poppaedius_convo_0_n11" }
+        },
+        {
+          "playerDialogue": "I can't promise legislation. But I can promise you information — what the senate is planning, when their legions move.",
+          "nextNodeId": "quintus_poppaedius_convo_0_n08"
+        }
+      ]
+    },
+    "quintus_poppaedius_convo_0_n08": {
+      "type": "active",
+      "id": "quintus_poppaedius_convo_0_n08",
+      "npcDialogue": "Information. Now that's something I can use. The Roman legions are mobilizing — I know that much. But I don't know where, or when, or who commands them. A man inside Rome who could tell me those things would be worth more than a cohort of infantry. What would it cost me?",
+      "options": [
+        {
+          "playerDialogue": "Protection for my family's estates in Marsic territory. And your word that Italian citizenship includes me as a patron.",
+          "nextNodeId": "quintus_poppaedius_convo_0_n10"
+        },
+        {
+          "playerDialogue": "Nothing. Rome owes you this war. Consider me a down payment on that debt.",
+          "nextNodeId": "quintus_poppaedius_convo_0_n10"
+        },
+        {
+          "playerDialogue": "I said information, not treason. I'll tell you what's public knowledge, not military secrets.",
+          "nextNodeId": "quintus_poppaedius_convo_0_n11"
+        }
+      ]
+    },
+    "quintus_poppaedius_convo_0_n09": {
+      "type": "exit",
+      "id": "quintus_poppaedius_convo_0_n09",
+      "npcDialogue": "You came here with nothing and you leave with nothing. That makes you either brave or foolish. Go back to Rome. Tell them what you saw — a people ready to die for what they've earned. And stay out of the path of our march.",
+      "exitStateId": "quintus_poppaedius_convo_0_exit_sent_away"
+    },
+    "quintus_poppaedius_convo_0_n10": {
+      "type": "exit",
+      "id": "quintus_poppaedius_convo_0_n10",
+      "npcDialogue": "Then we have an arrangement. You're the first Roman who's offered something real instead of speeches. I won't forget it. When this is over — however it ends — there will be a place for men who built bridges instead of burning them.",
+      "exitStateId": "quintus_poppaedius_convo_0_exit_bridge_builder"
+    },
+    "quintus_poppaedius_convo_0_n11": {
+      "type": "exit",
+      "id": "quintus_poppaedius_convo_0_n11",
+      "npcDialogue": "Cautious. I expected nothing else from a Roman. But you came, and you listened. That puts you ahead of your senate. Go carefully — the roads between here and Rome are not as safe as they were.",
+      "exitStateId": "quintus_poppaedius_convo_0_exit_cautious_contact"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "quintus_poppaedius_convo_0_exit_bridge_builder",
+      "narrativeLabel": "Bridge Between Rome and Italia",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "italian_allies", "shift": 3, "reason": "Poppaedius trusts you as a genuine intermediary" },
+            { "factionId": "optimates", "shift": -2, "reason": "Word reaches Rome that you visited the rebel camp" },
+            { "factionId": "populares", "shift": 1, "reason": "The populares approve of your bridge-building" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "audacia", "shift": 1, "reason": "Walked into an enemy camp and walked out with an alliance" }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "quintus_poppaedius_convo_1"
+        }
+      ]
+    },
+    {
+      "id": "quintus_poppaedius_convo_0_exit_cautious_contact",
+      "narrativeLabel": "Cautious Contact with the Marsi",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "italian_allies", "shift": 1, "reason": "Poppaedius registers you as a Roman who at least listens" }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "quintus_poppaedius_convo_1"
+        }
+      ]
+    },
+    {
+      "id": "quintus_poppaedius_convo_0_exit_sent_away",
+      "narrativeLabel": "Turned Away by Poppaedius",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "italian_allies", "shift": -1, "reason": "Poppaedius sees you as another empty Roman" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "severitas", "shift": 1, "reason": "Refused to compromise Roman loyalty, even at the cost of diplomacy" }
+          ]
+        }
+      ]
+    }
+  ]
+}

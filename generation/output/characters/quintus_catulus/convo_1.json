@@ -1,0 +1,216 @@
+{
+  "id": "quintus_catulus_convo_1",
+  "npcId": "quintus_catulus",
+  "phaseId": "social_war",
+  "sequenceIndex": 1,
+  "preconditions": [
+    {
+      "type": "prior_exit_state",
+      "npcId": "quintus_catulus",
+      "conversationId": "quintus_catulus_convo_0",
+      "requiredExitStateIds": ["quintus_catulus_convo_0_exit_principled_ally", "quintus_catulus_convo_0_exit_tactical_ally", "quintus_catulus_convo_0_exit_lukewarm"]
+    }
+  ],
+  "entryNodeId": "quintus_catulus_convo_1_n01",
+  "nodes": {
+    "quintus_catulus_convo_1_n01": {
+      "type": "active",
+      "id": "quintus_catulus_convo_1_n01",
+      "npcDialogue": "Sulla has marched. Roman legions are inside the walls. I have spent forty years in the senate defending the constitution, and today I watched it die in the time it takes to walk from the Esquiline to the Forum. The question is no longer whether we can save the Republic. The question is whether we can salvage anything from its corpse.",
+      "options": [
+        {
+          "playerDialogue": "The Republic isn't dead. Sulla says he's restoring it. Can you work within his framework?",
+          "nextNodeId": "quintus_catulus_convo_1_n02"
+        },
+        {
+          "playerDialogue": "What matters now is protecting the senators who haven't fled. Can you influence Sulla's proscription lists?",
+          "nextNodeId": "quintus_catulus_convo_1_n03"
+        },
+        {
+          "playerDialogue": "Perhaps it's time to stop mourning and start rebuilding. What does the senate look like after Sulla?",
+          "nextNodeId": "quintus_catulus_convo_1_n04"
+        }
+      ]
+    },
+    "quintus_catulus_convo_1_n02": {
+      "type": "passive",
+      "id": "quintus_catulus_convo_1_n02",
+      "npcDialogue": "Sulla says many things. He says he'll restore the constitution. He says the proscriptions are temporary. He says the senate will govern again. But a constitution restored by a general's sword is not a constitution — it's a concession that can be revoked the moment the general changes his mind. Do you believe him?",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 5,
+          "playerDialogue": "I believe that a flawed restoration is better than no restoration at all. We work with what we have.",
+          "nextNodeId": "quintus_catulus_convo_1_n05"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "I believe he means it now. But power changes men. We need to build safeguards while he's still willing to listen.",
+          "nextNodeId": "quintus_catulus_convo_1_n05"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 5,
+          "playerDialogue": "It doesn't matter whether I believe him. What matters is that we position ourselves to control the outcome.",
+          "nextNodeId": "quintus_catulus_convo_1_n06"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 5,
+          "playerDialogue": "I believe he believes it. Which gives us a window — while he's sincere, we embed our people in his new order.",
+          "nextNodeId": "quintus_catulus_convo_1_n06"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "I honestly don't know. But we have to try.",
+        "nextNodeId": "quintus_catulus_convo_1_n05"
+      }
+    },
+    "quintus_catulus_convo_1_n03": {
+      "type": "noop",
+      "id": "quintus_catulus_convo_1_n03",
+      "npcDialogue": "The proscription lists. Yes — that's where the real battle is now. Sulla's inner circle is drawing up names. Some are genuine enemies of the state. Others are simply men whose property is coveted by Sulla's officers. I have access to the committee, but influence? That depends on what I can offer in return.",
+      "options": [
+        { "playerDialogue": "Tell me what names are on the list and what it costs to remove them.", "nextNodeId": "quintus_catulus_convo_1_n05" }
+      ]
+    },
+    "quintus_catulus_convo_1_n04": {
+      "type": "noop",
+      "id": "quintus_catulus_convo_1_n04",
+      "npcDialogue": "After Sulla. You're thinking further ahead than most men in this city, who are still trying to survive today. The senate will be rebuilt — packed with Sulla's loyalists, stripped of its populares wing. But even a packed senate is still a senate. The institutions survive, even if the men inside them change. That's what I'm holding onto.",
+      "options": [
+        { "playerDialogue": "Then let's make sure the right men are inside when the doors reopen.", "nextNodeId": "quintus_catulus_convo_1_n05" }
+      ]
+    },
+    "quintus_catulus_convo_1_n05": {
+      "type": "convergence",
+      "id": "quintus_catulus_convo_1_n05",
+      "npcDialogue": "Here is where we stand. Sulla will call a senate session within the week to legitimize everything he's done. That session determines the shape of Rome for a generation.",
+      "routes": [
+        {
+          "condition": { "type": "faction_standing", "factionId": "optimates", "min": 3 },
+          "nextNodeId": "quintus_catulus_convo_1_n07"
+        },
+        {
+          "condition": { "type": "faction_standing", "factionId": "sullan_faction", "min": 1 },
+          "nextNodeId": "quintus_catulus_convo_1_n07"
+        }
+      ],
+      "fallbackNodeId": "quintus_catulus_convo_1_n06"
+    },
+    "quintus_catulus_convo_1_n06": {
+      "type": "active",
+      "id": "quintus_catulus_convo_1_n06",
+      "npcDialogue": "You lack the standing to influence the session directly. But there's another role — and it's not a lesser one. The men fleeing Rome need safe passage. Senators, equestrians, even some of the Italian delegates. Someone needs to organize an underground route to the southern ports. It requires connections I don't have. Do you?",
+      "options": [
+        {
+          "playerDialogue": "I know the roads south. I can move people quietly.",
+          "roll": {
+            "dice": { "count": 2, "sides": 6 },
+            "baseThreshold": 7,
+            "factors": { "personalFavor": 1, "factionAlignment": 0, "force": 0, "wealth": 2 },
+            "reputationBonus": { "trait": "calliditas", "weight": 1 }
+          },
+          "onSuccess": { "nextNodeId": "quintus_catulus_convo_1_n08" },
+          "onFailure": { "nextNodeId": "quintus_catulus_convo_1_n09" }
+        },
+        {
+          "playerDialogue": "Helping fugitives escape puts a target on both our backs. I won't risk it.",
+          "nextNodeId": "quintus_catulus_convo_1_n10"
+        }
+      ]
+    },
+    "quintus_catulus_convo_1_n07": {
+      "type": "active",
+      "id": "quintus_catulus_convo_1_n07",
+      "npcDialogue": "You have enough standing that Sulla's people will listen. Here's my proposal: we push for a constitutional reform package within Sulla's framework. Strengthen the senate, limit tribunician power, establish term limits for commands. Sulla wants these things — we just need to make sure the details serve the Republic and not just his faction. Will you carry this proposal to his inner circle?",
+      "options": [
+        {
+          "playerDialogue": "I'll present it as serving Sulla's legacy. That's the angle that works with his ego.",
+          "roll": {
+            "dice": { "count": 2, "sides": 6 },
+            "baseThreshold": 7,
+            "factors": { "personalFavor": 2, "factionAlignment": 2, "force": 0, "wealth": 0 },
+            "reputationBonus": { "trait": "severitas", "weight": 1 }
+          },
+          "onSuccess": { "nextNodeId": "quintus_catulus_convo_1_n08" },
+          "onFailure": { "nextNodeId": "quintus_catulus_convo_1_n09" }
+        },
+        {
+          "playerDialogue": "I'll carry it, but I'll be honest with Sulla's men about what it is — a genuine effort to rebuild, not flattery.",
+          "nextNodeId": "quintus_catulus_convo_1_n08"
+        }
+      ]
+    },
+    "quintus_catulus_convo_1_n08": {
+      "type": "exit",
+      "id": "quintus_catulus_convo_1_n08",
+      "npcDialogue": "Well done. Whether through the senate or the back roads, you've served the Republic today. That's not nothing — in fact, it may be everything. When the histories are written, the men who preserved something in this darkness will matter more than the men who caused it. Go carefully.",
+      "exitStateId": "quintus_catulus_convo_1_exit_republic_served"
+    },
+    "quintus_catulus_convo_1_n09": {
+      "type": "exit",
+      "id": "quintus_catulus_convo_1_n09",
+      "npcDialogue": "The effort fell short. But the intent mattered. In times like these, attempting virtue is itself virtuous. I'll continue working the senate from within. If you find another way to help, my door is open — what's left of it.",
+      "exitStateId": "quintus_catulus_convo_1_exit_tried"
+    },
+    "quintus_catulus_convo_1_n10": {
+      "type": "exit",
+      "id": "quintus_catulus_convo_1_n10",
+      "npcDialogue": "Then you're protecting yourself. I can't blame you — self-preservation is an instinct older than the Republic. But remember this conversation. Remember that when Rome needed men of courage, you chose caution. There may come a time when that memory is heavier than you expect.",
+      "exitStateId": "quintus_catulus_convo_1_exit_self_preserved"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "quintus_catulus_convo_1_exit_republic_served",
+      "narrativeLabel": "Served the Republic in Crisis",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "optimates", "shift": 2, "reason": "Catulus considers you essential to the optimate rebuilding effort" },
+            { "factionId": "sullan_faction", "shift": 1, "reason": "Your work within Sulla's framework earns grudging acceptance" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "severitas", "shift": 1, "reason": "Served institutional continuity when easier paths were available" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quintus_catulus_convo_1_exit_tried",
+      "narrativeLabel": "Made the Attempt",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "optimates", "shift": 1, "reason": "Catulus respects the effort even in failure" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quintus_catulus_convo_1_exit_self_preserved",
+      "narrativeLabel": "Chose Self-Preservation",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "optimates", "shift": -1, "reason": "Catulus marks you as unreliable in crisis" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "calliditas", "shift": 1, "reason": "Survived when braver men did not" }
+          ]
+        }
+      ]
+    }
+  ]
+}

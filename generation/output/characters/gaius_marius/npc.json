@@ -1,0 +1,13 @@
+{
+  "id": "gaius_marius",
+  "name": "Gaius Marius",
+  "factionId": "populares",
+  "rank": "consul",
+  "reputationProfile": {
+    "severitas": 6,
+    "clementia": 2,
+    "audacia": 8,
+    "calliditas": 4
+  },
+  "conversationArcLength": 2
+}

@@ -1,0 +1,13 @@
+{
+  "id": "tiberius_longinus",
+  "name": "Tiberius Pompeius Longinus",
+  "factionId": "optimates",
+  "rank": "citizen",
+  "reputationProfile": {
+    "severitas": 3,
+    "clementia": 4,
+    "audacia": 2,
+    "calliditas": 9
+  },
+  "conversationArcLength": 1
+}

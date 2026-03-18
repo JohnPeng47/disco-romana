@@ -1,0 +1,13 @@
+{
+  "id": "quintus_poppaedius",
+  "name": "Quintus Poppaedius Silo",
+  "factionId": "italian_allies",
+  "rank": "magistrate",
+  "reputationProfile": {
+    "severitas": 5,
+    "clementia": 3,
+    "audacia": 8,
+    "calliditas": 6
+  },
+  "conversationArcLength": 2
+}

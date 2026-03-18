@@ -1,0 +1,202 @@
+{
+  "id": "lucius_sulla_convo_0",
+  "npcId": "lucius_sulla",
+  "phaseId": "social_war",
+  "sequenceIndex": 0,
+  "preconditions": [],
+  "entryNodeId": "lucius_sulla_convo_0_n01",
+  "nodes": {
+    "lucius_sulla_convo_0_n01": {
+      "type": "active",
+      "id": "lucius_sulla_convo_0_n01",
+      "npcDialogue": "Every man in this room wants something from me. They just lack the nerve to say it plainly. You don't strike me as the type who lacks nerve. So — what do you want?",
+      "options": [
+        {
+          "playerDialogue": "Your endorsement. A word from you opens doors that my family name can't.",
+          "nextNodeId": "lucius_sulla_convo_0_n02"
+        },
+        {
+          "playerDialogue": "To understand what you're planning for the eastern command. Before the rest of Rome does.",
+          "nextNodeId": "lucius_sulla_convo_0_n03"
+        },
+        {
+          "playerDialogue": "The same thing you want — to be on the right side when Rome changes.",
+          "visibilityRequirement": { "trait": "audacia", "minValue": 5 },
+          "nextNodeId": "lucius_sulla_convo_0_n04"
+        }
+      ]
+    },
+    "lucius_sulla_convo_0_n02": {
+      "type": "noop",
+      "id": "lucius_sulla_convo_0_n02",
+      "npcDialogue": "Political ambition. At least it's honest. Half the men who come to me want to be seen near me without admitting why. An endorsement is worth what the endorsed man makes of it. Show me why mine would be worth giving.",
+      "options": [
+        { "playerDialogue": "I'll show you. Where do you need results?", "nextNodeId": "lucius_sulla_convo_0_n05" }
+      ]
+    },
+    "lucius_sulla_convo_0_n03": {
+      "type": "active",
+      "id": "lucius_sulla_convo_0_n03",
+      "npcDialogue": "The eastern command is mine by right of law and by right of ability. Mithridates has been building his strength for a decade. Whoever takes that command will write history. What exactly do you want to know?",
+      "options": [
+        {
+          "playerDialogue": "Whether you believe you'll get it — or whether Marius will find a way to steal it.",
+          "nextNodeId": "lucius_sulla_convo_0_n05"
+        },
+        {
+          "playerDialogue": "I want to know what you'd do if Marius found a way to take it from you.",
+          "nextNodeId": "lucius_sulla_convo_0_n06"
+        }
+      ]
+    },
+    "lucius_sulla_convo_0_n04": {
+      "type": "noop",
+      "id": "lucius_sulla_convo_0_n04",
+      "npcDialogue": "Sit down. You're the first person today who's said something interesting.",
+      "options": [
+        { "playerDialogue": "I thought you'd appreciate directness.", "nextNodeId": "lucius_sulla_convo_0_n05" }
+      ]
+    },
+    "lucius_sulla_convo_0_n05": {
+      "type": "passive",
+      "id": "lucius_sulla_convo_0_n05",
+      "npcDialogue": "Here's my situation. The Mithridatic command is mine. The law supports me. Marius disagrees. If this comes to a contest — not a legal one — where does a man like you stand?",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 5,
+          "playerDialogue": "Where the law puts me. The precedents matter more than any individual commander, including you.",
+          "nextNodeId": "lucius_sulla_convo_0_n07"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "I'd want to prevent the contest entirely. A war between you and Marius serves Mithridates.",
+          "nextNodeId": "lucius_sulla_convo_0_n07"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 5,
+          "playerDialogue": "With whoever moves first and doesn't flinch. Hesitation is the only real defeat.",
+          "nextNodeId": "lucius_sulla_convo_0_n08"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 5,
+          "playerDialogue": "With whoever holds the legions when the dust settles. I'd rather be useful to that man than principled for the other.",
+          "nextNodeId": "lucius_sulla_convo_0_n08"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "I stand where Rome's interests stand. Which I'm still calculating.",
+        "nextNodeId": "lucius_sulla_convo_0_n07"
+      }
+    },
+    "lucius_sulla_convo_0_n06": {
+      "type": "noop",
+      "id": "lucius_sulla_convo_0_n06",
+      "npcDialogue": "A direct question deserves a direct answer. Marius is a spent man clinging to a name. If he tries to take what is legally mine, he will learn what it costs to make an enemy of me. Every man in Rome should understand that.",
+      "options": [
+        { "playerDialogue": "I'm starting to understand it.", "nextNodeId": "lucius_sulla_convo_0_n07" }
+      ]
+    },
+    "lucius_sulla_convo_0_n07": {
+      "type": "convergence",
+      "id": "lucius_sulla_convo_0_n07",
+      "npcDialogue": "Careful answers. I respect that, in its way. Let me be less careful.",
+      "routes": [
+        {
+          "condition": { "type": "faction_standing", "factionId": "sullan_faction", "min": 1 },
+          "nextNodeId": "lucius_sulla_convo_0_n09"
+        }
+      ],
+      "fallbackNodeId": "lucius_sulla_convo_0_n08"
+    },
+    "lucius_sulla_convo_0_n08": {
+      "type": "active",
+      "id": "lucius_sulla_convo_0_n08",
+      "npcDialogue": "An army's loyalty is to its general, not to the city that appointed him. I want to know if you understand what that means — not in the abstract, but in practice. In flesh and iron.",
+      "options": [
+        {
+          "playerDialogue": "I understand the implication. And I'm not running from this conversation.",
+          "nextNodeId": "lucius_sulla_convo_0_n09"
+        },
+        {
+          "playerDialogue": "I understand it completely. Tell me how I can be useful.",
+          "nextNodeId": "lucius_sulla_convo_0_n09"
+        },
+        {
+          "playerDialogue": "That's a line Rome has never crossed. I won't help you cross it.",
+          "nextNodeId": "lucius_sulla_convo_0_n10"
+        }
+      ]
+    },
+    "lucius_sulla_convo_0_n09": {
+      "type": "active",
+      "id": "lucius_sulla_convo_0_n09",
+      "npcDialogue": "Good. I need men in the city who know which way the wind blows — and who won't panic when it changes direction. Men who can pass information, arrange meetings, keep certain names off certain lists. Can you be one of those men?",
+      "options": [
+        {
+          "playerDialogue": "I'm exactly that man.",
+          "roll": {
+            "dice": { "count": 2, "sides": 6 },
+            "baseThreshold": 7,
+            "factors": { "personalFavor": 1, "factionAlignment": 2, "force": 0, "wealth": 1 },
+            "reputationBonus": { "trait": "audacia", "weight": 1 }
+          },
+          "onSuccess": { "nextNodeId": "lucius_sulla_convo_0_n10" },
+          "onFailure": { "nextNodeId": "lucius_sulla_convo_0_n11" }
+        },
+        {
+          "playerDialogue": "Tell me specifically what you need and I'll tell you if I can deliver it.",
+          "nextNodeId": "lucius_sulla_convo_0_n10"
+        }
+      ]
+    },
+    "lucius_sulla_convo_0_n10": {
+      "type": "exit",
+      "id": "lucius_sulla_convo_0_n10",
+      "npcDialogue": "Then we have an understanding. I don't forget the men who are useful to me. And I don't forget the ones who aren't.",
+      "exitStateId": "lucius_sulla_convo_0_exit_allied"
+    },
+    "lucius_sulla_convo_0_n11": {
+      "type": "exit",
+      "id": "lucius_sulla_convo_0_n11",
+      "npcDialogue": "Cautious. I can work with cautious, if not with cowardly. I'll remember your face. When the time comes, you'll have a chance to prove which one you are.",
+      "exitStateId": "lucius_sulla_convo_0_exit_watched"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "lucius_sulla_convo_0_exit_allied",
+      "narrativeLabel": "In Sulla's Confidence",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "sullan_faction", "shift": 3, "reason": "Sulla has taken you into his confidence" },
+            { "factionId": "populares", "shift": -1, "reason": "Word gets out that you've met with Sulla" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "audacia", "shift": 1, "reason": "You didn't flinch when Sulla showed you his hand" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lucius_sulla_convo_0_exit_watched",
+      "narrativeLabel": "On Sulla's List",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "sullan_faction", "shift": 1, "reason": "Sulla has noted you as potentially useful" }
+          ]
+        }
+      ]
+    }
+  ]
+}

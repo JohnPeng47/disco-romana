@@ -1,0 +1,13 @@
+{
+  "id": "publius_sulpicius",
+  "name": "Publius Sulpicius Rufus",
+  "factionId": "populares",
+  "rank": "citizen",
+  "reputationProfile": {
+    "severitas": 2,
+    "clementia": 5,
+    "audacia": 7,
+    "calliditas": 8
+  },
+  "conversationArcLength": 2
+}

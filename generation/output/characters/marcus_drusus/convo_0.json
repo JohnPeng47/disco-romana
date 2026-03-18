@@ -1,0 +1,241 @@
+{
+  "id": "marcus_drusus_convo_0",
+  "npcId": "marcus_drusus",
+  "phaseId": "social_war",
+  "sequenceIndex": 0,
+  "preconditions": [],
+  "entryNodeId": "marcus_drusus_convo_0_n01",
+  "nodes": {
+    "marcus_drusus_convo_0_n01": {
+      "type": "active",
+      "id": "marcus_drusus_convo_0_n01",
+      "npcDialogue": "Every reformer in Rome has come to me this month with promises. You're different — I'm told you actually listen before you speak. So. The Italian allies have bled in every war we've fought for two centuries and they still can't vote in the tribes that decide their fate. My bill changes that. Where do you stand?",
+      "options": [
+        {
+          "playerDialogue": "I believe the allies have earned what you're offering. I'll stand with you.",
+          "nextNodeId": "marcus_drusus_convo_0_n02"
+        },
+        {
+          "playerDialogue": "The senate will destroy this bill before it reaches a vote. Have you thought about how you survive that?",
+          "nextNodeId": "marcus_drusus_convo_0_n03"
+        },
+        {
+          "playerDialogue": "What offices open up once this passes? I want to understand the full landscape.",
+          "visibilityRequirement": { "trait": "calliditas", "minValue": 5 },
+          "nextNodeId": "marcus_drusus_convo_0_n04"
+        }
+      ]
+    },
+    "marcus_drusus_convo_0_n02": {
+      "type": "noop",
+      "id": "marcus_drusus_convo_0_n02",
+      "npcDialogue": "Then you're one of the few who see it clearly. The allies aren't asking for charity — they're asking to be counted among those they've already died for. I've spent three years building this coalition. What we need now are voices the senate can't dismiss.",
+      "options": [
+        { "playerDialogue": "I'm ready to be that voice.", "nextNodeId": "marcus_drusus_convo_0_n05" },
+        { "playerDialogue": "Tell me more about how you've built the coalition.", "nextNodeId": "marcus_drusus_convo_0_n05" }
+      ]
+    },
+    "marcus_drusus_convo_0_n03": {
+      "type": "noop",
+      "id": "marcus_drusus_convo_0_n03",
+      "npcDialogue": "They'll try. I expect it. But I have allies in every faction — equestrians who want the allied markets, plebs who see allies as kin rather than rivals, even some optimates who understand that a republic that betrays its soldiers doesn't stay a republic long. The senate can obstruct. It cannot stop an idea whose time has arrived.",
+      "options": [
+        { "playerDialogue": "And if they find a more permanent way to stop you?", "nextNodeId": "marcus_drusus_convo_0_n05" },
+        { "playerDialogue": "I hope you're right. What do you need from someone like me?", "nextNodeId": "marcus_drusus_convo_0_n05" }
+      ]
+    },
+    "marcus_drusus_convo_0_n04": {
+      "type": "active",
+      "id": "marcus_drusus_convo_0_n04",
+      "npcDialogue": "You're more direct than you look. Yes — when the Italian allies gain citizenship, the equestrian class reorganizes. New patronage networks form. A man who positioned himself correctly now would find doors open that are currently sealed. Is that the kind of help you're offering?",
+      "options": [
+        {
+          "playerDialogue": "Let's say I'm practical, not cynical. Tell me what you need.",
+          "nextNodeId": "marcus_drusus_convo_0_n05"
+        },
+        {
+          "playerDialogue": "I'm offering exactly that kind of help. What are we talking about specifically?",
+          "nextNodeId": "marcus_drusus_convo_0_n05"
+        }
+      ]
+    },
+    "marcus_drusus_convo_0_n05": {
+      "type": "active",
+      "id": "marcus_drusus_convo_0_n05",
+      "npcDialogue": "The harder question: will you stand publicly for this? Not just in private conversations, but at the rostra, in the forum, where the optimates can see your face and mark it. Quiet support keeps your options open. Public support changes what you are.",
+      "options": [
+        {
+          "playerDialogue": "I'll speak for it publicly. Let them mark me.",
+          "nextNodeId": "marcus_drusus_convo_0_n07"
+        },
+        {
+          "playerDialogue": "I'll work from the shadows. I'm more useful as a broker than a martyr.",
+          "nextNodeId": "marcus_drusus_convo_0_n08"
+        },
+        {
+          "playerDialogue": "I need to see how the senate responds before I expose myself.",
+          "nextNodeId": "marcus_drusus_convo_0_n06"
+        }
+      ]
+    },
+    "marcus_drusus_convo_0_n06": {
+      "type": "passive",
+      "id": "marcus_drusus_convo_0_n06",
+      "npcDialogue": "Caution. I understand it. The senate has ears everywhere. Let me read what you're actually made of.",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 5,
+          "playerDialogue": "My caution is principled, not cowardly. I won't commit to a position I haven't fully examined.",
+          "nextNodeId": "marcus_drusus_convo_0_n08"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "I want to help — but I also need to keep channels open to both sides if there's any chance of a compromise.",
+          "nextNodeId": "marcus_drusus_convo_0_n08"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 5,
+          "playerDialogue": "Tell me who the key opponents are. I'll change their minds before the vote, then step forward.",
+          "nextNodeId": "marcus_drusus_convo_0_n07"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 5,
+          "playerDialogue": "I can appear neutral and serve your cause better than any open ally. That's not hedging — it's strategy.",
+          "nextNodeId": "marcus_drusus_convo_0_n08"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "I'm watching, weighing. That's not nothing.",
+        "nextNodeId": "marcus_drusus_convo_0_n08"
+      }
+    },
+    "marcus_drusus_convo_0_n07": {
+      "type": "convergence",
+      "id": "marcus_drusus_convo_0_n07",
+      "npcDialogue": "Good. Then there's one more thing I need to know about you.",
+      "routes": [
+        {
+          "condition": { "type": "faction_standing", "factionId": "optimates", "min": 2 },
+          "nextNodeId": "marcus_drusus_convo_0_n09"
+        }
+      ],
+      "fallbackNodeId": "marcus_drusus_convo_0_n10"
+    },
+    "marcus_drusus_convo_0_n08": {
+      "type": "active",
+      "id": "marcus_drusus_convo_0_n08",
+      "npcDialogue": "Shadow work has its uses. Here's what I'd ask of you specifically — keep me informed of how the optimates are organizing their opposition. What they're saying in private. You move in those circles. Will you be my eyes there?",
+      "options": [
+        {
+          "playerDialogue": "I can do that. What do you have to offer in return?",
+          "nextNodeId": "marcus_drusus_convo_0_n11"
+        },
+        {
+          "playerDialogue": "Yes — and I won't charge you for it. Call it civic duty.",
+          "nextNodeId": "marcus_drusus_convo_0_n11"
+        },
+        {
+          "playerDialogue": "I won't carry intelligence against men who trust me. That's not the kind of broker I am.",
+          "nextNodeId": "marcus_drusus_convo_0_n12"
+        }
+      ]
+    },
+    "marcus_drusus_convo_0_n09": {
+      "type": "active",
+      "id": "marcus_drusus_convo_0_n09",
+      "npcDialogue": "You have standing with the optimates. That makes you valuable — and complicated. I could use a back-channel to Catulus. Someone he trusts, who can show him this bill need not threaten everything he values. Could you be that?",
+      "options": [
+        {
+          "playerDialogue": "I can try. Catulus is proud, but he's not irrational.",
+          "roll": {
+            "dice": { "count": 2, "sides": 6 },
+            "baseThreshold": 7,
+            "factors": { "personalFavor": 2, "factionAlignment": 0, "force": 0, "wealth": 1 },
+            "reputationBonus": { "trait": "calliditas", "weight": 1 }
+          },
+          "onSuccess": { "nextNodeId": "marcus_drusus_convo_0_n10" },
+          "onFailure": { "nextNodeId": "marcus_drusus_convo_0_n11" }
+        },
+        {
+          "playerDialogue": "My contacts aren't for sale. Not even to a cause I believe in.",
+          "nextNodeId": "marcus_drusus_convo_0_n11"
+        }
+      ]
+    },
+    "marcus_drusus_convo_0_n10": {
+      "type": "exit",
+      "id": "marcus_drusus_convo_0_n10",
+      "npcDialogue": "Then we understand each other. Welcome to the cause, such as it is. I can't promise you safety — only that what we're doing is right. Rome will remember the men who stood here.",
+      "exitStateId": "marcus_drusus_convo_0_exit_alliance"
+    },
+    "marcus_drusus_convo_0_n11": {
+      "type": "exit",
+      "id": "marcus_drusus_convo_0_n11",
+      "npcDialogue": "I understand. A cautious man with principles — those are rarer than allies. Keep your eyes open. When the vote comes, I'll know whether you were with us in the ways that mattered.",
+      "exitStateId": "marcus_drusus_convo_0_exit_cautious"
+    },
+    "marcus_drusus_convo_0_n12": {
+      "type": "exit",
+      "id": "marcus_drusus_convo_0_n12",
+      "npcDialogue": "Then I know where you stand. Go carefully — the men who refuse to pick a side often find the side is picked for them, and rarely in their favor.",
+      "exitStateId": "marcus_drusus_convo_0_exit_refused"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "marcus_drusus_convo_0_exit_alliance",
+      "narrativeLabel": "Allied with Drusus",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "populares", "shift": 3, "reason": "Publicly committed to Drusus's reform coalition" },
+            { "factionId": "italian_allies", "shift": 1, "reason": "Seen as an ally of Italian citizenship" },
+            { "factionId": "optimates", "shift": -2, "reason": "Marked as a reformer by the conservative bloc" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "clementia", "shift": 1, "reason": "Chose the generous interpretation of Roman duty" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "marcus_drusus_convo_0_exit_cautious",
+      "narrativeLabel": "Cautious Observer",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "populares", "shift": 1, "reason": "Showed sympathy without full commitment" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "marcus_drusus_convo_0_exit_refused",
+      "narrativeLabel": "Kept Distance from Drusus",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "populares", "shift": -1, "reason": "Drusus notes your refusal" },
+            { "factionId": "optimates", "shift": 1, "reason": "Word reaches the optimates that you declined to help Drusus" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "calliditas", "shift": 1, "reason": "Maintained deniability at a critical moment" }
+          ]
+        }
+      ]
+    }
+  ]
+}

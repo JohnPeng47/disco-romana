@@ -1,0 +1,13 @@
+{
+  "id": "quintus_catulus",
+  "name": "Quintus Lutatius Catulus",
+  "factionId": "optimates",
+  "rank": "consul",
+  "reputationProfile": {
+    "severitas": 8,
+    "clementia": 2,
+    "audacia": 3,
+    "calliditas": 4
+  },
+  "conversationArcLength": 2
+}

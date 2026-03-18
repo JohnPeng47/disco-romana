@@ -1,0 +1,212 @@
+{
+  "id": "lucius_sulla_convo_1",
+  "npcId": "lucius_sulla",
+  "phaseId": "social_war",
+  "sequenceIndex": 1,
+  "preconditions": [
+    {
+      "type": "prior_exit_state",
+      "npcId": "lucius_sulla",
+      "conversationId": "lucius_sulla_convo_0",
+      "requiredExitStateIds": ["lucius_sulla_convo_0_exit_allied", "lucius_sulla_convo_0_exit_watched"]
+    }
+  ],
+  "entryNodeId": "lucius_sulla_convo_1_n01",
+  "nodes": {
+    "lucius_sulla_convo_1_n01": {
+      "type": "active",
+      "id": "lucius_sulla_convo_1_n01",
+      "npcDialogue": "The tribal assembly voted. My command — legally assigned by the senate — has been stripped and given to that decrepit old man. Sulpicius bought the vote with Italian freedmen. The law means nothing to these people. Nothing. So now I have a question for Rome, and I'm asking you first: does a lawfully appointed commander accept the tyranny of a mob, or does he enforce the law himself?",
+      "options": [
+        {
+          "playerDialogue": "Enforce it. If the law cannot protect its own instruments, it must be defended by the men who serve it.",
+          "nextNodeId": "lucius_sulla_convo_1_n02"
+        },
+        {
+          "playerDialogue": "Marching legions on Rome isn't enforcing the law. It's destroying it. There has to be another way.",
+          "nextNodeId": "lucius_sulla_convo_1_n03"
+        },
+        {
+          "playerDialogue": "What are you asking me to do, exactly?",
+          "nextNodeId": "lucius_sulla_convo_1_n04"
+        }
+      ]
+    },
+    "lucius_sulla_convo_1_n02": {
+      "type": "noop",
+      "id": "lucius_sulla_convo_1_n02",
+      "npcDialogue": "Finally. A man in this city who understands. Every officer I've spoken to — every single one — says the words but flinches at the implication. You didn't flinch. Good. I've already sent word to the legions at Nola. They march on my order.",
+      "options": [
+        { "playerDialogue": "When?", "nextNodeId": "lucius_sulla_convo_1_n05" }
+      ]
+    },
+    "lucius_sulla_convo_1_n03": {
+      "type": "passive",
+      "id": "lucius_sulla_convo_1_n03",
+      "npcDialogue": "Another way. Tell me what 'another way' looks like when the tribunes have already voted, the senate has been overridden, and every legal mechanism has been corrupted by Marian gold. I am genuinely asking. Because I have looked for another way, and I have not found it.",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 5,
+          "playerDialogue": "Appeal to the senate directly. Force a re-vote with the patrician quorum. Make them choose between Marius and constitutional order.",
+          "nextNodeId": "lucius_sulla_convo_1_n06"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "Negotiate a shared command. You take the east, Marius takes the Italian campaign. Give him something so he doesn't take everything.",
+          "nextNodeId": "lucius_sulla_convo_1_n06"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 5,
+          "playerDialogue": "You're right. There is no other way. I was testing whether you'd hesitate. You didn't.",
+          "nextNodeId": "lucius_sulla_convo_1_n05"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 5,
+          "playerDialogue": "Assassinate Sulpicius. Without the tribune, the legislation dies. Cleaner than a siege.",
+          "nextNodeId": "lucius_sulla_convo_1_n05"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "I don't have an answer. But marching legions through the streets can't be the right one.",
+        "nextNodeId": "lucius_sulla_convo_1_n06"
+      }
+    },
+    "lucius_sulla_convo_1_n04": {
+      "type": "noop",
+      "id": "lucius_sulla_convo_1_n04",
+      "npcDialogue": "I'm asking you to choose. When the legions reach the Esquiline Gate, you will either be inside the walls with Marius or outside them with me. There is no third position. The luxury of neutrality ended when Sulpicius cast his vote.",
+      "options": [
+        { "playerDialogue": "Then tell me the plan. All of it.", "nextNodeId": "lucius_sulla_convo_1_n05" }
+      ]
+    },
+    "lucius_sulla_convo_1_n05": {
+      "type": "active",
+      "id": "lucius_sulla_convo_1_n05",
+      "npcDialogue": "Six legions march from Nola. We enter through the Esquiline and Colline gates simultaneously. My officers have standing orders: no looting, no slaughter of civilians. This is a restoration, not a sack. Marius and Sulpicius will be declared hostes — public enemies. I need someone in the city to identify which senators will resist and which will submit when they see the eagles. Can you do that?",
+      "options": [
+        {
+          "playerDialogue": "I know every senator's breaking point. Give me two days and I'll have your lists.",
+          "roll": {
+            "dice": { "count": 2, "sides": 6 },
+            "baseThreshold": 7,
+            "factors": { "personalFavor": 2, "factionAlignment": 2, "force": 0, "wealth": 1 },
+            "reputationBonus": { "trait": "calliditas", "weight": 1 }
+          },
+          "onSuccess": { "nextNodeId": "lucius_sulla_convo_1_n08" },
+          "onPartial": { "nextNodeId": "lucius_sulla_convo_1_n07" },
+          "onFailure": { "nextNodeId": "lucius_sulla_convo_1_n07" }
+        },
+        {
+          "playerDialogue": "I'll march with your legions instead. I'd rather be at the gate than behind a desk.",
+          "nextNodeId": "lucius_sulla_convo_1_n08"
+        }
+      ]
+    },
+    "lucius_sulla_convo_1_n06": {
+      "type": "convergence",
+      "id": "lucius_sulla_convo_1_n06",
+      "npcDialogue": "Interesting suggestions. But events have already overtaken them.",
+      "routes": [
+        {
+          "condition": { "type": "faction_standing", "factionId": "sullan_faction", "min": 2 },
+          "nextNodeId": "lucius_sulla_convo_1_n07"
+        }
+      ],
+      "fallbackNodeId": "lucius_sulla_convo_1_n09"
+    },
+    "lucius_sulla_convo_1_n07": {
+      "type": "active",
+      "id": "lucius_sulla_convo_1_n07",
+      "npcDialogue": "The march begins regardless. I'm not asking your permission — I'm offering you a position. When I enter Rome, there will be proscription lists. Names of men who opposed me. I can put names on that list, and I can take them off. Where you stand in the next three days determines which side of the ink you're on.",
+      "options": [
+        {
+          "playerDialogue": "I'll serve. Put me wherever I'm most useful.",
+          "nextNodeId": "lucius_sulla_convo_1_n08"
+        },
+        {
+          "playerDialogue": "I'll stand aside. I won't fight you, but I won't help you either.",
+          "nextNodeId": "lucius_sulla_convo_1_n10"
+        },
+        {
+          "playerDialogue": "This is tyranny, Sulla. Proscription lists. The Republic you claim to defend doesn't do this.",
+          "nextNodeId": "lucius_sulla_convo_1_n09"
+        }
+      ]
+    },
+    "lucius_sulla_convo_1_n08": {
+      "type": "exit",
+      "id": "lucius_sulla_convo_1_n08",
+      "npcDialogue": "When this is over, I'll restore the constitution. That is my oath. And the men who helped me will be rewarded as the Republic rewards its servants — with land, with rank, with the knowledge that they preserved what Marius would have destroyed. You've chosen well.",
+      "exitStateId": "lucius_sulla_convo_1_exit_inner_circle"
+    },
+    "lucius_sulla_convo_1_n09": {
+      "type": "exit",
+      "id": "lucius_sulla_convo_1_n09",
+      "npcDialogue": "Then you've made your choice. I'll remember it. When the gates open and the lists are posted, don't be surprised to find yourself on one. I gave you every chance. The next time we speak, it will not be as equals.",
+      "exitStateId": "lucius_sulla_convo_1_exit_enemy"
+    },
+    "lucius_sulla_convo_1_n10": {
+      "type": "exit",
+      "id": "lucius_sulla_convo_1_n10",
+      "npcDialogue": "Standing aside. The coward's favorite position. Fine — I won't waste resources on a man who won't commit. But when the new order comes, don't expect the privileges you enjoyed under the old one. Neutrality is not a virtue. It's a delay.",
+      "exitStateId": "lucius_sulla_convo_1_exit_neutral"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "lucius_sulla_convo_1_exit_inner_circle",
+      "narrativeLabel": "Sulla's Inner Circle",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "sullan_faction", "shift": 3, "reason": "Committed to Sulla's march on Rome" },
+            { "factionId": "populares", "shift": -3, "reason": "You are now a marked enemy of the Marian faction" },
+            { "factionId": "italian_allies", "shift": -1, "reason": "The Italians see Sulla's faction as their enemy" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "audacia", "shift": 2, "reason": "Joined the first march on Rome in Republican history" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lucius_sulla_convo_1_exit_enemy",
+      "narrativeLabel": "Sulla's Enemy",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "sullan_faction", "shift": -3, "reason": "Sulla marks you as a public enemy" },
+            { "factionId": "populares", "shift": 2, "reason": "Your defiance of Sulla earns respect from the Marians" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "severitas", "shift": 1, "reason": "Refused to participate in the destruction of Republican norms" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lucius_sulla_convo_1_exit_neutral",
+      "narrativeLabel": "Neutral in the March",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "sullan_faction", "shift": -1, "reason": "Sulla despises neutrality" }
+          ]
+        }
+      ]
+    }
+  ]
+}
