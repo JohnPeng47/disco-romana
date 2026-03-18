@@ -1,0 +1,166 @@
+{
+  "id": "titus_atticus_convo_2",
+  "npcId": "titus_atticus",
+  "phaseId": "social_war",
+  "sequenceIndex": 2,
+  "preconditions": [
+    {
+      "type": "prior_exit_state",
+      "npcId": "titus_atticus",
+      "conversationId": "titus_atticus_convo_1",
+      "requiredExitStateIds": ["titus_atticus_convo_1_exit_business_partner", "titus_atticus_convo_1_exit_factional_informant", "titus_atticus_convo_1_exit_cautious"]
+    }
+  ],
+  "entryNodeId": "titus_atticus_convo_2_n01",
+  "nodes": {
+    "titus_atticus_convo_2_n01": {
+      "type": "passive",
+      "id": "titus_atticus_convo_2_n01",
+      "npcDialogue": "I'm leaving Rome. Don't look at me like that — it's not cowardice, it's portfolio management. Athens has libraries, moderate taxes, and a conspicuous absence of senators murdering each other in the streets. I've been liquidating for three weeks. The house in Epirus is ready, the ships are chartered, and my agents have standing instructions. This isn't a retreat. It's a relocation of assets, the most important of which is myself. But I didn't ask you here to announce my travel plans. I asked you here because I've been thinking about what happens to the people who stay.",
+      "responses": [
+        {
+          "trait": "calliditas",
+          "threshold": 5,
+          "playerDialogue": "You've been planning this for months. Which means you've also planned for the people you're leaving behind. What's the offer?",
+          "nextNodeId": "titus_atticus_convo_2_n02"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 4,
+          "playerDialogue": "I'm staying. Someone has to be here when the dust settles, and I intend to be standing when it does.",
+          "nextNodeId": "titus_atticus_convo_2_n03"
+        },
+        {
+          "trait": "severitas",
+          "threshold": 4,
+          "playerDialogue": "Running away. I expected more from you, Atticus.",
+          "nextNodeId": "titus_atticus_convo_2_n03"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "I don't blame you. This city is becoming unrecognizable. What advice do you have for those of us who remain?",
+          "nextNodeId": "titus_atticus_convo_2_n02"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "Athens. Well. I suppose someone should preserve Roman culture somewhere it won't get stabbed.",
+        "nextNodeId": "titus_atticus_convo_2_n02"
+      }
+    },
+    "titus_atticus_convo_2_n02": {
+      "type": "active",
+      "id": "titus_atticus_convo_2_n02",
+      "npcDialogue": "Here is what I can do for you from Athens, and it's not nothing. I'm keeping my network intact — agents in every major port, contacts in every faction. Information will still flow through me; it'll just flow a little slower. More importantly, I've set up what you might call an insurance arrangement. If the power shift goes badly for you — proscription lists, exile, property seizure, any of the usual Roman entertainments — I can get you out. Ships, safe houses, letters of introduction to the right Greeks. It won't save your career, but it'll save your life. The question is whether you want that safety net, or whether you'd rather burn it for a stronger position now.",
+      "options": [
+        {
+          "playerDialogue": "I'll take the escape route. A man who can't survive can't win. Set it up.",
+          "nextNodeId": "titus_atticus_convo_2_n04"
+        },
+        {
+          "playerDialogue": "No. I'm staying and I'm fighting. If I hedge now, I'll never commit fully. Keep your insurance — I'll make my own luck.",
+          "nextNodeId": "titus_atticus_convo_2_n05"
+        }
+      ]
+    },
+    "titus_atticus_convo_2_n03": {
+      "type": "active",
+      "id": "titus_atticus_convo_2_n03",
+      "npcDialogue": "Expected more? Let me tell you about expectations. I expected the Republic to survive my lifetime. I expected senators to settle their differences with speeches rather than swords. I expected that a man could be wealthy and educated and uninvolved in other people's blood feuds. All those expectations failed, so I've adjusted my strategy. That's not weakness — it's what intelligent people do when the data changes. But since you're determined to stay in this beautiful, doomed city, let me offer you something practical. I've prepared contingency plans. If things go badly — and my models say there's a seventy percent chance they will — I can either help you survive the aftermath or leave you to your principles. Your choice.",
+      "options": [
+        {
+          "playerDialogue": "You make a fair point. Tell me about these contingency plans.",
+          "nextNodeId": "titus_atticus_convo_2_n02"
+        },
+        {
+          "playerDialogue": "Keep your contingencies. I don't plan for failure — it attracts the thing you're planning for.",
+          "nextNodeId": "titus_atticus_convo_2_n05"
+        }
+      ]
+    },
+    "titus_atticus_convo_2_n04": {
+      "type": "noop",
+      "id": "titus_atticus_convo_2_n04",
+      "npcDialogue": "Smart. Not brave, but smart — and I've always found smart more reliable than brave. Here's how it works: if things collapse, send word to my agent at the docks in Puteoli. Use the phrase 'Attic shipment.' He'll know what to do. There'll be a berth, documents, and enough coin to establish yourself in Greece until the situation clarifies. It's not free — consider it a debt between friends, payable when Rome remembers what civilization looks like. Which it will. Eventually. Romans are insufferable, but they're not stupid.",
+      "options": [
+        { "playerDialogue": "Attic shipment. I'll remember. Thank you, Atticus — genuinely.", "nextNodeId": "titus_atticus_convo_2_n06" }
+      ]
+    },
+    "titus_atticus_convo_2_n05": {
+      "type": "active",
+      "id": "titus_atticus_convo_2_n05",
+      "npcDialogue": "No safety net. All commitment. I'd call it admirable if I didn't also call it reckless. But then, the men who change history are usually the ones too stubborn to run from it. What drives you to stay? Is it duty — that old Roman disease — or is it ambition? I'm not judging. I just want to understand what kind of man I'm saying goodbye to.",
+      "options": [
+        {
+          "playerDialogue": "Duty. Rome gave me everything. I won't abandon her when she needs me most.",
+          "nextNodeId": "titus_atticus_convo_2_n07"
+        },
+        {
+          "playerDialogue": "Ambition. When the powerful flee, they leave power behind. Someone picks it up. I intend to be that someone.",
+          "nextNodeId": "titus_atticus_convo_2_n08"
+        }
+      ]
+    },
+    "titus_atticus_convo_2_n06": {
+      "type": "exit",
+      "id": "titus_atticus_convo_2_n06",
+      "npcDialogue": "Don't thank me — gratitude makes me uncomfortable. It implies I did something selfless, and I assure you my motives are entirely selfish. I want interesting people to survive this catastrophe so that Athens isn't unbearably dull. Write to me when things settle. Or when they don't. Either way, I'll want to know the story. Goodbye, friend. That's not a word I use often or carelessly.",
+      "exitStateId": "titus_atticus_convo_2_exit_prepared"
+    },
+    "titus_atticus_convo_2_n07": {
+      "type": "exit",
+      "id": "titus_atticus_convo_2_n07",
+      "npcDialogue": "Duty. The most Roman of answers, and therefore the most dangerous. Men who serve Rome out of duty are the ones Rome chews up and forgets. But they're also the only ones worth remembering. I'll watch from Athens and hope you prove the cynics wrong. You won't have my safety net, but you'll have something the careful men never earn — conviction. That's worth more than I know how to price, and I can price anything.",
+      "exitStateId": "titus_atticus_convo_2_exit_committed_severitas"
+    },
+    "titus_atticus_convo_2_n08": {
+      "type": "exit",
+      "id": "titus_atticus_convo_2_n08",
+      "npcDialogue": "Ambition. Honest ambition, openly declared. That's rarer than you'd think — most ambitious men dress it up in duty or principle or some other respectable costume. You wear it plainly. I can work with that, even from Athens. Ambitious men are predictable, and predictable men are safe to do business with. No escape route, then, but keep my name in your calculations. When you're powerful — if you're powerful — you'll want a banker who isn't afraid of you. There are very few of those.",
+      "exitStateId": "titus_atticus_convo_2_exit_committed_audacia"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "titus_atticus_convo_2_exit_prepared",
+      "narrativeLabel": "Prepared — Escape Route Secured",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "calliditas", "shift": 1, "reason": "Secured Atticus's escape network as insurance against political catastrophe" }
+          ]
+        },
+        {
+          "type": "turn_penalty",
+          "reduction": 1,
+          "reason": "Atticus's escape route reduces the consequences if a power shift goes badly"
+        }
+      ]
+    },
+    {
+      "id": "titus_atticus_convo_2_exit_committed_severitas",
+      "narrativeLabel": "Committed — Stayed for Duty",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "severitas", "shift": 1, "reason": "Refused the safety net and chose duty to Rome over self-preservation" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "titus_atticus_convo_2_exit_committed_audacia",
+      "narrativeLabel": "Committed — Stayed for Ambition",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "audacia", "shift": 1, "reason": "Refused the safety net to seize opportunities left by those who fled" }
+          ]
+        }
+      ]
+    }
+  ]
+}

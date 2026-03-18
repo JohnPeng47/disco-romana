@@ -3,7 +3,23 @@
   "npcId": "gaius_marius",
   "phaseId": "social_war",
   "sequenceIndex": 0,
-  "preconditions": [],
+  "preconditions": [
+    {
+      "type": "any_of",
+      "conditions": [
+        {
+          "type": "faction_standing",
+          "factionId": "populares",
+          "min": 3
+        },
+        {
+          "type": "prior_exit_state",
+          "conversationId": "publius_sulpicius_convo_0",
+          "requiredExitStateIds": ["publius_sulpicius_convo_0_exit_recruited"]
+        }
+      ]
+    }
+  ],
   "entryNodeId": "gaius_marius_convo_0_n01",
   "nodes": {
     "gaius_marius_convo_0_n01": {

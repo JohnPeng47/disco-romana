@@ -1,0 +1,13 @@
+{
+  "id": "aurelia",
+  "name": "Aurelia",
+  "factionId": null,
+  "rank": "matriarch",
+  "reputationProfile": {
+    "severitas": 7,
+    "clementia": 3,
+    "audacia": 2,
+    "calliditas": 8
+  },
+  "conversationArcLength": 3
+}

@@ -3,7 +3,23 @@
   "npcId": "lucius_sulla",
   "phaseId": "social_war",
   "sequenceIndex": 0,
-  "preconditions": [],
+  "preconditions": [
+    {
+      "type": "any_of",
+      "conditions": [
+        {
+          "type": "faction_standing",
+          "factionId": "optimates",
+          "min": 4
+        },
+        {
+          "type": "faction_standing",
+          "factionId": "sullan_faction",
+          "min": 1
+        }
+      ]
+    }
+  ],
   "entryNodeId": "lucius_sulla_convo_0_n01",
   "nodes": {
     "lucius_sulla_convo_0_n01": {
@@ -21,7 +37,10 @@
         },
         {
           "playerDialogue": "The same thing you want — to be on the right side when Rome changes.",
-          "visibilityRequirement": { "trait": "audacia", "minValue": 5 },
+          "visibilityRequirement": {
+            "trait": "audacia",
+            "minValue": 5
+          },
           "nextNodeId": "lucius_sulla_convo_0_n04"
         }
       ]
@@ -31,7 +50,10 @@
       "id": "lucius_sulla_convo_0_n02",
       "npcDialogue": "Political ambition. At least it's honest. Half the men who come to me want to be seen near me without admitting why. An endorsement is worth what the endorsed man makes of it. Show me why mine would be worth giving.",
       "options": [
-        { "playerDialogue": "I'll show you. Where do you need results?", "nextNodeId": "lucius_sulla_convo_0_n05" }
+        {
+          "playerDialogue": "I'll show you. Where do you need results?",
+          "nextNodeId": "lucius_sulla_convo_0_n05"
+        }
       ]
     },
     "lucius_sulla_convo_0_n03": {
@@ -54,7 +76,10 @@
       "id": "lucius_sulla_convo_0_n04",
       "npcDialogue": "Sit down. You're the first person today who's said something interesting.",
       "options": [
-        { "playerDialogue": "I thought you'd appreciate directness.", "nextNodeId": "lucius_sulla_convo_0_n05" }
+        {
+          "playerDialogue": "I thought you'd appreciate directness.",
+          "nextNodeId": "lucius_sulla_convo_0_n05"
+        }
       ]
     },
     "lucius_sulla_convo_0_n05": {
@@ -97,7 +122,10 @@
       "id": "lucius_sulla_convo_0_n06",
       "npcDialogue": "A direct question deserves a direct answer. Marius is a spent man clinging to a name. If he tries to take what is legally mine, he will learn what it costs to make an enemy of me. Every man in Rome should understand that.",
       "options": [
-        { "playerDialogue": "I'm starting to understand it.", "nextNodeId": "lucius_sulla_convo_0_n07" }
+        {
+          "playerDialogue": "I'm starting to understand it.",
+          "nextNodeId": "lucius_sulla_convo_0_n07"
+        }
       ]
     },
     "lucius_sulla_convo_0_n07": {
@@ -106,7 +134,11 @@
       "npcDialogue": "Careful answers. I respect that, in its way. Let me be less careful.",
       "routes": [
         {
-          "condition": { "type": "faction_standing", "factionId": "sullan_faction", "min": 1 },
+          "condition": {
+            "type": "faction_standing",
+            "factionId": "sullan_faction",
+            "min": 1
+          },
           "nextNodeId": "lucius_sulla_convo_0_n09"
         }
       ],
@@ -139,13 +171,28 @@
         {
           "playerDialogue": "I'm exactly that man.",
           "roll": {
-            "dice": { "count": 2, "sides": 6 },
+            "dice": {
+              "count": 2,
+              "sides": 6
+            },
             "baseThreshold": 7,
-            "factors": { "personalFavor": 1, "factionAlignment": 2, "force": 0, "wealth": 1 },
-            "reputationBonus": { "trait": "audacia", "weight": 1 }
+            "factors": {
+              "personalFavor": 1,
+              "factionAlignment": 2,
+              "force": 0,
+              "wealth": 1
+            },
+            "reputationBonus": {
+              "trait": "audacia",
+              "weight": 1
+            }
           },
-          "onSuccess": { "nextNodeId": "lucius_sulla_convo_0_n10" },
-          "onFailure": { "nextNodeId": "lucius_sulla_convo_0_n11" }
+          "onSuccess": {
+            "nextNodeId": "lucius_sulla_convo_0_n10"
+          },
+          "onFailure": {
+            "nextNodeId": "lucius_sulla_convo_0_n11"
+          }
         },
         {
           "playerDialogue": "Tell me specifically what you need and I'll tell you if I can deliver it.",
@@ -174,14 +221,26 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "sullan_faction", "shift": 3, "reason": "Sulla has taken you into his confidence" },
-            { "factionId": "populares", "shift": -1, "reason": "Word gets out that you've met with Sulla" }
+            {
+              "factionId": "sullan_faction",
+              "shift": 3,
+              "reason": "Sulla has taken you into his confidence"
+            },
+            {
+              "factionId": "populares",
+              "shift": -1,
+              "reason": "Word gets out that you've met with Sulla"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "audacia", "shift": 1, "reason": "You didn't flinch when Sulla showed you his hand" }
+            {
+              "trait": "audacia",
+              "shift": 1,
+              "reason": "You didn't flinch when Sulla showed you his hand"
+            }
           ]
         }
       ]
@@ -193,7 +252,11 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "sullan_faction", "shift": 1, "reason": "Sulla has noted you as potentially useful" }
+            {
+              "factionId": "sullan_faction",
+              "shift": 1,
+              "reason": "Sulla has noted you as potentially useful"
+            }
           ]
         }
       ]

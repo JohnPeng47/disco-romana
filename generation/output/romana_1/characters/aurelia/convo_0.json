@@ -1,0 +1,235 @@
+{
+  "id": "aurelia_convo_0",
+  "npcId": "aurelia",
+  "phaseId": "pre_social_war",
+  "sequenceIndex": 0,
+  "preconditions": [],
+  "entryNodeId": "aurelia_convo_0_n01",
+  "nodes": {
+    "aurelia_convo_0_n01": {
+      "type": "passive",
+      "id": "aurelia_convo_0_n01",
+      "npcDialogue": "Sit. Before you say anything — I know you've been to the Forum today. I can smell the ambition on you the way I used to smell mud on your toga when you were seven. Your father's name still opens certain doors in this city, but fewer than it did ten years ago. The Julii, the Aurelii — we are respectable. We are not powerful. Tell me you understand the difference.",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 4,
+          "playerDialogue": "I understand it, Mother. Respectability is the foundation. Power is what you build on it, brick by brick.",
+          "nextNodeId": "aurelia_convo_0_n02"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 4,
+          "playerDialogue": "I understand it perfectly — which is why I intend to change it.",
+          "nextNodeId": "aurelia_convo_0_n02"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 4,
+          "playerDialogue": "Respectability without power is a slow death. But it's also a kind of camouflage.",
+          "nextNodeId": "aurelia_convo_0_n02"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "I understand, Mother. I'm listening.",
+        "nextNodeId": "aurelia_convo_0_n02"
+      }
+    },
+    "aurelia_convo_0_n02": {
+      "type": "active",
+      "id": "aurelia_convo_0_n02",
+      "npcDialogue": "Good. Then listen carefully. Your father had friends among the optimates — Catulus dined at this table. But your uncle served under Marius in Africa, and half the Subura remembers it. You have connections to both sides of a city that is tearing itself in two. That is either a gift or a death sentence, depending on how you use it. The cursus honorum awaits — quaestor, then aedile, then praetor, if the gods will it. But the road matters less than the man who walks it. So tell me, my son — what kind of man do you intend to be?",
+      "options": [
+        {
+          "playerDialogue": "A soldier first. Rome's borders are bleeding. The men who defend them earn glory that no courtroom speech can match.",
+          "nextNodeId": "aurelia_convo_0_n03"
+        },
+        {
+          "playerDialogue": "A statesman. Laws endure longer than legions. I want to shape the Republic from the Senate floor.",
+          "nextNodeId": "aurelia_convo_0_n04"
+        },
+        {
+          "playerDialogue": "A man who understands that wealth is the real language of power. Offices come and go — land and silver remain.",
+          "nextNodeId": "aurelia_convo_0_n05"
+        }
+      ]
+    },
+    "aurelia_convo_0_n03": {
+      "type": "noop",
+      "id": "aurelia_convo_0_n03",
+      "npcDialogue": "Your uncle would be proud to hear that. Your father would have been terrified. Military glory is real, my son, but it is paid for in blood — often your own. Marius built an empire of veterans who love him more than they love Rome. Sulla is doing the same. Be careful that the sword you draw doesn't end up at your own throat.",
+      "options": [
+        {
+          "playerDialogue": "I'll be careful. But I won't be timid.",
+          "nextNodeId": "aurelia_convo_0_n06"
+        }
+      ]
+    },
+    "aurelia_convo_0_n04": {
+      "type": "noop",
+      "id": "aurelia_convo_0_n04",
+      "npcDialogue": "Then you'll need patience — real patience, not the kind that's just cowardice wearing a toga. The Senate is a nest of old men who would rather see the Republic burn than share power with anyone beneath their dignity. Drusus tried to change things through law. Watch what happens to him. Watch carefully.",
+      "options": [
+        {
+          "playerDialogue": "I'm watching. And learning.",
+          "nextNodeId": "aurelia_convo_0_n06"
+        }
+      ]
+    },
+    "aurelia_convo_0_n05": {
+      "type": "noop",
+      "id": "aurelia_convo_0_n05",
+      "npcDialogue": "You sound like Crassus. That's not entirely a compliment, but it's not entirely an insult either. Wealth opens doors, buys elections, funds armies. Just remember — the richest man in Rome is still only one proscription list away from having nothing. Money is a tool. Don't mistake it for a shield.",
+      "options": [
+        {
+          "playerDialogue": "A tool I intend to wield well.",
+          "nextNodeId": "aurelia_convo_0_n06"
+        }
+      ]
+    },
+    "aurelia_convo_0_n06": {
+      "type": "active",
+      "id": "aurelia_convo_0_n06",
+      "npcDialogue": "There is one more thing. Marcus Livius Drusus has proposed citizenship for the Italian allies. Half the Senate calls him a visionary. The other half calls him a traitor. The Italian question will define the next decade — I'm certain of it. Where do you stand? Do you believe Rome must change to survive, or that tradition is what keeps us from becoming just another kingdom?",
+      "options": [
+        {
+          "playerDialogue": "The allies bled for Rome. They've earned a seat at the table. Refusing them is not tradition — it's arrogance.",
+          "nextNodeId": "aurelia_convo_0_n07"
+        },
+        {
+          "playerDialogue": "Roman citizenship means something because it isn't given to everyone. Dilute it and you destroy what makes us strong.",
+          "nextNodeId": "aurelia_convo_0_n08"
+        },
+        {
+          "playerDialogue": "I think both sides are right, which means both sides are dangerous. The real question is who profits from the argument.",
+          "nextNodeId": "aurelia_convo_0_n09"
+        }
+      ]
+    },
+    "aurelia_convo_0_n07": {
+      "type": "active",
+      "id": "aurelia_convo_0_n07",
+      "npcDialogue": "Reform. Your uncle's spirit in you. The populares will welcome that sentiment — Sulpicius, Norbanus, men who believe the Republic must bend or break. But reformers die badly in this city, my son. Drusus is a brave man. Brave men make beautiful corpses. Promise me you'll be more than brave.",
+      "options": [
+        {
+          "playerDialogue": "I promise, Mother. I'll be brave — but I'll also be smart.",
+          "nextNodeId": "aurelia_convo_0_n10"
+        },
+        {
+          "playerDialogue": "I'll be whatever Rome needs me to be.",
+          "nextNodeId": "aurelia_convo_0_n10"
+        }
+      ]
+    },
+    "aurelia_convo_0_n08": {
+      "type": "active",
+      "id": "aurelia_convo_0_n08",
+      "npcDialogue": "Tradition. Your father's voice. The optimates will find that reassuring — Catulus, Scaurus, the old guard who believe Rome's greatness lies in its permanence. But tradition can become a wall that keeps out the future, and walls can be climbed. Or torn down. Promise me you'll know when to hold fast and when to bend.",
+      "options": [
+        {
+          "playerDialogue": "I promise, Mother. I know the difference between strength and stubbornness.",
+          "nextNodeId": "aurelia_convo_0_n11"
+        },
+        {
+          "playerDialogue": "Rome has endured for centuries. I'll help it endure for centuries more.",
+          "nextNodeId": "aurelia_convo_0_n11"
+        }
+      ]
+    },
+    "aurelia_convo_0_n09": {
+      "type": "active",
+      "id": "aurelia_convo_0_n09",
+      "npcDialogue": "Neither camp, then. You want to read the board before you place your piece. That's wise — or it's cowardice dressed as wisdom. Time will tell which. There are men in this city who make their fortunes by standing between factions — Atticus, for one. He has no enemies because he's useful to everyone. It's a profitable position. Just remember that when the swords come out, the man in the middle gets cut from both sides.",
+      "options": [
+        {
+          "playerDialogue": "Then I'll make sure I'm never standing still when the swords come out.",
+          "nextNodeId": "aurelia_convo_0_n12"
+        },
+        {
+          "playerDialogue": "Or he's the one who decides which side gets the sword. That's the position I want.",
+          "nextNodeId": "aurelia_convo_0_n12"
+        }
+      ]
+    },
+    "aurelia_convo_0_n10": {
+      "type": "exit",
+      "id": "aurelia_convo_0_n10",
+      "npcDialogue": "Then go. Make your calls, attend your dinners, begin your career. But come home to me before you do anything irreversible. A mother's counsel costs nothing and is worth more than most men's fortunes. Rome is more dangerous than it's been in a generation. Don't forget that.",
+      "exitStateId": "aurelia_convo_0_exit_ambitious_upstart"
+    },
+    "aurelia_convo_0_n11": {
+      "type": "exit",
+      "id": "aurelia_convo_0_n11",
+      "npcDialogue": "Then go. Do your duty, attend your obligations, walk the path your father would have walked. But come home to me before you make any promises you can't break. The old families are circling, and they'll want your loyalty sworn in blood. A good son honors his family. A wise son makes sure his family survives to be honored. Rome is more dangerous than it's been in a generation. Don't forget that.",
+      "exitStateId": "aurelia_convo_0_exit_dutiful_son"
+    },
+    "aurelia_convo_0_n12": {
+      "type": "exit",
+      "id": "aurelia_convo_0_n12",
+      "npcDialogue": "Then go. Keep your eyes open and your mouth shut until you know who's worth trusting. There are men in this city who will offer you everything and deliver nothing, and men who will offer you nothing and deliver everything. Learn to tell the difference. Come home to me when you need someone who will tell you the truth without wanting anything in return. Rome is more dangerous than it's been in a generation. Don't forget that.",
+      "exitStateId": "aurelia_convo_0_exit_shrewd_operator"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "aurelia_convo_0_exit_dutiful_son",
+      "narrativeLabel": "A Dutiful Son",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "severitas",
+              "shift": 1,
+              "reason": "You chose the path of tradition and duty"
+            }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "quintus_catulus_convo_0"
+        }
+      ]
+    },
+    {
+      "id": "aurelia_convo_0_exit_ambitious_upstart",
+      "narrativeLabel": "An Ambitious Upstart",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "audacia",
+              "shift": 1,
+              "reason": "You declared your intent to change Rome"
+            }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "gaius_norbanus_convo_0"
+        }
+      ]
+    },
+    {
+      "id": "aurelia_convo_0_exit_shrewd_operator",
+      "narrativeLabel": "A Shrewd Operator",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "calliditas",
+              "shift": 1,
+              "reason": "You chose to play all sides before committing"
+            }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "titus_atticus_convo_0"
+        }
+      ]
+    }
+  ]
+}

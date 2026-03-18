@@ -1,0 +1,13 @@
+{
+  "id": "titus_atticus",
+  "name": "Titus Pomponius Atticus",
+  "factionId": null,
+  "rank": "equestrian",
+  "reputationProfile": {
+    "severitas": 2,
+    "clementia": 5,
+    "audacia": 2,
+    "calliditas": 9
+  },
+  "conversationArcLength": 3
+}

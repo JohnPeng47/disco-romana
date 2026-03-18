@@ -1,0 +1,208 @@
+{
+  "id": "aurelia_convo_1",
+  "npcId": "aurelia",
+  "phaseId": "social_war",
+  "sequenceIndex": 1,
+  "preconditions": [
+    {
+      "type": "prior_exit_state",
+      "conversationId": "aurelia_convo_0",
+      "requiredExitStateIds": ["aurelia_convo_0_exit_dutiful_son", "aurelia_convo_0_exit_ambitious_upstart", "aurelia_convo_0_exit_shrewd_operator"]
+    },
+    {
+      "type": "event",
+      "eventId": "drusus_death"
+    }
+  ],
+  "entryNodeId": "aurelia_convo_1_n01",
+  "nodes": {
+    "aurelia_convo_1_n01": {
+      "type": "passive",
+      "id": "aurelia_convo_1_n01",
+      "npcDialogue": "Close the door. Drusus is dead. Murdered in his own vestibule — a knife in the thigh, bled out before his slaves could staunch it. They're saying it was a common thief. It wasn't a common thief. You don't stab a tribune in the femoral artery by accident. Someone wanted him silent, and now he is. The Italian allies have lost their last friend in the Senate. Do you understand what that means?",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 4,
+          "playerDialogue": "It means war. The allies asked for justice through law, and Rome answered with a knife. They have no reason left to be patient.",
+          "nextNodeId": "aurelia_convo_1_n02"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 4,
+          "playerDialogue": "It means the talking is over. Whatever comes next will be settled with iron, not speeches.",
+          "nextNodeId": "aurelia_convo_1_n02"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 4,
+          "playerDialogue": "It means whoever ordered the killing just changed the board completely. The question is whether they planned for what comes next — or just lit a fire they can't control.",
+          "nextNodeId": "aurelia_convo_1_n02"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "It means nothing good. Tell me the rest.",
+        "nextNodeId": "aurelia_convo_1_n02"
+      }
+    },
+    "aurelia_convo_1_n02": {
+      "type": "passive",
+      "id": "aurelia_convo_1_n02",
+      "npcDialogue": "The Marsi have raised their standard. Poppaedius Silo — your father knew him, dined with him — is leading an army against Rome. The Samnites have joined them. Asculum has massacred every Roman citizen within its walls. This is not a border skirmish, my son. This is the Social War. And our estates at Arpinum sit directly in the path of it. The tenants are fleeing. The income is gone. Everything your father built in thirty years of careful management could burn in a single season.",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 5,
+          "playerDialogue": "Then we protect what we can. The tenants, the household — those are our responsibilities before anything else.",
+          "nextNodeId": "aurelia_convo_1_n03"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 5,
+          "playerDialogue": "War means commands, and commands mean advancement. Men rise faster in wartime than in a lifetime of peacetime elections.",
+          "nextNodeId": "aurelia_convo_1_n03"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 5,
+          "playerDialogue": "Estates change hands in wartime. So do loyalties. If we're clever about this, we come out of the war stronger than we entered it.",
+          "nextNodeId": "aurelia_convo_1_n03"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "What do you need me to do, Mother?",
+        "nextNodeId": "aurelia_convo_1_n03"
+      }
+    },
+    "aurelia_convo_1_n03": {
+      "type": "active",
+      "id": "aurelia_convo_1_n03",
+      "npcDialogue": "I need you to decide — quickly, because the city won't wait. Every man of military age is being called upon. The consuls are raising legions. Sulla is already in the field. But the household needs protection too — I can manage the city affairs, but someone must see to Arpinum before the Samnites reach it. And there are men already profiting from the chaos, buying up distressed property, cornering grain supplies. So tell me plainly. What will you do?",
+      "options": [
+        {
+          "playerDialogue": "I'll volunteer for command. If Rome is at war, my place is with the legions. The family name means nothing if Rome falls.",
+          "nextNodeId": "aurelia_convo_1_n04"
+        },
+        {
+          "playerDialogue": "I'll go to Arpinum first. Secure the estates, move the tenants to safety, then join the war effort. Family comes before glory.",
+          "nextNodeId": "aurelia_convo_1_n05"
+        },
+        {
+          "playerDialogue": "I'll stay in Rome. The real power in wartime flows through the city — supply contracts, intelligence, political positioning. Let others swing swords.",
+          "nextNodeId": "aurelia_convo_1_n06"
+        }
+      ]
+    },
+    "aurelia_convo_1_n04": {
+      "type": "noop",
+      "id": "aurelia_convo_1_n04",
+      "npcDialogue": "I expected that answer. I dreaded it, but I expected it. Go then. Serve well. Win if you can. But write to me, and don't take stupid risks for the sake of a triumph you're not old enough to earn. Your father died in bed — a rare achievement for a Roman man. I'd like the same for you, even if I know I won't get it.",
+      "options": [
+        {
+          "playerDialogue": "I'll make you proud, Mother. And I'll come home.",
+          "nextNodeId": "aurelia_convo_1_n07"
+        }
+      ]
+    },
+    "aurelia_convo_1_n05": {
+      "type": "noop",
+      "id": "aurelia_convo_1_n05",
+      "npcDialogue": "That is your father's answer, and I love you for it. The tenants at Arpinum are our people — three generations of families who've worked that land. If you can save them, save the harvest stores, fortify what can be held — you'll have done more real good than a dozen senators giving speeches about Italian treachery. Go quickly. The roads south won't be safe much longer.",
+      "options": [
+        {
+          "playerDialogue": "I'll leave at dawn. Hold things together here until I return.",
+          "nextNodeId": "aurelia_convo_1_n08"
+        }
+      ]
+    },
+    "aurelia_convo_1_n06": {
+      "type": "noop",
+      "id": "aurelia_convo_1_n06",
+      "npcDialogue": "Practical. Cold, but practical. You're right that the city is where the real decisions are made — generals win battles, but the men who fund and supply them win wars. I'll manage the household. You manage our position. But remember — there are men who will call you a coward for staying behind. Make sure your results silence them.",
+      "options": [
+        {
+          "playerDialogue": "They can call me what they like. I'll be the one still standing when the dust settles.",
+          "nextNodeId": "aurelia_convo_1_n09"
+        }
+      ]
+    },
+    "aurelia_convo_1_n07": {
+      "type": "exit",
+      "id": "aurelia_convo_1_n07",
+      "npcDialogue": "I know you will. Now go — and take the good cloak. The one your father wore to Narbo. It's warmer than it looks.",
+      "exitStateId": "aurelia_convo_1_exit_rally"
+    },
+    "aurelia_convo_1_n08": {
+      "type": "exit",
+      "id": "aurelia_convo_1_n08",
+      "npcDialogue": "I will. I've held this household together through worse than war — though not much worse. Be safe on the road. And if the Samnites have already reached Arpinum, turn back. The land is not worth your life. Nothing is.",
+      "exitStateId": "aurelia_convo_1_exit_protect"
+    },
+    "aurelia_convo_1_n09": {
+      "type": "exit",
+      "id": "aurelia_convo_1_n09",
+      "npcDialogue": "See that you are. This household has survived because we're useful to the right people at the right time. Be useful now — and be careful. The men who profit most from war are often the first ones purged when it's over.",
+      "exitStateId": "aurelia_convo_1_exit_opportunity"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "aurelia_convo_1_exit_rally",
+      "narrativeLabel": "Rally to Arms",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "audacia",
+              "shift": 1,
+              "reason": "You chose the battlefield over safety"
+            }
+          ]
+        },
+        {
+          "type": "faction_standing",
+          "deltas": [
+            {
+              "factionId": "optimates",
+              "shift": 1,
+              "reason": "Your willingness to fight reassures the traditional establishment"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aurelia_convo_1_exit_protect",
+      "narrativeLabel": "Protect the Household",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "severitas",
+              "shift": 1,
+              "reason": "You put duty to family above personal ambition"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aurelia_convo_1_exit_opportunity",
+      "narrativeLabel": "See Opportunity in Crisis",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "calliditas",
+              "shift": 1,
+              "reason": "You chose to exploit the chaos rather than fight in it"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

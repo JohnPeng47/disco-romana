@@ -1,0 +1,162 @@
+{
+  "id": "marcus_scaurus_convo_1",
+  "npcId": "marcus_scaurus",
+  "phaseId": "social_war",
+  "sequenceIndex": 1,
+  "preconditions": [
+    {
+      "type": "prior_exit_state",
+      "npcId": "marcus_scaurus",
+      "conversationId": "marcus_scaurus_convo_0",
+      "requiredExitStateIds": ["marcus_scaurus_convo_0_exit_traditionalist", "marcus_scaurus_convo_0_exit_skeptic"]
+    }
+  ],
+  "entryNodeId": "marcus_scaurus_convo_1_n01",
+  "nodes": {
+    "marcus_scaurus_convo_1_n01": {
+      "type": "passive",
+      "id": "marcus_scaurus_convo_1_n01",
+      "npcDialogue": "Close the door. Sit down. I — forgive me. I need a moment. They killed Drusus. In his own vestibule, with a leather-worker's knife. No trial, no proscription, no legal proceeding of any kind. Just a knife in the dark and the best man in the senate bleeding out on his own floor tiles. I told him. I told him the pattern would hold. I told him what Rome does to its reformers. He smiled at me and said the pattern could be broken. He was wrong. And now I must tell you something I have never said aloud in this building: I am frightened.",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 5,
+          "playerDialogue": "Then the law has failed. If the Republic cannot protect even a tribune in his own home, what exactly are we defending?",
+          "nextNodeId": "marcus_scaurus_convo_1_n02"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "I grieve with you. Drusus deserved better than this — Rome deserved better than this.",
+          "nextNodeId": "marcus_scaurus_convo_1_n02"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 5,
+          "playerDialogue": "Who did it? Give me a name and I will make sure the pattern breaks in the other direction.",
+          "nextNodeId": "marcus_scaurus_convo_1_n03"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 5,
+          "playerDialogue": "You are frightened because you see what comes next. Tell me what you see.",
+          "nextNodeId": "marcus_scaurus_convo_1_n02"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "I don't know what to say. This changes everything.",
+        "nextNodeId": "marcus_scaurus_convo_1_n03"
+      }
+    },
+    "marcus_scaurus_convo_1_n02": {
+      "type": "noop",
+      "id": "marcus_scaurus_convo_1_n02",
+      "npcDialogue": "What I see is this. The constitutional system I described to you — the one built on custom, on consensus, on the agreement that there are things we do not do — that system has no enforcement mechanism. I have known this for decades. I believed, perhaps foolishly, that the consensus itself was strong enough. That men would choose to be bound because they understood the alternative. But Drusus's murder proves what I feared: the consensus is dead. Custom only restrains men who feel restrained by it, and we have raised a generation that feels restrained by nothing. The Italians will revolt. They have no reason not to. And when they do, the generals will demand extraordinary commands, and the senate will grant them, and those commands will never be returned. That is what I see.",
+      "options": [
+        { "playerDialogue": "What happens when the commands are never returned?", "nextNodeId": "marcus_scaurus_convo_1_n04" }
+      ]
+    },
+    "marcus_scaurus_convo_1_n03": {
+      "type": "passive",
+      "id": "marcus_scaurus_convo_1_n03",
+      "npcDialogue": "Names. Everyone wants names. As though this were a crime with a criminal rather than a system devouring its own organs. But I will tell you something worse than the name of the man who held the knife: the senate is relieved. Not publicly — publicly they are outraged. But in the cloakrooms, in the private dinners, I can see it in their eyes. One less reformer. One less disruption to the comfortable order. They do not understand that the comfortable order died with him. The allies saw their champion murdered and they will draw the obvious conclusion.",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 4,
+          "playerDialogue": "Then the senate is complicit. Not in the murder, but in the silence that follows it.",
+          "nextNodeId": "marcus_scaurus_convo_1_n04"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "Is there still time to offer the allies something? Enough to prevent what you're describing?",
+          "nextNodeId": "marcus_scaurus_convo_1_n04"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 4,
+          "playerDialogue": "Then we prepare for war. Not because we want it, but because it is already coming.",
+          "nextNodeId": "marcus_scaurus_convo_1_n04"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 4,
+          "playerDialogue": "The allies aren't the only ones who will draw conclusions. Every ambitious man in Rome just learned that reform through institutions is a death sentence.",
+          "nextNodeId": "marcus_scaurus_convo_1_n04"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "What do we do now?",
+        "nextNodeId": "marcus_scaurus_convo_1_n04"
+      }
+    },
+    "marcus_scaurus_convo_1_n04": {
+      "type": "active",
+      "id": "marcus_scaurus_convo_1_n04",
+      "npcDialogue": "What happens is the thing I have spent my entire career trying to prevent. A man with legions discovers that the senate cannot stop him. Not that it chooses not to — that it cannot. The customs were the only wall, and the wall is down. Marius already knows this. Sulla is learning it. When two such men both understand that nothing prevents them from taking what they want except each other — that is not a republic. That is a battlefield with marble columns. I am telling you this because someone must carry this understanding forward. I will not live to see what comes after. Will you remember what I have taught you?",
+      "options": [
+        {
+          "playerDialogue": "I will remember. And I will do everything I can to rebuild what is being lost — even if I have to do it inside a system that no longer believes in itself.",
+          "nextNodeId": "marcus_scaurus_convo_1_n05"
+        },
+        {
+          "playerDialogue": "I will remember. But I will not pretend the old system can be restored. Something new will have to be built from whatever survives.",
+          "nextNodeId": "marcus_scaurus_convo_1_n06"
+        }
+      ]
+    },
+    "marcus_scaurus_convo_1_n05": {
+      "type": "exit",
+      "id": "marcus_scaurus_convo_1_n05",
+      "npcDialogue": "Then you are what I hoped you were. Take this — it is my seal. When you present it to any man of the optimate faction, they will know you speak with the authority of the Princeps Senatus. I do not give this lightly. I have given it twice before in my life. Use it to preserve what can be preserved. And when they write the history of this time, make sure they write that Marcus Aemilius Scaurus saw what was coming and tried to stop it. That is all any of us can do. Go now. I am tired, and I have letters to write that I hoped I would never have to write.",
+      "exitStateId": "marcus_scaurus_convo_1_exit_inheritor"
+    },
+    "marcus_scaurus_convo_1_n06": {
+      "type": "exit",
+      "id": "marcus_scaurus_convo_1_n06",
+      "npcDialogue": "Something new. Yes. Perhaps you are right, and the old man's faith in the old ways is itself a kind of blindness. I cannot follow you into whatever comes next — my mind was built for the Republic that is dying, not for whatever replaces it. But I am glad I told you these things. Carry the knowledge, even if you use it to build something I would not recognize. The understanding of why things break is always worth preserving, even when the things themselves are not.",
+      "exitStateId": "marcus_scaurus_convo_1_exit_witness"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "marcus_scaurus_convo_1_exit_inheritor",
+      "narrativeLabel": "Scaurus's Inheritor",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "optimates", "shift": 1, "reason": "Scaurus's personal seal grants you authority within the optimate network" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "severitas", "shift": 1, "reason": "Accepted the burden of constitutional memory from the Princeps Senatus" }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "marcus_scaurus_convo_2"
+        }
+      ]
+    },
+    {
+      "id": "marcus_scaurus_convo_1_exit_witness",
+      "narrativeLabel": "Witness to the Old Man's Warning",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "calliditas", "shift": 1, "reason": "Absorbed Scaurus's constitutional analysis without binding yourself to his conclusions" }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "marcus_scaurus_convo_2"
+        }
+      ]
+    }
+  ]
+}

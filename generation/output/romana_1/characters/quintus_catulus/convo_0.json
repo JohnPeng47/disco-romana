@@ -3,7 +3,23 @@
   "npcId": "quintus_catulus",
   "phaseId": "social_war",
   "sequenceIndex": 0,
-  "preconditions": [],
+  "preconditions": [
+    {
+      "type": "any_of",
+      "conditions": [
+        {
+          "type": "prior_exit_state",
+          "conversationId": "marcus_scaurus_convo_0",
+          "requiredExitStateIds": ["marcus_scaurus_convo_0_exit_traditionalist", "marcus_scaurus_convo_0_exit_skeptic"]
+        },
+        {
+          "type": "faction_standing",
+          "factionId": "optimates",
+          "min": 2
+        }
+      ]
+    }
+  ],
   "entryNodeId": "quintus_catulus_convo_0_n01",
   "nodes": {
     "quintus_catulus_convo_0_n01": {

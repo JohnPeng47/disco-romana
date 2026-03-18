@@ -1,0 +1,13 @@
+{
+  "id": "marcus_scaurus",
+  "name": "Marcus Aemilius Scaurus",
+  "factionId": "optimates",
+  "rank": "princeps_senatus",
+  "reputationProfile": {
+    "severitas": 9,
+    "clementia": 4,
+    "audacia": 2,
+    "calliditas": 6
+  },
+  "conversationArcLength": 3
+}

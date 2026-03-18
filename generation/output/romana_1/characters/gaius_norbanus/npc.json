@@ -1,0 +1,13 @@
+{
+  "id": "gaius_norbanus",
+  "name": "Gaius Norbanus",
+  "factionId": "populares",
+  "rank": "magistrate",
+  "reputationProfile": {
+    "severitas": 4,
+    "clementia": 3,
+    "audacia": 6,
+    "calliditas": 5
+  },
+  "conversationArcLength": 3
+}

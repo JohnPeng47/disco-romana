@@ -110,7 +110,6 @@ class Game {
     for (const [id, convo] of Object.entries(this.conversations)) {
       if (id === this.phase.powerShiftConversationId) continue;
       if (this.checkPreconditions(convo.preconditions)) {
-        // Check not already completed
         const completed = this.state.exitStateHistory.some(h => h.conversationId === id);
         if (!completed) {
           available.push(convo);
@@ -122,26 +121,30 @@ class Game {
 
   checkPreconditions(preconditions) {
     if (!preconditions || preconditions.length === 0) return true;
-    return preconditions.every(p => {
-      switch (p.type) {
-        case 'min_rank': {
-          const ranks = ['citizen', 'magistrate', 'consul'];
-          return ranks.indexOf(this.state.currentRank) >= ranks.indexOf(p.minRank);
-        }
-        case 'faction_standing':
-          return (this.state.factionStandings[p.factionId] || 0) >= (p.minStanding || 0);
-        case 'prior_exit_state':
-          return (p.requiredExitStateIds || []).some(esId =>
-            this.state.exitStateHistory.some(h =>
-              h.conversationId === p.conversationId && h.exitStateId === esId
-            )
-          );
-        case 'phase_event':
-          return true; // Phase events always available for now
-        default:
-          return true;
+    return preconditions.every(p => this.checkSinglePrecondition(p));
+  }
+
+  checkSinglePrecondition(p) {
+    switch (p.type) {
+      case 'min_rank': {
+        const ranks = ['citizen', 'magistrate', 'consul'];
+        return ranks.indexOf(this.state.currentRank) >= ranks.indexOf(p.minRank);
       }
-    });
+      case 'faction_standing':
+        return (this.state.factionStandings[p.factionId] || 0) >= (p.min ?? p.minStanding ?? 0);
+      case 'prior_exit_state':
+        return (p.requiredExitStateIds || []).some(esId =>
+          this.state.exitStateHistory.some(h =>
+            h.conversationId === p.conversationId && h.exitStateId === esId
+          )
+        );
+      case 'any_of':
+        return (p.conditions || []).some(c => this.checkSinglePrecondition(c));
+      case 'phase_event':
+        return true; // Phase events always available for now
+      default:
+        return true;
+    }
   }
 
   startConversation(convoId) {
@@ -316,6 +319,7 @@ class Game {
 class GameUI {
   constructor(game) {
     this.game = game;
+    this.lastNodeWasAutoResolved = false;
     this.elements = {
       phaseInfo: document.getElementById('phase-info'),
       turnCounter: document.getElementById('turn-counter'),
@@ -469,6 +473,7 @@ class GameUI {
     this.updateTurnCounter();
 
     this.elements.conversationScroll.innerHTML = '';
+    this.lastNodeWasAutoResolved = false;
     this.showScreen('conversationScreen');
 
     const node = this.game.startConversation(convoId);
@@ -477,6 +482,23 @@ class GameUI {
 
   async processNode(node) {
     if (!node || !this.game.currentConvo) return;
+
+    const isAutoResolved = node.type === 'passive' || node.type === 'convergence';
+
+    // Gate consecutive auto-resolved nodes with a continue button
+    if (isAutoResolved && this.lastNodeWasAutoResolved) {
+      await new Promise(resolve => {
+        this.elements.choices.classList.remove('hidden');
+        this.elements.choices.innerHTML = `
+          <button class="choice-btn" id="continue-gate-btn">Continue...</button>
+        `;
+        document.getElementById('continue-gate-btn').onclick = () => {
+          this.elements.choices.classList.add('hidden');
+          resolve();
+        };
+        this.scrollToBottom();
+      });
+    }
 
     // Show NPC dialogue
     const npc = this.game.npcs[this.game.currentConvo.npcId];
@@ -489,18 +511,21 @@ class GameUI {
 
     switch (node.type) {
       case 'active':
+        this.lastNodeWasAutoResolved = false;
         this.showActiveChoices(node);
         break;
       case 'passive':
         await this.resolvePassiveNode(node);
         break;
       case 'noop':
+        this.lastNodeWasAutoResolved = false;
         this.showNoopChoices(node);
         break;
       case 'convergence':
         await this.resolveConvergenceNode(node);
         break;
       case 'exit':
+        this.lastNodeWasAutoResolved = false;
         await this.resolveExitNode(node);
         break;
     }
@@ -595,6 +620,7 @@ class GameUI {
     this.addMessage('player', 'You', result.dialogue);
     await this.delay(400);
 
+    this.lastNodeWasAutoResolved = true;
     const next = this.game.advanceToNode(result.nextNodeId);
     this.processNode(next);
   }
@@ -630,6 +656,7 @@ class GameUI {
   async resolveConvergenceNode(node) {
     const nextNodeId = this.game.resolveConvergence(node);
     await this.delay(400);
+    this.lastNodeWasAutoResolved = true;
     const next = this.game.advanceToNode(nextNodeId);
     this.processNode(next);
   }
@@ -673,6 +700,7 @@ class GameUI {
 
   endConversation() {
     this.elements.choices.classList.add('hidden');
+    this.lastNodeWasAutoResolved = false;
     this.showNPCSelection();
   }
 
@@ -748,73 +776,183 @@ class GameUI {
 }
 
 // ============================================
+// Debug System
+// ============================================
+
+function getDebugConfig() {
+  const params = new URLSearchParams(window.location.search);
+  const debugParam = params.get('debug');
+  if (!debugParam) return null;
+  try {
+    return JSON.parse(atob(debugParam));
+  } catch (e) {
+    console.error('Failed to parse debug config:', e);
+    return null;
+  }
+}
+
+function generateDebugURL(game, conversationId, nodeId) {
+  const config = {
+    state: {
+      currentRank: game.state.currentRank,
+      turnsRemaining: game.state.turnsRemaining,
+      reputation: { ...game.state.reputation },
+      factionStandings: { ...game.state.factionStandings },
+      personalFavors: { ...game.state.personalFavors },
+      exitStateHistory: [...game.state.exitStateHistory],
+      visitedNodes: [...game.state.visitedNodes],
+      force: game.state.force,
+      wealth: game.state.wealth,
+    },
+  };
+  if (conversationId) config.conversationId = conversationId;
+  if (nodeId) config.nodeId = nodeId;
+
+  const encoded = btoa(JSON.stringify(config));
+  const base = window.location.origin + window.location.pathname;
+  return `${base}?debug=${encoded}`;
+}
+
+// Expose to console for interactive use
+window.generateDebugURL = function(conversationId, nodeId) {
+  if (!game) return 'Game not loaded';
+  return generateDebugURL(game, conversationId, nodeId);
+};
+
+window.dumpDebugConfig = function(conversationId, nodeId) {
+  if (!game) return 'Game not loaded';
+  const config = {
+    state: {
+      currentRank: game.state.currentRank,
+      turnsRemaining: game.state.turnsRemaining,
+      reputation: { ...game.state.reputation },
+      factionStandings: { ...game.state.factionStandings },
+      personalFavors: { ...game.state.personalFavors },
+      exitStateHistory: [...game.state.exitStateHistory],
+      visitedNodes: [...game.state.visitedNodes],
+      force: game.state.force,
+      wealth: game.state.wealth,
+    },
+  };
+  if (conversationId) config.conversationId = conversationId;
+  if (nodeId) config.nodeId = nodeId;
+  return config;
+};
+
+// ============================================
 // Bootstrap
 // ============================================
 
 let game, ui;
 
+async function loadGameData(game) {
+  const basePath = '../generation/output';
+
+  const phaseData = await game.fetchJSON(`${basePath}/phase.json`);
+  game.phase = phaseData;
+
+  const npcManifest = await fetch(`${basePath}/npc-manifest.json`)
+    .then(r => r.ok ? r.json() : null)
+    .catch(() => null);
+
+  let npcIds;
+  if (npcManifest) {
+    npcIds = npcManifest;
+  } else {
+    const candidates = [
+      'gaius_marius', 'lucius_sulla', 'marcus_drusus',
+      'publius_sulpicius', 'quintus_catulus', 'quintus_poppaedius',
+      'tiberius_longinus'
+    ];
+    npcIds = [];
+    for (const id of candidates) {
+      try {
+        const npc = await game.fetchJSON(`${basePath}/characters/${id}/npc.json`);
+        game.npcs[id] = npc;
+        npcIds.push(id);
+      } catch (e) { /* skip */ }
+    }
+  }
+
+  for (const npcId of npcIds) {
+    if (!game.npcs[npcId]) {
+      try {
+        game.npcs[npcId] = await game.fetchJSON(`${basePath}/characters/${npcId}/npc.json`);
+      } catch (e) { continue; }
+    }
+
+    const npc = game.npcs[npcId];
+    for (let i = 0; i < npc.conversationArcLength; i++) {
+      try {
+        const convo = await game.fetchJSON(`${basePath}/characters/${npcId}/convo_${i}.json`);
+        game.conversations[convo.id] = convo;
+      } catch (e) { /* skip missing convos */ }
+    }
+  }
+
+  try {
+    const ps = await game.fetchJSON(`${basePath}/power_shift/convo.json`);
+    game.conversations[ps.id] = ps;
+  } catch (e) { /* skip */ }
+}
+
 async function boot() {
   game = new Game();
   ui = new GameUI(game);
 
-  // Try loading from the generation output
-  const basePath = '../generation/output';
   try {
-    // First load phase.json to get faction data
-    const phaseData = await game.fetchJSON(`${basePath}/phase.json`);
-    game.phase = phaseData;
-
-    // Load NPC manifest or discover from known IDs
-    const npcManifest = await fetch(`${basePath}/npc-manifest.json`)
-      .then(r => r.ok ? r.json() : null)
-      .catch(() => null);
-
-    let npcIds;
-    if (npcManifest) {
-      npcIds = npcManifest;
-    } else {
-      // Try loading each potential NPC directory
-      // We'll try the IDs we know from the generation
-      const candidates = [
-        'gaius_marius', 'lucius_sulla', 'marcus_drusus',
-        'publius_sulpicius', 'quintus_catulus', 'quintus_poppaedius',
-        'tiberius_longinus'
-      ];
-      npcIds = [];
-      for (const id of candidates) {
-        try {
-          const npc = await game.fetchJSON(`${basePath}/characters/${id}/npc.json`);
-          game.npcs[id] = npc;
-          npcIds.push(id);
-        } catch (e) { /* skip */ }
-      }
-    }
-
-    // Load NPC data
-    for (const npcId of npcIds) {
-      if (!game.npcs[npcId]) {
-        try {
-          game.npcs[npcId] = await game.fetchJSON(`${basePath}/characters/${npcId}/npc.json`);
-        } catch (e) { continue; }
-      }
-
-      const npc = game.npcs[npcId];
-      for (let i = 0; i < npc.conversationArcLength; i++) {
-        try {
-          const convo = await game.fetchJSON(`${basePath}/characters/${npcId}/convo_${i}.json`);
-          game.conversations[convo.id] = convo;
-        } catch (e) { /* skip missing convos */ }
-      }
-    }
-
-    // Load power shift
-    try {
-      const ps = await game.fetchJSON(`${basePath}/power_shift/convo.json`);
-      game.conversations[ps.id] = ps;
-    } catch (e) { /* skip */ }
-
+    await loadGameData(game);
     game.initState();
-    ui.init();
+
+    const debugConfig = getDebugConfig();
+    if (debugConfig) {
+      // Apply state overrides
+      if (debugConfig.state) {
+        const s = debugConfig.state;
+        if (s.currentRank) game.state.currentRank = s.currentRank;
+        if (s.turnsRemaining != null) game.state.turnsRemaining = s.turnsRemaining;
+        if (s.reputation) Object.assign(game.state.reputation, s.reputation);
+        if (s.factionStandings) Object.assign(game.state.factionStandings, s.factionStandings);
+        if (s.personalFavors) Object.assign(game.state.personalFavors, s.personalFavors);
+        if (s.exitStateHistory) game.state.exitStateHistory = s.exitStateHistory;
+        if (s.visitedNodes) game.state.visitedNodes = new Set(s.visitedNodes);
+        if (s.force != null) game.state.force = s.force;
+        if (s.wealth != null) game.state.wealth = s.wealth;
+      }
+
+      ui.updateHeader();
+      ui.updateSidebars();
+
+      if (debugConfig.conversationId) {
+        const convoId = debugConfig.conversationId;
+        const nodeId = debugConfig.nodeId;
+
+        if (!game.conversations[convoId]) {
+          throw new Error(`Debug: conversation '${convoId}' not found`);
+        }
+
+        // Enter conversation without using a turn
+        ui.elements.conversationScroll.innerHTML = '';
+        ui.showScreen('conversationScreen');
+        game.currentConvo = game.conversations[convoId];
+        game.currentNodeId = nodeId || game.currentConvo.entryNodeId;
+        game.rollHistory = [];
+
+        ui.addMessage('system', null,
+          `Debug: loaded at ${convoId} → ${game.currentNodeId}`);
+
+        const node = game.getCurrentNode();
+        if (!node) throw new Error(`Debug: node '${game.currentNodeId}' not found`);
+        ui.processNode(node);
+      } else {
+        ui.init();
+        ui.addMessage('system', null, 'Debug: state loaded (no conversation target)');
+      }
+
+      console.log('Debug state loaded:', debugConfig);
+    } else {
+      ui.init();
+    }
 
   } catch (e) {
     console.error('Failed to load game data:', e);

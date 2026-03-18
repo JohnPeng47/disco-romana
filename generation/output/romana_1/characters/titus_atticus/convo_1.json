@@ -1,0 +1,289 @@
+{
+  "id": "titus_atticus_convo_1",
+  "npcId": "titus_atticus",
+  "phaseId": "social_war",
+  "sequenceIndex": 1,
+  "preconditions": [
+    {
+      "type": "prior_exit_state",
+      "npcId": "titus_atticus",
+      "conversationId": "titus_atticus_convo_0",
+      "requiredExitStateIds": ["titus_atticus_convo_0_exit_investment_prospect", "titus_atticus_convo_0_exit_interesting_acquaintance"]
+    }
+  ],
+  "entryNodeId": "titus_atticus_convo_1_n01",
+  "nodes": {
+    "titus_atticus_convo_1_n01": {
+      "type": "passive",
+      "id": "titus_atticus_convo_1_n01",
+      "npcDialogue": "Sit down. Don't touch the wine — it's Falernian, and I'm rationing it because the supply routes south are a disaster. The war has been very good for certain people and catastrophically bad for everyone else. I am, naturally, among the certain people, but even I have limits. The financial landscape is reshaping itself daily. Fortunes are being made in army supply contracts, and fortunes are being destroyed in eastern trade exposure. I thought you should hear this from someone who can count past ten without removing his sandals.",
+      "responses": [
+        {
+          "trait": "calliditas",
+          "threshold": 5,
+          "playerDialogue": "You didn't invite me here for a lecture on economics. What's the opportunity?",
+          "nextNodeId": "titus_atticus_convo_1_n02"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 4,
+          "playerDialogue": "War economies reward the bold. Tell me where the money is moving and I'll position myself accordingly.",
+          "nextNodeId": "titus_atticus_convo_1_n02"
+        },
+        {
+          "trait": "severitas",
+          "threshold": 4,
+          "playerDialogue": "Men are dying in the field while financiers profit from their logistics. Doesn't that trouble you?",
+          "nextNodeId": "titus_atticus_convo_1_n03"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "What about the Italian communities caught between the armies? Someone must be helping them.",
+          "nextNodeId": "titus_atticus_convo_1_n03"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "I'm listening. Tell me what you see.",
+        "nextNodeId": "titus_atticus_convo_1_n02"
+      }
+    },
+    "titus_atticus_convo_1_n02": {
+      "type": "active",
+      "id": "titus_atticus_convo_1_n02",
+      "npcDialogue": "Three opportunities, since you want specifics. First: army supply contracts. The legions need grain, leather, iron. The publicani who normally handle this are stretched thin or bankrupt. Someone with capital and connections steps in, they'll make a fortune in six months. Second: land prices in Campania have collapsed. The Italian revolt has driven sellers to panic. Buy now, hold for two years, and you'll triple your investment when the war ends — and it will end, wars always do. Third: the eastern contracts. Mithridates hasn't moved yet, but the smart money is already pulling out. The question is whether you pull out and take the guaranteed loss, or hold and gamble that Rome can stabilize Asia before he acts. I've already made my choice. Now you make yours.",
+      "options": [
+        {
+          "playerDialogue": "I'll take the investment opportunity. Put my name on the supply contracts — I want in on the wartime economy.",
+          "nextNodeId": "titus_atticus_convo_1_n04"
+        },
+        {
+          "playerDialogue": "I'd rather use this information to help my faction. Knowledge of financial movements is a political weapon.",
+          "nextNodeId": "titus_atticus_convo_1_n05"
+        },
+        {
+          "playerDialogue": "The eastern contracts interest me most. Let me negotiate a cut of your exit position before you finalize.",
+          "visibilityRequirement": { "trait": "calliditas", "minValue": 6 },
+          "roll": {
+            "dice": { "count": 2, "sides": 6 },
+            "baseThreshold": 9,
+            "factors": { "personalFavor": 1, "factionAlignment": 0, "force": 0, "wealth": 2 },
+            "reputationBonus": { "trait": "calliditas", "weight": 1 }
+          },
+          "onSuccess": { "nextNodeId": "titus_atticus_convo_1_n06" },
+          "onFailure": { "nextNodeId": "titus_atticus_convo_1_n04" }
+        },
+        {
+          "playerDialogue": "Interesting analysis, but I'm not ready to commit to anything. I need to think.",
+          "nextNodeId": "titus_atticus_convo_1_n10"
+        }
+      ]
+    },
+    "titus_atticus_convo_1_n03": {
+      "type": "active",
+      "id": "titus_atticus_convo_1_n03",
+      "npcDialogue": "Trouble me? Everything troubles me. I'm troubled by the debasement of the currency, by the fact that three of my best agents in Delos haven't sent reports in a month, and by this persistent draft in my study. But I don't confuse being troubled with being paralyzed. The war is happening whether I profit from it or not. The question isn't whether money changes hands during a crisis — it always does. The question is whether the people handling that money are competent enough to keep the system from collapsing entirely. I'd rather it be me than some senator's idiot nephew. Now — the practical matter. The war is reshaping everything. Do you want to understand how, or would you prefer to keep your moral clarity unspoiled?",
+      "options": [
+        {
+          "playerDialogue": "Tell me. I'd rather be useful and compromised than principled and ignorant.",
+          "nextNodeId": "titus_atticus_convo_1_n02"
+        },
+        {
+          "playerDialogue": "I'll listen, but I'm not promising to play your game. I have my own priorities.",
+          "nextNodeId": "titus_atticus_convo_1_n02"
+        }
+      ]
+    },
+    "titus_atticus_convo_1_n04": {
+      "type": "noop",
+      "id": "titus_atticus_convo_1_n04",
+      "npcDialogue": "Good. You've made a decision, which already puts you ahead of most people who sit in that chair. I'll draw up the terms. Fair warning: financial exposure constrains your political options. Once you're profiting from the war economy, you can't afford to back any faction that threatens to disrupt it. That's not a condition I'm imposing — it's arithmetic. Your interests and mine are now partially aligned, and partial alignment is the only kind I trust.",
+      "options": [
+        { "playerDialogue": "I understand the constraints. Send me the terms.", "nextNodeId": "titus_atticus_convo_1_n07" }
+      ]
+    },
+    "titus_atticus_convo_1_n05": {
+      "type": "active",
+      "id": "titus_atticus_convo_1_n05",
+      "npcDialogue": "Ah. So you came here not as an investor but as a spy. I'd be offended if I weren't so impressed by the efficiency. Which faction gets the benefit of my analysis? Choose carefully — once I know where this information is going, our relationship changes. I don't punish people for being political, but I do adjust my level of candor accordingly.",
+      "options": [
+        {
+          "playerDialogue": "The optimates. They need to understand the financial dimension of this war.",
+          "nextNodeId": "titus_atticus_convo_1_n08"
+        },
+        {
+          "playerDialogue": "The populares. The people's party should know who's profiting from their suffering.",
+          "nextNodeId": "titus_atticus_convo_1_n09"
+        },
+        {
+          "playerDialogue": "The Italian allies. They deserve to know how Rome's finances constrain its military options.",
+          "nextNodeId": "titus_atticus_convo_1_n11"
+        },
+        {
+          "playerDialogue": "Sulla's circle. Military commanders who understand supply economics win wars.",
+          "nextNodeId": "titus_atticus_convo_1_n12"
+        }
+      ]
+    },
+    "titus_atticus_convo_1_n06": {
+      "type": "noop",
+      "id": "titus_atticus_convo_1_n06",
+      "npcDialogue": "You know what? You're the first person who's tried to negotiate with me rather than simply accepting my offer or refusing it. Most people treat a banker like a temple — you walk in, you take what's offered, you leave. You're treating me like an equal. That's either very clever or very foolish, and I suspect it's both. Fine. You'll get a cut of the eastern exit — five percent of the recovered contracts. It's not generous, but it's real money, and in this economy real money is rarer than virtue in the senate.",
+      "options": [
+        { "playerDialogue": "Five percent of your eastern position. I'll take it.", "nextNodeId": "titus_atticus_convo_1_n07" }
+      ]
+    },
+    "titus_atticus_convo_1_n07": {
+      "type": "exit",
+      "id": "titus_atticus_convo_1_n07",
+      "npcDialogue": "We're in business, then. And I do mean business — not friendship, not alliance, not any of the other sentimental words Romans use to disguise financial arrangements. Though I'll admit, of all my business associates, you're among the least tedious. That's the highest compliment I know how to pay. My agent will find you when the first returns come in. Try not to get yourself killed in the meantime — dead men are terrible at collecting dividends.",
+      "exitStateId": "titus_atticus_convo_1_exit_business_partner"
+    },
+    "titus_atticus_convo_1_n08": {
+      "type": "exit",
+      "id": "titus_atticus_convo_1_n08",
+      "npcDialogue": "The optimates. Conservative money, old names, the senatorial establishment. They'll use this well — they always do when money is involved. Just know that I'll be less forthcoming next time. You've turned my analysis into someone else's ammunition. Go. I'll adjust my calculations to account for the leak.",
+      "exitStateId": "titus_atticus_convo_1_exit_informant_optimates"
+    },
+    "titus_atticus_convo_1_n09": {
+      "type": "exit",
+      "id": "titus_atticus_convo_1_n09",
+      "npcDialogue": "The populares. A populist armed with real financial data — that's either a reformer or a demagogue, and the difference usually depends on the quality of the man. I suppose I'll find out which you are. My door stays open, but the wine stays corked. Go feed your faction. I'll adjust my portfolio accordingly.",
+      "exitStateId": "titus_atticus_convo_1_exit_informant_populares"
+    },
+    "titus_atticus_convo_1_n10": {
+      "type": "exit",
+      "id": "titus_atticus_convo_1_n10",
+      "npcDialogue": "No commitment. No exposure. The safest possible outcome, and therefore the least interesting. You've learned something today, even if you haven't risked anything for it. I suppose that's a kind of profit, though not the kind I trade in. The door is always open — I'm an optimist about people, which is strange given that I'm a pessimist about everything else.",
+      "exitStateId": "titus_atticus_convo_1_exit_cautious"
+    },
+    "titus_atticus_convo_1_n11": {
+      "type": "exit",
+      "id": "titus_atticus_convo_1_n11",
+      "npcDialogue": "The Italians. An unusual choice — most Romans don't think of them as a faction worth feeding intelligence to. Which means you're either sentimental about their cause or shrewd about their future. Either way, you've just told me something important about yourself. My candor with you is now... adjusted. Go help your allies. I'll make my own arrangements.",
+      "exitStateId": "titus_atticus_convo_1_exit_informant_allies"
+    },
+    "titus_atticus_convo_1_n12": {
+      "type": "exit",
+      "id": "titus_atticus_convo_1_n12",
+      "npcDialogue": "Sulla's circle. A military man's banker — that's what you're turning me into. Sulla already has half my colleagues terrified; now he'll have my financial analysis too. Efficient of you. Dangerous for me. But I suppose that's your problem to manage, not mine. Don't come back expecting the same openness. A burnt asset learns to be more careful.",
+      "exitStateId": "titus_atticus_convo_1_exit_informant_sullan"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "titus_atticus_convo_1_exit_business_partner",
+      "narrativeLabel": "Business Partner",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "calliditas", "shift": 2, "reason": "Atticus deepens the financial partnership — your commercial instincts have earned his trust" }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "titus_atticus_convo_2"
+        }
+      ]
+    },
+    {
+      "id": "titus_atticus_convo_1_exit_informant_optimates",
+      "narrativeLabel": "Optimate Informant",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "optimates", "shift": 2, "reason": "Delivered valuable financial intelligence to the optimate leadership" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "calliditas", "shift": -1, "reason": "Atticus considers you a political operative, not a serious financial mind" }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "titus_atticus_convo_2"
+        }
+      ]
+    },
+    {
+      "id": "titus_atticus_convo_1_exit_informant_populares",
+      "narrativeLabel": "Populares Informant",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "populares", "shift": 2, "reason": "Armed the populares with financial intelligence about the war economy" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "calliditas", "shift": -1, "reason": "Atticus considers you a political operative, not a serious financial mind" }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "titus_atticus_convo_2"
+        }
+      ]
+    },
+    {
+      "id": "titus_atticus_convo_1_exit_informant_allies",
+      "narrativeLabel": "Italian Allies Informant",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "italian_allies", "shift": 2, "reason": "Shared Roman financial vulnerabilities with the Italian confederation" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "calliditas", "shift": -1, "reason": "Atticus considers you a political operative, not a serious financial mind" }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "titus_atticus_convo_2"
+        }
+      ]
+    },
+    {
+      "id": "titus_atticus_convo_1_exit_informant_sullan",
+      "narrativeLabel": "Sullan Informant",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "sullan_faction", "shift": 2, "reason": "Provided Sulla's circle with critical supply economics intelligence" }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "calliditas", "shift": -1, "reason": "Atticus considers you a political operative, not a serious financial mind" }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "titus_atticus_convo_2"
+        }
+      ]
+    },
+    {
+      "id": "titus_atticus_convo_1_exit_cautious",
+      "narrativeLabel": "Cautious Observer",
+      "effects": [
+        {
+          "type": "unlock_conversation",
+          "conversationId": "titus_atticus_convo_2"
+        }
+      ]
+    }
+  ]
+}

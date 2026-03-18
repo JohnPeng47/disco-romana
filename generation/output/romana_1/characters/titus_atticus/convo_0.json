@@ -1,0 +1,196 @@
+{
+  "id": "titus_atticus_convo_0",
+  "npcId": "titus_atticus",
+  "phaseId": "social_war",
+  "sequenceIndex": 0,
+  "preconditions": [],
+  "entryNodeId": "titus_atticus_convo_0_n01",
+  "nodes": {
+    "titus_atticus_convo_0_n01": {
+      "type": "passive",
+      "id": "titus_atticus_convo_0_n01",
+      "npcDialogue": "You've caught me at my desk, which is where I do my best damage. Grain futures from Sicily, a property dispute in Bruttium, three senators who owe me money and one who owes me a favor — which is worth considerably more. I know who you are. I know who your friends are, which tells me more. So. What does a man of your particular... trajectory... want with a banker who doesn't take sides?",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 4,
+          "playerDialogue": "I want an honest assessment of Rome's finances. Not the version they debate in the senate — the real numbers.",
+          "nextNodeId": "titus_atticus_convo_0_n02"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 4,
+          "playerDialogue": "I want to understand how a man stays rich while everyone around him picks a side and loses. That's a skill worth learning.",
+          "nextNodeId": "titus_atticus_convo_0_n03"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 4,
+          "playerDialogue": "I want access to your network. Names, connections, who owes what to whom. I'll make it worth your time.",
+          "nextNodeId": "titus_atticus_convo_0_n04"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "I've heard you lend to men of every faction without prejudice. I want to understand why. Generosity or calculation?",
+          "nextNodeId": "titus_atticus_convo_0_n02"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "I'm not entirely sure. I was told you were someone worth knowing.",
+        "nextNodeId": "titus_atticus_convo_0_n02"
+      }
+    },
+    "titus_atticus_convo_0_n02": {
+      "type": "active",
+      "id": "titus_atticus_convo_0_n02",
+      "npcDialogue": "The real numbers. I like that — most people prefer the comforting fiction. Very well. Rome's treasury is bleeding out through the Italian war. Every legion deployed south costs forty talents a month, and the senate is funding it by debasing the coinage and squeezing the publicani. Meanwhile, the equestrian order — my order — has millions tied up in eastern tax-farming contracts that depend on stability in Asia Minor. Which brings us to the man no one in Rome wants to talk about: Mithridates of Pontus. He's watching us tear ourselves apart, and he's not watching idly.",
+      "options": [
+        {
+          "playerDialogue": "Tell me about the eastern exposure. How bad is it if Mithridates moves?",
+          "nextNodeId": "titus_atticus_convo_0_n04"
+        },
+        {
+          "playerDialogue": "How do you stay neutral when your own financial interests are at stake?",
+          "nextNodeId": "titus_atticus_convo_0_n03"
+        }
+      ]
+    },
+    "titus_atticus_convo_0_n03": {
+      "type": "active",
+      "id": "titus_atticus_convo_0_n03",
+      "npcDialogue": "Neutral. People say that word like it means passive. It doesn't. Neutrality is the most expensive position in Rome — you have to be useful to everyone without being owned by anyone. I lend to Sulla and I lend to Marius's associates. I dine with optimates and I finance populares' grain schemes. Every faction thinks I'm secretly sympathetic to them, which is the point. The moment I pick a side, I lose half my debtors and all of my leverage. Cross-factional relationships aren't a luxury. They're my entire business model.",
+      "options": [
+        {
+          "playerDialogue": "That's a precarious balance. What happens when the factions stop tolerating ambiguity?",
+          "nextNodeId": "titus_atticus_convo_0_n04"
+        },
+        {
+          "playerDialogue": "You make it sound clinical. But you must have preferences. Everyone does.",
+          "nextNodeId": "titus_atticus_convo_0_n05"
+        }
+      ]
+    },
+    "titus_atticus_convo_0_n04": {
+      "type": "active",
+      "id": "titus_atticus_convo_0_n04",
+      "npcDialogue": "Mithridates controls Pontus, Cappadocia, and half of Armenia. If he decides Rome is too distracted to respond — and we are — he'll sweep through the province of Asia in a season. Every Roman tax collector, every equestrian agent, every merchant with a warehouse in Ephesus or Pergamum will be dead or bankrupt. That's not speculation; it's arithmetic. I've been quietly diversifying my holdings west for six months. Most of my colleagues haven't. They'll be ruined, and they'll blame whoever is in charge when it happens.",
+      "options": [
+        {
+          "playerDialogue": "You're already positioning for a crisis most people don't see coming. I want in on whatever you're building.",
+          "visibilityRequirement": { "trait": "calliditas", "minValue": 5 },
+          "nextNodeId": "titus_atticus_convo_0_n06"
+        },
+        {
+          "playerDialogue": "This information alone is valuable. I appreciate your candor.",
+          "nextNodeId": "titus_atticus_convo_0_n05"
+        }
+      ]
+    },
+    "titus_atticus_convo_0_n05": {
+      "type": "noop",
+      "id": "titus_atticus_convo_0_n05",
+      "npcDialogue": "Preferences? Of course I have preferences. I prefer men who pay their debts and don't get themselves killed in pointless political gestures. I prefer a stable currency and open sea lanes. I prefer, frankly, a Republic that functions well enough that I can make money in peace. But preferences aren't the same as commitments. You've been interesting company. More interesting than I expected, if I'm honest — and I'm always honest about my assessments of people. It's only about money that I occasionally lie.",
+      "options": [
+        { "playerDialogue": "Then I'll take that as a compliment and leave you to your ledgers.", "nextNodeId": "titus_atticus_convo_0_n07" }
+      ]
+    },
+    "titus_atticus_convo_0_n06": {
+      "type": "active",
+      "id": "titus_atticus_convo_0_n06",
+      "npcDialogue": "In. That's a word that means different things to different people. What I'm building is a hedge — a network of contracts and obligations that pays out regardless of which faction controls Rome next year. It's not glamorous and it requires patience, which eliminates most Romans from the arrangement. But if you can keep your mouth shut and your name off the wrong lists, there's a seat at the table. The risk is real: if the optimates find out you're working financial angles with a man they consider beneath senatorial dignity, you'll lose credibility with the old guard. Aristocrats despise the smell of commerce, even when they're up to their necks in it.",
+      "options": [
+        {
+          "playerDialogue": "I'll take that risk. A man who only invests in certainties never builds anything.",
+          "roll": {
+            "dice": { "count": 2, "sides": 6 },
+            "baseThreshold": 8,
+            "factors": { "personalFavor": 1, "factionAlignment": 0, "force": 0, "wealth": 2 },
+            "reputationBonus": { "trait": "calliditas", "weight": 1 }
+          },
+          "onSuccess": { "nextNodeId": "titus_atticus_convo_0_n08" },
+          "onFailure": { "nextNodeId": "titus_atticus_convo_0_n07" }
+        },
+        {
+          "playerDialogue": "Let me think about it. I don't commit to arrangements I don't fully understand.",
+          "nextNodeId": "titus_atticus_convo_0_n07"
+        }
+      ]
+    },
+    "titus_atticus_convo_0_n07": {
+      "type": "convergence",
+      "id": "titus_atticus_convo_0_n07",
+      "npcDialogue": "Well. You've seen how the gears turn, at least. That's more than most people manage in a first meeting with me.",
+      "routes": [
+        {
+          "condition": { "type": "reputation", "trait": "calliditas", "min": 4 },
+          "nextNodeId": "titus_atticus_convo_0_n09"
+        }
+      ],
+      "fallbackNodeId": "titus_atticus_convo_0_n10"
+    },
+    "titus_atticus_convo_0_n08": {
+      "type": "exit",
+      "id": "titus_atticus_convo_0_n08",
+      "npcDialogue": "Done. I don't shake hands — too Roman, too theatrical. But I'll remember this conversation, and I remember everything that involves money. You'll hear from my agent within the week. He'll look like a freedman delivering wine. He is a freedman delivering wine. He's also carrying your first set of contracts. Welcome to the interesting side of Rome.",
+      "exitStateId": "titus_atticus_convo_0_exit_investment_prospect"
+    },
+    "titus_atticus_convo_0_n09": {
+      "type": "exit",
+      "id": "titus_atticus_convo_0_n09",
+      "npcDialogue": "You didn't bore me, which puts you ahead of most of the senate. I suspect we'll talk again — I make a point of keeping track of people who understand that the real power in Rome isn't in the Forum, it's in the ledger books. If you need information about money, eastern trade, or which senators are one bad harvest away from bankruptcy, you know where my desk is.",
+      "exitStateId": "titus_atticus_convo_0_exit_interesting_acquaintance"
+    },
+    "titus_atticus_convo_0_n10": {
+      "type": "exit",
+      "id": "titus_atticus_convo_0_n10",
+      "npcDialogue": "A pleasant enough conversation. But pleasant conversations are as common as bad wine in Rome, and about as useful. You came to a financier's office and talked about politics as though money were an afterthought. That tells me everything I need to know about your instincts. If you ever develop a head for numbers, come back. Until then, I have accounts to settle.",
+      "exitStateId": "titus_atticus_convo_0_exit_too_naive"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "titus_atticus_convo_0_exit_investment_prospect",
+      "narrativeLabel": "Investment Prospect",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "calliditas", "shift": 2, "reason": "Atticus considers you worth a financial investment" }
+          ]
+        },
+        {
+          "type": "faction_standing",
+          "deltas": [
+            { "factionId": "optimates", "shift": -1, "reason": "Aristocrats distrust your commercial entanglements with an equestrian banker" }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "titus_atticus_convo_1"
+        }
+      ]
+    },
+    {
+      "id": "titus_atticus_convo_0_exit_interesting_acquaintance",
+      "narrativeLabel": "Interesting Acquaintance",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            { "trait": "calliditas", "shift": 1, "reason": "Atticus marks you as someone who understands how Rome actually works" }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "titus_atticus_convo_1"
+        }
+      ]
+    },
+    {
+      "id": "titus_atticus_convo_0_exit_too_naive",
+      "narrativeLabel": "Too Naive",
+      "effects": []
+    }
+  ]
+}
