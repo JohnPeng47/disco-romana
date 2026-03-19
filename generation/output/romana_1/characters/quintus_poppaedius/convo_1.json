@@ -8,7 +8,10 @@
       "type": "prior_exit_state",
       "npcId": "quintus_poppaedius",
       "conversationId": "quintus_poppaedius_convo_0",
-      "requiredExitStateIds": ["quintus_poppaedius_convo_0_exit_bridge_builder", "quintus_poppaedius_convo_0_exit_cautious_contact"]
+      "requiredExitStateIds": [
+        "quintus_poppaedius_convo_0_exit_bridge_builder",
+        "quintus_poppaedius_convo_0_exit_cautious_contact"
+      ]
     }
   ],
   "entryNodeId": "quintus_poppaedius_convo_1_n01",
@@ -16,19 +19,22 @@
     "quintus_poppaedius_convo_1_n01": {
       "type": "active",
       "id": "quintus_poppaedius_convo_1_n01",
-      "npcDialogue": "You're back. The roads between Rome and our camp are killing grounds now — the fact that you made it here tells me either you're brave or you're desperate. The Lex Julia has passed — citizenship for Italian communities that lay down their arms. Some of my allies are accepting. The Samnites refuse. The Marsi are split. I have to decide in the next three days whether to take Rome's offer or keep fighting. Convince me.",
+      "npcDialogue": "You made it back. Two of my couriers didn't — found them on the Via Valeria with their throats cut and the dispatches still in their boots. Whoever killed them couldn't read Marsic. The Lex Julia has passed — citizenship for any Italian community that surrenders within sixty days. The Paeligni have accepted. The Vestini. Half my own council wants to take it. The Samnites say they'll die first. I have three days before this alliance fractures beyond mending. So — you came back to advise me. Advise me.",
       "options": [
         {
-          "playerDialogue": "Take the offer. It's not everything you wanted, but it's citizenship — the thing your people have bled for. Don't let perfection destroy progress.",
+          "playerDialogue": "Take it. It's not everything — but it's the thing your people have been dying for. Don't let the Samnites' war become your war.",
           "nextNodeId": "quintus_poppaedius_convo_1_n02"
         },
         {
-          "playerDialogue": "Keep fighting. The Lex Julia is a trap — they'll revoke it the moment you disarm. You have leverage now. Don't surrender it.",
+          "playerDialogue": "Don't take it. The moment you disarm, they'll gut the terms. You have leverage now — you won't have it again.",
           "nextNodeId": "quintus_poppaedius_convo_1_n03"
         },
         {
-          "playerDialogue": "Accept publicly but maintain your army privately. Take the citizenship and keep the weapons until you're sure they'll honor it.",
-          "visibilityRequirement": { "trait": "calliditas", "minValue": 5 },
+          "playerDialogue": "Accept the citizenship publicly — send the delegation, make the speeches. But keep the veterans under arms until the tribal enrollment is complete. Not as a threat. As a fact.",
+          "visibilityRequirement": {
+            "trait": "calliditas",
+            "minValue": 5
+          },
           "nextNodeId": "quintus_poppaedius_convo_1_n04"
         }
       ]
@@ -36,65 +42,79 @@
     "quintus_poppaedius_convo_1_n02": {
       "type": "passive",
       "id": "quintus_poppaedius_convo_1_n02",
-      "npcDialogue": "Progress. You Romans love that word. My father was promised progress. My grandfather was promised progress. Each generation, the promise gets a little shinier and the delivery gets a little slower. But you may be right — the Lex Julia is more than any previous generation received. The question is whether I can sell it to my own people. The Samnites will call me a traitor.",
+      "npcDialogue": "The thing my people have been dying for. Yes. And also the thing my people have been dying for — do you hear the difference? Gaius Vettius — he held the bridge at Fucine Lake for three hours so the column could cross. Dead. His son enlisted the next morning. Also dead. I cannot go to their mother and say we stopped one battle short of what they purchased. But — the Lex Julia is more than any generation before us received. The Samnites will call me a Roman dog for taking it.",
       "responses": [
         {
           "trait": "severitas",
           "threshold": 5,
-          "playerDialogue": "Let the Samnites fight alone. A treaty honored by both sides is worth more than a war won by neither.",
+          "playerDialogue": "Let the Samnites fight alone. They want independence — you want citizenship. Those were never the same war.",
           "nextNodeId": "quintus_poppaedius_convo_1_n05"
         },
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "You won't be a traitor — you'll be the man who got his people what they deserved without destroying them in the process.",
+          "playerDialogue": "The mother of those boys — what would she say? Not what the Samnites want. What she wants.",
           "nextNodeId": "quintus_poppaedius_convo_1_n05"
         },
         {
           "trait": "audacia",
           "threshold": 5,
-          "playerDialogue": "Tell the Samnites this: the Marsi fight for citizenship, not for independence. You got citizenship. The fight is over.",
+          "playerDialogue": "Tell the Samnites plainly — the Marsi fought for a seat at the table, not to burn the house down. You got the seat. Sit in it.",
           "nextNodeId": "quintus_poppaedius_convo_1_n06"
         },
         {
           "trait": "calliditas",
           "threshold": 5,
-          "playerDialogue": "Frame it as a strategic withdrawal, not a surrender. The Marsi accept peace now and build political power inside the Republic.",
+          "playerDialogue": "Don't frame it as surrender — frame it as phase one. The Marsi accept peace, build political power inside the Republic, and become the allies the Samnites will need in ten years.",
           "nextNodeId": "quintus_poppaedius_convo_1_n06"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "I can't tell you what to do. But I can tell you what I've seen in Rome — the will to fight you is fading.",
+        "playerDialogue": "I can't tell you what those deaths were worth. But I can tell you what I've seen in Rome — the appetite for this war is gone.",
         "nextNodeId": "quintus_poppaedius_convo_1_n05"
       }
     },
     "quintus_poppaedius_convo_1_n03": {
       "type": "noop",
       "id": "quintus_poppaedius_convo_1_n03",
-      "npcDialogue": "A Roman telling me to keep fighting Rome. Either you're the most honest man I've met or the most devious. The Samnites would agree with you — they want Italia, not citizenship. But the Marsi? My people are tired. They've buried their sons. They want to go home. I can ask them to die for freedom but I can't ask them to die for strategy.",
+      "npcDialogue": "A Roman telling me to keep killing Romans. I've been trying to decide if that makes you the most honest man I've spoken to or the most dangerous. The Samnites would embrace you for saying it — Papius Mutilus has been arguing exactly this since the Lex Julia was announced. But my people, Roman — my people are tired in a way you can't understand. They've buried their sons in winter ground. They want to go home to fields that haven't been planted in two seasons. I can ask the Marsi to die for freedom. I cannot ask them to die for leverage.",
       "options": [
-        { "playerDialogue": "Then find a middle path. What would satisfy the Marsi without betraying the Samnites?", "nextNodeId": "quintus_poppaedius_convo_1_n05" }
+        {
+          "playerDialogue": "Then is there something between surrender and war? Something that keeps your people alive and your position intact?",
+          "nextNodeId": "quintus_poppaedius_convo_1_n05"
+        }
       ]
     },
     "quintus_poppaedius_convo_1_n04": {
       "type": "noop",
       "id": "quintus_poppaedius_convo_1_n04",
-      "npcDialogue": "Accept and keep the weapons. You think like a Marsic, not a Roman. Yes — that's what I'm considering. The legions are scattered between the Italian front and Sulla's march on Rome. If we accept citizenship now, Rome can't afford to disarm us while fighting itself. By the time they turn their attention back to us, we'll be citizens with veteran armies. Legal ones.",
+      "npcDialogue": "Accept and keep the swords. You think like us — not like a Roman. Yes. That is exactly what I've been considering. Rome is tearing itself apart — Sulla and Marius circling each other like dogs over a corpse. The legions are scattered between our front and their own civil fracture. If we accept now, they can't afford to disarm us while fighting themselves. By the time they turn their attention back to the Marsi, we'll be citizens with veteran armies — and legal ones. The question is making the acceptance look genuine.",
       "options": [
-        { "playerDialogue": "Then the question is how to make the acceptance look genuine enough.", "nextNodeId": "quintus_poppaedius_convo_1_n06" }
+        {
+          "playerDialogue": "I can help with that. A Roman vouching for Marsic good faith buys you time — and costs me something, which makes it believable.",
+          "nextNodeId": "quintus_poppaedius_convo_1_n06"
+        }
       ]
     },
     "quintus_poppaedius_convo_1_n05": {
       "type": "convergence",
       "id": "quintus_poppaedius_convo_1_n05",
-      "npcDialogue": "A middle path. Let me think about what that looks like.",
+      "npcDialogue": "Between surrender and war. My father used to say the Marsi have always lived in that country — the narrow ground between what Rome offers and what Rome means. Let me think.",
       "routes": [
         {
-          "condition": { "type": "faction_standing", "factionId": "italian_allies", "min": 3 },
+          "condition": {
+            "type": "faction_standing",
+            "factionId": "italian_allies",
+            "min": 3
+          },
           "nextNodeId": "quintus_poppaedius_convo_1_n07"
         },
         {
-          "condition": { "type": "faction_standing", "factionId": "populares", "min": 2 },
+          "condition": {
+            "type": "faction_standing",
+            "factionId": "populares",
+            "min": 2
+          },
           "nextNodeId": "quintus_poppaedius_convo_1_n07"
         }
       ],
@@ -103,21 +123,36 @@
     "quintus_poppaedius_convo_1_n06": {
       "type": "active",
       "id": "quintus_poppaedius_convo_1_n06",
-      "npcDialogue": "Here's my proposal. The Marsi accept the Lex Julia — publicly, with ceremony. In exchange, I need Rome to guarantee three things: the Lex Varia prosecutions stop, Marsic veterans receive the same land grants as Roman ones, and the tribal enrollment happens immediately — not in ten years when convenient. Can you carry those terms?",
+      "npcDialogue": "Here is what I need — and I'm not negotiating, I'm telling you the minimum my council will accept. The Marsi accept the Lex Julia publicly, with ceremony — I'll even wear a toga if it helps Rome save face. In return, three things. The Lex Varia prosecutions end — every Italian convicted under it walks free with property restored. Marsic veterans receive land grants on the same terms as Roman legionaries — including on land they already farm. And the tribal enrollment happens now. Not in five years. Not when it's convenient. Now. Can you carry those terms, or are they just more words for your jar?",
       "options": [
         {
-          "playerDialogue": "I'll carry them to Sulpicius. He has the legislative power to make it happen.",
+          "playerDialogue": "I'll carry them to Sulpicius — he has the tribunician power and the nerve to use it. That's not a promise. That's a plan.",
           "roll": {
-            "dice": { "count": 2, "sides": 6 },
+            "dice": {
+              "count": 2,
+              "sides": 6
+            },
             "baseThreshold": 7,
-            "factors": { "personalFavor": 1, "factionAlignment": 2, "force": 0, "wealth": 1 },
-            "reputationBonus": { "trait": "clementia", "weight": 1 }
+            "factors": {
+              "personalFavor": 1,
+              "factionAlignment": 2,
+              "force": 0,
+              "wealth": 1
+            },
+            "reputationBonus": {
+              "trait": "clementia",
+              "weight": 1
+            }
           },
-          "onSuccess": { "nextNodeId": "quintus_poppaedius_convo_1_n09" },
-          "onFailure": { "nextNodeId": "quintus_poppaedius_convo_1_n10" }
+          "onSuccess": {
+            "nextNodeId": "quintus_poppaedius_convo_1_n09"
+          },
+          "onFailure": {
+            "nextNodeId": "quintus_poppaedius_convo_1_n10"
+          }
         },
         {
-          "playerDialogue": "I'll carry them to whoever is in power when I get back to Rome. Right now, that's an open question.",
+          "playerDialogue": "I'll carry them — but I won't lie to you about who's in power when I arrive. Rome is an open question right now.",
           "nextNodeId": "quintus_poppaedius_convo_1_n08"
         }
       ]
@@ -125,14 +160,14 @@
     "quintus_poppaedius_convo_1_n07": {
       "type": "active",
       "id": "quintus_poppaedius_convo_1_n07",
-      "npcDialogue": "You've earned my trust, Roman. That's not a thing I say lightly. Here's what I'm going to do — I'm going to accept the Lex Julia for the Marsi, and I'm going to name you as the Roman guarantor of the peace. That means if Rome breaks its word, you share the dishonor. Are you willing to put your name on that?",
+      "npcDialogue": "I have trusted exactly one Roman in my life and he died for it. I'm going to trust a second. I will accept the Lex Julia for the Marsi — and I will name you as the Roman guarantor of the peace. Do you understand what that means? It means if Rome breaks its word — if the enrollment is delayed, if the prosecutions resume, if a single Marsic veteran is denied his land — your name bears the dishonor alongside mine. My people will hold you to it. So will I.",
       "options": [
         {
-          "playerDialogue": "My name is on it. If Rome breaks this peace, I'll answer for it personally.",
+          "playerDialogue": "My name is on it. If Rome dishonors this peace, I'll stand in the Forum and say so myself.",
           "nextNodeId": "quintus_poppaedius_convo_1_n09"
         },
         {
-          "playerDialogue": "I'll guarantee it in private, but I can't put my name on a public document. Not with the proscriptions happening.",
+          "playerDialogue": "In private — yes, absolutely. But I can't sign a public document. Not with proscription lists circulating in Rome.",
           "nextNodeId": "quintus_poppaedius_convo_1_n10"
         }
       ]
@@ -140,19 +175,19 @@
     "quintus_poppaedius_convo_1_n08": {
       "type": "exit",
       "id": "quintus_poppaedius_convo_1_n08",
-      "npcDialogue": "An open question. Rome doesn't even know who rules it anymore. Fine — I'll make my own decision without Roman input, the way I should have from the start. Go home. Tell whoever sits in the consul's chair that the Marsi decide their own fate. We always have.",
+      "npcDialogue": "An open question. Your Republic doesn't even know who governs it — and you came here to advise me. There's something almost admirable in that. Go home, Roman. I'll decide for the Marsi the way we've always decided — by ourselves, on our own ground, without waiting for Rome to tell us what we're permitted to want. We were a people before you were a city. We'll manage.",
       "exitStateId": "quintus_poppaedius_convo_1_exit_independent"
     },
     "quintus_poppaedius_convo_1_n09": {
       "type": "exit",
       "id": "quintus_poppaedius_convo_1_n09",
-      "npcDialogue": "Then it's done. The Marsic war ends — not with a Roman triumph, but with a handshake between two men who chose peace over glory. My people will remember your name. In our language, that's the highest honor we give to an outsider. Go safely, Roman. And keep your word.",
+      "npcDialogue": "Then it's done — not with a triumph, not with a surrender, but with two men sitting in a tent agreeing that enough boys have died. My people will remember your name. We carve the names of friends into the lintels of our houses — so that everyone who enters knows who was welcome there. I will carve yours. Go safely. And keep your word — it's the only Roman thing I've ever found worth keeping.",
       "exitStateId": "quintus_poppaedius_convo_1_exit_peace_broker"
     },
     "quintus_poppaedius_convo_1_n10": {
       "type": "exit",
       "id": "quintus_poppaedius_convo_1_n10",
-      "npcDialogue": "Private guarantees. That's what Rome has always offered — whispered promises that disappear in daylight. I'll take what I can get. The Marsi will accept the Lex Julia, but we'll keep our swords close. Tell Rome we're peaceful. Don't tell them we're trusting.",
+      "npcDialogue": "Private guarantees. Whispered promises. Rome's oldest export — older than wine, older than law. I'll take what I can get. The Marsi will accept the Lex Julia. We'll smile at the ceremony. And we'll sleep with our swords under our beds, the way my grandfather did, and his grandfather before him. Tell your Senate we are peaceful. Don't tell them we are trusting. Those have never been the same thing.",
       "exitStateId": "quintus_poppaedius_convo_1_exit_uneasy_peace"
     }
   },
@@ -164,15 +199,31 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "italian_allies", "shift": 3, "reason": "Named guarantor of the Marsic peace" },
-            { "factionId": "populares", "shift": 1, "reason": "The populares claim the peace as a reform victory" },
-            { "factionId": "optimates", "shift": -1, "reason": "Conservative senators view the peace terms as too generous" }
+            {
+              "factionId": "italian_allies",
+              "shift": 3,
+              "reason": "Named guarantor of the Marsic peace"
+            },
+            {
+              "factionId": "populares",
+              "shift": 1,
+              "reason": "The populares claim the peace as a reform victory"
+            },
+            {
+              "factionId": "optimates",
+              "shift": -1,
+              "reason": "Conservative senators view the peace terms as too generous"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "clementia", "shift": 2, "reason": "Chose peace over war at personal risk" }
+            {
+              "trait": "clementia",
+              "shift": 2,
+              "reason": "Chose peace over war at personal risk"
+            }
           ]
         }
       ]
@@ -184,13 +235,21 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "italian_allies", "shift": 1, "reason": "The Marsi accept the Lex Julia with reservations" }
+            {
+              "factionId": "italian_allies",
+              "shift": 1,
+              "reason": "The Marsi accept the Lex Julia with reservations"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "calliditas", "shift": 1, "reason": "Negotiated a deal without fully committing to either side" }
+            {
+              "trait": "calliditas",
+              "shift": 1,
+              "reason": "Negotiated a deal without fully committing to either side"
+            }
           ]
         }
       ]
@@ -202,7 +261,11 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "italian_allies", "shift": -1, "reason": "Poppaedius no longer trusts Roman intermediaries" }
+            {
+              "factionId": "italian_allies",
+              "shift": -1,
+              "reason": "Poppaedius no longer trusts Roman intermediaries"
+            }
           ]
         },
         {
@@ -212,5 +275,6 @@
         }
       ]
     }
-  ]
+  ],
+  "direction": "outbound"
 }

@@ -26,6 +26,8 @@ export function initState(data: GameData): GameState {
     personalFavors,
     exitStateHistory: [],
     visitedNodes: new Set(),
+    firedEvents: new Set(),
+    lastNpcId: null,
     force: 0,
     wealth: 0,
   };
@@ -39,6 +41,7 @@ export function getAvailableConversations(
   const available: ConversationData[] = [];
   for (const [id, convo] of Object.entries(conversations)) {
     if (id === powerShiftConvoId) continue;
+    if (state.lastNpcId && convo.npcId === state.lastNpcId) continue;
     if (!checkPreconditions(state, convo.preconditions)) continue;
     const completed = state.exitStateHistory.some(h => h.conversationId === id);
     if (!completed) available.push(convo);
@@ -67,8 +70,9 @@ function checkSinglePrecondition(state: GameState, p: any): boolean {
       );
     case 'any_of':
       return (p.conditions || []).some((c: any) => checkSinglePrecondition(state, c));
+    case 'event':
     case 'phase_event':
-      return true;
+      return state.firedEvents.has(p.eventId);
     default:
       return true;
   }
@@ -182,6 +186,8 @@ export function applyExitEffects(
     personalFavors: { ...state.personalFavors },
     exitStateHistory: [...state.exitStateHistory],
     visitedNodes: new Set(state.visitedNodes),
+    firedEvents: new Set(state.firedEvents),
+    lastNpcId: state.lastNpcId,
   };
 
   const results: EffectResult[] = [];
@@ -228,6 +234,9 @@ export function applyExitEffects(
       case 'rank_change':
         newState.currentRank = effect.newRank;
         results.push({ text: `Rank: ${effect.newRank}`, reason: effect.reason, positive: true });
+        break;
+      case 'fire_event':
+        newState.firedEvents.add(effect.eventId);
         break;
       case 'game_over':
         results.push({

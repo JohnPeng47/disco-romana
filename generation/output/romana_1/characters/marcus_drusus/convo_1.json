@@ -8,7 +8,9 @@
       "type": "prior_exit_state",
       "npcId": "marcus_drusus",
       "conversationId": "marcus_drusus_convo_0",
-      "requiredExitStateIds": ["marcus_drusus_convo_0_exit_alliance"]
+      "requiredExitStateIds": [
+        "marcus_drusus_convo_0_exit_alliance"
+      ]
     }
   ],
   "entryNodeId": "marcus_drusus_convo_1_n01",
@@ -16,26 +18,29 @@
     "marcus_drusus_convo_1_n01": {
       "type": "noop",
       "id": "marcus_drusus_convo_1_n01",
-      "npcDialogue": "You came. Good. I wasn't certain you would — what I'm asking carries real danger. There is an Italian delegation camped outside the Porta Capena. Quintus Poppaedius Silo leads them. They've traveled from Corfinium under a flag of truce, but the senate won't receive them. I need someone to carry my message: that the citizenship bill is still alive, that they must hold their people steady for thirty more days. If they lose faith now, everything breaks.",
+      "npcDialogue": "You came. I wasn't certain — what I'm about to ask could get you killed, and I won't dress it up as anything less. There's an Italian delegation camped outside the Porta Capena. Quintus Poppaedius Silo leads them — a Marsic commander, a man I've known for years, a man whose patience is held together with twine and prayer. They've come from Corfinium under a flag of truce, and the senate won't even receive them. I need someone to carry my word: the citizenship bill lives, it will reach the floor, but they must hold their people steady for thirty more days. If they lose faith now — if even one hotheaded Samnite draws a sword — everything I've built collapses overnight.",
       "options": [
-        { "playerDialogue": "I understand. Tell me exactly what you need delivered.", "nextNodeId": "marcus_drusus_convo_1_n02" }
+        {
+          "playerDialogue": "Tell me the message. Every word of it.",
+          "nextNodeId": "marcus_drusus_convo_1_n02"
+        }
       ]
     },
     "marcus_drusus_convo_1_n02": {
       "type": "active",
       "id": "marcus_drusus_convo_1_n02",
-      "npcDialogue": "The message is simple: thirty days. The bill will reach the floor. But Poppaedius is no fool — he'll want to read you, not just hear you. He needs to believe that Rome still has men who keep their word to Italians. How will you present yourself when you reach their camp?",
+      "npcDialogue": "The message itself is simple — thirty days, the bill reaches the floor, hold fast. But Poppaedius is no fool, and he's been lied to by better Romans than you or me. He won't just hear the words — he'll read your face, your hands, the way you breathe when you say them. He needs to believe that Rome still has men who keep their promises to Italians. How will you carry yourself when you reach that camp?",
       "options": [
         {
-          "playerDialogue": "I'll deliver your words exactly as given. No embellishment, no promises of my own. They'll trust precision over flattery.",
+          "playerDialogue": "I'll deliver your words exactly — no embellishments, no promises beyond what you've authorized. Precision is what earns trust from men who've been flattered and betrayed.",
           "nextNodeId": "marcus_drusus_convo_1_n03"
         },
         {
-          "playerDialogue": "I'll go further. I'll tell them they have my personal support — that when the citizenship passes, I'll stand for their rights in the courts.",
+          "playerDialogue": "I'll go further — I'll pledge my own name alongside yours. When the citizenship passes, I'll stand for their rights in Roman courts personally.",
           "nextNodeId": "marcus_drusus_convo_1_n04"
         },
         {
-          "playerDialogue": "I'll deliver the message, but I also want to learn what I can about their military preparations. If this goes wrong, that intelligence could save lives.",
+          "playerDialogue": "I'll deliver every word faithfully. But I also want to observe their military readiness — if this fails, that intelligence could save Roman lives.",
           "nextNodeId": "marcus_drusus_convo_1_n05"
         }
       ]
@@ -43,14 +48,14 @@
     "marcus_drusus_convo_1_n03": {
       "type": "active",
       "id": "marcus_drusus_convo_1_n03",
-      "npcDialogue": "You reach the Italian camp at dusk. The tents stretch further than you expected — hundreds of delegates from a dozen allied cities. Armed men stand at the perimeter, not as soldiers but not as civilians either. Poppaedius receives you in a tent hung with Marsic banners. He reads Drusus's letter in silence, then fixes you with a stare that has weighed Romans before. 'Thirty days. Your tribune has said this before. What makes this time different?'",
+      "npcDialogue": "You reach the camp at dusk. It stretches further than you expected — hundreds of delegates from a dozen allied cities, and armed men at the perimeter who carry their swords like men accustomed to using them. Poppaedius receives you in a tent hung with old Marsic banners, the kind their fathers carried at Numantia. He reads Drusus's letter in silence, folds it carefully, and fixes you with eyes that have weighed Romans before and found them wanting. 'Thirty days. Your tribune has asked this of us before. What makes this time anything more than words?'",
       "options": [
         {
-          "playerDialogue": "Because this time the equestrian courts are being reformed in the same bill. Drusus has bound your cause to theirs. The coalition holds because everyone needs it to hold.",
+          "playerDialogue": "Because this time Drusus has bound your cause to the equestrian court reforms — the coalition holds because everyone in it needs the others. It's not idealism anymore, it's architecture.",
           "nextNodeId": "marcus_drusus_convo_1_n06"
         },
         {
-          "playerDialogue": "I won't lie to you. It may not be different. But the alternative to patience is a war that will destroy everything your people have built alongside Rome.",
+          "playerDialogue": "I won't lie to you — it may not be different. But the alternative is a war that buries everything your people and mine have built together over two hundred years.",
           "nextNodeId": "marcus_drusus_convo_1_n06"
         }
       ]
@@ -58,14 +63,14 @@
     "marcus_drusus_convo_1_n04": {
       "type": "active",
       "id": "marcus_drusus_convo_1_n04",
-      "npcDialogue": "You deliver Drusus's message and then go beyond it — offering your own name, your own pledge. Poppaedius listens carefully. The other Italian delegates lean in. One of them, a Samnite commander named Gaius Papius Mutilus, speaks: 'Words from Rome are cheap. But a Roman who puts his name behind them — that is something we haven't seen in a generation.' They want specifics. What exactly are you committing to?",
+      "npcDialogue": "You deliver the message and then go beyond it — your own name, your own pledge, laid down in front of men who've learned to be skeptical of Roman promises. Poppaedius listens with his arms folded. The other delegates lean forward. A Samnite commander — broad-shouldered, scarred at the temple — speaks from the back of the tent: 'Words from Rome are cheap as river water. But a Roman who stakes his name on them — that we haven't seen in a generation.' They want specifics. What exactly are you binding yourself to?",
       "options": [
         {
-          "playerDialogue": "If the bill passes and your rights are challenged in Roman courts, I will advocate for Italian citizens personally. My name on the record, for anyone to see.",
+          "playerDialogue": "If the bill passes and your rights are challenged in Roman courts, I will advocate for Italian citizens personally — my name on the record, visible to anyone who cares to look.",
           "nextNodeId": "marcus_drusus_convo_1_n07"
         },
         {
-          "playerDialogue": "I'll use what influence I have to ensure the new citizen rolls aren't buried in unfavorable tribes. You deserve real representation, not a symbolic gesture.",
+          "playerDialogue": "I'll use what influence I have to ensure the new citizen rolls aren't buried in powerless tribes. You deserve real representation — not a gesture dressed up as justice.",
           "nextNodeId": "marcus_drusus_convo_1_n07"
         }
       ]
@@ -73,21 +78,36 @@
     "marcus_drusus_convo_1_n05": {
       "type": "active",
       "id": "marcus_drusus_convo_1_n05",
-      "npcDialogue": "You deliver the message faithfully. Poppaedius nods — he trusts Drusus, and by extension, you. As the evening progresses, wine is shared and conversation loosens. You notice details: the quality of the weapons stacked outside the tents, the number of delegates from martial cities like Bovianum and Aesernia, the maps rolled on a side table showing Roman garrison positions. You have a chance to study the camp more carefully. But the Italians are watching — they always watch.",
+      "npcDialogue": "You deliver the message faithfully, and Poppaedius clasps your arm — he trusts Drusus, and by extension, you. The evening loosens. Wine is shared, and conversation shifts from Latin to Oscan and back. But your eyes are doing their own work: the quality of the weapons stacked outside the command tent, the number of delegates from martial cities like Bovianum and Aesernia, the maps on a side table showing Roman garrison positions marked in red chalk. You could learn a great deal more with a careful walk through the camp. But the Italians are watching — they always watch.",
       "options": [
         {
-          "playerDialogue": "I take a long route back through the camp, memorizing what I see — troop numbers, equipment quality, which cities sent military delegates versus political ones.",
+          "playerDialogue": "I take the long way back through the camp — memorizing formations, counting spear-racks, noting which cities sent soldiers and which sent senators.",
           "roll": {
-            "dice": { "count": 2, "sides": 6 },
+            "dice": {
+              "count": 2,
+              "sides": 6
+            },
             "baseThreshold": 8,
-            "factors": { "personalFavor": 1, "factionAlignment": 0, "force": 0, "wealth": 0 },
-            "reputationBonus": { "trait": "calliditas", "weight": 2 }
+            "factors": {
+              "personalFavor": 1,
+              "factionAlignment": 0,
+              "force": 0,
+              "wealth": 0
+            },
+            "reputationBonus": {
+              "trait": "calliditas",
+              "weight": 2
+            }
           },
-          "onSuccess": { "nextNodeId": "marcus_drusus_convo_1_n08" },
-          "onFailure": { "nextNodeId": "marcus_drusus_convo_1_n09" }
+          "onSuccess": {
+            "nextNodeId": "marcus_drusus_convo_1_n08"
+          },
+          "onFailure": {
+            "nextNodeId": "marcus_drusus_convo_1_n09"
+          }
         },
         {
-          "playerDialogue": "On reflection, I leave directly. The intelligence isn't worth the risk of being caught and destroying what trust Drusus has built.",
+          "playerDialogue": "No. I leave directly — the intelligence isn't worth poisoning whatever trust Drusus has spent years building.",
           "nextNodeId": "marcus_drusus_convo_1_n06"
         }
       ]
@@ -95,66 +115,66 @@
     "marcus_drusus_convo_1_n06": {
       "type": "passive",
       "id": "marcus_drusus_convo_1_n06",
-      "npcDialogue": "Poppaedius studies you for a long moment. The tent is silent except for the wind against the canvas. 'I have learned to read Romans,' he says. 'Most of you lie with your mouths and tell the truth with your eyes. Let me see what kind of man Drusus has sent me.'",
+      "npcDialogue": "Poppaedius studies you for a long, unhurried moment. The tent is silent — nothing but wind pulling at the canvas and the distant sound of men speaking Oscan around their cook-fires. 'I have learned to read Romans,' he says quietly. 'Most of you lie with your mouths and tell the truth with your eyes. Let me see what kind of man Drusus has sent me.'",
       "responses": [
         {
           "trait": "severitas",
           "threshold": 4,
-          "playerDialogue": "I'm not here to charm you. I'm here because what Drusus proposes is just, and justice doesn't require decoration.",
+          "playerDialogue": "I'm not here to charm you, Poppaedius. I'm here because what Drusus proposes is just — and justice doesn't need to be dressed in pretty words.",
           "nextNodeId": "marcus_drusus_convo_1_n10"
         },
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "I've seen what your people endure — taxed like subjects, bled like citizens, honored like neither. That's why I'm here.",
+          "playerDialogue": "I've walked through your allied towns. I've seen men taxed like subjects, bled like citizens, and honored as neither. That's why I'm standing in your tent.",
           "nextNodeId": "marcus_drusus_convo_1_n10"
         },
         {
           "trait": "audacia",
           "threshold": 5,
-          "playerDialogue": "I walked through your armed camp alone and unarmed. That should tell you what you need to know about where I stand.",
+          "playerDialogue": "I walked through an armed camp alone and unarmed to deliver this message. Read whatever you need to in that.",
           "nextNodeId": "marcus_drusus_convo_1_n10"
         },
         {
           "trait": "calliditas",
           "threshold": 5,
-          "playerDialogue": "Read what you like. I'd rather you judge me by what happens in thirty days than by whatever you think you see in my face.",
+          "playerDialogue": "Read what you like — I'd rather be judged by what happens in thirty days than by whatever you think you see in my face tonight.",
           "nextNodeId": "marcus_drusus_convo_1_n10"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "I'm here. That's my answer.",
+        "playerDialogue": "I came. That's my answer.",
         "nextNodeId": "marcus_drusus_convo_1_n11"
       }
     },
     "marcus_drusus_convo_1_n07": {
       "type": "exit",
       "id": "marcus_drusus_convo_1_n07",
-      "npcDialogue": "The Italians confer among themselves in Oscan. When Poppaedius turns back to you, there is something new in his expression — not trust exactly, but the beginning of it. 'We will hold for thirty days. And we will remember your name.' As you leave the camp, you feel the weight of what you've promised. These are not men who forget.",
+      "npcDialogue": "The Italians confer among themselves in rapid Oscan — too fast for you to follow, though you catch the word for 'oath' repeated twice. When Poppaedius turns back, there is something new in his expression. Not trust — not yet — but the space where trust might grow. 'We will hold for thirty days. And we will remember your name, Roman — the way we remember names, which is to say, for generations.' You leave the camp with the night air cold on your face and the full weight of what you've promised settling across your shoulders. These are not men who forget.",
       "exitStateId": "marcus_drusus_convo_1_exit_trusted_intermediary"
     },
     "marcus_drusus_convo_1_n08": {
       "type": "exit",
       "id": "marcus_drusus_convo_1_n08",
-      "npcDialogue": "You walk the camp slowly, pausing at a water trough, lingering near the command tent. Your eye catches what matters: at least eight thousand men could be mobilized from the delegates present alone. The Marsic contingent is best equipped — legionary-quality arms. The Samnites have cavalry. The maps show they've identified every Roman garrison south of Picenum. This is not a negotiating delegation. This is a war council waiting for permission. You leave with Poppaedius's handshake and a military assessment that could change the senate's calculus entirely.",
+      "npcDialogue": "You walk the camp slowly — pausing at a water trough, lingering near the command tent as if stretching your legs after a long ride. Your eye catches what it needs: at least eight thousand men could be mobilized from the delegates present alone. The Marsic contingent carries legionary-quality arms — not scavenged, but forged to purpose. The Samnites have cavalry, real cavalry, not the mounted skirmishers the senate imagines. And the maps — the maps show every Roman garrison south of Picenum, marked with numbers and distances. This is not a negotiating delegation. This is a war council dressed in diplomatic clothes, waiting for permission to become what it already is. You leave with Poppaedius's handshake and a military assessment that could reshape every calculation in the senate.",
       "exitStateId": "marcus_drusus_convo_1_exit_trusted_intermediary"
     },
     "marcus_drusus_convo_1_n09": {
       "type": "exit",
       "id": "marcus_drusus_convo_1_n09",
-      "npcDialogue": "A Paelignian guard notices you studying the weapons racks. He says nothing, but within minutes Poppaedius appears at your side. 'You delivered the message. Now you linger. Why?' His tone has changed entirely. The other delegates have stopped talking. You see hands move to belt knives. 'Tell Drusus his message was received,' Poppaedius says coldly. 'And tell him to send a different messenger next time — one who understands that trust is not a commodity to be spent and stolen in the same breath.' You are escorted to the camp's edge in silence.",
+      "npcDialogue": "A Paelignian guard catches you studying the weapons racks — just a heartbeat too long, your eyes tracing the count of javelins the way a soldier would. He says nothing, but within minutes Poppaedius is at your side, and his warmth has gone. 'You delivered the message. And now you linger. Why?' The tent has gone very quiet. You see hands drift to belt-knives with the easy practice of men who've done this before. 'Tell Drusus his words were received,' Poppaedius says, his voice stripped of everything friendly. 'And tell him to send a different man next time — one who understands that trust is not something you spend and steal in the same breath.' They walk you to the camp's edge in silence. No one offers you wine for the road.",
       "exitStateId": "marcus_drusus_convo_1_exit_suspected_spy"
     },
     "marcus_drusus_convo_1_n10": {
       "type": "exit",
       "id": "marcus_drusus_convo_1_n10",
-      "npcDialogue": "Poppaedius holds your gaze, then nods slowly. 'Drusus chose well. We will wait — thirty days, as he asks. But understand: my people's patience is not infinite. Every day Rome delays, another young Marsic man asks why he should beg for what his grandfather earned with blood at Cannae.' He clasps your arm in the Italian fashion. 'Come back when you have news. You'll be received.'",
+      "npcDialogue": "Poppaedius holds your gaze — measuring, weighing — and then nods, once, the way a commander acknowledges a soldier he's decided to trust with a flank. 'Drusus chose well. We will wait — thirty days, as he asks. But understand me: my people's patience is a living thing, and it is dying. Every day Rome delays, another young Marsic man asks his father why he should beg for what his grandfather earned with blood at Cannae. And his father has no answer.' He clasps your arm in the old Italian way — forearm to forearm. 'Come back when you have news. You'll be received as a friend.'",
       "exitStateId": "marcus_drusus_convo_1_exit_trusted_intermediary"
     },
     "marcus_drusus_convo_1_n11": {
       "type": "exit",
       "id": "marcus_drusus_convo_1_n11",
-      "npcDialogue": "Poppaedius shrugs. 'Adequate. You delivered the message. We'll wait — for now. But don't mistake this for trust. Trust is built over years, not errands.' He waves a hand in dismissal. You leave knowing the message was received, but the relationship remains fragile. You are a courier, not a confidant.",
+      "npcDialogue": "Poppaedius shrugs — a small, tired movement. 'Adequate. You brought the message, and the message was heard. We'll wait — for now.' He turns back to his maps. 'But don't confuse this for trust. Trust is built over years and broken in moments, and you haven't given me enough of either to know which you're capable of.' He waves you toward the tent flap. You leave knowing the words arrived safely but the man behind them — you — remains an open question.",
       "exitStateId": "marcus_drusus_convo_1_exit_useful_but_watched"
     }
   },
@@ -166,19 +186,31 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "italian_allies", "shift": 2, "reason": "The Italian delegation considers you a trustworthy Roman contact" }
+            {
+              "factionId": "italian_allies",
+              "shift": 2,
+              "reason": "The Italian delegation considers you a trustworthy Roman contact"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "severitas", "shift": 1, "reason": "Completed a dangerous mission with integrity" }
+            {
+              "trait": "severitas",
+              "shift": 1,
+              "reason": "Completed a dangerous mission with integrity"
+            }
           ]
         },
         {
           "type": "unlock_conversation",
           "conversationId": "quintus_poppaedius_convo_0",
-          "preconditionOverride": { "type": "faction_standing", "factionId": "italian_allies", "min": 1 }
+          "preconditionOverride": {
+            "type": "faction_standing",
+            "factionId": "italian_allies",
+            "min": 1
+          }
         }
       ]
     },
@@ -189,7 +221,11 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "italian_allies", "shift": 1, "reason": "You delivered the message but failed to build personal trust" }
+            {
+              "factionId": "italian_allies",
+              "shift": 1,
+              "reason": "You delivered the message but failed to build personal trust"
+            }
           ]
         }
       ]
@@ -201,16 +237,25 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "italian_allies", "shift": -3, "reason": "The Italians believe you came to gather intelligence, not to build trust" }
+            {
+              "factionId": "italian_allies",
+              "shift": -3,
+              "reason": "The Italians believe you came to gather intelligence, not to build trust"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "calliditas", "shift": 1, "reason": "You attempted espionage in hostile territory — reckless, but it took nerve" }
+            {
+              "trait": "calliditas",
+              "shift": 1,
+              "reason": "You attempted espionage in hostile territory — reckless, but it took nerve"
+            }
           ]
         }
       ]
     }
-  ]
+  ],
+  "direction": "outbound"
 }

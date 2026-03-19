@@ -9,15 +9,15 @@
     "ps_n01": {
       "type": "noop",
       "id": "ps_n01",
-      "npcDialogue": "The legions have entered Rome. Smoke rises from the Esquiline. The senate house doors are barred — from the outside. Every alliance you've built, every promise you've made, every faction you've courted or betrayed — all of it narrows to this moment. The Republic is being remade in blood and iron, and you are standing in the middle of it.",
+      "npcDialogue": "Five legions cross the pomerium at dawn. The sound comes first — thousands of hobnailed caligae striking marble, a grinding rhythm that has never been heard inside the city walls, not once in the four centuries of the Republic. Smoke is already rising from the Esquiline where Sulpicius's men tried to hold a barricade. It didn't hold. The Senate doors are chained shut from the outside, the bronze handles still warm from the hands of the last senator who tried to enter. Gaius Veturius Crispus stands in the Forum and watches the world he was born into die.",
       "options": [
-        { "playerDialogue": "I've prepared for this.", "nextNodeId": "ps_n02" }
+        { "playerDialogue": "So it's come to this.", "nextNodeId": "ps_n02" }
       ]
     },
     "ps_n02": {
       "type": "convergence",
       "id": "ps_n02",
-      "npcDialogue": "The question is which Rome emerges from the fire — and whether you emerge with it. The factions are making their final calculations, and your name appears on every ledger.",
+      "npcDialogue": "Somewhere in a requisitioned villa, a freedman's stylus scratches across a wax tablet — names, names, names. Sulla's clerks are building the new Rome one list at a time. Men who were senators yesterday are fugitives tonight. Men who were nothing yesterday will be magistrates by the kalends. The only question that matters now is which column holds your name — the living or the dead.",
       "routes": [
         {
           "condition": { "type": "faction_standing", "factionId": "sullan_faction", "min": 4 },
@@ -41,14 +41,14 @@
     "ps_n03": {
       "type": "active",
       "id": "ps_n03",
-      "npcDialogue": "Sulla's men find you before dawn. Not soldiers — political officers. They bring you to a villa on the Palatine where the new government is being assembled. Sulla himself is there, dictating names. He looks up when you enter. 'Ah. The useful one. I have a list of offices that need filling. Men I can trust.' He slides a wax tablet across the table. Your name is already on it.",
+      "npcDialogue": "They come for you before the second watch — not soldiers but men in senatorial white, their togas freshly cleaned, as if the blood in the streets were someone else's problem. They bring you to a villa on the Palatine where oil lamps throw long shadows against maps of the city, each district marked in red or black. Sulla is at the center of it, dictating to three scribes at once, his voice flat and methodical as a man reading grain inventories. He looks up when you enter. His eyes are the color of old iron. 'Crispus. Good. I'm told you're useful and that you understand what loyalty costs.' He slides a wax tablet across the table. Your name is already inscribed — not on the proscription list, but on the other one. The one that matters.",
       "options": [
         {
-          "playerDialogue": "I accept. Tell me where you need me.",
+          "playerDialogue": "I'm yours. Where do you need me?",
           "nextNodeId": "ps_n08"
         },
         {
-          "playerDialogue": "Before I accept — I have names I need removed from the proscription lists. Men who don't deserve to die for this.",
+          "playerDialogue": "I'll serve — but there are names on your other list that don't belong there. Give me that, and you have me completely.",
           "roll": {
             "dice": { "count": 2, "sides": 6 },
             "baseThreshold": 7,
@@ -63,18 +63,18 @@
     "ps_n04": {
       "type": "active",
       "id": "ps_n04",
-      "npcDialogue": "The Marian remnants are scattered but alive. In a cellar beneath a Subura wine shop, what's left of the populares leadership gathers by lamplight. Faces you recognize — Cinna, Sertorius, a handful of tribunes. They look to you. 'Marius is fleeing to Africa. Sulpicius is dead — murdered on the road to Brundisium. Someone has to hold the cause together until Marius returns. The people trust you.'",
+      "npcDialogue": "A boy no older than twelve leads you through the Subura by a route that doubles back on itself three times — past a tannery that reeks of lime and urine, down a staircase so narrow your shoulders brush both walls. The cellar beneath the wine shop smells of turned earth and cheap tallow. Faces in the lamplight — Cinna, hollow-eyed, gripping a cup he hasn't drunk from. Sertorius with his hand resting on his gladius as if he's forgotten it's there. Two tribunes whose names you know and a woman you don't, copying documents onto scrolls small enough to swallow. Cinna speaks first. 'Marius is on a fishing boat bound for Africa. Sulpicius is dead — they caught him near Laurentum, a slave betrayed him for the bounty. We are what's left.' He looks at you the way a drowning man looks at driftwood.",
       "options": [
         {
-          "playerDialogue": "I'll lead the resistance. When Marius returns, Rome will be ready for him.",
+          "playerDialogue": "Then I'm what's left too. I'll hold things together until Marius returns.",
           "nextNodeId": "ps_n10"
         },
         {
-          "playerDialogue": "I'll go with Marius. The resistance needs leadership in exile, not martyrs in cellars.",
+          "playerDialogue": "I'm going after Marius. The cause needs leaders who survive, not martyrs in a cellar.",
           "nextNodeId": "ps_n10"
         },
         {
-          "playerDialogue": "We need to negotiate. Sulla won — fighting from the shadows only gets more people killed.",
+          "playerDialogue": "It's over, Cinna. Sulla won. The only thing left to negotiate is how many of us walk away alive.",
           "nextNodeId": "ps_n09"
         }
       ]
@@ -82,14 +82,14 @@
     "ps_n05": {
       "type": "active",
       "id": "ps_n05",
-      "npcDialogue": "While Rome tears itself apart, a messenger arrives from the Italian confederacy. The Lex Julia has granted citizenship to those who laid down arms, but the implementation is stalling — Roman magistrates in Italian towns refuse to enroll new citizens. The Italians want you to serve as their advocate in whatever new government emerges. Poppaedius Silo himself endorses you. 'Be our voice in the Roman senate,' the messenger says. 'Whatever shape it takes.'",
+      "npcDialogue": "While Romans butcher Romans, a rider in a mud-spattered cloak finds you near the Temple of Castor. He carries a letter sealed with the stamp of the Marsic confederation — Poppaedius Silo's eagle clutching a thunderbolt. The Lex Julia promised citizenship to every Italian who laid down arms. The arms are down. The citizenship is not coming. Roman magistrates in Asculum, in Nola, in Bovianum are refusing to open the census rolls, claiming the law doesn't apply until the new consuls ratify it — consuls who answer to Sulla. The letter is brief and written in the messenger's own hand, because Poppaedius trusts no scribe with these words: 'Be our voice in whatever Rome becomes. They will listen to a Veturius. They will not listen to us.'",
       "options": [
         {
-          "playerDialogue": "Tell Poppaedius I accept. The Italians will have their voice.",
+          "playerDialogue": "Tell Poppaedius I accept. Rome made a promise. I'll make them keep it.",
           "nextNodeId": "ps_n10"
         },
         {
-          "playerDialogue": "I'll serve the Italian cause, but from within the system — as a Roman magistrate who ensures the Lex Julia is honored.",
+          "playerDialogue": "I'll serve the Italian cause — but from inside the magistracy, where I can force the enrollment through.",
           "nextNodeId": "ps_n08"
         }
       ]
@@ -97,14 +97,14 @@
     "ps_n06": {
       "type": "active",
       "id": "ps_n06",
-      "npcDialogue": "The old guard of the senate has survived — barely. Catulus meets you in the ruins of the curia. The benches are overturned, the marble floor scarred by hobnailed boots. 'We outlasted Marius,' he says. 'We'll outlast Sulla too. The senate endures because we endure. I need men who understand that to sit in these seats when they're restored. Will you be one of them?'",
+      "npcDialogue": "Catulus is sitting on an overturned bench in the curia when you find him. The marble floor is gouged where legionaries dragged the bronze ballot urns out to be melted for sling-shot. A single oil lamp gutters in a chamber built for five hundred. He doesn't look up when you enter — he's staring at a crack in the wall that wasn't there yesterday, tracing it with his eyes as if reading an augury. 'We buried Scaurus this morning,' he says quietly. 'Heart gave out when the legions crossed. Probably the kindest death available.' He turns to you then, and his face has the terrible calm of a man who has decided to outlive everything he loves. 'The senate endures, Crispus. It endures because men like us sit in these chairs after the soldiers leave. Will you sit?'",
       "options": [
         {
-          "playerDialogue": "I'll take the seat. The senate must survive, even under Sulla's shadow.",
+          "playerDialogue": "I'll sit. Someone has to remember what these chairs are for.",
           "nextNodeId": "ps_n08"
         },
         {
-          "playerDialogue": "Only if the senate actually governs. I won't be a puppet in a dictator's theater.",
+          "playerDialogue": "Only if the senate governs. I won't warm a bench in a dictator's theater — I'd rather freeze outside it.",
           "roll": {
             "dice": { "count": 2, "sides": 6 },
             "baseThreshold": 8,
@@ -119,7 +119,7 @@
     "ps_n07": {
       "type": "convergence",
       "id": "ps_n07",
-      "npcDialogue": "No faction claims you. No powerful patron shields you. In the chaos of the march on Rome, you are alone — a citizen without a banner in a city where banners are the difference between life and death. Sulla's patrols are checking names against lists. The Marian underground is whispering passwords. The Italian delegates are packing their bags. You must find shelter or become another unnamed casualty of the Republic's death throes.",
+      "npcDialogue": "No knock comes at your door. No rider seeks you out. No freedman whispers your name in a corridor. The terrible truth settles like ash — no one is coming for Gaius Veturius Crispus, because no one needs him. Sulla's patrols move through the streets checking names against wax tablets, and the men who aren't on any tablet at all are the ones who vanish easiest. The Marian underground passes you without a password. The Italian delegates don't know your face. You stand in the Forum at midday and the crowd parts around you like water around a stone — not hostile, not afraid, simply indifferent. In this Rome, indifference kills.",
       "routes": [
         {
           "condition": { "type": "reputation_dominant", "trait": "audacia" },
@@ -135,13 +135,13 @@
     "ps_n08": {
       "type": "exit",
       "id": "ps_n08",
-      "npcDialogue": "The new Rome takes shape around you. Whatever it becomes — Sulla's restoration, the senate's revival, the Italian integration — you are part of it. Your rank rises. Your name appears on the rolls of the magistracy. The Republic staggers forward, wounded but alive, and you stagger with it. Somewhere in the wreckage, there is a future. You've earned your seat at its table.",
+      "npcDialogue": "The new Rome assembles itself like a body after surgery — stitched, bruised, alive in ways it shouldn't be. Your name appears on the album of magistrates, inscribed in fresh wax below men who held power when power still meant something clean. The toga praetexta fits strangely, as if cut for a different man. Perhaps it was. The Republic staggers forward with a sword through its lung, and you walk beside it, one hand on its shoulder, unable to tell if you are holding it up or it is holding you.",
       "exitStateId": "ps_exit_magistrate"
     },
     "ps_n09": {
       "type": "convergence",
       "id": "ps_n09",
-      "npcDialogue": "Your gambit failed. The powerful men you tried to negotiate with see hesitation, not strategy. In the aftermath, you are neither trusted nor hunted — simply overlooked.",
+      "npcDialogue": "The silence after a failed gambit is the loudest sound in Rome. Sulla's men note your attempt and file it away — not with anger but with something worse, a mild contempt. You asked for something you hadn't earned the right to ask for, and the men who run the ledgers have long memories and sharp styluses. You aren't hunted. You aren't protected. You exist in the space between — the space where the overlooked go to be forgotten.",
       "routes": [
         {
           "condition": { "type": "reputation_dominant", "trait": "calliditas" },
@@ -157,54 +157,54 @@
     "ps_n10": {
       "type": "passive",
       "id": "ps_n10",
-      "npcDialogue": "Your choice is made. But the crisis isn't over — it's accelerating. In the final hours, as Sulla's constitution takes hold and the proscription lists grow longer, one last test remains. A messenger arrives with news: your name has appeared on a preliminary list. Not confirmed — but the window to act is closing.",
+      "npcDialogue": "You have chosen your ground. But the ground is shifting. In the third hour of night, while you are still tasting the copper of your own decision, a boy arrives at your door barefoot and out of breath. He carries no letter — the message is memorized, recited in a voice that shakes. Your name has appeared on a preliminary proscription tablet. Not confirmed, not yet carved in stone — still in soft wax, still erasable. But the wax is hardening. Dawn is four hours away. By dawn, the tablets go to the executioners.",
       "responses": [
         {
           "trait": "severitas",
           "threshold": 5,
-          "playerDialogue": "Let them put my name on their lists. I answer to the Republic, not to Sulla's clerks.",
+          "playerDialogue": "Let them write it. I will not beg Sulla's clerks to unwrite what I am.",
           "nextNodeId": "ps_n08"
         },
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "Send word to Catulus. He has influence over the lists. Ask him to intercede — not for my sake, but for the precedent.",
+          "playerDialogue": "Get word to Catulus — he still has influence over the lists. Not for my sake. For the precedent it sets.",
           "nextNodeId": "ps_n08"
         },
         {
           "trait": "audacia",
           "threshold": 5,
-          "playerDialogue": "I'll go to Sulla myself. Face to face. He respects boldness more than hiding.",
+          "playerDialogue": "I'll go to Sulla directly. He respects a man who looks him in the face — he despises the ones who hide.",
           "nextNodeId": "ps_n08"
         },
         {
           "trait": "calliditas",
           "threshold": 5,
-          "playerDialogue": "I know who writes the lists. A quiet visit with the right incentive, and my name disappears before morning.",
+          "playerDialogue": "I know the freedman who keeps the tablets. A visit, a purse of silver, and my name is smudged before the wax cools.",
           "nextNodeId": "ps_n08"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "I need to get out of Rome. Now.",
+        "playerDialogue": "I have to leave — now, tonight, before the gates close.",
         "nextNodeId": "ps_n11"
       }
     },
     "ps_n11": {
       "type": "exit",
       "id": "ps_n11",
-      "npcDialogue": "You slip through the Porta Capena as the last light fades. Behind you, Rome burns its principles along with its enemies. You survive — diminished, displaced, but alive. The next phase of the Republic's agony will find you somewhere on the Italian roads, rebuilding from nothing. But you have your life, your wits, and the knowledge of how Rome truly works. That's more than most.",
+      "npcDialogue": "The Porta Capena at dusk. A mule loaded with everything a man can carry and still move fast. The guards barely glance at you — they are watching for bigger names, richer men, faces that appear on the tablets they can actually read. Behind you, Rome sends up a column of smoke that leans south in the evening wind, toward Campania, toward the Italian towns where a man with Roman connections and no Roman enemies might start again. You are alive. You are no one. On the Italian roads, with dust in your teeth and the stars of a republic that no longer wants you overhead — that will have to be enough.",
       "exitStateId": "ps_exit_survived"
     },
     "ps_n12": {
       "type": "exit",
       "id": "ps_n12",
-      "npcDialogue": "The patrols find you at dawn. A man without a faction, without a patron, without a name on any list that matters. They don't know who you are — and in Sulla's Rome, that's the most dangerous thing to be. You disappear into the machinery of the proscriptions. Not as a target — as a footnote. The Republic devours its anonymous children first.",
+      "npcDialogue": "They find you at the third hour. Three soldiers and a clerk with a tablet, working their way through an insula near the Argiletum, checking faces against descriptions. You have no patron to invoke, no faction stamp to show, no letter of safe conduct folded in your toga. The clerk squints at you, looks down at his tablet, looks up again. 'Name?' he asks, and when you answer, he frowns — not recognition but its opposite, the irritation of a bureaucrat encountering a thing that doesn't fit his categories. He scratches something on the wax. You do not see what he writes. The soldiers take you by the arms, and the street goes on without you, as streets do.",
       "exitStateId": "ps_exit_destroyed"
     },
     "ps_n13": {
       "type": "exit",
       "id": "ps_n13",
-      "npcDialogue": "Overlooked. Dismissed. In the chaos of the power shift, you are simply... forgotten. No faction claims you, no patron protects you, no enemy hunts you. You drift through the new order as a ghost of the old one. The Republic moves on without you. There are worse fates — but not many that sting as deeply.",
+      "npcDialogue": "The days pass. Sulla's constitution settles over Rome like a new season, and seasons do not notice individual men. You walk the same streets, buy bread from the same baker, nod to the same neighbors — but the city has rearranged itself around an absence shaped like you. No summons comes. No knock. No letter sealed with anyone's ring. You attend the public assemblies and stand at the back, and when the roll is called, no one calls your name. The Republic has not destroyed Gaius Veturius Crispus. It has simply continued without him, which is the same thing, done slowly.",
       "exitStateId": "ps_exit_forgotten"
     }
   },

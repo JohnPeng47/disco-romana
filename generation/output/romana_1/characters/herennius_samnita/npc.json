@@ -1,0 +1,13 @@
+{
+  "id": "herennius_samnita",
+  "name": "Herennius the Samnite",
+  "factionId": "italian_allies",
+  "rank": "citizen",
+  "reputationProfile": {
+    "severitas": 6,
+    "clementia": 5,
+    "audacia": 3,
+    "calliditas": 4
+  },
+  "conversationArcLength": 1
+}

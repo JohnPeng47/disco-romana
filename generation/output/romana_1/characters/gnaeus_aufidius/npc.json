@@ -1,0 +1,13 @@
+{
+  "id": "gnaeus_aufidius",
+  "name": "Gnaeus Aufidius",
+  "factionId": null,
+  "rank": "equestrian",
+  "reputationProfile": {
+    "severitas": 2,
+    "clementia": 3,
+    "audacia": 4,
+    "calliditas": 8
+  },
+  "conversationArcLength": 1
+}

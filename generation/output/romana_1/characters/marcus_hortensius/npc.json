@@ -1,0 +1,13 @@
+{
+  "id": "marcus_hortensius",
+  "name": "Marcus Hortensius",
+  "factionId": null,
+  "rank": "citizen",
+  "reputationProfile": {
+    "severitas": 3,
+    "clementia": 4,
+    "audacia": 5,
+    "calliditas": 6
+  },
+  "conversationArcLength": 1
+}

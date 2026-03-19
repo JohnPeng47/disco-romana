@@ -8,7 +8,10 @@
       "type": "prior_exit_state",
       "npcId": "gaius_marius",
       "conversationId": "gaius_marius_convo_0",
-      "requiredExitStateIds": ["gaius_marius_convo_0_exit_trusted", "gaius_marius_convo_0_exit_noted"]
+      "requiredExitStateIds": [
+        "gaius_marius_convo_0_exit_trusted",
+        "gaius_marius_convo_0_exit_noted"
+      ]
     }
   ],
   "entryNodeId": "gaius_marius_convo_1_n01",
@@ -16,18 +19,18 @@
     "gaius_marius_convo_1_n01": {
       "type": "active",
       "id": "gaius_marius_convo_1_n01",
-      "npcDialogue": "Sulla has his command. The senate handed it to him like a birthday gift. But Sulpicius is moving — the tribal vote to transfer the command to me happens in three days. When it passes, Sulla will have a choice: accept the will of the people or reject it with steel. I need to know where you stand before that moment arrives.",
+      "npcDialogue": "The senate gave Sulla my command. Handed it over like a father passing a sword to his favorite son \u2014 never mind the old man who forged it. But Sulpicius \u2014 Sulpicius has spine. The tribal vote is in three days. Three days, and then Sulla chooses: bow to the people or draw his sword against them. I need to know something from you before that hour comes, and I need to know it now.",
       "options": [
         {
-          "playerDialogue": "I'm with you. Whatever comes next, I've made my choice.",
+          "playerDialogue": "I'm with you, Gaius Marius. Whatever comes next.",
           "nextNodeId": "gaius_marius_convo_1_n02"
         },
         {
-          "playerDialogue": "I'm with you — but we need a plan for what happens if Sulla refuses to accept the vote.",
+          "playerDialogue": "I'm with you \u2014 but what happens when Sulla says no? Because he will say no.",
           "nextNodeId": "gaius_marius_convo_1_n03"
         },
         {
-          "playerDialogue": "What if the vote fails? What's your contingency?",
+          "playerDialogue": "And if the vote fails? What then?",
           "nextNodeId": "gaius_marius_convo_1_n04"
         }
       ]
@@ -35,72 +38,93 @@
     "gaius_marius_convo_1_n02": {
       "type": "noop",
       "id": "gaius_marius_convo_1_n02",
-      "npcDialogue": "Good. Loyalty before the storm is the only loyalty that counts. When this is over, I'll remember who committed early and who waited to see which way the javelin flew. You committed early. That matters.",
+      "npcDialogue": "Good. That's the only answer that means anything \u2014 the one given before the blood starts. I've watched men pledge loyalty with the battle already won and call themselves brave. You said it now, in the quiet, when it could still cost you everything. I won't forget that.",
       "options": [
-        { "playerDialogue": "What do you need me to do?", "nextNodeId": "gaius_marius_convo_1_n05" }
+        {
+          "playerDialogue": "Then use me. What do you need?",
+          "nextNodeId": "gaius_marius_convo_1_n05"
+        }
       ]
     },
     "gaius_marius_convo_1_n03": {
       "type": "noop",
       "id": "gaius_marius_convo_1_n03",
-      "npcDialogue": "If Sulla refuses — when Sulla refuses — he'll march his legions back from Capua. I've seen this coming for months. The question isn't whether he'll do it. The question is whether Rome can survive it. I beat the Cimbri, the Teutones, the Numidians. I can beat a patrician with delusions of grandeur.",
+      "npcDialogue": "When. When Sulla refuses. Don't soften it \u2014 I like that you don't soften it. He'll march from Capua with six legions and the gods know what he tells himself to sleep at night. I've known this was coming since the senate vote. The question isn't whether he does it \u2014 the question is whether Rome survives it. I broke the Cimbri at Vercellae. I broke Jugurtha in the desert. I can break one vain patrician who thinks a good surname is the same as a good sword arm.",
       "options": [
-        { "playerDialogue": "Then let's prepare. What's the plan?", "nextNodeId": "gaius_marius_convo_1_n05" }
+        {
+          "playerDialogue": "Then we prepare now, while there's still time. What's the plan?",
+          "nextNodeId": "gaius_marius_convo_1_n05"
+        }
       ]
     },
     "gaius_marius_convo_1_n04": {
       "type": "passive",
       "id": "gaius_marius_convo_1_n04",
-      "npcDialogue": "The vote won't fail. I've counted the tribes. But you're right to plan for it — a general who doesn't prepare for defeat deserves the defeat he gets. Tell me what kind of man you are when the plan goes wrong.",
+      "npcDialogue": "The vote won't fail. I've counted the tribes myself \u2014 the old way, one by one, in the tabernae where the real politics happen. But you're right to ask. A general who doesn't plan for the spear in his back deserves to feel it. So tell me \u2014 what kind of man are you when everything falls apart?",
       "responses": [
         {
           "trait": "severitas",
           "threshold": 5,
-          "playerDialogue": "I hold the line. Plans change; discipline doesn't.",
+          "playerDialogue": "I hold the line. The plan can burn \u2014 discipline doesn't.",
           "nextNodeId": "gaius_marius_convo_1_n05"
         },
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "I negotiate. There's always another path if you're willing to find it.",
+          "playerDialogue": "I talk. There's always a door if you're willing to look for it.",
           "nextNodeId": "gaius_marius_convo_1_n06"
         },
         {
           "trait": "audacia",
           "threshold": 5,
-          "playerDialogue": "I attack. When the plan fails, you replace it with speed and aggression.",
+          "playerDialogue": "I attack. When the plan dies, speed is the only thing left.",
           "nextNodeId": "gaius_marius_convo_1_n05"
         },
         {
           "trait": "calliditas",
           "threshold": 5,
-          "playerDialogue": "I adapt. The man who survives isn't the strongest — he's the one who adjusts fastest.",
+          "playerDialogue": "I adapt. The strongest man on the field isn't the one who hits hardest \u2014 he's the one who reads the ground.",
           "nextNodeId": "gaius_marius_convo_1_n06"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "I do what needs to be done. Same as anyone.",
+        "playerDialogue": "I survive. I do what the moment demands.",
         "nextNodeId": "gaius_marius_convo_1_n06"
       }
     },
     "gaius_marius_convo_1_n05": {
       "type": "active",
       "id": "gaius_marius_convo_1_n05",
-      "npcDialogue": "Here's what I need. Sulla's officers are billeted across the city — men loyal to him personally, not to Rome. When the vote passes, they'll try to obstruct. I need them contained. Not killed — I'm not a butcher. Detained. Can you organize that with the urban cohorts you've cultivated?",
+      "npcDialogue": "Listen to me carefully. Sulla has officers billeted across the city \u2014 his men, loyal to him, not to Rome, not to the Republic, to him personally. When the vote passes they'll move to obstruct. I want them contained. Not killed \u2014 I am not a butcher, whatever the senate whispers. Detained. Quietly. Can you do that with the men you've been cultivating?",
       "options": [
         {
-          "playerDialogue": "I can have twenty reliable men at each billet point by dawn. Give me the addresses.",
+          "playerDialogue": "Twenty men at each billet point by dawn. Give me the addresses and consider it done.",
           "roll": {
-            "dice": { "count": 2, "sides": 6 },
+            "dice": {
+              "count": 2,
+              "sides": 6
+            },
             "baseThreshold": 7,
-            "factors": { "personalFavor": 2, "factionAlignment": 1, "force": 2, "wealth": 0 },
-            "reputationBonus": { "trait": "audacia", "weight": 1 }
+            "factors": {
+              "personalFavor": 2,
+              "factionAlignment": 1,
+              "force": 2,
+              "wealth": 0
+            },
+            "reputationBonus": {
+              "trait": "audacia",
+              "weight": 1
+            }
           },
-          "onSuccess": { "nextNodeId": "gaius_marius_convo_1_n08" },
-          "onFailure": { "nextNodeId": "gaius_marius_convo_1_n07" }
+          "onSuccess": {
+            "nextNodeId": "gaius_marius_convo_1_n08"
+          },
+          "onFailure": {
+            "nextNodeId": "gaius_marius_convo_1_n07"
+          }
         },
         {
-          "playerDialogue": "Detaining Roman officers without trial — that's exactly what Sulla would do. Find another way.",
+          "playerDialogue": "Seizing officers without trial \u2014 that's Sulla's method, not yours. There has to be another way.",
           "nextNodeId": "gaius_marius_convo_1_n06"
         }
       ]
@@ -108,14 +132,21 @@
     "gaius_marius_convo_1_n06": {
       "type": "convergence",
       "id": "gaius_marius_convo_1_n06",
-      "npcDialogue": "Principles. They're a luxury I can't afford right now, but I understand why you cling to them.",
+      "npcDialogue": "Principles. I had those once. They were beautiful \u2014 polished like marble, useless as marble when the swords come out. But I understand the need to hold something clean.",
       "routes": [
         {
-          "condition": { "type": "faction_standing", "factionId": "populares", "min": 3 },
+          "condition": {
+            "type": "faction_standing",
+            "factionId": "populares",
+            "min": 3
+          },
           "nextNodeId": "gaius_marius_convo_1_n08"
         },
         {
-          "condition": { "type": "reputation_dominant", "trait": "calliditas" },
+          "condition": {
+            "type": "reputation_dominant",
+            "trait": "calliditas"
+          },
           "nextNodeId": "gaius_marius_convo_1_n07"
         }
       ],
@@ -124,14 +155,14 @@
     "gaius_marius_convo_1_n07": {
       "type": "active",
       "id": "gaius_marius_convo_1_n07",
-      "npcDialogue": "The operation hit complications. Some of Sulla's officers escaped the city before we could contain them. They'll reach his camp at Capua within a day. That accelerates everything. Sulla will march. The question now isn't whether blood is spilled — it's whose blood and how much. I'm leaving Rome tonight. Come with me or stay.",
+      "npcDialogue": "Some of them got out. Three officers, maybe four \u2014 they'll be at Capua by tomorrow morning, whispering in Sulla's ear. So now it's faster than I wanted. He'll march. He'll march and he'll tell himself the Republic made him do it. The only question left is how much blood and whose. I'm leaving Rome tonight. You can come with me or you can stay.",
       "options": [
         {
-          "playerDialogue": "I'll stay in Rome. Someone needs to hold the political ground while you're gone.",
+          "playerDialogue": "I'll stay. Someone has to hold the city together while you're gone.",
           "nextNodeId": "gaius_marius_convo_1_n10"
         },
         {
-          "playerDialogue": "I'm coming with you. Whatever happens next, I want to be there.",
+          "playerDialogue": "I'm coming. Wherever this road goes, I want to be on it.",
           "nextNodeId": "gaius_marius_convo_1_n11"
         }
       ]
@@ -139,27 +170,30 @@
     "gaius_marius_convo_1_n08": {
       "type": "noop",
       "id": "gaius_marius_convo_1_n08",
-      "npcDialogue": "Well done. The officers are contained, the vote passes tomorrow, and for one brief moment the Republic works the way it was designed to. Enjoy it. Moments like this don't last. Sulla will march, and when he does, we need to be ready.",
+      "npcDialogue": "Done. Every last one of them, penned up like sheep before the Kalends. The vote passes tomorrow and for one shining moment the Republic works exactly the way the founders imagined. Savor it. It won't last. It never lasts. Sulla will march, and when he does, the world changes.",
       "options": [
-        { "playerDialogue": "What happens when the legions reach the walls?", "nextNodeId": "gaius_marius_convo_1_n07" }
+        {
+          "playerDialogue": "When his legions reach the walls \u2014 what then?",
+          "nextNodeId": "gaius_marius_convo_1_n07"
+        }
       ]
     },
     "gaius_marius_convo_1_n09": {
       "type": "exit",
       "id": "gaius_marius_convo_1_n09",
-      "npcDialogue": "Then go. Go be principled in a corner while men like me and Sulla decide the future of the world. When you're sitting in whatever exile your principles buy you, remember that I offered you a seat at the table and you chose the floor.",
+      "npcDialogue": "Then get out of my sight. Go polish your principles in some quiet corner while men like me and Sulla decide whether the world burns or bends. And when you're sitting in whatever exile your caution buys you \u2014 some fishing village, some Greek backwater \u2014 remember that Gaius Marius offered you a place at his table and you chose the floor.",
       "exitStateId": "gaius_marius_convo_1_exit_abandoned"
     },
     "gaius_marius_convo_1_n10": {
       "type": "exit",
       "id": "gaius_marius_convo_1_n10",
-      "npcDialogue": "Stay, then. Hold the forum. Keep Sulpicius alive if you can — the optimates will come for him first. When I return, I'll need Rome to still be a republic. Even a broken one. Can you do that?",
+      "npcDialogue": "Stay, then. Hold the forum. Hold it with your teeth if you have to. Keep Sulpicius alive \u2014 they'll come for him first, the optimates always kill the voice before the body. When I come back I will need Rome to still be something worth saving. Even a ruin. Even a shell. Can you give me that?",
       "exitStateId": "gaius_marius_convo_1_exit_rome_guard"
     },
     "gaius_marius_convo_1_n11": {
       "type": "exit",
       "id": "gaius_marius_convo_1_n11",
-      "npcDialogue": "Then pack light. Where we're going, you won't need togas. If we survive the next month, you'll be standing beside the man who saves the Republic. If we don't — well. There are worse ways to be remembered.",
+      "npcDialogue": "Pack light. Where we're going you won't need a toga \u2014 just good boots and a strong stomach. If we live through the next month, you'll stand beside the man who saved the Republic twice. And if we don't \u2014 well. I've seen worse deaths than dying next to someone who chose to be there.",
       "exitStateId": "gaius_marius_convo_1_exit_marched"
     }
   },
@@ -171,14 +205,26 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "populares", "shift": 2, "reason": "Marius entrusted you with holding Rome" },
-            { "factionId": "sullan_faction", "shift": -3, "reason": "Sulla's agents identify you as a Marian loyalist in the city" }
+            {
+              "factionId": "populares",
+              "shift": 2,
+              "reason": "Marius entrusted you with holding Rome"
+            },
+            {
+              "factionId": "sullan_faction",
+              "shift": -3,
+              "reason": "Sulla's agents identify you as a Marian loyalist in the city"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "severitas", "shift": 1, "reason": "Chose duty in Rome over glory in the field" }
+            {
+              "trait": "severitas",
+              "shift": 1,
+              "reason": "Chose duty in Rome over glory in the field"
+            }
           ]
         }
       ]
@@ -190,15 +236,31 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "populares", "shift": 3, "reason": "Bound your fate to Marius in the field" },
-            { "factionId": "sullan_faction", "shift": -3, "reason": "You are now an enemy combatant in Sulla's eyes" },
-            { "factionId": "optimates", "shift": -2, "reason": "The senate considers you a rebel" }
+            {
+              "factionId": "populares",
+              "shift": 3,
+              "reason": "Bound your fate to Marius in the field"
+            },
+            {
+              "factionId": "sullan_faction",
+              "shift": -3,
+              "reason": "You are now an enemy combatant in Sulla's eyes"
+            },
+            {
+              "factionId": "optimates",
+              "shift": -2,
+              "reason": "The senate considers you a rebel"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "audacia", "shift": 2, "reason": "Chose the march when staying was safer" }
+            {
+              "trait": "audacia",
+              "shift": 2,
+              "reason": "Chose the march when staying was safer"
+            }
           ]
         }
       ]
@@ -210,16 +272,25 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "populares", "shift": -3, "reason": "Marius considers you a deserter from the cause" }
+            {
+              "factionId": "populares",
+              "shift": -3,
+              "reason": "Marius considers you a deserter from the cause"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "calliditas", "shift": 1, "reason": "Preserved yourself when commitment meant danger" }
+            {
+              "trait": "calliditas",
+              "shift": 1,
+              "reason": "Preserved yourself when commitment meant danger"
+            }
           ]
         }
       ]
     }
-  ]
+  ],
+  "direction": "inbound"
 }

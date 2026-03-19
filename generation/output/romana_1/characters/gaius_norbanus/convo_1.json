@@ -8,7 +8,10 @@
       "type": "prior_exit_state",
       "npcId": "gaius_norbanus",
       "conversationId": "gaius_norbanus_convo_0",
-      "requiredExitStateIds": ["gaius_norbanus_convo_0_exit_recruit", "gaius_norbanus_convo_0_exit_friendly"]
+      "requiredExitStateIds": [
+        "gaius_norbanus_convo_0_exit_recruit",
+        "gaius_norbanus_convo_0_exit_friendly"
+      ]
     }
   ],
   "entryNodeId": "gaius_norbanus_convo_1_n01",
@@ -16,53 +19,53 @@
     "gaius_norbanus_convo_1_n01": {
       "type": "passive",
       "id": "gaius_norbanus_convo_1_n01",
-      "npcDialogue": "Just got back from the front. Still have mud on my boots from burying three centurions outside Asculum. The war is going badly. The Italians fight like Romans because we trained them to fight like Romans. Turns out that was a mistake.",
+      "npcDialogue": "Just rode in from the front. Still have Asculum mud on my boots — I buried three centurions in it this morning. The war's going badly, Crispus. Turns out the Italians fight like Romans. Funny, that. We're the ones who taught them.",
       "responses": [
         {
           "trait": "audacia",
           "threshold": 4,
-          "playerDialogue": "How bad? Give me numbers, not speeches.",
+          "playerDialogue": "Skip the eulogy. How bad — numbers, positions, the real picture.",
           "nextNodeId": "gaius_norbanus_convo_1_n02"
         },
         {
           "trait": "calliditas",
           "threshold": 4,
-          "playerDialogue": "If the war is going badly, someone in Rome is already figuring out how to profit from it.",
+          "playerDialogue": "If the war's going badly, someone in this city is already calculating how to profit from it.",
           "nextNodeId": "gaius_norbanus_convo_1_n03"
         },
         {
           "trait": "severitas",
           "threshold": 5,
-          "playerDialogue": "What do the commanders say? Is there a plan to turn this around?",
+          "playerDialogue": "What's the command structure saying? Is there an actual plan, or just speeches?",
           "nextNodeId": "gaius_norbanus_convo_1_n02"
         },
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "I'm sorry about your centurions. Good men?",
+          "playerDialogue": "I'm sorry about your centurions. Were they good men?",
           "nextNodeId": "gaius_norbanus_convo_1_n03"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "Tell me what happened out there.",
+        "playerDialogue": "Sit. Drink. Tell me what happened out there.",
         "nextNodeId": "gaius_norbanus_convo_1_n02"
       }
     },
     "gaius_norbanus_convo_1_n02": {
       "type": "active",
       "id": "gaius_norbanus_convo_1_n02",
-      "npcDialogue": "Two legions routed in Samnium. Lupus dead with half his army at the Tolenus River. The Marsi hit us at dawn and we never recovered the line. Back in Rome, the senate debates who gets credit for victories that haven't happened. Meanwhile, every Italian town between here and Brundisium is armed and angry. We need bodies. Trained ones. I have the authority to issue military credentials. You want to make a difference, or you want to keep talking about it?",
+      "npcDialogue": "Two legions broken in Samnium. Lupus dead — half his army with him at the Tolenus. The Marsi hit us before dawn and we never found the line again. Back here, the senate debates who deserves a triumph for victories that haven't bloody happened. Meanwhile every Italian town from here to Brundisium is sharpening iron. We need bodies, Crispus — trained ones. I've got authority to write military commissions. So — you want to do something, or keep having opinions about it?",
       "options": [
         {
-          "playerDialogue": "Give me a posting. I'll fight.",
+          "playerDialogue": "Write the commission. I'll fight.",
           "nextNodeId": "gaius_norbanus_convo_1_n04"
         },
         {
-          "playerDialogue": "What about Sulla? I hear he's been effective in Campania.",
+          "playerDialogue": "What about Sulla? Word is he's actually winning down in Campania.",
           "nextNodeId": "gaius_norbanus_convo_1_n05"
         },
         {
-          "playerDialogue": "I'm more useful behind the lines. Supply, logistics, intelligence. Where do you need that kind of help?",
+          "playerDialogue": "I'm more dangerous behind the lines — supply, logistics, intelligence. Where's the machine breaking down?",
           "nextNodeId": "gaius_norbanus_convo_1_n06"
         }
       ]
@@ -70,18 +73,18 @@
     "gaius_norbanus_convo_1_n03": {
       "type": "active",
       "id": "gaius_norbanus_convo_1_n03",
-      "npcDialogue": "Best men I served with. One of them, Sextus, survived the Cimbri. Fifteen years carrying a shield for Rome. Killed by an Italian who'd been his tentmate in Numidia. That's what this war is. Brothers killing brothers because the senate couldn't share a vote. But I didn't come back to mourn. I came back to find people who can actually help. The front needs officers. Rome needs someone watching the supply lines. Which are you?",
+      "npcDialogue": "The best. One of them — Sextus — survived the Cimbri. Fifteen years carrying a shield for Rome. Killed outside Asculum by an Italian who'd been his tentmate in Numidia. That's what this war is. Brothers butchering brothers because the senate couldn't bring itself to share a gods-damned ballot. But I didn't ride back here to mourn. I need people who can help. The front needs officers. Rome needs someone watching the supply lines. Which one are you?",
       "options": [
         {
-          "playerDialogue": "Put me on the front line. I didn't come this far to count grain sacks.",
+          "playerDialogue": "The front. I didn't come this far to weigh grain sacks.",
           "nextNodeId": "gaius_norbanus_convo_1_n04"
         },
         {
-          "playerDialogue": "What about Sulla? I hear he's been effective in Campania.",
+          "playerDialogue": "What about Sulla? Word is he's actually winning down in Campania.",
           "nextNodeId": "gaius_norbanus_convo_1_n05"
         },
         {
-          "playerDialogue": "The supply lines. A war is won with bread and iron before it's won with swords. Put me where the logistics break down.",
+          "playerDialogue": "The supply lines. A war runs on bread and iron before it runs on courage. Put me where the logistics are rotting.",
           "nextNodeId": "gaius_norbanus_convo_1_n06"
         }
       ]
@@ -89,21 +92,36 @@
     "gaius_norbanus_convo_1_n04": {
       "type": "active",
       "id": "gaius_norbanus_convo_1_n04",
-      "npcDialogue": "Good. I'll write your commission as military tribune attached to the populares levies. You'll serve under Marian officers. The pay is irregular and the food is worse. But you'll have command authority over a century, and when this war is done, every man in Rome will know you stood on the line. The veterans will consider you one of their own. That's worth more than any senate endorsement.",
+      "npcDialogue": "Good man. I'll write you in as military tribune, attached to the populares levies — you'll serve under Marian officers. Pay's irregular, food's worse, and the wine tastes like something a mule refused. But you'll command a century, and when this mess is over, every man in Rome will know you stood on the line. The veterans will call you one of their own. Trust me — that's worth more than any senatorial handshake.",
       "options": [
         {
           "playerDialogue": "When do I leave?",
           "roll": {
-            "dice": { "count": 2, "sides": 6 },
+            "dice": {
+              "count": 2,
+              "sides": 6
+            },
             "baseThreshold": 7,
-            "factors": { "personalFavor": 1, "factionAlignment": 2, "force": 0, "wealth": 0 },
-            "reputationBonus": { "trait": "audacia", "weight": 1 }
+            "factors": {
+              "personalFavor": 1,
+              "factionAlignment": 2,
+              "force": 0,
+              "wealth": 0
+            },
+            "reputationBonus": {
+              "trait": "audacia",
+              "weight": 1
+            }
           },
-          "onSuccess": { "nextNodeId": "gaius_norbanus_convo_1_n07" },
-          "onFailure": { "nextNodeId": "gaius_norbanus_convo_1_n08" }
+          "onSuccess": {
+            "nextNodeId": "gaius_norbanus_convo_1_n07"
+          },
+          "onFailure": {
+            "nextNodeId": "gaius_norbanus_convo_1_n08"
+          }
         },
         {
-          "playerDialogue": "I'll serve. But I want to know who I'm really fighting for — Rome or Marius.",
+          "playerDialogue": "I'll serve. But I want to know who I'm really bleeding for — Rome, or one old man's pride.",
           "nextNodeId": "gaius_norbanus_convo_1_n08"
         }
       ]
@@ -111,41 +129,47 @@
     "gaius_norbanus_convo_1_n05": {
       "type": "noop",
       "id": "gaius_norbanus_convo_1_n05",
-      "npcDialogue": "Sulla. Yes. He's competent. More than competent — he's winning his sector while the rest of us bleed. Took Stabiae, pushed the Samnites back from Pompeii. The men worship him because he wins and he shares the loot. That's the Marian model, ironically. Sulla learned it from the old man and now he's better at it. Don't repeat that. The point is, when this war ends, Sulla will have an army that loves him and a reputation the senate can't ignore. That should worry everyone.",
+      "npcDialogue": "Sulla. Yes. He's not just competent — he's winning his whole sector while the rest of us bleed into the dirt. Took Stabiae, shoved the Samnites back from Pompeii. His men worship him because he wins and splits the loot. That's the Marian model, ironically — Sulla learned it from the old man and now he's better at it. Don't repeat that. Point is, when this war ends, Sulla will have a loyal army and a reputation the senate can't touch. That should scare the piss out of everyone.",
       "options": [
-        { "playerDialogue": "Noted. Now — what can I do to help on the Marian side?", "nextNodeId": "gaius_norbanus_convo_1_n02" }
+        {
+          "playerDialogue": "Noted. Terrifying. Now — what can I actually do on the Marian side?",
+          "nextNodeId": "gaius_norbanus_convo_1_n02"
+        }
       ]
     },
     "gaius_norbanus_convo_1_n06": {
       "type": "noop",
       "id": "gaius_norbanus_convo_1_n06",
-      "npcDialogue": "Smart. The supply chain from Ostia to the southern front is a disaster. Grain shipments delayed, equipment misrouted, half the quartermasters are skimming. I'll commission you as a staff officer — you'll have access to the logistics network and the authority to audit the supply chain. Less glory, more impact. The men who keep an army fed win more battles than the men who swing swords.",
+      "npcDialogue": "Smart. The supply chain from Ostia to the southern front is a catastrophe — grain shipments late, equipment sent to the wrong camps, half the quartermasters skimming off the top like it's a gods-given right. I'll commission you as staff officer. You'll have access to the whole logistics web and authority to crack skulls when the numbers don't add up. Less glory, more impact. The men who keep an army fed win more wars than the ones swinging gladii.",
       "options": [
-        { "playerDialogue": "I'll take the commission. Where do I start?", "nextNodeId": "gaius_norbanus_convo_1_n09" }
+        {
+          "playerDialogue": "I'll take it. Point me at the worst of it.",
+          "nextNodeId": "gaius_norbanus_convo_1_n09"
+        }
       ]
     },
     "gaius_norbanus_convo_1_n07": {
       "type": "exit",
       "id": "gaius_norbanus_convo_1_n07",
-      "npcDialogue": "Dawn. Pack light. Your century is assembling at the Porta Capena. They're raw but they'll learn — the Italians will teach them fast enough. You'll get your first taste of the line within a week. When you come back, you'll be a different man. Every soldier is.",
+      "npcDialogue": "Dawn. Pack light — one tunic, your blade, and whatever the gods gave you for guts. Your century's mustering at the Porta Capena. They're green, but the Italians will educate them fast enough. A week from now you'll have your first taste of the line. When you come back — and you will come back, because I don't befriend men who die easily — you'll be someone different.",
       "exitStateId": "gaius_norbanus_convo_1_exit_tribune"
     },
     "gaius_norbanus_convo_1_n08": {
       "type": "exit",
       "id": "gaius_norbanus_convo_1_n08",
-      "npcDialogue": "Fair question. The honest answer is both. Right now they're the same thing. Marius built this army, and this army is the only thing standing between Rome and the Italians. When the war ends, maybe that changes. But today? You're fighting for the men beside you. That's all any soldier ever fights for.",
+      "npcDialogue": "Honest question — deserves an honest answer. Both. Right now they're the same thing. Marius built this army, and this army is the only wall between Rome and a hundred thousand angry Italians. When the war's over, maybe that changes. But today? You fight for the man on your left and the man on your right. That's all any soldier ever fights for. The rest is speeches.",
       "exitStateId": "gaius_norbanus_convo_1_exit_tribune"
     },
     "gaius_norbanus_convo_1_n09": {
       "type": "exit",
       "id": "gaius_norbanus_convo_1_n09",
-      "npcDialogue": "The depot at Capua. It's the bottleneck. Fix that and you fix half the southern front's problems. I'll send word ahead that you're coming. Don't let the quartermasters stall you — half of them are on the take. Use your authority. That's what it's for.",
+      "npcDialogue": "Capua. The depot there is the bottleneck — fix Capua and you fix half the southern front. I'll send a rider ahead so they know you're coming. And Crispus — don't let the quartermasters stall you. Half of them are on the take and the other half are covering for the first half. Use your authority. That's what it's bloody for.",
       "exitStateId": "gaius_norbanus_convo_1_exit_staff"
     },
     "gaius_norbanus_convo_1_n10": {
       "type": "exit",
       "id": "gaius_norbanus_convo_1_n10",
-      "npcDialogue": "Your choice. The war will end with or without you. But the men who didn't serve will find the peace harder to navigate. Military credibility matters in Rome. Always has. Without it, you're just another civilian with opinions.",
+      "npcDialogue": "Your call. The war ends with or without you. But when it's over, the men who didn't serve are going to find the peace very cold. Military credibility matters in this city — always has. Without it, you're just another civilian with a toga and an opinion.",
       "exitStateId": "gaius_norbanus_convo_1_exit_civilian"
     }
   },
@@ -157,13 +181,21 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "populares", "shift": 2, "reason": "Volunteered for front-line service under Marian command" }
+            {
+              "factionId": "populares",
+              "shift": 2,
+              "reason": "Volunteered for front-line service under Marian command"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "audacia", "shift": 2, "reason": "Chose combat when safer options were available" }
+            {
+              "trait": "audacia",
+              "shift": 2,
+              "reason": "Chose combat when safer options were available"
+            }
           ]
         }
       ]
@@ -175,13 +207,21 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "populares", "shift": 1, "reason": "Supporting the Marian war effort from the supply lines" }
+            {
+              "factionId": "populares",
+              "shift": 1,
+              "reason": "Supporting the Marian war effort from the supply lines"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "calliditas", "shift": 1, "reason": "Chose the practical work of logistics over front-line glory" }
+            {
+              "trait": "calliditas",
+              "shift": 1,
+              "reason": "Chose the practical work of logistics over front-line glory"
+            }
           ]
         }
       ]
@@ -191,5 +231,6 @@
       "narrativeLabel": "Civilian",
       "effects": []
     }
-  ]
+  ],
+  "direction": "outbound"
 }

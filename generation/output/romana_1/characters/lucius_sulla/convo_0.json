@@ -25,18 +25,18 @@
     "lucius_sulla_convo_0_n01": {
       "type": "active",
       "id": "lucius_sulla_convo_0_n01",
-      "npcDialogue": "Every man in this room wants something from me. They just lack the nerve to say it plainly. You don't strike me as the type who lacks nerve. So — what do you want?",
+      "npcDialogue": "You've been watching me all evening — no, don't apologize, it's refreshing. Everyone else here watches from behind their wine cups and thinks I don't notice. You just... looked. So I'll extend you the courtesy of directness. What is it you want from Lucius Cornelius Sulla?",
       "options": [
         {
-          "playerDialogue": "Your endorsement. A word from you opens doors that my family name can't.",
+          "playerDialogue": "Your name beside mine. Doors open for men you've spoken well of — I'd rather not pretend otherwise.",
           "nextNodeId": "lucius_sulla_convo_0_n02"
         },
         {
-          "playerDialogue": "To understand what you're planning for the eastern command. Before the rest of Rome does.",
+          "playerDialogue": "The Mithridatic command. I want to understand what you see coming in the east — before everyone else does.",
           "nextNodeId": "lucius_sulla_convo_0_n03"
         },
         {
-          "playerDialogue": "The same thing you want — to be on the right side when Rome changes.",
+          "playerDialogue": "The same thing you want — to be standing when Rome finishes falling down.",
           "visibilityRequirement": {
             "trait": "audacia",
             "minValue": 5
@@ -48,10 +48,10 @@
     "lucius_sulla_convo_0_n02": {
       "type": "noop",
       "id": "lucius_sulla_convo_0_n02",
-      "npcDialogue": "Political ambition. At least it's honest. Half the men who come to me want to be seen near me without admitting why. An endorsement is worth what the endorsed man makes of it. Show me why mine would be worth giving.",
+      "npcDialogue": "Honest appetite. I can almost taste it. Half the men who orbit me want precisely what you want — they just dress it up in philosophy first, which wastes everyone's time. But my endorsement isn't a gift, Crispus. It's an investment. And I don't invest in anything I haven't tested.",
       "options": [
         {
-          "playerDialogue": "I'll show you. Where do you need results?",
+          "playerDialogue": "Then test me. What do you need done?",
           "nextNodeId": "lucius_sulla_convo_0_n05"
         }
       ]
@@ -59,14 +59,14 @@
     "lucius_sulla_convo_0_n03": {
       "type": "active",
       "id": "lucius_sulla_convo_0_n03",
-      "npcDialogue": "The eastern command is mine by right of law and by right of ability. Mithridates has been building his strength for a decade. Whoever takes that command will write history. What exactly do you want to know?",
+      "npcDialogue": "Mithridates has spent ten years building what Rome spent ten years ignoring. Whoever takes that command will either save the Republic's eastern provinces or lose them forever — there is no middle outcome. The Senate assigned the command to me. The law is clear. But since when has clarity stopped anyone in this city?",
       "options": [
         {
-          "playerDialogue": "Whether you believe you'll get it — or whether Marius will find a way to steal it.",
+          "playerDialogue": "You think Marius will try to take it from you.",
           "nextNodeId": "lucius_sulla_convo_0_n05"
         },
         {
-          "playerDialogue": "I want to know what you'd do if Marius found a way to take it from you.",
+          "playerDialogue": "What happens if he does?",
           "nextNodeId": "lucius_sulla_convo_0_n06"
         }
       ]
@@ -74,10 +74,10 @@
     "lucius_sulla_convo_0_n04": {
       "type": "noop",
       "id": "lucius_sulla_convo_0_n04",
-      "npcDialogue": "Sit down. You're the first person today who's said something interesting.",
+      "npcDialogue": "Oh, sit down. Please. You're the first person tonight who's said something that didn't bore me — I'd hate to lose you to the crowd.",
       "options": [
         {
-          "playerDialogue": "I thought you'd appreciate directness.",
+          "playerDialogue": "I had a feeling you'd prefer the version without flattery.",
           "nextNodeId": "lucius_sulla_convo_0_n05"
         }
       ]
@@ -85,45 +85,45 @@
     "lucius_sulla_convo_0_n05": {
       "type": "passive",
       "id": "lucius_sulla_convo_0_n05",
-      "npcDialogue": "Here's my situation. The Mithridatic command is mine. The law supports me. Marius disagrees. If this comes to a contest — not a legal one — where does a man like you stand?",
+      "npcDialogue": "Here is the shape of things. The eastern command is mine — lawfully, demonstrably mine. Marius wants it anyway. The tribunes will help him take it. If this stops being a legal question — and it will — I need to know where a man like you plants his feet.",
       "responses": [
         {
           "trait": "severitas",
           "threshold": 5,
-          "playerDialogue": "Where the law puts me. The precedents matter more than any individual commander, including you.",
+          "playerDialogue": "Where the law plants them. Precedent is the only thing holding this Republic together — even for you.",
           "nextNodeId": "lucius_sulla_convo_0_n07"
         },
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "I'd want to prevent the contest entirely. A war between you and Marius serves Mithridates.",
+          "playerDialogue": "Wherever prevents a war between you and Marius. The only man who profits from that fight is Mithridates.",
           "nextNodeId": "lucius_sulla_convo_0_n07"
         },
         {
           "trait": "audacia",
           "threshold": 5,
-          "playerDialogue": "With whoever moves first and doesn't flinch. Hesitation is the only real defeat.",
+          "playerDialogue": "With whoever moves first and means it. Hesitation is the only defeat that matters.",
           "nextNodeId": "lucius_sulla_convo_0_n08"
         },
         {
           "trait": "calliditas",
           "threshold": 5,
-          "playerDialogue": "With whoever holds the legions when the dust settles. I'd rather be useful to that man than principled for the other.",
+          "playerDialogue": "With whoever holds the legions when it's over. I'd rather be useful to that man than principled under the other.",
           "nextNodeId": "lucius_sulla_convo_0_n08"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "I stand where Rome's interests stand. Which I'm still calculating.",
+        "playerDialogue": "I'm still calculating where Rome's interests lie. Give me time.",
         "nextNodeId": "lucius_sulla_convo_0_n07"
       }
     },
     "lucius_sulla_convo_0_n06": {
       "type": "noop",
       "id": "lucius_sulla_convo_0_n06",
-      "npcDialogue": "A direct question deserves a direct answer. Marius is a spent man clinging to a name. If he tries to take what is legally mine, he will learn what it costs to make an enemy of me. Every man in Rome should understand that.",
+      "npcDialogue": "You deserve a straight answer, so here it is. Marius is a ruin with a reputation — a name men remember from a war they've already forgotten. If he reaches for what the law gave me, he will discover what it means to take something from my hand. This is not a threat. I don't make threats. I'm describing the physics of the situation.",
       "options": [
         {
-          "playerDialogue": "I'm starting to understand it.",
+          "playerDialogue": "I think I'm beginning to understand the physics.",
           "nextNodeId": "lucius_sulla_convo_0_n07"
         }
       ]
@@ -131,7 +131,7 @@
     "lucius_sulla_convo_0_n07": {
       "type": "convergence",
       "id": "lucius_sulla_convo_0_n07",
-      "npcDialogue": "Careful answers. I respect that, in its way. Let me be less careful.",
+      "npcDialogue": "Careful. I respect careful — it's kept me alive more than once. But let me be something other than careful for a moment.",
       "routes": [
         {
           "condition": {
@@ -147,18 +147,18 @@
     "lucius_sulla_convo_0_n08": {
       "type": "active",
       "id": "lucius_sulla_convo_0_n08",
-      "npcDialogue": "An army's loyalty is to its general, not to the city that appointed him. I want to know if you understand what that means — not in the abstract, but in practice. In flesh and iron.",
+      "npcDialogue": "A legion's loyalty runs to its general — not to the Senate, not to the People, not to the city on the hill that appointed him. This is the fact that no one in Rome will say aloud. I'm saying it to you now, Crispus. I want to know if you understand what that means — not as philosophy, but as iron in the street.",
       "options": [
         {
-          "playerDialogue": "I understand the implication. And I'm not running from this conversation.",
+          "playerDialogue": "I understand exactly what you're telling me. And I'm still sitting here.",
           "nextNodeId": "lucius_sulla_convo_0_n09"
         },
         {
-          "playerDialogue": "I understand it completely. Tell me how I can be useful.",
+          "playerDialogue": "I understand it completely. Tell me how to be useful.",
           "nextNodeId": "lucius_sulla_convo_0_n09"
         },
         {
-          "playerDialogue": "That's a line Rome has never crossed. I won't help you cross it.",
+          "playerDialogue": "That is a line no Roman has ever crossed. I won't help you be the first.",
           "nextNodeId": "lucius_sulla_convo_0_n10"
         }
       ]
@@ -166,10 +166,10 @@
     "lucius_sulla_convo_0_n09": {
       "type": "active",
       "id": "lucius_sulla_convo_0_n09",
-      "npcDialogue": "Good. I need men in the city who know which way the wind blows — and who won't panic when it changes direction. Men who can pass information, arrange meetings, keep certain names off certain lists. Can you be one of those men?",
+      "npcDialogue": "Good. I need men inside the city — men who can read a room, carry a message, and know when not to be seen doing either. Men who can keep certain names off certain lists and put other names on them. The kind of work that history forgets but power remembers. Can you do that for me?",
       "options": [
         {
-          "playerDialogue": "I'm exactly that man.",
+          "playerDialogue": "I'm already doing it in my head. Ask me.",
           "roll": {
             "dice": {
               "count": 2,
@@ -195,7 +195,7 @@
           }
         },
         {
-          "playerDialogue": "Tell me specifically what you need and I'll tell you if I can deliver it.",
+          "playerDialogue": "Tell me exactly what you need — I don't make promises I haven't costed.",
           "nextNodeId": "lucius_sulla_convo_0_n10"
         }
       ]
@@ -203,13 +203,13 @@
     "lucius_sulla_convo_0_n10": {
       "type": "exit",
       "id": "lucius_sulla_convo_0_n10",
-      "npcDialogue": "Then we have an understanding. I don't forget the men who are useful to me. And I don't forget the ones who aren't.",
+      "npcDialogue": "Then we understand each other. I have an excellent memory, Crispus — for the men who help me and for the men who don't. You've just made that particular talent work in your favor.",
       "exitStateId": "lucius_sulla_convo_0_exit_allied"
     },
     "lucius_sulla_convo_0_n11": {
       "type": "exit",
       "id": "lucius_sulla_convo_0_n11",
-      "npcDialogue": "Cautious. I can work with cautious, if not with cowardly. I'll remember your face. When the time comes, you'll have a chance to prove which one you are.",
+      "npcDialogue": "Hm. Cautious — or perhaps just not ready. I'll remember your face. When events accelerate — and they will — you'll have one more chance to show me which it was. Don't waste it.",
       "exitStateId": "lucius_sulla_convo_0_exit_watched"
     }
   },
@@ -261,5 +261,6 @@
         }
       ]
     }
-  ]
+  ],
+  "direction": "outbound"
 }

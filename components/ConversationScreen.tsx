@@ -40,6 +40,19 @@ export default function ConversationScreen() {
     scrollToBottom();
   }, [convo.messages, convo.choices, scrollToBottom]);
 
+  // Helper: dispatch ADD_MESSAGE with current conversation context
+  const addMsg = useCallback((message: Omit<import('@lib/types').MessageEntry, 'id'>, nodeId?: string) => {
+    const curConvo = convoRef.current;
+    dispatch({
+      type: 'ADD_MESSAGE',
+      message: {
+        ...message,
+        conversationId: message.conversationId ?? curConvo.convoId ?? undefined,
+        nodeId: message.nodeId ?? nodeId ?? curConvo.currentNodeId ?? undefined,
+      },
+    });
+  }, [dispatch]);
+
   // Process a node — may chain into the next node for auto-resolved types.
   // This is the core conversation driver. It shows NPC dialogue, then either
   // presents choices (active/noop/exit-return) or auto-resolves and chains
@@ -72,7 +85,7 @@ export default function ConversationScreen() {
 
     // Show NPC dialogue
     if (node.npcDialogue && node.npcDialogue.trim()) {
-      dispatch({ type: 'ADD_MESSAGE', message: { type: 'npc', speaker: npcName, text: node.npcDialogue } });
+      addMsg({ type: 'npc', speaker: npcName, text: node.npcDialogue }, nodeId);
       await delay(300);
     }
 
@@ -97,10 +110,10 @@ export default function ConversationScreen() {
         const result = resolvePassive(stateRef.current!, node);
         await delay(600);
         if (result.matchedTrait) {
-          dispatch({ type: 'ADD_MESSAGE', message: { type: 'system', text: `Your ${result.matchedTrait} speaks for you.` } });
+          addMsg({ type: 'system', text: `Your ${result.matchedTrait} speaks for you.` }, nodeId);
           await delay(300);
         }
-        dispatch({ type: 'ADD_MESSAGE', message: { type: 'player', speaker: 'You', text: result.dialogue } });
+        addMsg({ type: 'player', speaker: 'You', text: result.dialogue }, nodeId);
         await delay(400);
         // Chain directly to next node
         await processNode(result.nextNodeId, true);
@@ -146,20 +159,17 @@ export default function ConversationScreen() {
         const { newState: afterEffects, results } = applyExitEffects(stateWithHistory, exitState);
 
         await delay(600);
-        dispatch({ type: 'ADD_MESSAGE', message: { type: 'system', text: exitState.narrativeLabel } });
+        addMsg({ type: 'system', text: exitState.narrativeLabel }, nodeId);
         await delay(300);
 
         let gameOver = false;
         let gameOverReason = '';
         for (const r of results) {
-          dispatch({
-            type: 'ADD_MESSAGE',
-            message: {
-              type: 'effect',
-              text: `${r.text}${r.reason ? ` — ${r.reason}` : ''}`,
-              effectPositive: r.positive,
-            },
-          });
+          addMsg({
+            type: 'effect',
+            text: `${r.text}${r.reason ? ` — ${r.reason}` : ''}`,
+            effectPositive: r.positive,
+          }, nodeId);
           if (r.gameOver) {
             gameOver = true;
             gameOverReason = r.gameOverReason || r.reason;
@@ -167,6 +177,7 @@ export default function ConversationScreen() {
           await delay(200);
         }
 
+        afterEffects.lastNpcId = conv.npcId;
         dispatch({ type: 'SET_GAME_STATE', state: afterEffects });
 
         if (gameOver) {
@@ -183,7 +194,7 @@ export default function ConversationScreen() {
         break;
       }
     }
-  }, [dispatch]);
+  }, [dispatch, addMsg]);
 
   // Initial trigger: process entry node when conversation starts
   useEffect(() => {
@@ -235,16 +246,14 @@ export default function ConversationScreen() {
 
     if (choice.type === 'active') {
       const opt = node.options[choice.index];
-      dispatch({ type: 'ADD_MESSAGE', message: { type: 'player', speaker: 'You', text: opt.playerDialogue } });
+      dispatch({ type: 'LOG_CHOICE', choiceIndex: choice.index, choiceText: opt.playerDialogue });
+      addMsg({ type: 'player', speaker: 'You', text: opt.playerDialogue });
       await delay(400);
 
       let nextNodeId: string | null;
       if (opt.roll) {
         const result = resolveRoll(stateRef.current!, opt.roll);
-        dispatch({
-          type: 'ADD_MESSAGE',
-          message: { type: 'roll', text: '', rollData: result },
-        });
+        addMsg({ type: 'roll', text: '', rollData: result });
         dispatch({ type: 'RECORD_ROLL', outcome: result.outcome });
         await delay(800);
         nextNodeId = getNextNodeId(opt, result.outcome);
@@ -253,7 +262,7 @@ export default function ConversationScreen() {
       }
 
       if (!nextNodeId) {
-        dispatch({ type: 'ADD_MESSAGE', message: { type: 'system', text: '[Error: conversation path broken]' } });
+        addMsg({ type: 'system', text: '[Error: conversation path broken]' });
         dispatch({
           type: 'SET_CHOICES',
           choices: [{ index: 0, text: 'Return...', locked: false, hasRoll: false, type: 'return' }],
@@ -267,7 +276,8 @@ export default function ConversationScreen() {
 
     if (choice.type === 'noop') {
       const opt = node.options[choice.index];
-      dispatch({ type: 'ADD_MESSAGE', message: { type: 'player', speaker: 'You', text: opt.playerDialogue } });
+      dispatch({ type: 'LOG_CHOICE', choiceIndex: choice.index, choiceText: opt.playerDialogue });
+      addMsg({ type: 'player', speaker: 'You', text: opt.playerDialogue });
       await delay(400);
       // Directly chain to next node
       await processNode(opt.nextNodeId, false);

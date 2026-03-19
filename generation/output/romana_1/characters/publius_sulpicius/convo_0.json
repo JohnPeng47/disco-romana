@@ -10,7 +10,9 @@
         {
           "type": "prior_exit_state",
           "conversationId": "gaius_norbanus_convo_0",
-          "requiredExitStateIds": ["gaius_norbanus_convo_0_exit_recruit"]
+          "requiredExitStateIds": [
+            "gaius_norbanus_convo_0_exit_recruit"
+          ]
         },
         {
           "type": "faction_standing",
@@ -25,19 +27,22 @@
     "publius_sulpicius_convo_0_n01": {
       "type": "active",
       "id": "publius_sulpicius_convo_0_n01",
-      "npcDialogue": "You've found me at a delicate hour. I have three bills before the assembly, a consul threatening religious obstruction, and half the forum convinced I'm either a savior or a traitor. So forgive my directness — what do you want, and how quickly can we conclude this?",
+      "npcDialogue": "Ah — you've arrived at precisely the moment I have least time to entertain visitors. Three bills queued for assembly, a consul rehearsing his religious objections like a man learning lines for a play, and the entire forum split between calling me a demagogue and a prophet. So — do me the courtesy of being interesting, or be brief.",
       "options": [
         {
-          "playerDialogue": "I want to help you pass the citizenship bill. Tell me what you need.",
+          "playerDialogue": "The citizenship bill. I want to help you pass it.",
           "nextNodeId": "publius_sulpicius_convo_0_n02"
         },
         {
-          "playerDialogue": "I want to understand your real strategy. The bills are the surface — what's underneath?",
+          "playerDialogue": "I'm not here about the bills. I'm here about what the bills are actually for.",
           "nextNodeId": "publius_sulpicius_convo_0_n03"
         },
         {
-          "playerDialogue": "I want to warn you. The optimates are planning more than religious obstruction.",
-          "visibilityRequirement": { "trait": "calliditas", "minValue": 4 },
+          "playerDialogue": "I came to warn you. The optimates are moving past obstruction — they're planning something harder.",
+          "visibilityRequirement": {
+            "trait": "calliditas",
+            "minValue": 4
+          },
           "nextNodeId": "publius_sulpicius_convo_0_n04"
         }
       ]
@@ -45,22 +50,25 @@
     "publius_sulpicius_convo_0_n02": {
       "type": "noop",
       "id": "publius_sulpicius_convo_0_n02",
-      "npcDialogue": "A volunteer. Refreshing, if suspicious. The citizenship bill distributes new Italian citizens across all thirty-five tribes instead of cramming them into a handful of meaningless ones. The optimates know that if the Italians vote across all tribes, the populares control the assembly permanently. That's why they'll do anything to stop it.",
+      "npcDialogue": "Enthusiasm. How novel. Let me explain what you're volunteering for, since I suspect you haven't fully thought it through. The citizenship bill distributes new Italian voters across all thirty-five tribes — not crammed into eight meaningless ones where their ballots vanish like coins down a drain. The optimates understand the arithmetic perfectly. Italians across all tribes means the populares own the assembly. Permanently. That's why they will break every precedent in the Republic to stop it.",
       "options": [
-        { "playerDialogue": "Tell me where the resistance is strongest.", "nextNodeId": "publius_sulpicius_convo_0_n05" }
+        {
+          "playerDialogue": "Where is the resistance sharpest? I'd rather know the terrain before I march into it.",
+          "nextNodeId": "publius_sulpicius_convo_0_n05"
+        }
       ]
     },
     "publius_sulpicius_convo_0_n03": {
       "type": "active",
       "id": "publius_sulpicius_convo_0_n03",
-      "npcDialogue": "Perceptive. Yes, the citizenship bill is the mechanism, but the prize is the Mithridatic command. If I can transfer it from Sulla to Marius through the tribal assembly, Marius gets his war, the populares get their champion back, and Sulla loses his route to permanent power. Three problems, one vote.",
+      "npcDialogue": "Well. Perhaps you're not entirely a waste of my afternoon. Yes — the citizenship bill is the vehicle, but the destination is the Mithridatic command. If I can push through a tribal vote transferring that war from Sulla to Marius, we accomplish something rather elegant: Marius gets his glory, the populares get their sword arm back, and Sulla loses the one thing that makes him dangerous. Three knots, one cut. You see it now?",
       "options": [
         {
-          "playerDialogue": "That's brilliant. And incredibly dangerous. Sulla won't accept it.",
+          "playerDialogue": "I see it. I also see Sulla — and he's not a man who gets outmaneuvered quietly.",
           "nextNodeId": "publius_sulpicius_convo_0_n05"
         },
         {
-          "playerDialogue": "You're using the Italians as a tool. Do they know that?",
+          "playerDialogue": "And the Italians? Do they know they're your lever, or do they think they're your cause?",
           "nextNodeId": "publius_sulpicius_convo_0_n06"
         }
       ]
@@ -68,21 +76,36 @@
     "publius_sulpicius_convo_0_n04": {
       "type": "active",
       "id": "publius_sulpicius_convo_0_n04",
-      "npcDialogue": "Go on. I have ears in most places, but not all of them. What have you heard?",
+      "npcDialogue": "Harder. An interesting word — it covers everything from judicial murder to the real kind. I have ears in most of the right rooms, but not all of them. What exactly have you heard?",
       "options": [
         {
-          "playerDialogue": "They're talking about a senatus consultum ultimum. Emergency powers to shut you down by force.",
+          "playerDialogue": "Senatus consultum ultimum. Emergency decree. They want legal cover to crush you by force.",
           "roll": {
-            "dice": { "count": 2, "sides": 6 },
+            "dice": {
+              "count": 2,
+              "sides": 6
+            },
             "baseThreshold": 7,
-            "factors": { "personalFavor": 1, "factionAlignment": 1, "force": 0, "wealth": 0 },
-            "reputationBonus": { "trait": "calliditas", "weight": 2 }
+            "factors": {
+              "personalFavor": 1,
+              "factionAlignment": 1,
+              "force": 0,
+              "wealth": 0
+            },
+            "reputationBonus": {
+              "trait": "calliditas",
+              "weight": 2
+            }
           },
-          "onSuccess": { "nextNodeId": "publius_sulpicius_convo_0_n05" },
-          "onFailure": { "nextNodeId": "publius_sulpicius_convo_0_n06" }
+          "onSuccess": {
+            "nextNodeId": "publius_sulpicius_convo_0_n05"
+          },
+          "onFailure": {
+            "nextNodeId": "publius_sulpicius_convo_0_n06"
+          }
         },
         {
-          "playerDialogue": "Nothing specific yet. But the mood in the senate is uglier than usual.",
+          "playerDialogue": "Nothing specific — just the temperature. The curia feels like a room where someone's already drawn a knife.",
           "nextNodeId": "publius_sulpicius_convo_0_n05"
         }
       ]
@@ -90,57 +113,68 @@
     "publius_sulpicius_convo_0_n05": {
       "type": "passive",
       "id": "publius_sulpicius_convo_0_n05",
-      "npcDialogue": "Here's what I need — and I need it before the next assembly session. The consul Pompeius Rufus is going to declare a justitium, a suspension of all public business, to block the vote. I need that declaration discredited before it's made. How would you handle something like that?",
+      "npcDialogue": "Here is what I need, and I need it before the next assembly session — which gives you less time than you'd like. The consul Pompeius Rufus intends to declare a justitium — a suspension of all public business — to strangle the vote in its cradle. I need that declaration dead before he speaks it. Consider this a test, Crispus. How would you kill it?",
       "responses": [
         {
           "trait": "severitas",
           "threshold": 5,
-          "playerDialogue": "Find the legal precedent that limits his authority to declare it. Beat him with his own rules.",
+          "playerDialogue": "Find the precedent that limits consular authority over assembly votes. Bury him in his own procedural law before he opens his mouth.",
           "nextNodeId": "publius_sulpicius_convo_0_n07"
         },
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "Offer him something. Every consul has a price that isn't money — a legacy, a province, a favor for his son.",
+          "playerDialogue": "Every consul wants something — a province, a legacy, an appointment for his idiot nephew. Find the price and pay it quietly.",
           "nextNodeId": "publius_sulpicius_convo_0_n07"
         },
         {
           "trait": "audacia",
           "threshold": 5,
-          "playerDialogue": "Fill the forum with enough citizens that a suspension becomes impossible to enforce. Make it a dead letter.",
+          "playerDialogue": "Pack the forum so full that a suspension becomes a joke. You can't silence thirty thousand throats with a proclamation.",
           "nextNodeId": "publius_sulpicius_convo_0_n08"
         },
         {
           "trait": "calliditas",
           "threshold": 5,
-          "playerDialogue": "Leak word that his co-consul opposes the suspension. Make Pompeius think he's alone before he declares.",
+          "playerDialogue": "Leak word that his co-consul opposes the suspension. Let Pompeius think he's standing alone — most men sit down when they realize no one's standing with them.",
           "nextNodeId": "publius_sulpicius_convo_0_n08"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "I'm not sure I'm the right person for that kind of work.",
+        "playerDialogue": "I — honestly, I'm not sure I'm the one to answer that.",
         "nextNodeId": "publius_sulpicius_convo_0_n07"
       }
     },
     "publius_sulpicius_convo_0_n06": {
       "type": "noop",
       "id": "publius_sulpicius_convo_0_n06",
-      "npcDialogue": "You know less than you pretend. That's fine — most people in this city do. But I didn't survive three years of tribunician politics by trusting men who oversell their information. Let's talk about what you can actually do.",
+      "npcDialogue": "You know less than you pretended, Crispus. Don't look wounded — half the men in this city trade on confidence they haven't earned. But I didn't survive three years of tribunician warfare by trusting men who sell smoke. Let's talk instead about what you can actually do, rather than what you'd like me to believe you can.",
       "options": [
-        { "playerDialogue": "Fair enough. What do you need?", "nextNodeId": "publius_sulpicius_convo_0_n07" }
+        {
+          "playerDialogue": "Fair. Tell me what you need — plainly.",
+          "nextNodeId": "publius_sulpicius_convo_0_n07"
+        }
       ]
     },
     "publius_sulpicius_convo_0_n07": {
       "type": "convergence",
       "id": "publius_sulpicius_convo_0_n07",
-      "npcDialogue": "Let me assess where we stand with each other.",
+      "npcDialogue": "A moment — let me take your measure properly before I decide what to do with you.",
       "routes": [
         {
-          "condition": { "type": "faction_standing", "factionId": "populares", "min": 2 },
+          "condition": {
+            "type": "faction_standing",
+            "factionId": "populares",
+            "min": 2
+          },
           "nextNodeId": "publius_sulpicius_convo_0_n09"
         },
         {
-          "condition": { "type": "faction_standing", "factionId": "italian_allies", "min": 1 },
+          "condition": {
+            "type": "faction_standing",
+            "factionId": "italian_allies",
+            "min": 1
+          },
           "nextNodeId": "publius_sulpicius_convo_0_n09"
         }
       ],
@@ -149,21 +183,36 @@
     "publius_sulpicius_convo_0_n08": {
       "type": "active",
       "id": "publius_sulpicius_convo_0_n08",
-      "npcDialogue": "Now you're thinking like a tribune. I have a network of freedmen and clients who can fill the forum on command. But I need someone who can coordinate them — someone the optimates won't immediately identify as mine. Are you willing to get your hands dirty in a way that can't be washed off?",
+      "npcDialogue": "Now that — that is thinking like a tribune. Good. I have a network of freedmen and clients who can fill the forum on a word, but I need someone to conduct them — someone the optimates won't immediately trace back to me. The question is whether you're willing to step into a current you can't step out of. Once you're seen as mine, Crispus, you're mine. Are you prepared for that?",
       "options": [
         {
-          "playerDialogue": "My hands are already dirty. Point me at the forum.",
+          "playerDialogue": "I've been swimming in currents since I got to Rome. At least yours is going somewhere. Point me at the forum.",
           "roll": {
-            "dice": { "count": 2, "sides": 6 },
+            "dice": {
+              "count": 2,
+              "sides": 6
+            },
             "baseThreshold": 6,
-            "factors": { "personalFavor": 1, "factionAlignment": 2, "force": 1, "wealth": 0 },
-            "reputationBonus": { "trait": "audacia", "weight": 1 }
+            "factors": {
+              "personalFavor": 1,
+              "factionAlignment": 2,
+              "force": 1,
+              "wealth": 0
+            },
+            "reputationBonus": {
+              "trait": "audacia",
+              "weight": 1
+            }
           },
-          "onSuccess": { "nextNodeId": "publius_sulpicius_convo_0_n09" },
-          "onFailure": { "nextNodeId": "publius_sulpicius_convo_0_n10" }
+          "onSuccess": {
+            "nextNodeId": "publius_sulpicius_convo_0_n09"
+          },
+          "onFailure": {
+            "nextNodeId": "publius_sulpicius_convo_0_n10"
+          }
         },
         {
-          "playerDialogue": "I'll coordinate, but I won't be seen. Plausible deniability for both of us.",
+          "playerDialogue": "I'll coordinate — but from the shadows. Plausible deniability, for both our sakes.",
           "nextNodeId": "publius_sulpicius_convo_0_n09"
         }
       ]
@@ -171,13 +220,13 @@
     "publius_sulpicius_convo_0_n09": {
       "type": "exit",
       "id": "publius_sulpicius_convo_0_n09",
-      "npcDialogue": "Welcome to the game beneath the game. When the vote happens — and it will happen — you'll be in a position most men would kill for. Literally, in some cases. I'll send word when I need you.",
+      "npcDialogue": "Welcome to the game beneath the game, Crispus. When the vote comes — and it will come, whatever Pompeius and his augurs contrive — you'll be standing in a place most men in this city would open a vein to reach. Some of them may, in fact. I'll send word when I need you. Don't make me wait.",
       "exitStateId": "publius_sulpicius_convo_0_exit_recruited"
     },
     "publius_sulpicius_convo_0_n10": {
       "type": "exit",
       "id": "publius_sulpicius_convo_0_n10",
-      "npcDialogue": "I won't pretend we're allies. But I'll remember that you came to me, and that you listened. In this city, that's not nothing. Stay watchful — the vote is coming whether you're ready or not.",
+      "npcDialogue": "We're not allies — let's not pretend otherwise. But you came to me, and you listened, and in a city of men who can do neither without an ulterior motive, that registers. Stay watchful. The vote is coming whether you've decided to matter or not.",
       "exitStateId": "publius_sulpicius_convo_0_exit_acquaintance"
     }
   },
@@ -189,15 +238,31 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "populares", "shift": 2, "reason": "Embedded in Sulpicius's legislative network" },
-            { "factionId": "italian_allies", "shift": 1, "reason": "Working toward Italian citizenship distribution" },
-            { "factionId": "optimates", "shift": -2, "reason": "Identified as part of the tribunician bloc" }
+            {
+              "factionId": "populares",
+              "shift": 2,
+              "reason": "Embedded in Sulpicius's legislative network"
+            },
+            {
+              "factionId": "italian_allies",
+              "shift": 1,
+              "reason": "Working toward Italian citizenship distribution"
+            },
+            {
+              "factionId": "optimates",
+              "shift": -2,
+              "reason": "Identified as part of the tribunician bloc"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "calliditas", "shift": 1, "reason": "Operating in the shadows of Roman legislation" }
+            {
+              "trait": "calliditas",
+              "shift": 1,
+              "reason": "Operating in the shadows of Roman legislation"
+            }
           ]
         },
         {
@@ -213,7 +278,11 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "populares", "shift": 1, "reason": "Sulpicius registers you as a possible future asset" }
+            {
+              "factionId": "populares",
+              "shift": 1,
+              "reason": "Sulpicius registers you as a possible future asset"
+            }
           ]
         },
         {
@@ -222,5 +291,6 @@
         }
       ]
     }
-  ]
+  ],
+  "direction": "outbound"
 }

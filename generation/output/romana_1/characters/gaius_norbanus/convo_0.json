@@ -3,60 +3,73 @@
   "npcId": "gaius_norbanus",
   "phaseId": "social_war",
   "sequenceIndex": 0,
-  "preconditions": [],
+  "preconditions": [
+    {
+      "type": "prior_exit_state",
+      "conversationId": "lucius_vettius_convo_0",
+      "requiredExitStateIds": [
+        "lucius_vettius_convo_0_exit_trusted",
+        "lucius_vettius_convo_0_exit_witness",
+        "lucius_vettius_convo_0_exit_dismissed"
+      ]
+    }
+  ],
   "entryNodeId": "gaius_norbanus_convo_0_n01",
   "nodes": {
     "gaius_norbanus_convo_0_n01": {
       "type": "passive",
       "id": "gaius_norbanus_convo_0_n01",
-      "npcDialogue": "Tavern's full of veterans tonight. Half of them haven't been paid in six months. The other half got paid in land grants that don't exist. Sit down or don't. I'm drinking either way.",
+      "npcDialogue": "See these men? Half haven't drawn pay in six months. The other half got land grants written on papyrus that turns out to be worth exactly the papyrus. Sit down if you want. I'm finishing this cup either way.",
       "responses": [
         {
           "trait": "audacia",
           "threshold": 4,
-          "playerDialogue": "I'll sit. You look like a man with things to say and no one listening.",
+          "playerDialogue": "I'll sit. You seem like the only honest man in the room — and that makes you either brave or drunk.",
           "nextNodeId": "gaius_norbanus_convo_0_n02"
         },
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "Those men deserve better. What happened to their land grants?",
+          "playerDialogue": "Those men look like they've earned better than bad wine and empty promises. What happened to their land?",
           "nextNodeId": "gaius_norbanus_convo_0_n03"
         },
         {
           "trait": "calliditas",
           "threshold": 4,
-          "playerDialogue": "Unpaid veterans in a tavern near the Campus Martius. That's not an accident. Someone organized this gathering.",
+          "playerDialogue": "Unpaid veterans drinking together near the Campus Martius. This isn't drowning sorrows — someone called this muster.",
           "nextNodeId": "gaius_norbanus_convo_0_n02"
         },
         {
           "trait": "severitas",
           "threshold": 4,
-          "playerDialogue": "If they have grievances, there are legal channels. The senate has a process for land disputes.",
+          "playerDialogue": "If they have legitimate grievances, there are tribunals for land disputes. The senate has procedures.",
           "nextNodeId": "gaius_norbanus_convo_0_n04"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "I'll have what you're having.",
+        "playerDialogue": "Pour me whatever that is. I'll catch up.",
         "nextNodeId": "gaius_norbanus_convo_0_n03"
       }
     },
     "gaius_norbanus_convo_0_n02": {
       "type": "active",
       "id": "gaius_norbanus_convo_0_n02",
-      "npcDialogue": "Name's Norbanus. Praetor, technically. More useful as a soldier. Here's the situation. Marius promised his veterans land after the Cimbri campaigns. Good land. Senate confirmed it, then did nothing. Ten years later, men who saved Rome are sharecropping on estates owned by senators who never held a sword. That's not politics. That's theft.",
+      "npcDialogue": "Norbanus. Praetor on the rolls, soldier in practice. Here's the short version. Marius promised these men land after the Cimbri — good farmland, senate-confirmed. Ten years on, they're sharecropping fields owned by senators who've never gripped anything sharper than a stylus. That's not politics, friend. That's robbery with a clerk's seal on it.",
       "options": [
         {
-          "playerDialogue": "Those men bled for Rome. If the senate promised them land, the senate should deliver. Period.",
+          "playerDialogue": "They bled for that land. A promise from the Republic should mean something, or the Republic means nothing.",
           "nextNodeId": "gaius_norbanus_convo_0_n05"
         },
         {
-          "playerDialogue": "I've seen those men drill. Even now, they move like a legion. That kind of discipline doesn't come cheap.",
+          "playerDialogue": "I watched one of them drill outside — force of habit, I suppose. Soldiers like that don't just evaporate because you cheat them.",
           "nextNodeId": "gaius_norbanus_convo_0_n06"
         },
         {
-          "playerDialogue": "The law is the law. If the grants were confirmed by the senate, there must be a legal remedy.",
-          "visibilityRequirement": { "trait": "severitas", "minValue": 5 },
+          "playerDialogue": "If the grants were confirmed by senatorial decree, there must be a legal path. Someone could bring a case.",
+          "visibilityRequirement": {
+            "trait": "severitas",
+            "minValue": 5
+          },
           "nextNodeId": "gaius_norbanus_convo_0_n07"
         }
       ]
@@ -64,19 +77,22 @@
     "gaius_norbanus_convo_0_n03": {
       "type": "active",
       "id": "gaius_norbanus_convo_0_n03",
-      "npcDialogue": "What happened is simple. Senate votes the land. Commissioners go out to survey it. Commissioners come back and say the land is occupied by Roman citizens who can't be displaced. Funny thing — those citizens are all clients of the same four senators who voted against the grants in the first place. The veterans get nothing. Marius gets angry. Nobody cares about angry old generals until they need one.",
+      "npcDialogue": "Simple as mud. Senate votes the land. Commissioners ride out to survey it. Commissioners ride back and say — oh, terribly sorry — the land's occupied by citizens who can't be displaced. Hercules' balls, those citizens all happen to be clients of the same four senators who voted against the grants. Veterans get nothing. Marius fumes. Nobody gives a damn about angry old generals — until the barbarians come back.",
       "options": [
         {
-          "playerDialogue": "That's not just wrong, it's dangerous. Men with nothing to lose and military training are not men you want angry.",
+          "playerDialogue": "Trained killers with nothing to lose and empty bellies. The senate's building itself a very elegant funeral pyre.",
           "nextNodeId": "gaius_norbanus_convo_0_n05"
         },
         {
-          "playerDialogue": "Marius's veterans aren't the only ones suffering. The Italian allies fought those same wars and got even less.",
+          "playerDialogue": "The Italian allies fought those same campaigns and got even less. At least your veterans can vote.",
           "nextNodeId": "gaius_norbanus_convo_0_n06"
         },
         {
-          "playerDialogue": "The law is the law. If the grants were confirmed by the senate, there must be a legal remedy.",
-          "visibilityRequirement": { "trait": "severitas", "minValue": 5 },
+          "playerDialogue": "If the grants were confirmed by senatorial decree, there must be a legal path. Someone could bring a case.",
+          "visibilityRequirement": {
+            "trait": "severitas",
+            "minValue": 5
+          },
           "nextNodeId": "gaius_norbanus_convo_0_n07"
         }
       ]
@@ -84,29 +100,47 @@
     "gaius_norbanus_convo_0_n04": {
       "type": "noop",
       "id": "gaius_norbanus_convo_0_n04",
-      "npcDialogue": "Legal channels. Right. I've watched men file petitions for a decade. You know what a petition gets you? A clerk who loses it. Then another clerk who finds it and loses it again. The senate's process is designed to exhaust you until you stop asking. But sure. Legal channels.",
+      "npcDialogue": "Procedures. By the gods. I've watched these men file petitions for a decade. You know what a petition gets you? A clerk who loses it, then a second clerk who finds it and loses it better. The whole system's designed to grind you down until you stop asking. But sure — procedures.",
       "options": [
-        { "playerDialogue": "Then explain what you think the alternative is.", "nextNodeId": "gaius_norbanus_convo_0_n02" }
+        {
+          "playerDialogue": "Fine. If the legal road's a dead end, tell me what road you think isn't.",
+          "nextNodeId": "gaius_norbanus_convo_0_n02"
+        }
       ]
     },
     "gaius_norbanus_convo_0_n05": {
       "type": "active",
       "id": "gaius_norbanus_convo_0_n05",
-      "npcDialogue": "You understand the land problem. Good. Now understand what Marius did about it. He opened the legions to men without property. Head-count citizens. Gave them equipment from the state treasury. Turned beggars into soldiers. Brilliant, militarily. But it means the legions are loyal to their commander, not to Rome. Because Rome never gave them anything. Their general did. That's the world we live in now. Every army is a private army. The senate pretends otherwise.",
+      "npcDialogue": "Right. So understand what Marius did about it. He threw the legions open to the head-count — men without a pot to piss in. Armed them from the treasury. Turned beggars into the finest heavy infantry the world has ever seen. Brilliant, militarily. But here's the hook — those soldiers owe Rome nothing, because Rome never gave them anything. Their general did. So now every army is a private army, and the senate sits there pretending it isn't. That's the world we drink in.",
       "options": [
         {
-          "playerDialogue": "If the legions follow their commander, then the man who commands the most legions rules Rome. Marius knows this.",
+          "playerDialogue": "The man who commands the most legions owns the Republic. Marius understands that arithmetic — he invented it.",
           "roll": {
-            "dice": { "count": 2, "sides": 6 },
+            "dice": {
+              "count": 2,
+              "sides": 6
+            },
             "baseThreshold": 7,
-            "factors": { "personalFavor": 1, "factionAlignment": 2, "force": 0, "wealth": 0 },
-            "reputationBonus": { "trait": "audacia", "weight": 1 }
+            "factors": {
+              "personalFavor": 1,
+              "factionAlignment": 2,
+              "force": 0,
+              "wealth": 0
+            },
+            "reputationBonus": {
+              "trait": "audacia",
+              "weight": 1
+            }
           },
-          "onSuccess": { "nextNodeId": "gaius_norbanus_convo_0_n08" },
-          "onFailure": { "nextNodeId": "gaius_norbanus_convo_0_n09" }
+          "onSuccess": {
+            "nextNodeId": "gaius_norbanus_convo_0_n08"
+          },
+          "onFailure": {
+            "nextNodeId": "gaius_norbanus_convo_0_n09"
+          }
         },
         {
-          "playerDialogue": "Someone needs to fix the system before it breaks everything. Is that what the populares are trying to do?",
+          "playerDialogue": "Someone has to fix the machinery before it flies apart. Is that what the populares think they're doing?",
           "nextNodeId": "gaius_norbanus_convo_0_n09"
         }
       ]
@@ -114,21 +148,36 @@
     "gaius_norbanus_convo_0_n06": {
       "type": "active",
       "id": "gaius_norbanus_convo_0_n06",
-      "npcDialogue": "You're right about the Italians. They fought beside us. Bled beside us. And they can't even vote. At least a Roman veteran has citizenship. An Italian veteran has nothing but a sword and the memory of friends who died for a Republic that won't claim them. The Social War started because we're too stupid to share.",
+      "npcDialogue": "Now you're talking. The Italians fought beside us — bled beside us, same mud, same fear. And they can't even cast a ballot. A Roman veteran at least has citizenship to his name. An Italian veteran has nothing but a gladius and the memory of friends who died for a Republic that pretends he doesn't exist. The Social War started because we were too gods-damned stupid to share a vote.",
       "options": [
         {
-          "playerDialogue": "The veterans and the Italians want the same thing. Land. Recognition. Has anyone tried uniting those causes?",
+          "playerDialogue": "Veterans and Italians want the same thing — land, recognition. Has anyone tried yoking those two oxen together?",
           "roll": {
-            "dice": { "count": 2, "sides": 6 },
+            "dice": {
+              "count": 2,
+              "sides": 6
+            },
             "baseThreshold": 7,
-            "factors": { "personalFavor": 1, "factionAlignment": 2, "force": 0, "wealth": 0 },
-            "reputationBonus": { "trait": "calliditas", "weight": 1 }
+            "factors": {
+              "personalFavor": 1,
+              "factionAlignment": 2,
+              "force": 0,
+              "wealth": 0
+            },
+            "reputationBonus": {
+              "trait": "calliditas",
+              "weight": 1
+            }
           },
-          "onSuccess": { "nextNodeId": "gaius_norbanus_convo_0_n08" },
-          "onFailure": { "nextNodeId": "gaius_norbanus_convo_0_n09" }
+          "onSuccess": {
+            "nextNodeId": "gaius_norbanus_convo_0_n08"
+          },
+          "onFailure": {
+            "nextNodeId": "gaius_norbanus_convo_0_n09"
+          }
         },
         {
-          "playerDialogue": "That kind of talk could get you in trouble with the optimates.",
+          "playerDialogue": "Talk like that will put you on the optimates' list of people to ruin. You know that.",
           "nextNodeId": "gaius_norbanus_convo_0_n09"
         }
       ]
@@ -136,27 +185,30 @@
     "gaius_norbanus_convo_0_n07": {
       "type": "noop",
       "id": "gaius_norbanus_convo_0_n07",
-      "npcDialogue": "I respect a man who believes in the law. I do. But let me tell you something. These veterans — they believed in the law too. They marched under the eagle because the law said serve and you'll be rewarded. The law broke its promise first. So when they stop believing, don't blame them. Blame the men who taught them the law is a lie.",
+      "npcDialogue": "I respect a man who believes in the law. Truly. But listen — these veterans believed in it too. They marched under the eagle because the law said serve and you'll be repaid. The law broke its word first. So when they stop believing, don't wag your finger at them. Wag it at the men who taught them the law is a liar's game.",
       "options": [
-        { "playerDialogue": "You make a fair point. What do you think should be done?", "nextNodeId": "gaius_norbanus_convo_0_n05" }
+        {
+          "playerDialogue": "That's a fair hit. So what do you think should actually be done?",
+          "nextNodeId": "gaius_norbanus_convo_0_n05"
+        }
       ]
     },
     "gaius_norbanus_convo_0_n08": {
       "type": "exit",
       "id": "gaius_norbanus_convo_0_n08",
-      "npcDialogue": "You think clearly and you're not afraid of the answer. I can use someone like that. Sulpicius is the man to talk to next — tribune, sharp mind, willing to push legislation the senate doesn't want pushed. I'll tell him you're worth his time. Come find me again when the war heats up. It's going to.",
+      "npcDialogue": "You think straight and you don't flinch from the answer. I like that. There's a tribune called Sulpicius — sharp as a Gallic blade, willing to push laws the senate would rather swallow poison than pass. I'll tell him you're worth a conversation. Come find me again when the war starts heating up. It will.",
       "exitStateId": "gaius_norbanus_convo_0_exit_recruit"
     },
     "gaius_norbanus_convo_0_n09": {
       "type": "exit",
       "id": "gaius_norbanus_convo_0_n09",
-      "npcDialogue": "You're not one of us. Not yet, anyway. But you listened, and most men from your end of the city don't bother. If you want to understand what's coming, keep your ears open. The veterans won't wait forever.",
+      "npcDialogue": "You're not one of us — not yet. But you sat down and you listened, which is more than most men from your end of the hill bother doing. Keep your ears open, Crispus. The veterans' patience has an edge, and it's getting shorter every month.",
       "exitStateId": "gaius_norbanus_convo_0_exit_friendly"
     },
     "gaius_norbanus_convo_0_n10": {
       "type": "exit",
       "id": "gaius_norbanus_convo_0_n10",
-      "npcDialogue": "Go back to your hill, senator's boy. Tell them the veterans send their regards. They'll understand what that means, even if you don't.",
+      "npcDialogue": "Off you go, then. Back up the hill to your marble portico. Tell your people the veterans send their regards — they'll know what it means, even if you don't.",
       "exitStateId": "gaius_norbanus_convo_0_exit_dismissed"
     }
   },
@@ -168,13 +220,21 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "populares", "shift": 2, "reason": "Norbanus vouches for you to the Marian network" }
+            {
+              "factionId": "populares",
+              "shift": 2,
+              "reason": "Norbanus vouches for you to the Marian network"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "clementia", "shift": 1, "reason": "Showed genuine concern for the veterans' plight" }
+            {
+              "trait": "clementia",
+              "shift": 1,
+              "reason": "Showed genuine concern for the veterans' plight"
+            }
           ]
         },
         {
@@ -190,7 +250,11 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "populares", "shift": 1, "reason": "Norbanus considers you approachable but uncommitted" }
+            {
+              "factionId": "populares",
+              "shift": 1,
+              "reason": "Norbanus considers you approachable but uncommitted"
+            }
           ]
         }
       ]
@@ -202,7 +266,11 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "populares", "shift": -1, "reason": "The veterans see you as another senate mouthpiece" }
+            {
+              "factionId": "populares",
+              "shift": -1,
+              "reason": "The veterans see you as another senate mouthpiece"
+            }
           ]
         },
         {
@@ -212,5 +280,6 @@
         }
       ]
     }
-  ]
+  ],
+  "direction": "outbound"
 }

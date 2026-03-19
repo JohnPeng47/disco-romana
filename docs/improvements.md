@@ -10,3 +10,6 @@ Every generated conversation must have its `preconditions` array filled in based
 - If the design doc says "requires X AND Y", list both conditions as separate entries in the array (the engine evaluates with AND/`every`).
 - Common precondition types: `prior_exit_state` (completed a specific conversation with a specific outcome), `faction_standing` (minimum alignment with a faction), `min_rank`, `any_of` (OR wrapper).
 - Conversations that are sequel arcs (convo_1, convo_2) should at minimum require a non-failure exit from the prior conversation in the arc.
+
+## 3. Shorter Conversations
+- You should be keeping each NPC dialogue turn to 

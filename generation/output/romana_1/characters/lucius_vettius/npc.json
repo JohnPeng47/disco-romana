@@ -1,0 +1,13 @@
+{
+  "id": "lucius_vettius",
+  "name": "Lucius Vettius",
+  "factionId": "populares",
+  "rank": "citizen",
+  "reputationProfile": {
+    "severitas": 5,
+    "clementia": 3,
+    "audacia": 7,
+    "calliditas": 2
+  },
+  "conversationArcLength": 1
+}

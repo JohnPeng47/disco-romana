@@ -1,0 +1,280 @@
+{
+  "id": "lucius_vettius_convo_0",
+  "npcId": "lucius_vettius",
+  "phaseId": "social_war",
+  "sequenceIndex": 0,
+  "preconditions": [
+    {
+      "type": "prior_exit_state",
+      "conversationId": "marcus_hortensius_convo_0",
+      "requiredExitStateIds": [
+        "marcus_hortensius_convo_0_exit_connected",
+        "marcus_hortensius_convo_0_exit_informed",
+        "marcus_hortensius_convo_0_exit_dismissed"
+      ]
+    }
+  ],
+  "entryNodeId": "lucius_vettius_convo_0_n01",
+  "nodes": {
+    "lucius_vettius_convo_0_n01": {
+      "type": "passive",
+      "id": "lucius_vettius_convo_0_n01",
+      "npcDialogue": "Fire's free. Sit or don't. We had a boy from the Subura bring wine but it tastes like he pissed in it first, so fair warning. You don't look like you've missed many meals.",
+      "responses": [
+        {
+          "trait": "audacia",
+          "threshold": 4,
+          "playerDialogue": "I've missed a few — just never involuntarily. Pour me the piss-wine.",
+          "nextNodeId": "lucius_vettius_convo_0_n02"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "I came to listen, not to drink. A man in the Forum said veterans were camped out here with no land and no answers.",
+          "nextNodeId": "lucius_vettius_convo_0_n03"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 4,
+          "playerDialogue": "You're Marian veterans — I can tell by the way you've dug your fire pit. Regulation depth, even out here.",
+          "nextNodeId": "lucius_vettius_convo_0_n02"
+        },
+        {
+          "trait": "severitas",
+          "threshold": 4,
+          "playerDialogue": "The Republic owes its soldiers better than a ditch outside the walls. I'd like to understand how it came to this.",
+          "nextNodeId": "lucius_vettius_convo_0_n04"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "I'll sit. Wine can't be worse than what they serve at my uncle's dinner parties.",
+        "nextNodeId": "lucius_vettius_convo_0_n03"
+      }
+    },
+    "lucius_vettius_convo_0_n02": {
+      "type": "active",
+      "id": "lucius_vettius_convo_0_n02",
+      "npcDialogue": "Vettius. Third century, second cohort, under Marius at Aquae Sextiae and Vercellae. Fourteen years I carried a pack for Rome. Killed a Teuton so big his shadow had its own shadow. Senate voted us land after — good land, Campanian dirt you could grow anything in. That was ten years ago. I'm still waiting. My knees are gone and I sleep in a ditch, but at least the senate's got my name on a list somewhere.",
+      "options": [
+        {
+          "playerDialogue": "Ten years. What exactly happened to the land grants?",
+          "nextNodeId": "lucius_vettius_convo_0_n05"
+        },
+        {
+          "playerDialogue": "Aquae Sextiae — I've read the dispatches. What was it actually like?",
+          "nextNodeId": "lucius_vettius_convo_0_n06"
+        }
+      ]
+    },
+    "lucius_vettius_convo_0_n03": {
+      "type": "active",
+      "id": "lucius_vettius_convo_0_n03",
+      "npcDialogue": "No land and no answers. That about covers it. See that man by the second fire — missing three fingers? Vercellae. The one coughing? Took a Cimbrian javelin through the lung at Raudine Plain and breathes like a bellows with a hole in it. Rome threw a triumph for the general. Gave us a pat on the head and a promise written in smoke. We're still here because we've got nowhere else to be.",
+      "options": [
+        {
+          "playerDialogue": "A javelin through the lung and he can't get a plot of dirt. Someone should answer for that.",
+          "nextNodeId": "lucius_vettius_convo_0_n05"
+        },
+        {
+          "playerDialogue": "You sound like a man who's done being patient. What happens when the last of the patience runs out?",
+          "nextNodeId": "lucius_vettius_convo_0_n06"
+        }
+      ]
+    },
+    "lucius_vettius_convo_0_n04": {
+      "type": "noop",
+      "id": "lucius_vettius_convo_0_n04",
+      "npcDialogue": "The Republic. Right. The Republic owes us — that's what they said when they handed us a gladius and pointed us at the barbarians. Funny thing about debts. When a soldier owes the Republic, they flog him. When the Republic owes a soldier, they form a committee. Committee's been meeting for ten years. We're still in this ditch.",
+      "options": [
+        {
+          "playerDialogue": "Fair enough — I asked for the polished version and got the real one. Tell me about the land.",
+          "nextNodeId": "lucius_vettius_convo_0_n05"
+        }
+      ]
+    },
+    "lucius_vettius_convo_0_n05": {
+      "type": "active",
+      "id": "lucius_vettius_convo_0_n05",
+      "npcDialogue": "Senate passed it. Commissioners rode out. Came back saying the land was occupied — tenants of Senator So-and-so, can't be displaced, terribly sorry. Same story in Picenum. Same in Etruria. Every good field in Italy's got a senator's name on it, and every commissioner knows which side his bread's oiled on. Marius screamed about it for a year. Then he stopped screaming and started counting legions. That's when I understood something had changed for good.",
+      "options": [
+        {
+          "playerDialogue": "The general who feeds you is the general you follow. Not the senate, not the Republic — the man.",
+          "roll": {
+            "dice": {
+              "count": 2,
+              "sides": 6
+            },
+            "baseThreshold": 7,
+            "factors": {
+              "personalFavor": 1,
+              "factionAlignment": 2,
+              "force": 0,
+              "wealth": 0
+            },
+            "reputationBonus": {
+              "trait": "audacia",
+              "weight": 1
+            }
+          },
+          "onSuccess": {
+            "nextNodeId": "lucius_vettius_convo_0_n07"
+          },
+          "onFailure": {
+            "nextNodeId": "lucius_vettius_convo_0_n08"
+          }
+        },
+        {
+          "playerDialogue": "Someone in the senate must care enough to reopen the grants. There has to be a legal path left.",
+          "nextNodeId": "lucius_vettius_convo_0_n08"
+        },
+        {
+          "playerDialogue": "What would it take — right now, tonight — to make this right for you and these men?",
+          "visibilityRequirement": {
+            "trait": "clementia",
+            "minValue": 5
+          },
+          "nextNodeId": "lucius_vettius_convo_0_n07"
+        }
+      ]
+    },
+    "lucius_vettius_convo_0_n06": {
+      "type": "active",
+      "id": "lucius_vettius_convo_0_n06",
+      "npcDialogue": "Aquae Sextiae was mud. Mud and fear and the smell of a hundred thousand men who hadn't bathed since Massilia. The Teutones came down the hill like a landslide. I remember thinking — this is it, this is where Vettius dies, in mud that isn't even Roman mud. But we held. Marius told us to hold and we held because he was standing right there in the line with us, not on a hill watching through a slave's eyes like the senate's generals. That's why we're his. Not politics. Not philosophy. He stood in the mud.",
+      "options": [
+        {
+          "playerDialogue": "A general who bleeds with his men owns them in a way the senate never will. That's the whole problem, isn't it?",
+          "nextNodeId": "lucius_vettius_convo_0_n05"
+        },
+        {
+          "playerDialogue": "You saved Rome. That's not sentiment — that's a fact the senate needs carved into their foreheads.",
+          "nextNodeId": "lucius_vettius_convo_0_n07"
+        }
+      ]
+    },
+    "lucius_vettius_convo_0_n07": {
+      "type": "convergence",
+      "id": "lucius_vettius_convo_0_n07",
+      "npcDialogue": "You're all right, boy. Most patricians look at us like furniture that learned to talk. You actually listened.",
+      "routes": [
+        {
+          "condition": {
+            "type": "reputation",
+            "trait": "clementia",
+            "min": 4
+          },
+          "nextNodeId": "lucius_vettius_convo_0_n09"
+        }
+      ],
+      "fallbackNodeId": "lucius_vettius_convo_0_n10"
+    },
+    "lucius_vettius_convo_0_n08": {
+      "type": "noop",
+      "id": "lucius_vettius_convo_0_n08",
+      "npcDialogue": "Legal path. You know what a legal path gets a man with no money and no patron? It gets him tired. I filed a claim three years back. Clerk looked at me like I'd asked him to wipe my arse. Told me the tribunals were backed up until the next census. The next census. I'll be bones by then. But sure — the law. The law's a wonderful thing if you can afford to wait for it.",
+      "options": [
+        {
+          "playerDialogue": "Then the law needs to move faster, or the men waiting for it will move instead. I understand that now.",
+          "nextNodeId": "lucius_vettius_convo_0_n10"
+        }
+      ]
+    },
+    "lucius_vettius_convo_0_n09": {
+      "type": "exit",
+      "id": "lucius_vettius_convo_0_n09",
+      "npcDialogue": "Listen. There's a man called Norbanus — used to be an officer, praetor on the rolls. He drinks at a tavern near the Campus Martius, the one with the cracked Janus over the door. He's organizing something. Not a revolt — don't look at me like that — something political. Legal-like. He could use a man from your side of the hill who actually gives a damn. Tell him Vettius sent you. He'll know what that means.",
+      "exitStateId": "lucius_vettius_convo_0_exit_trusted"
+    },
+    "lucius_vettius_convo_0_n10": {
+      "type": "exit",
+      "id": "lucius_vettius_convo_0_n10",
+      "npcDialogue": "Well. You sat by the fire and you drank the bad wine and you didn't talk down to us. That's more than most. I don't know what you'll do with what I told you — maybe nothing. But if you ever want to understand why men follow Marius instead of the senate, you heard it tonight. From the mud, not from the marble.",
+      "exitStateId": "lucius_vettius_convo_0_exit_witness"
+    },
+    "lucius_vettius_convo_0_n11": {
+      "type": "exit",
+      "id": "lucius_vettius_convo_0_n11",
+      "npcDialogue": "Go on, then. Back to your hill. I've met your kind before — come down to see how the other half lives, go home feeling noble about it. We don't need your pity, boy. We need land. When you figure out the difference, you know where to find us. We're not going anywhere. That's the whole gods-damned point.",
+      "exitStateId": "lucius_vettius_convo_0_exit_dismissed"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "lucius_vettius_convo_0_exit_trusted",
+      "narrativeLabel": "Trusted by the Veterans",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            {
+              "factionId": "populares",
+              "shift": 2,
+              "reason": "The veterans accept you as someone who understands their cause"
+            }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "clementia",
+              "shift": 1,
+              "reason": "Showed genuine compassion for men the Republic forgot"
+            }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "gaius_norbanus_convo_0"
+        }
+      ]
+    },
+    {
+      "id": "lucius_vettius_convo_0_exit_witness",
+      "narrativeLabel": "Witness to the Veterans' Plight",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            {
+              "factionId": "populares",
+              "shift": 1,
+              "reason": "You listened — that counts for something among men who are used to being ignored"
+            }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "audacia",
+              "shift": 1,
+              "reason": "Walked into a veterans' camp alone and kept your nerve"
+            }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "gaius_norbanus_convo_0"
+        }
+      ]
+    },
+    {
+      "id": "lucius_vettius_convo_0_exit_dismissed",
+      "narrativeLabel": "Dismissed as a Tourist",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            {
+              "factionId": "populares",
+              "shift": -1,
+              "reason": "The veterans see you as another patrician slumming for entertainment"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "direction": "outbound"
+}

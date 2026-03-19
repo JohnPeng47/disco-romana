@@ -1,0 +1,240 @@
+{
+  "id": "herennius_samnita_convo_0",
+  "npcId": "herennius_samnita",
+  "phaseId": "social_war",
+  "sequenceIndex": 0,
+  "preconditions": [
+    {
+      "type": "prior_exit_state",
+      "conversationId": "spurius_licinius_convo_0",
+      "requiredExitStateIds": [
+        "spurius_licinius_convo_0_exit_informed",
+        "spurius_licinius_convo_0_exit_bureaucratic"
+      ]
+    }
+  ],
+  "entryNodeId": "herennius_samnita_convo_0_n01",
+  "nodes": {
+    "herennius_samnita_convo_0_n01": {
+      "type": "active",
+      "id": "herennius_samnita_convo_0_n01",
+      "npcDialogue": "Careful with the amphorae on the left -- Falernian, not mine to break. You're Veturius's boy, yes? Your father bought saffron from me for fifteen years. Good man. Paid on time, never haggled past the point of insult. I heard he passed. I sent a wreath -- I don't know if it arrived. They lose things, at the gates, when the name on the card isn't Roman enough.",
+      "options": [
+        {
+          "playerDialogue": "It arrived. My mother kept it -- said it was the only one that smelled like actual grief instead of obligation.",
+          "nextNodeId": "herennius_samnita_convo_0_n02"
+        },
+        {
+          "playerDialogue": "Herennius. I remember you -- the saffron man. You look like you've been here longer than half the senate.",
+          "nextNodeId": "herennius_samnita_convo_0_n03"
+        },
+        {
+          "playerDialogue": "I'm surprised you're still trading here. I thought the Varian courts were making life difficult for Italians in the city.",
+          "visibilityRequirement": {
+            "trait": "calliditas",
+            "minValue": 4
+          },
+          "nextNodeId": "herennius_samnita_convo_0_n04"
+        }
+      ]
+    },
+    "herennius_samnita_convo_0_n02": {
+      "type": "noop",
+      "id": "herennius_samnita_convo_0_n02",
+      "npcDialogue": "That sounds like your mother. She always had -- how do you say it in proper Latin -- discernment. In Oscan we just say she could smell the difference between a man and his mask. Twenty-three years I've sold in this market. I know which families are kind and which are performing kindness. The Veturii were kind. But kindness from a citizen to a non-citizen is still -- what is the word. Charity. It flows downhill.",
+      "options": [
+        {
+          "playerDialogue": "You've been here twenty-three years and you still can't vote. That's -- I hadn't thought about it in those terms.",
+          "nextNodeId": "herennius_samnita_convo_0_n05"
+        }
+      ]
+    },
+    "herennius_samnita_convo_0_n03": {
+      "type": "noop",
+      "id": "herennius_samnita_convo_0_n03",
+      "npcDialogue": "Longer than most of them, yes. I watched three consuls take office from this corner. I've fed half the Palatine Hill at their dinner parties -- my garum, my saffron, my Samnite olives pressed in oil I learned to make from my grandfather. Last month a magistrate's clerk told me I needed a Roman sponsor to renew my trading license. A sponsor. Like a child being presented at the Forum for the first time. I am forty-six years old.",
+      "options": [
+        {
+          "playerDialogue": "A sponsor -- for a man who's been trading here since before I could walk. That's absurd.",
+          "nextNodeId": "herennius_samnita_convo_0_n05"
+        }
+      ]
+    },
+    "herennius_samnita_convo_0_n04": {
+      "type": "noop",
+      "id": "herennius_samnita_convo_0_n04",
+      "npcDialogue": "Difficult. That is a Roman word for it. My neighbour Quintus -- also from Bovianum, also here since before the Cimbrian panic -- was dragged to a tribunal last month for the crime of lending money to a Roman equestrian who defaulted and then accused him of sedition to clear the debt. The courts found for the Roman. Naturally. Quintus lost his shop, his stock, and his front teeth, though the teeth were unofficial. I am still here because I am useful and quiet. Those are the two qualities Rome rewards in an Italian.",
+      "options": [
+        {
+          "playerDialogue": "That's not law -- that's theft with a toga on. Does anyone in the senate even know this is happening?",
+          "nextNodeId": "herennius_samnita_convo_0_n05"
+        }
+      ]
+    },
+    "herennius_samnita_convo_0_n05": {
+      "type": "passive",
+      "id": "herennius_samnita_convo_0_n05",
+      "npcDialogue": "You look surprised. That surprises me, which tells you something about both of us. Your tribune -- Drusus -- he wants to fix this. I believe him. I believed the one before him too, and the one before that. My father believed Gaius Gracchus, and my father died still believing, which is a kind of Roman punishment all its own. Drusus is a good man. Rome eats good men and calls it governance. So forgive me if I keep my hope in a small container.",
+      "responses": [
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "You shouldn't have to hope at all. This should have been settled before either of us was born.",
+          "nextNodeId": "herennius_samnita_convo_0_n06"
+        },
+        {
+          "trait": "severitas",
+          "threshold": 5,
+          "playerDialogue": "Hope is cheap. What would it take -- practically, not poetically -- to make this right?",
+          "nextNodeId": "herennius_samnita_convo_0_n07"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 5,
+          "playerDialogue": "You said Poppaedius Silo wants in and the Samnites want out. Which camp are you in?",
+          "nextNodeId": "herennius_samnita_convo_0_n08"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 4,
+          "playerDialogue": "If Drusus fails -- and you clearly think he might -- what happens next? What do the Italians do?",
+          "nextNodeId": "herennius_samnita_convo_0_n08"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "I don't know what to say to that. I'm not sure there's anything I can say that isn't just -- more Roman words.",
+        "nextNodeId": "herennius_samnita_convo_0_n06"
+      }
+    },
+    "herennius_samnita_convo_0_n06": {
+      "type": "active",
+      "id": "herennius_samnita_convo_0_n06",
+      "npcDialogue": "You know what is strange? I don't hate Rome. I tried -- after Quintus, after the tribunals, after my son asked me why his friend Marcus can wear the toga praetexta and he cannot. I tried to hate this city and I couldn't. It is my city too. I built part of it. My hands laid the tiles in Scaurus's atrium -- he doesn't know that. To him, a Samnite tiler is the same as a Samnite tile. Part of the floor. You walk on it without thinking.",
+      "options": [
+        {
+          "playerDialogue": "I'm thinking about it now. I wish I'd thought about it sooner -- but I'm thinking about it now.",
+          "nextNodeId": "herennius_samnita_convo_0_n09"
+        },
+        {
+          "playerDialogue": "Come to Drusus's meeting with me. Let them hear this from someone who lives it -- not a senator summarizing it.",
+          "nextNodeId": "herennius_samnita_convo_0_n10"
+        },
+        {
+          "playerDialogue": "Scaurus should know. Every senator who votes on this bill should have to sit where I'm sitting right now.",
+          "nextNodeId": "herennius_samnita_convo_0_n09"
+        }
+      ]
+    },
+    "herennius_samnita_convo_0_n07": {
+      "type": "convergence",
+      "id": "herennius_samnita_convo_0_n07",
+      "npcDialogue": "Practically. Full enrollment in the tribes -- not the insult of separate registration where our votes drown in the last count. Protection under the law that doesn't vanish the moment a Roman creditor decides we're inconvenient. The right for my son to stand for office in the city where he was born. These are not radical demands, Crispus. These are what you already have. You just never had to ask for them.",
+      "routes": [
+        {
+          "condition": {
+            "type": "faction_standing",
+            "factionId": "italian_allies",
+            "min": 1
+          },
+          "nextNodeId": "herennius_samnita_convo_0_n10"
+        }
+      ],
+      "fallbackNodeId": "herennius_samnita_convo_0_n09"
+    },
+    "herennius_samnita_convo_0_n08": {
+      "type": "active",
+      "id": "herennius_samnita_convo_0_n08",
+      "npcDialogue": "You want to know about Poppaedius and the Samnites. I will tell you something most Romans don't understand. Poppaedius loves Rome -- he loves it the way a man loves a woman who keeps refusing to marry him. The Samnite leaders in the hills, the ones Rome never bothered to learn the names of -- they don't love Rome. They remember Aquilonia. They remember what Sulla's grandfather did to Bovianum. I am somewhere in between. I live here. My children speak Latin in their dreams. But I keep my grandfather's war-belt in a chest under my bed, and some mornings I understand why he wore it.",
+      "options": [
+        {
+          "playerDialogue": "That war-belt -- I hope it stays in the chest. I mean that honestly, not as a threat.",
+          "nextNodeId": "herennius_samnita_convo_0_n09"
+        },
+        {
+          "playerDialogue": "If it comes to war, men like you -- caught in between -- what happens to them?",
+          "nextNodeId": "herennius_samnita_convo_0_n10"
+        }
+      ]
+    },
+    "herennius_samnita_convo_0_n09": {
+      "type": "exit",
+      "id": "herennius_samnita_convo_0_n09",
+      "npcDialogue": "You listened. That is not nothing -- though it is not enough either. Go talk to your Drusus. Tell him what you heard in a market stall from a man who sells saffron and swallows his pride with breakfast every morning. And when the bill comes to the floor -- if it comes to the floor -- remember that the people it concerns have names. We are not a policy question. We are here. We have always been here.",
+      "exitStateId": "herennius_samnita_convo_0_exit_witness"
+    },
+    "herennius_samnita_convo_0_n10": {
+      "type": "exit",
+      "id": "herennius_samnita_convo_0_n10",
+      "npcDialogue": "You are a strange Roman, Crispus. Most of your kind look through me like I'm one of the amphorae -- useful, replaceable, not worth remembering. You looked at me. My grandmother had an Oscan word for that -- dekmanniis -- it means something like 'the courtesy of seeing.' There is no Latin equivalent. Perhaps that tells you something. Go to Drusus. I cannot go myself -- an Italian in a senator's meeting is a liability, not an argument. But carry this with you: we are not asking for a gift. We are asking for what we already earned, in blood, three generations deep.",
+      "exitStateId": "herennius_samnita_convo_0_exit_seen"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "herennius_samnita_convo_0_exit_witness",
+      "narrativeLabel": "Witnessed the Italian Question",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            {
+              "factionId": "italian_allies",
+              "shift": 1,
+              "reason": "Herennius registers you as a Roman who listened without flinching"
+            }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "clementia",
+              "shift": 1,
+              "reason": "Sat with an Italian's grief and did not look away"
+            }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "marcus_drusus_convo_0"
+        }
+      ]
+    },
+    {
+      "id": "herennius_samnita_convo_0_exit_seen",
+      "narrativeLabel": "The Courtesy of Seeing",
+      "effects": [
+        {
+          "type": "faction_standing",
+          "deltas": [
+            {
+              "factionId": "italian_allies",
+              "shift": 2,
+              "reason": "Herennius trusts you with the Oscan word -- that means something"
+            }
+          ]
+        },
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "clementia",
+              "shift": 1,
+              "reason": "Recognized Herennius as a person, not a policy abstraction"
+            },
+            {
+              "trait": "severitas",
+              "shift": -1,
+              "reason": "The encounter softened your Roman certainties"
+            }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "marcus_drusus_convo_0"
+        }
+      ]
+    }
+  ],
+  "direction": "outbound"
+}

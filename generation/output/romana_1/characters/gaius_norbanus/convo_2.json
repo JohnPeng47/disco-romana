@@ -8,7 +8,10 @@
       "type": "prior_exit_state",
       "npcId": "gaius_norbanus",
       "conversationId": "gaius_norbanus_convo_1",
-      "requiredExitStateIds": ["gaius_norbanus_convo_1_exit_tribune", "gaius_norbanus_convo_1_exit_staff"]
+      "requiredExitStateIds": [
+        "gaius_norbanus_convo_1_exit_tribune",
+        "gaius_norbanus_convo_1_exit_staff"
+      ]
     }
   ],
   "entryNodeId": "gaius_norbanus_convo_2_n01",
@@ -16,86 +19,89 @@
     "gaius_norbanus_convo_2_n01": {
       "type": "passive",
       "id": "gaius_norbanus_convo_2_n01",
-      "npcDialogue": "Close the door. Sit. What I'm about to tell you doesn't leave this room. Sulla has been recalled from his command by the tribal assembly. Sulpicius pushed the vote through. The command transfers to Marius. Sulla's response — he's marching his legions on Rome. Not a rumor. Not a threat. Six legions are moving north from Capua right now.",
+      "npcDialogue": "Shut the door. Bolt it. What I'm about to say stays in this room or I'll gut you myself, friend or not. Sulla's been stripped of his command — Sulpicius rammed the vote through the tribal assembly. The command goes to Marius. And Sulla's answer — he's marching his legions on Rome. Not a rumor. Not bluster. Six legions moving north from Capua as we speak.",
       "responses": [
         {
           "trait": "audacia",
           "threshold": 5,
-          "playerDialogue": "How long until they reach the walls?",
+          "playerDialogue": "How long before they reach the gates?",
           "nextNodeId": "gaius_norbanus_convo_2_n02"
         },
         {
           "trait": "severitas",
           "threshold": 5,
-          "playerDialogue": "He's marching on his own city. That's never happened. Not once in the history of the Republic.",
+          "playerDialogue": "A Roman general marching on Rome. In five hundred years of the Republic, this has never happened. Not once.",
           "nextNodeId": "gaius_norbanus_convo_2_n02"
         },
         {
           "trait": "calliditas",
           "threshold": 4,
-          "playerDialogue": "Who else knows? And who's already switched sides?",
+          "playerDialogue": "Who else knows? More importantly — who's already slipped out to join him?",
           "nextNodeId": "gaius_norbanus_convo_2_n03"
         },
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "Can it be stopped? Is there still time to negotiate?",
+          "playerDialogue": "Can it still be stopped? Is there any space left to talk?",
           "nextNodeId": "gaius_norbanus_convo_2_n03"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "Tell me everything.",
+        "playerDialogue": "Tell me everything. All of it.",
         "nextNodeId": "gaius_norbanus_convo_2_n02"
       }
     },
     "gaius_norbanus_convo_2_n02": {
       "type": "passive",
       "id": "gaius_norbanus_convo_2_n02",
-      "npcDialogue": "Two days. Maybe three. His own officers tried to stop him — sent a delegation. He had them beaten. The senate sent praetors to order him back. He ignored them. This is not a political maneuver. This is a military invasion of Rome by a Roman general. Marius is organizing a defense. It won't be enough. We don't have legions in the city. We have veterans, urban poor, and whatever gladiators we can arm. Against six trained legions. I need to know where you stand. Right now. Not tomorrow.",
+      "npcDialogue": "Two days. Three if Jupiter loves us. His own officers sent a delegation to talk him down — he had them beaten with rods. The senate dispatched praetors to order his return. He didn't even read the letter. This isn't a political maneuver, Crispus. This is a Roman army invading Rome. Marius is scraping together a defense — veterans, urban poor, whatever gladiators we can drag out of the ludus. Against six trained legions. So I need to know where you stand. Not tomorrow. Now.",
       "responses": [
         {
           "trait": "audacia",
           "threshold": 5,
-          "playerDialogue": "I'm standing right here. Give me my orders.",
+          "playerDialogue": "Where I've always stood. Right here. Give me my orders.",
           "nextNodeId": "gaius_norbanus_convo_2_n04"
         },
         {
           "trait": "severitas",
           "threshold": 6,
-          "playerDialogue": "Sulla is the one breaking the law. I stand with the Republic. What do you need?",
+          "playerDialogue": "Sulla broke the law. I stand with the Republic — whatever's left of it. What do you need?",
           "nextNodeId": "gaius_norbanus_convo_2_n04"
         },
         {
           "trait": "calliditas",
           "threshold": 5,
-          "playerDialogue": "I need to think. Two days is enough time to make the right choice, not just the fast one.",
+          "playerDialogue": "Two days is enough time to make the right choice — not just the loud one. Let me think.",
           "nextNodeId": "gaius_norbanus_convo_2_n04"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "What are the options?",
+        "playerDialogue": "What are the options? Lay them out.",
         "nextNodeId": "gaius_norbanus_convo_2_n04"
       }
     },
     "gaius_norbanus_convo_2_n03": {
       "type": "noop",
       "id": "gaius_norbanus_convo_2_n03",
-      "npcDialogue": "Half the senate is already packing for their country estates. The smart ones. The rest are writing speeches about sacred traditions while a man with thirty thousand soldiers is walking toward them. Negotiation is over. It was over the moment Sulla gave the order to march. This is about survival now. Ours and the Republic's.",
+      "npcDialogue": "Half the senate's already packed for their country villas — the smart half. The rest are composing orations about sacred tradition while a man with thirty thousand swords walks toward them. Negotiation's done. It ended the moment Sulla gave the marching order. This is about survival now — ours, and whatever's left of the Republic to save.",
       "options": [
-        { "playerDialogue": "Then what's the plan?", "nextNodeId": "gaius_norbanus_convo_2_n02" }
+        {
+          "playerDialogue": "Then stop telling me what's over and tell me what's next.",
+          "nextNodeId": "gaius_norbanus_convo_2_n02"
+        }
       ]
     },
     "gaius_norbanus_convo_2_n04": {
       "type": "active",
       "id": "gaius_norbanus_convo_2_n04",
-      "npcDialogue": "Here's what's happening. Marius is positioning what forces we have at the Esquiline Gate. Sulpicius is rallying the popular assemblies. I have orders to distribute — real orders, from the old man himself. If you're with us, you take a sector of the defense and you hold it. If you're not — and I'll say this only once — now is the time to walk away. Once the legions hit the walls, there's no walking anywhere.",
+      "npcDialogue": "Here's the shape of it. Marius is positioning our forces at the Esquiline Gate. Sulpicius is whipping the popular assemblies into something resembling courage. And I've got orders to hand out — real orders, from the old man himself. You're with us, you take a sector of the defense and you hold it. You're not — and I say this once, because I won't say it again — now's the time to walk. Once those legions hit the walls, nobody walks anywhere.",
       "options": [
         {
-          "playerDialogue": "I'm with you. Give me a sector. I'll hold it or die on it.",
+          "playerDialogue": "Give me a sector. I'll hold it or they'll find me dead on it.",
           "nextNodeId": "gaius_norbanus_convo_2_n05"
         },
         {
-          "playerDialogue": "No. I won't fight for a losing defense. Sulla's the future, and I'd rather be alive in it. I'm going to his camp.",
+          "playerDialogue": "No. I won't bleed for a lost cause — Sulla's the future and I intend to be alive in it. I'm going to his camp.",
           "nextNodeId": "gaius_norbanus_convo_2_n06"
         }
       ]
@@ -103,13 +109,13 @@
     "gaius_norbanus_convo_2_n05": {
       "type": "exit",
       "id": "gaius_norbanus_convo_2_n05",
-      "npcDialogue": "The Subura approach. It's narrow, defensible, and the locals will fight beside you because they have nowhere else to go. Hold it as long as you can. If the line breaks — and it probably will — fall back to the Esquiline and find Marius. If you can't find Marius, get out of the city. Head for Africa. He'll regroup there. This might be the last time we talk as free men. It's been an honor serving with you.",
+      "npcDialogue": "The Subura approach — it's narrow, it's ugly, and the locals will fight beside you because they've got nowhere else to run. Hold it as long as the gods allow. When the line breaks — and it will break — fall back to the Esquiline and find Marius. If you can't find Marius, get out of the city and make for Africa. He'll regroup there. This might be the last time we talk as free men, Crispus. It's been an honor. Truly. Now go.",
       "exitStateId": "gaius_norbanus_convo_2_exit_loyal_marian"
     },
     "gaius_norbanus_convo_2_n06": {
       "type": "exit",
       "id": "gaius_norbanus_convo_2_n06",
-      "npcDialogue": "Then go. Go fast, before I remember I'm supposed to stop deserters. I won't pretend I don't understand. Sulla has the legions. We have old men and kitchen knives. The math is simple. But I want you to remember something. When you're standing in Sulla's camp, wearing his favor, remember that every man in this city who dies tomorrow dies because men like you decided winning mattered more than being right. Now get out of my sight.",
+      "npcDialogue": "Then go. Fast — before I remember what I'm supposed to do to deserters. I won't pretend I don't understand the arithmetic. Sulla's got legions. We've got old men and kitchen knives. The math is the math. But I want you to carry one thing with you to his camp, since you won't be carrying your honor. Every man in this city who dies tomorrow — every freedman, every baker's boy with a borrowed spear — dies because men like you decided winning mattered more than being right. Now get out of my sight before I change my mind about letting you leave it.",
       "exitStateId": "gaius_norbanus_convo_2_exit_defector"
     }
   },
@@ -121,16 +127,36 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "populares", "shift": 3, "reason": "Stood with Marius when Sulla marched on Rome" },
-            { "factionId": "sullan_faction", "shift": -3, "reason": "Sulla's forces mark you as an enemy combatant" },
-            { "factionId": "optimates", "shift": -1, "reason": "The senate moderates consider you a Marian radical" }
+            {
+              "factionId": "populares",
+              "shift": 3,
+              "reason": "Stood with Marius when Sulla marched on Rome"
+            },
+            {
+              "factionId": "sullan_faction",
+              "shift": -3,
+              "reason": "Sulla's forces mark you as an enemy combatant"
+            },
+            {
+              "factionId": "optimates",
+              "shift": -1,
+              "reason": "The senate moderates consider you a Marian radical"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "audacia", "shift": 2, "reason": "Defended Rome against impossible odds" },
-            { "trait": "severitas", "shift": 1, "reason": "Honored your commitment when betrayal was easier" }
+            {
+              "trait": "audacia",
+              "shift": 2,
+              "reason": "Defended Rome against impossible odds"
+            },
+            {
+              "trait": "severitas",
+              "shift": 1,
+              "reason": "Honored your commitment when betrayal was easier"
+            }
           ]
         }
       ]
@@ -142,18 +168,35 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "populares", "shift": -5, "reason": "Deserted the Marian cause at the moment of crisis" },
-            { "factionId": "sullan_faction", "shift": 3, "reason": "Defected to Sulla's side before the battle — useful but distrusted" }
+            {
+              "factionId": "populares",
+              "shift": -5,
+              "reason": "Deserted the Marian cause at the moment of crisis"
+            },
+            {
+              "factionId": "sullan_faction",
+              "shift": 3,
+              "reason": "Defected to Sulla's side before the battle — useful but distrusted"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "audacia", "shift": 2, "reason": "Switched sides under pressure — a gambler's move" },
-            { "trait": "clementia", "shift": -1, "reason": "Abandoned allies facing death" }
+            {
+              "trait": "audacia",
+              "shift": 2,
+              "reason": "Switched sides under pressure — a gambler's move"
+            },
+            {
+              "trait": "clementia",
+              "shift": -1,
+              "reason": "Abandoned allies facing death"
+            }
           ]
         }
       ]
     }
-  ]
+  ],
+  "direction": "inbound"
 }

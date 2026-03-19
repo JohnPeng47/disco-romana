@@ -1,0 +1,237 @@
+{
+  "id": "marcus_hortensius_convo_0",
+  "npcId": "marcus_hortensius",
+  "phaseId": "social_war",
+  "sequenceIndex": 0,
+  "preconditions": [
+    {
+      "type": "prior_exit_state",
+      "exitStateIds": [
+        "aurelia_convo_0_exit_dutiful_son",
+        "aurelia_convo_0_exit_ambitious_upstart",
+        "aurelia_convo_0_exit_shrewd_operator"
+      ]
+    }
+  ],
+  "entryNodeId": "marcus_hortensius_convo_0_n01",
+  "nodes": {
+    "marcus_hortensius_convo_0_n01": {
+      "type": "passive",
+      "id": "marcus_hortensius_convo_0_n01",
+      "npcDialogue": "Veturius! Gaius Veturius Crispus — I knew it, I knew it was you. I saw you cross the Comitium and I said to myself, that's old Veturius blood walking like it owns the pavement. Don't look so startled — everyone knows everyone here, that's the whole point of the Forum. It's not a marketplace, it's a — well, it is a marketplace, but what's being sold is information. Gossip. Allegiance. I'm Hortensius, by the way. Marcus. I clerk for Scaurus's legal team — not his inner circle, obviously, but close enough to hear things.",
+      "responses": [
+        {
+          "trait": "calliditas",
+          "threshold": 4,
+          "playerDialogue": "Close enough to hear things. That's a carefully chosen phrase — I like it.",
+          "nextNodeId": "marcus_hortensius_convo_0_n02"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 4,
+          "playerDialogue": "You recognized me from across the Forum? I must be more famous than I thought.",
+          "nextNodeId": "marcus_hortensius_convo_0_n02"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "Well met, Hortensius. Any friend of the courts is a friend worth having.",
+          "nextNodeId": "marcus_hortensius_convo_0_n02"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "Hortensius. Right. I'm still getting my bearings.",
+        "nextNodeId": "marcus_hortensius_convo_0_n02"
+      }
+    },
+    "marcus_hortensius_convo_0_n02": {
+      "type": "active",
+      "id": "marcus_hortensius_convo_0_n02",
+      "npcDialogue": "Getting your bearings — ha, yes, that's what they all say the first week. Here's the secret nobody tells you: the Forum doesn't work the way the tutors describe it. Forget the Rostra, forget the speeches. The real business happens in the porticoes, in the basilica, over shoulders — men leaning in and whispering. You want to know where the wind's blowing? Don't listen to what's being said. Listen to who's standing next to whom. Catulus and Scaurus haven't been seen together in a week — that means something. Drusus has been meeting with Italians after dark — that means something too. This place is a web, Crispus, and every thread vibrates.",
+      "options": [
+        {
+          "playerDialogue": "And which thread are you pulling right now, Hortensius? Because this feels like a recruitment speech.",
+          "nextNodeId": "marcus_hortensius_convo_0_n03"
+        },
+        {
+          "playerDialogue": "Drusus meeting with Italians — is that common knowledge or am I getting the premium gossip?",
+          "nextNodeId": "marcus_hortensius_convo_0_n04"
+        },
+        {
+          "playerDialogue": "I appreciate the education. But I didn't come to the Forum to eavesdrop — I came to participate.",
+          "nextNodeId": "marcus_hortensius_convo_0_n05"
+        }
+      ]
+    },
+    "marcus_hortensius_convo_0_n03": {
+      "type": "noop",
+      "id": "marcus_hortensius_convo_0_n03",
+      "npcDialogue": "Recruitment! Gods, no — I'm not important enough to recruit anyone. I just talk. It's my one talent and I've made peace with it. But you — a Veturius, patrician name, connections to both Catulus and the Marian veterans through your uncle — people will be watching where you plant your feet. I'm not pulling any thread. I'm just telling you the threads exist, because nobody told me and I spent three months talking to columns before I figured it out.",
+      "options": [
+        {
+          "playerDialogue": "Three months talking to columns. That explains the conversational style.",
+          "nextNodeId": "marcus_hortensius_convo_0_n06"
+        }
+      ]
+    },
+    "marcus_hortensius_convo_0_n04": {
+      "type": "noop",
+      "id": "marcus_hortensius_convo_0_n04",
+      "npcDialogue": "Premium? There's no premium tier, Crispus — that's the beautiful thing. Everything leaks. Drusus wants citizenship for the allies, the whole Italian confederacy, and half the Senate would rather set themselves on fire. But here's what's interesting — walk down to the Subura, ask the butchers and the fullers what they think. They don't care about constitutional theory. They care that some Samnite is going to take their spot in the grain queue. That's the citizenship question at street level — not justice, not rights. Just: who's ahead of me in line?",
+      "options": [
+        {
+          "playerDialogue": "And who do you think should be ahead of whom?",
+          "nextNodeId": "marcus_hortensius_convo_0_n06"
+        }
+      ]
+    },
+    "marcus_hortensius_convo_0_n05": {
+      "type": "noop",
+      "id": "marcus_hortensius_convo_0_n05",
+      "npcDialogue": "Participate! I love that. Spoken like a man who hasn't been here long enough to get cynical. No — I mean it, I genuinely admire it. Marius used to talk like that, you know, before six consulships and a private army made him complicated. The thing about participation is — you have to pick a door. The optimates, the populares, the quiet men in the middle who pretend they're above it all while cutting deals in the tabernae. Every door leads somewhere. Most of them lead to someone else's agenda. The Italians in the streets, the ones Drusus is championing — they just want through any door at all. That's citizenship. The right to walk through doors.",
+      "options": [
+        {
+          "playerDialogue": "You're more thoughtful than you pretend to be, Hortensius.",
+          "nextNodeId": "marcus_hortensius_convo_0_n06"
+        }
+      ]
+    },
+    "marcus_hortensius_convo_0_n06": {
+      "type": "active",
+      "id": "marcus_hortensius_convo_0_n06",
+      "npcDialogue": "Look — I shouldn't say this, but Scaurus is holding court in the Basilica Aemilia this afternoon. Open session, anyone can attend, but attending is — you understand — a statement. Catulus will probably be there too, glowering from the second row the way he does. If you want to stop being invisible in this city, that's your entrance. Scaurus notices new faces, especially old names. He collects patricians the way other men collect Greek pottery — for display. But he's useful, Crispus. Genuinely useful. The question is whether you want to be useful back.",
+      "options": [
+        {
+          "playerDialogue": "I'll go. If Scaurus collects patricians, he should know this one has a mind of his own.",
+          "nextNodeId": "marcus_hortensius_convo_0_n07"
+        },
+        {
+          "playerDialogue": "Tell me more about Scaurus first. I don't walk into rooms without knowing who owns the furniture.",
+          "nextNodeId": "marcus_hortensius_convo_0_n08"
+        },
+        {
+          "playerDialogue": "I'll think about it. I've had enough unsolicited advice for one morning — my mother already filled that quota.",
+          "nextNodeId": "marcus_hortensius_convo_0_n09"
+        }
+      ]
+    },
+    "marcus_hortensius_convo_0_n07": {
+      "type": "convergence",
+      "id": "marcus_hortensius_convo_0_n07",
+      "npcDialogue": "Ha! A mind of his own — Scaurus will either love that or have you escorted out. Probably love it. He's bored by sycophants, which is ironic considering he's surrounded by them. Me included, if I'm being honest. Go, make an impression. And Crispus — when you're in there, watch the way information moves. Who whispers to whom. Who laughs too loud. Who doesn't laugh at all. That's the real speech. Everything else is performance.",
+      "options": [
+        {
+          "playerDialogue": "Including this conversation?",
+          "nextNodeId": "marcus_hortensius_convo_0_n10"
+        }
+      ]
+    },
+    "marcus_hortensius_convo_0_n08": {
+      "type": "convergence",
+      "id": "marcus_hortensius_convo_0_n08",
+      "npcDialogue": "Smart. Scaurus is — well, he's the princeps senatus, which means he speaks first in every debate and everyone pretends that's not the most powerful position in Rome. Old family, old money, old grudges. He despises Marius with a passion that's almost artistic. He backed Drusus on citizenship — not because he loves Italians, but because he thinks controlled reform prevents revolution. That's Scaurus in a sentence: he'll burn a field to save a farm. Catulus is his creature, mostly. Go to the Basilica, introduce yourself. Mention your father — Scaurus remembers debts.",
+      "options": [
+        {
+          "playerDialogue": "Debts and grudges. The two currencies that actually matter in this city.",
+          "nextNodeId": "marcus_hortensius_convo_0_n10"
+        }
+      ]
+    },
+    "marcus_hortensius_convo_0_n09": {
+      "type": "exit",
+      "id": "marcus_hortensius_convo_0_n09",
+      "npcDialogue": "Fair enough — fair enough. I talk too much, everyone says so. But Crispus, take this with you at least: the Forum remembers. Every handshake, every snub, every time you lingered at someone's elbow or walked past without stopping — it all gets filed away in a thousand heads. You're already being watched. You just haven't decided what they're seeing yet. Come find me when you change your mind about Scaurus. I'm always here. I'm always talking.",
+      "exitStateId": "marcus_hortensius_convo_0_exit_cautious_newcomer"
+    },
+    "marcus_hortensius_convo_0_n10": {
+      "type": "active",
+      "id": "marcus_hortensius_convo_0_n10",
+      "npcDialogue": "Especially this conversation — everything is performance, Crispus, that's the first lesson. Even sincerity. But look, before you go — one more thing. There's a mood in the city. The Italians, the allies — they're not just petitioning anymore. I was in the courts last week and a Marsic delegation walked out of a hearing. Walked out. A year ago they would have groveled. Something's shifting. The men in the Subura feel it too — they're angrier, tighter, looking sideways at anyone with an accent. Whatever Drusus is trying to do, he'd better do it fast. Rome is a city that solves problems with blood when it runs out of patience. And patience — well. We're running low.",
+      "options": [
+        {
+          "playerDialogue": "Then I'd better stop standing around the Forum chatting and get to work.",
+          "nextNodeId": "marcus_hortensius_convo_0_exit_node_eager"
+        },
+        {
+          "playerDialogue": "You paint a grim picture. But grim pictures are usually the honest ones.",
+          "nextNodeId": "marcus_hortensius_convo_0_exit_node_sober"
+        }
+      ]
+    },
+    "marcus_hortensius_convo_0_exit_node_eager": {
+      "type": "exit",
+      "id": "marcus_hortensius_convo_0_exit_node_eager",
+      "npcDialogue": "That's the spirit. Basilica Aemilia, afternoon session — just walk in like you belong there, because you do. The Veturii are older than half those families and they know it. Scaurus will see you. And Crispus — if anyone asks who sent you, don't say my name. Say you followed the crowd. It's more dignified for both of us.",
+      "exitStateId": "marcus_hortensius_convo_0_exit_forum_initiate"
+    },
+    "marcus_hortensius_convo_0_exit_node_sober": {
+      "type": "exit",
+      "id": "marcus_hortensius_convo_0_exit_node_sober",
+      "npcDialogue": "Honest — yes, well, that's one thing I can manage between all the gossip. Go to Scaurus, Crispus. He's not a good man — none of them are — but he's a serious one, and serious men are what this city needs right now. Tell him your name, mention your father's wine cellar, and let him do the rest. He'll find a use for you. Whether that's a compliment or a warning — I'll leave that to your mother to decide.",
+      "exitStateId": "marcus_hortensius_convo_0_exit_clear_eyed_realist"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "marcus_hortensius_convo_0_exit_forum_initiate",
+      "narrativeLabel": "The Forum Initiate",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "audacia",
+              "shift": 1,
+              "reason": "You stepped eagerly into the Forum's political web"
+            }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "marcus_scaurus_convo_0"
+        }
+      ]
+    },
+    {
+      "id": "marcus_hortensius_convo_0_exit_clear_eyed_realist",
+      "narrativeLabel": "A Clear-Eyed Realist",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "calliditas",
+              "shift": 1,
+              "reason": "You recognized the Forum's dangers before committing"
+            }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "marcus_scaurus_convo_0"
+        }
+      ]
+    },
+    {
+      "id": "marcus_hortensius_convo_0_exit_cautious_newcomer",
+      "narrativeLabel": "A Cautious Newcomer",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "severitas",
+              "shift": 1,
+              "reason": "You kept your own counsel and refused to be rushed"
+            }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "marcus_scaurus_convo_0"
+        }
+      ]
+    }
+  ],
+  "direction": "outbound"
+}

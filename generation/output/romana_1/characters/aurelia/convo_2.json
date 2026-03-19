@@ -7,7 +7,11 @@
     {
       "type": "prior_exit_state",
       "conversationId": "aurelia_convo_1",
-      "requiredExitStateIds": ["aurelia_convo_1_exit_rally", "aurelia_convo_1_exit_protect", "aurelia_convo_1_exit_opportunity"]
+      "requiredExitStateIds": [
+        "aurelia_convo_1_exit_rally",
+        "aurelia_convo_1_exit_protect",
+        "aurelia_convo_1_exit_opportunity"
+      ]
     },
     {
       "type": "event",
@@ -19,137 +23,137 @@
     "aurelia_convo_2_n01": {
       "type": "passive",
       "id": "aurelia_convo_2_n01",
-      "npcDialogue": "I've been watching you. Not the way the Senate watches — looking for weakness, for leverage. The way a mother watches. Looking for the boy she raised inside the man he's become. Do you know what I see?",
+      "npcDialogue": "Don't sit. Just — let me look at you a moment. I've been watching you, these past months. Not the way the Senate does, hunting for the soft spot, the angle. The way a mother does. Looking for the boy I raised somewhere behind whatever this man has become. Do you want to know what I found?",
       "responses": [
         {
           "trait": "severitas",
           "threshold": 5,
-          "playerDialogue": "I hope you see someone who hasn't forgotten what you taught him. That duty isn't a word — it's a weight you carry every day.",
+          "playerDialogue": "I hope you found someone who remembers what you taught him. That duty isn't a word — it's the weight you carry when no one's watching.",
           "nextNodeId": "aurelia_convo_2_n02"
         },
         {
           "trait": "clementia",
           "threshold": 5,
-          "playerDialogue": "I hope you see someone who still cares about the people behind the politics. Rome is its people, not its walls.",
+          "playerDialogue": "I hope you found someone who still gives a damn about the people underneath all the politics. That's all I've been trying to do.",
           "nextNodeId": "aurelia_convo_2_n03"
         },
         {
           "trait": "audacia",
           "threshold": 5,
-          "playerDialogue": "A man who isn't afraid of what's coming. Whatever it costs.",
+          "playerDialogue": "Someone who doesn't flinch. Whatever's coming, whatever it costs — I'm not afraid of it.",
           "nextNodeId": "aurelia_convo_2_n04"
         },
         {
           "trait": "calliditas",
           "threshold": 5,
-          "playerDialogue": "Someone who has learned to see the board clearly — and to move before others realize the game has changed.",
+          "playerDialogue": "Someone who finally learned to see three moves ahead. And to keep his mouth shut about the fourth.",
           "nextNodeId": "aurelia_convo_2_n05"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "I don't know, Mother. Tell me.",
+        "playerDialogue": "Honestly? I don't know. Tell me.",
         "nextNodeId": "aurelia_convo_2_n02"
       }
     },
     "aurelia_convo_2_n02": {
       "type": "passive",
       "id": "aurelia_convo_2_n02",
-      "npcDialogue": "I see a man who carries his father's sense of obligation — heavy as stone, unbreakable as iron. Rome has precious few men like that left. The Senate is full of men who speak of duty while selling their votes to the highest bidder. You are not one of them. That will make your life harder. It will also make it mean something. Your dignitas is built on severitas — on the simple, terrible commitment to doing what is right even when it costs you everything. Hold onto that. The years ahead will test it.",
+      "npcDialogue": "I found your father. His sense of obligation — heavy as millstone granite, and just as unbreakable. Rome has almost no men like that left. The Senate is crammed with men who talk about duty while auctioning their votes between courses at dinner. You're not one of them. That will cost you — friends, opportunities, easy nights. It will also be the only thing about you that lasts. Your dignitas is built on severitas, Gaius. On the stupid, stubborn, thankless commitment to doing what is right when it would be so much easier not to. Hold onto it. What's coming will try to beat it out of you.",
       "responses": [
         {
           "trait": "severitas",
           "threshold": 6,
-          "playerDialogue": "I will. Whatever Rome becomes, I won't become something less than what you raised me to be.",
+          "playerDialogue": "Whatever Rome turns into, I won't turn into something less than what you made me.",
           "nextNodeId": "aurelia_convo_2_n06"
         },
         {
           "trait": "audacia",
           "threshold": 4,
-          "playerDialogue": "I will — but duty without strength is just suffering. I intend to have both.",
+          "playerDialogue": "Duty without teeth is just suffering. I plan to have both.",
           "nextNodeId": "aurelia_convo_2_n06"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "I'll try, Mother. That's all I can promise.",
+        "playerDialogue": "I'll try. That's the only honest promise I can make.",
         "nextNodeId": "aurelia_convo_2_n06"
       }
     },
     "aurelia_convo_2_n03": {
       "type": "passive",
       "id": "aurelia_convo_2_n03",
-      "npcDialogue": "I see a man with mercy in him — real mercy, not the performance of it. In a city that rewards cruelty, you've chosen to remember that the people who suffer most in every crisis are the ones with the least power to prevent it. The slaves, the freedmen, the Italian farmers caught between two armies. Your clementia is rare, my son. Some will call it weakness. They're wrong. It takes more courage to spare than to strike. The years ahead will give you every reason to abandon that principle. Don't.",
+      "npcDialogue": "I found mercy. Real mercy — not the performance senators put on when there's a crowd. In a city that rewards cruelty like a blood sport, you've remembered that the people who suffer most in every crisis are the ones who had no hand in causing it. The slaves, the freedmen, the Italian farmers caught between two armies that both claim to fight for justice. Your clementia is rare, my son. Dangerous, even. Some men will call it weakness. They're wrong — it takes more spine to spare a man than to destroy him. What's ahead will give you every reason to abandon this. Every reason. Don't.",
       "responses": [
         {
           "trait": "clementia",
           "threshold": 6,
-          "playerDialogue": "I won't. If Rome can't be merciful, it doesn't deserve to rule.",
+          "playerDialogue": "If Rome can't be merciful, it doesn't deserve the empire it's built.",
           "nextNodeId": "aurelia_convo_2_n07"
         },
         {
           "trait": "calliditas",
           "threshold": 4,
-          "playerDialogue": "Mercy is also strategy. The man who spares his enemy today may find an ally tomorrow.",
+          "playerDialogue": "Mercy is also arithmetic. The enemy you spare today might be the ally you need tomorrow.",
           "nextNodeId": "aurelia_convo_2_n07"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "I'll remember, Mother. I promise.",
+        "playerDialogue": "I won't forget. I promise you that.",
         "nextNodeId": "aurelia_convo_2_n07"
       }
     },
     "aurelia_convo_2_n04": {
       "type": "passive",
       "id": "aurelia_convo_2_n04",
-      "npcDialogue": "I see fire in you. The same fire I saw in Marius when he was young — before it consumed everyone around him. Your audacia frightens me, if I'm honest. But it also makes me proud, because the Republic was not built by cautious men. It was built by men who marched into the unknown and refused to turn back. You have that in you. Just remember — the bravest man in the legion is often the first one dead. Be brave. But be alive. The years ahead will demand both.",
+      "npcDialogue": "I found fire. The same fire I remember in Marius when he was young, before it ate him alive and everyone standing near him. Your audacia frightens me — I won't pretend otherwise. But it makes me proud, too, because this Republic was not built by careful men. It was built by men who walked into the dark and refused to come back empty-handed. You have that. Just — the bravest man in the cohort is usually the first one carried home on his shield. Be brave. Be alive. What's coming demands both, and I will not bury my son.",
       "responses": [
         {
           "trait": "audacia",
           "threshold": 6,
-          "playerDialogue": "I'd rather burn bright and short than flicker for a lifetime. But I'll try to do both — for you.",
+          "playerDialogue": "I'd rather burn fast than flicker for a lifetime. But I'll try to do both — for your sake.",
           "nextNodeId": "aurelia_convo_2_n08"
         },
         {
           "trait": "severitas",
           "threshold": 4,
-          "playerDialogue": "Courage without discipline is just recklessness. I know the difference.",
+          "playerDialogue": "Courage without discipline is just a more exciting way to die. I know the difference.",
           "nextNodeId": "aurelia_convo_2_n08"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "I'll be careful, Mother. As careful as I can be.",
+        "playerDialogue": "I'll be as careful as Rome lets me be. That's all I can offer.",
         "nextNodeId": "aurelia_convo_2_n08"
       }
     },
     "aurelia_convo_2_n05": {
       "type": "passive",
       "id": "aurelia_convo_2_n05",
-      "npcDialogue": "I see a mind like a mosaic — every piece placed with intention, the full picture visible only to you. Your calliditas is a gift, my son. You see the connections others miss, the angles, the second and third consequences of every action. In a city of blunt instruments, you are a surgeon's blade. But cleverness has a cost — the clever man trusts no one, and the man who trusts no one dies alone. Don't let the game consume the player. The years ahead will tempt you to become nothing but strategy. Remember that you're also flesh and blood.",
+      "npcDialogue": "I found a mind like one of those Greek mosaics — every tessera placed with intent, the full picture invisible to anyone standing too close. Your calliditas is a genuine gift, Gaius. You see the second consequence, the third, the thread connecting two events that everyone else thinks are unrelated. In a city of hammers, you're a surgeon's blade. But cleverness has a price — the clever man stops trusting anyone, and the man who trusts no one dies in an empty room. Don't let the game swallow the player. What's ahead will tempt you to become nothing but strategy — all angle, no substance. Remember you are also blood and bone. My blood.",
       "responses": [
         {
           "trait": "calliditas",
           "threshold": 6,
-          "playerDialogue": "I trust you, Mother. That's enough humanity for any man in Rome.",
+          "playerDialogue": "I trust you. In this city, that's more humanity than most men can afford.",
           "nextNodeId": "aurelia_convo_2_n09"
         },
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "I'm not as cold as I seem. I just can't afford to show it — not yet.",
+          "playerDialogue": "I'm not as cold as I look. I just can't afford to show it. Not yet.",
           "nextNodeId": "aurelia_convo_2_n09"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "I'll remember. I'm still your son, underneath all of it.",
+        "playerDialogue": "Underneath all of it — I'm still your son. I haven't forgotten that.",
         "nextNodeId": "aurelia_convo_2_n09"
       }
     },
     "aurelia_convo_2_n06": {
       "type": "noop",
       "id": "aurelia_convo_2_n06",
-      "npcDialogue": "Come here. Let me look at you one more time before the world takes you from me again. Whatever happens — whatever Rome becomes, whatever you become — you are my son. That is the one thing no consul, no general, no god can take from either of us. Now go. The city is waiting, and it will not wait long.",
+      "npcDialogue": "Come here. Closer. Let me see your face one more time before this world takes you away from me again. Whatever happens out there — whatever Rome becomes, whatever they make you become — you are my son. No consul, no dictator, no god on the Capitol can take that from either of us. Now go. The city won't wait, and neither should you.",
       "options": [
         {
-          "playerDialogue": "Goodbye, Mother. I'll make the name worth carrying.",
+          "playerDialogue": "Goodbye, Mother. I'll carry the name well.",
           "nextNodeId": "aurelia_convo_2_n10"
         }
       ]
@@ -157,10 +161,10 @@
     "aurelia_convo_2_n07": {
       "type": "noop",
       "id": "aurelia_convo_2_n07",
-      "npcDialogue": "Come here. Let me look at you one more time before the world takes you from me again. Whatever happens — whatever Rome becomes, whatever you become — you are my son. That is the one thing no consul, no general, no god can take from either of us. Now go. The city is waiting, and it will not wait long.",
+      "npcDialogue": "Come here. Let me hold your face a moment. Whatever happens — whatever Rome demands, whatever ugly choices they put in front of you — you are my son. That is the one true thing in a city built on negotiable truths. No senator, no general, no proscription can erase it. Now go. You have work to do, and I have a household to hold together. As usual.",
       "options": [
         {
-          "playerDialogue": "Goodbye, Mother. I'll make the name worth carrying.",
+          "playerDialogue": "Goodbye, Mother. I won't let you down.",
           "nextNodeId": "aurelia_convo_2_n11"
         }
       ]
@@ -168,10 +172,10 @@
     "aurelia_convo_2_n08": {
       "type": "noop",
       "id": "aurelia_convo_2_n08",
-      "npcDialogue": "Come here. Let me look at you one more time before the world takes you from me again. Whatever happens — whatever Rome becomes, whatever you become — you are my son. That is the one thing no consul, no general, no god can take from either of us. Now go. The city is waiting, and it will not wait long.",
+      "npcDialogue": "Come here. Stand still — stop fidgeting. I want to remember this face. Whatever happens on whatever battlefield they send you to, whatever Rome becomes while you're gone — you are my son. The one fixed point. Nothing they do out there changes that. Now go, before I say something sentimental and ruin thirty years of carefully maintained severity.",
       "options": [
         {
-          "playerDialogue": "Goodbye, Mother. I'll make the name worth carrying.",
+          "playerDialogue": "Goodbye, Mother. I'll come back. You have my word.",
           "nextNodeId": "aurelia_convo_2_n12"
         }
       ]
@@ -179,10 +183,10 @@
     "aurelia_convo_2_n09": {
       "type": "noop",
       "id": "aurelia_convo_2_n09",
-      "npcDialogue": "Come here. Let me look at you one more time before the world takes you from me again. Whatever happens — whatever Rome becomes, whatever you become — you are my son. That is the one thing no consul, no general, no god can take from either of us. Now go. The city is waiting, and it will not wait long.",
+      "npcDialogue": "Come here. Even you can drop the mask for ten seconds. Whatever schemes you're running, whatever webs you're spinning out there — underneath it, you are my son. You were my son before you were clever, and you'll be my son after cleverness stops being enough. That doesn't change. Now go. Play your game. But come home sometimes — not for strategy. Just to sit in a room where no one is keeping score.",
       "options": [
         {
-          "playerDialogue": "Goodbye, Mother. I'll make the name worth carrying.",
+          "playerDialogue": "Goodbye, Mother. This is the one room in Rome where I don't have to think.",
           "nextNodeId": "aurelia_convo_2_n13"
         }
       ]
@@ -190,25 +194,25 @@
     "aurelia_convo_2_n10": {
       "type": "exit",
       "id": "aurelia_convo_2_n10",
-      "npcDialogue": "You already have.",
+      "npcDialogue": "You already do.",
       "exitStateId": "aurelia_convo_2_exit_severitas"
     },
     "aurelia_convo_2_n11": {
       "type": "exit",
       "id": "aurelia_convo_2_n11",
-      "npcDialogue": "You already have.",
+      "npcDialogue": "You never have.",
       "exitStateId": "aurelia_convo_2_exit_clementia"
     },
     "aurelia_convo_2_n12": {
       "type": "exit",
       "id": "aurelia_convo_2_n12",
-      "npcDialogue": "You already have.",
+      "npcDialogue": "You'd better.",
       "exitStateId": "aurelia_convo_2_exit_audacia"
     },
     "aurelia_convo_2_n13": {
       "type": "exit",
       "id": "aurelia_convo_2_n13",
-      "npcDialogue": "You already have.",
+      "npcDialogue": "I know.",
       "exitStateId": "aurelia_convo_2_exit_calliditas"
     }
   },
@@ -277,5 +281,6 @@
         }
       ]
     }
-  ]
+  ],
+  "direction": "inbound"
 }

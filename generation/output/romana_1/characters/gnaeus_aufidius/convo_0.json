@@ -1,0 +1,223 @@
+{
+  "id": "gnaeus_aufidius_convo_0",
+  "npcId": "gnaeus_aufidius",
+  "phaseId": "social_war",
+  "sequenceIndex": 0,
+  "preconditions": [
+    {
+      "type": "prior_exit_state",
+      "conversationId": "marcus_hortensius_convo_0",
+      "requiredExitStateIds": [
+        "marcus_hortensius_convo_0_exit_connected",
+        "marcus_hortensius_convo_0_exit_informed",
+        "marcus_hortensius_convo_0_exit_dismissed"
+      ]
+    }
+  ],
+  "entryNodeId": "gnaeus_aufidius_convo_0_n01",
+  "nodes": {
+    "gnaeus_aufidius_convo_0_n01": {
+      "type": "passive",
+      "id": "gnaeus_aufidius_convo_0_n01",
+      "npcDialogue": "No no no — careful with that stack, it's Rhodian invoices and they're already water-damaged — sorry, sorry. You're Crispus, yes? Atticus mentioned you might come around. I'd offer you a seat but everything flat is covered in shipping manifests. Do you know what a trireme costs per day in harbor fees at Puteoli? Seven denarii. Seven. And that's before you bribe the aedile's freedman to move you up the docking queue.",
+      "responses": [
+        {
+          "trait": "calliditas",
+          "threshold": 4,
+          "playerDialogue": "Seven denarii buys a lot of anxiety. I'm guessing the real cost is what's not arriving on those ships.",
+          "nextNodeId": "gnaeus_aufidius_convo_0_n02"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 4,
+          "playerDialogue": "Atticus sent me — so skip the harbor fees and tell me what's actually keeping you up at night.",
+          "nextNodeId": "gnaeus_aufidius_convo_0_n03"
+        },
+        {
+          "trait": "severitas",
+          "threshold": 4,
+          "playerDialogue": "I've seen men drown in details while the hull splits beneath them. What's the large picture?",
+          "nextNodeId": "gnaeus_aufidius_convo_0_n02"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "You look like you haven't slept in three days. How bad is it, honestly?",
+          "nextNodeId": "gnaeus_aufidius_convo_0_n03"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "Atticus told me you were worth a conversation. I'm starting to see why — though not in the way I expected.",
+        "nextNodeId": "gnaeus_aufidius_convo_0_n02"
+      }
+    },
+    "gnaeus_aufidius_convo_0_n02": {
+      "type": "active",
+      "id": "gnaeus_aufidius_convo_0_n02",
+      "npcDialogue": "What's not arriving — exactly. You do understand. I have thirty talents of silver committed to goods sitting in Ephesus harbor right now. Silk, spices, worked bronze — beautiful merchandise, completely stranded. The Italian allies are burning the roads south of Asculum, which means my overland routes from Brundisium are finished. And the sea lanes — well, the sea lanes depend on Mithridates deciding he'd rather stay home this season. Which is like depending on a wolf to respect a property line.",
+      "options": [
+        {
+          "playerDialogue": "Mithridates. Everyone whispers the name but no one does the arithmetic. What's yours?",
+          "nextNodeId": "gnaeus_aufidius_convo_0_n04"
+        },
+        {
+          "playerDialogue": "The Italian revolt and the eastern threat — you're saying they're the same crisis, just viewed from different ledgers.",
+          "nextNodeId": "gnaeus_aufidius_convo_0_n05"
+        }
+      ]
+    },
+    "gnaeus_aufidius_convo_0_n03": {
+      "type": "active",
+      "id": "gnaeus_aufidius_convo_0_n03",
+      "npcDialogue": "Three days — try eight. Look, I'll be plain with you because Atticus vouched and because I'm too tired to perform. The eastern trade network — the whole web of it, grain from Egypt, silver from Spain routed through Asia, tax-farming revenues from the publicani — it all runs through a corridor that Mithridates can shut like a door. One campaign season. That's all it would take. And right now Rome has every spare legion pinned down fighting Italians who used to be our business partners. The timing is — the timing is catastrophic, is what it is.",
+      "options": [
+        {
+          "playerDialogue": "So whoever gets the eastern command isn't just fighting a war — they're deciding which half of Rome's economy survives.",
+          "nextNodeId": "gnaeus_aufidius_convo_0_n05"
+        },
+        {
+          "playerDialogue": "The publicani exposure in Asia — give me numbers. Real ones.",
+          "nextNodeId": "gnaeus_aufidius_convo_0_n04"
+        }
+      ]
+    },
+    "gnaeus_aufidius_convo_0_n04": {
+      "type": "active",
+      "id": "gnaeus_aufidius_convo_0_n04",
+      "npcDialogue": "The arithmetic. Fine. The publicani have roughly twenty thousand talents invested in Asian tax-farming contracts. Twenty thousand. That's not a number, that's a civilization's operating budget. If Mithridates takes the province, those contracts become papyrus scraps. Every equestrian family with eastern holdings — mine included — faces ruin. Not embarrassment, not belt-tightening: ruin. And when equestrians go under, the senators who borrowed against our credit go under too. It cascades. Atticus sees this — he's been quietly repositioning for months. The man has ice where his blood should be. I admire it. I can't replicate it.",
+      "options": [
+        {
+          "playerDialogue": "Twenty thousand talents — so the eastern command isn't a military appointment. It's a financial rescue operation with legions attached.",
+          "nextNodeId": "gnaeus_aufidius_convo_0_n05"
+        },
+        {
+          "playerDialogue": "Atticus repositioning while everyone else holds steady. That's not ice — that's information. Where's he getting it?",
+          "visibilityRequirement": {
+            "trait": "calliditas",
+            "minValue": 5
+          },
+          "nextNodeId": "gnaeus_aufidius_convo_0_n06"
+        }
+      ]
+    },
+    "gnaeus_aufidius_convo_0_n05": {
+      "type": "active",
+      "id": "gnaeus_aufidius_convo_0_n05",
+      "npcDialogue": "Yes — yes, that's it precisely. The eastern command is the fulcrum. Whoever holds it controls the flow of revenue that keeps the entire Republic solvent. Sulla wants it — needs it, frankly, for the plunder and the glory. But Marius has allies whispering that he deserves it by seniority. And meanwhile men like me are watching two generals play dice with our livelihoods while the Italians burn everything between here and Brundisium. The Senate thinks this is about military honor. The equestrians know it's about survival.",
+      "options": [
+        {
+          "playerDialogue": "You've just told me who has the most to lose. Now tell me — who stands to gain from all this chaos?",
+          "nextNodeId": "gnaeus_aufidius_convo_0_n06"
+        },
+        {
+          "playerDialogue": "I appreciate the education, Aufidius. Most men in your position would guard this kind of clarity.",
+          "nextNodeId": "gnaeus_aufidius_convo_0_n07"
+        }
+      ]
+    },
+    "gnaeus_aufidius_convo_0_n06": {
+      "type": "noop",
+      "id": "gnaeus_aufidius_convo_0_n06",
+      "npcDialogue": "Who gains? The men with liquidity when everyone else is scrambling for coin. Atticus, obviously — he's been converting eastern holdings to Italian land for months, buying at prices that would make you weep. A few senators with private fortunes large enough to weather it. And anyone clever enough to position themselves as a broker between the military command and the equestrian purse. That's the real game, Crispus — not swords and speeches. Credit and contracts. If you want to understand where this is all heading, talk to Atticus properly. Not the version of himself he shows at dinner parties. The real one. Tell him I sent you with numbers.",
+      "options": [
+        {
+          "playerDialogue": "With numbers. I'll remember that. This was worth more than you think, Aufidius.",
+          "nextNodeId": "gnaeus_aufidius_convo_0_n08"
+        }
+      ]
+    },
+    "gnaeus_aufidius_convo_0_n07": {
+      "type": "convergence",
+      "id": "gnaeus_aufidius_convo_0_n07",
+      "npcDialogue": "Guard it? I'm too frightened to guard it. Fear makes men either silent or garrulous — I've always tended toward the latter. You've been patient with a nervous merchant, which is either kindness or strategy. With your family, I suspect strategy.",
+      "routes": [
+        {
+          "condition": {
+            "type": "reputation",
+            "trait": "calliditas",
+            "min": 4
+          },
+          "nextNodeId": "gnaeus_aufidius_convo_0_n08"
+        }
+      ],
+      "fallbackNodeId": "gnaeus_aufidius_convo_0_n09"
+    },
+    "gnaeus_aufidius_convo_0_n08": {
+      "type": "exit",
+      "id": "gnaeus_aufidius_convo_0_n08",
+      "npcDialogue": "Listen — talk to Atticus. Not the pleasantries, not the philosophical correspondence routine. Tell him Aufidius sent you, tell him you understand the eastern exposure, and ask him about the hedge. He'll know what it means. You're sharper than most of the patricians who wander through here looking at me like I'm a particularly clever servant. That's — I mean that as a compliment. Go. Before I start showing you the Rhodian invoices.",
+      "exitStateId": "gnaeus_aufidius_convo_0_exit_financially_literate"
+    },
+    "gnaeus_aufidius_convo_0_n09": {
+      "type": "exit",
+      "id": "gnaeus_aufidius_convo_0_n09",
+      "npcDialogue": "Well. You've been generous with your time, which is a senatorial habit I've never quite understood — time being the one commodity I can't invoice for. If you see Atticus, mention we spoke. He'll draw his own conclusions. He always does. Now if you'll excuse me, I have six letters to write and a cargo master who's either lying to me about weather delays or genuinely the unluckiest sailor in the Adriatic.",
+      "exitStateId": "gnaeus_aufidius_convo_0_exit_polite_departure"
+    },
+    "gnaeus_aufidius_convo_0_n10": {
+      "type": "exit",
+      "id": "gnaeus_aufidius_convo_0_n10",
+      "npcDialogue": "I've said too much. I always say too much — it's a deficiency of breeding, my father used to say, though he meant it about the wine. Forget the numbers. Forget Mithridates. Just — if anyone asks, we discussed shipping rates and nothing else. The walls in this district have ears attached to very ambitious freedmen.",
+      "exitStateId": "gnaeus_aufidius_convo_0_exit_spooked"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "gnaeus_aufidius_convo_0_exit_financially_literate",
+      "narrativeLabel": "Financially Literate",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "calliditas",
+              "shift": 1,
+              "reason": "Aufidius recognizes your grasp of equestrian financial networks"
+            }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "titus_atticus_convo_0"
+        }
+      ]
+    },
+    {
+      "id": "gnaeus_aufidius_convo_0_exit_polite_departure",
+      "narrativeLabel": "Polite Departure",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "clementia",
+              "shift": 1,
+              "reason": "You showed patience with a frightened man"
+            }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "titus_atticus_convo_0"
+        }
+      ]
+    },
+    {
+      "id": "gnaeus_aufidius_convo_0_exit_spooked",
+      "narrativeLabel": "Spooked",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "audacia",
+              "shift": 1,
+              "reason": "Your directness rattled a cautious merchant"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "direction": "outbound"
+}

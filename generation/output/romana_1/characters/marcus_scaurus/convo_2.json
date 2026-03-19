@@ -8,7 +8,10 @@
       "type": "prior_exit_state",
       "npcId": "marcus_scaurus",
       "conversationId": "marcus_scaurus_convo_1",
-      "requiredExitStateIds": ["marcus_scaurus_convo_1_exit_inheritor", "marcus_scaurus_convo_1_exit_witness"]
+      "requiredExitStateIds": [
+        "marcus_scaurus_convo_1_exit_inheritor",
+        "marcus_scaurus_convo_1_exit_witness"
+      ]
     },
     {
       "type": "game_event",
@@ -20,30 +23,30 @@
     "marcus_scaurus_convo_2_n01": {
       "type": "passive",
       "id": "marcus_scaurus_convo_2_n01",
-      "npcDialogue": "A slave delivers a sealed letter. The wax bears the seal of the Princeps Senatus — Scaurus's seal. The slave tells you the old man died three days ago in his bed. He left instructions that this letter be delivered to you when Roman legions entered the city gates under a general's command. The seal is unbroken. You open it.\n\n\"If you are reading this, then what I feared has come to pass, and I was not strong enough to outlive it. I confess I am grateful for that small mercy.\n\nI have spent my life in service to a system that I believed was greater than any man within it. I defended that belief in the senate, in the courts, in private counsel with every consul and censor I outlived. I defended it when the Gracchi fell. I defended it when Saturninus fell. I defended it when Drusus fell. Each time, I told myself: the system endures. The system corrects. The system is stronger than the men who assault it.\n\nI was wrong.\n\nThe system was never stronger than the men within it. It was exactly as strong as their willingness to be bound by it — no more, no less. And we have raised a generation of men who are willing to be bound by nothing.\"",
+      "npcDialogue": "A slave delivers a sealed letter. The wax bears the imprint of the Princeps Senatus — you have seen that seal before, pressed into your hand with instructions to carry what it meant. The slave's eyes are red. He tells you the old man died three days ago, in his own bed, with a lamp still burning beside a stack of half-finished correspondence. He left instructions: this letter was to be delivered when Roman legions entered the city gates under a general's personal command. Not the Republic's command. A general's. The seal is unbroken. You crack it open.\n\n\"If you are reading this, then the thing I feared has come to pass, and I was not strong enough to outlive it. I confess I am grateful for that small mercy. An old man's cowardice — the only kind I ever permitted myself.\n\nI spent my life in service to a system I believed was greater than any man within it. I defended that belief from the rostra, in the courts, in the private studies of every consul and censor I managed to outlast. I defended it when the Gracchi fell and men said reform was dead. I defended it when Saturninus fell and men said order was restored. I defended it when Drusus fell and men said nothing at all, because by then the falling had become ordinary.\n\nI was wrong. Not about the principle — the principle was sound. I was wrong about the foundation. The system was never stronger than the men inside it. It was exactly as strong as their willingness to be bound by it, and not one grain stronger. We have raised a generation willing to be bound by nothing except the weight of iron in their hands.\"",
       "responses": [
         {
           "trait": "severitas",
           "threshold": 4,
-          "playerDialogue": "You continue reading, each line heavier than the last.",
+          "playerDialogue": "Each line falls heavier than the last. You read on, as he would have wanted — carefully, missing nothing.",
           "nextNodeId": "marcus_scaurus_convo_2_n02"
         },
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "Your hands tighten on the parchment. You read on.",
+          "playerDialogue": "Your throat tightens. You can hear his voice in the cadence — that measured, unhurried Senate voice. You keep reading.",
           "nextNodeId": "marcus_scaurus_convo_2_n02"
         },
         {
           "trait": "audacia",
           "threshold": 4,
-          "playerDialogue": "The old man's words cut deeper than you expected. You keep reading.",
+          "playerDialogue": "The old man's words land harder than you expected. You thought you were prepared for this. You weren't.",
           "nextNodeId": "marcus_scaurus_convo_2_n02"
         },
         {
           "trait": "calliditas",
           "threshold": 4,
-          "playerDialogue": "You recognize the precision of a man who has had time to choose every word. You read the rest.",
+          "playerDialogue": "Every word chosen, every clause weighed — a man writing his own eulogy with the precision of a final legal brief. You read the rest.",
           "nextNodeId": "marcus_scaurus_convo_2_n02"
         }
       ],
@@ -55,30 +58,30 @@
     "marcus_scaurus_convo_2_n02": {
       "type": "passive",
       "id": "marcus_scaurus_convo_2_n02",
-      "npcDialogue": "\"Do not mourn the Republic as though it were murdered. It was not. Murder requires an assailant and a victim. What happened to Rome is closer to what happens to a house when everyone agrees to stop maintaining the roof: the rain comes in gradually, then all at once, and by the time the ceiling collapses the rot has been there for years.\n\nI maintained the roof. That was my life's work. I patched and I reinforced and I argued with every man who wanted to tear out a beam because it was inconvenient. And I failed. Not because the task was impossible, but because I could not make enough men care about a roof they had never seen leak.\n\nThe general who has entered Rome — it does not matter which one. If not this one, another. The legions were always the force that the constitution could not answer, because the constitution was designed for a city-state where the army was the citizenry. We became an empire and kept the government of a city. That contradiction was always going to destroy us. I simply believed it would take longer.\n\nYou asked me once what happens when the commands are never returned. Now you know. This is what happens. A man with soldiers walks through the gate and the senate, that ancient body, that repository of every custom and precedent and hard-won compromise of four centuries — the senate does nothing. Because it cannot. Because custom is not a wall. Custom is an agreement, and agreements end when one party has the power to end them and the will to do so.\"",
+      "npcDialogue": "\"Do not mourn the Republic as though it were murdered in its sleep. It was not. Murder requires a villain. What happened to Rome is what happens to a house when every man in it agrees, silently, to stop mending the roof: the rain comes in by degrees, and then all at once, and by the time the ceiling gives way the beams have been rotting for years. Everyone is shocked. No one should be.\n\nI mended the roof. That was my life's work — patching, reinforcing, arguing with every fool who wanted to tear out a beam because it was in his way. I stood on the rostra and I told them: these beams are load-bearing. Remove them and the ceiling falls on everyone, reformer and conservative alike. They smiled at me. They called me venerable. They removed the beams.\n\nThe general who entered Rome — it does not matter which one. If not this man, then the next, or the one after. The legions were always the force the constitution could not answer, because the constitution was designed for a city where the army and the citizenry were the same men sitting in the same assembly. We conquered an empire and kept the government of a city. That contradiction was always going to kill us. I simply believed — I needed to believe — that it would take longer than my lifetime.\n\nYou asked me once what happens when the extraordinary commands are never returned. Now you know. A man with soldiers walks through the gate, and the Senate — that ancient, quarrelsome, magnificent body, that repository of four centuries of precedent and custom and painfully negotiated compromise — the Senate does nothing. Because it cannot. Because custom is not a wall. Custom is an agreement between men, and agreements end the moment one party has both the power and the will to walk away.\"",
       "responses": [
         {
           "trait": "severitas",
           "threshold": 4,
-          "playerDialogue": "The weight of his words settles into you like stone into mortar.",
+          "playerDialogue": "The words settle into you like stone fitted into a wall — the wall he spent his life building, the wall that wasn't enough.",
           "nextNodeId": "marcus_scaurus_convo_2_n03"
         },
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "You can hear the old man's voice in the words — tired, precise, sorrowful beyond measure.",
+          "playerDialogue": "You can hear him — tired, precise, grieving in that formal way he had where the grief showed through the formality like blood through linen.",
           "nextNodeId": "marcus_scaurus_convo_2_n03"
         },
         {
           "trait": "audacia",
           "threshold": 4,
-          "playerDialogue": "Even from beyond the grave, Scaurus forces you to see clearly.",
+          "playerDialogue": "Even dead, Scaurus will not let you look away. Even dead, he insists you see the thing clearly.",
           "nextNodeId": "marcus_scaurus_convo_2_n03"
         },
         {
           "trait": "calliditas",
           "threshold": 4,
-          "playerDialogue": "The analysis is flawless. The grief behind it is immense.",
+          "playerDialogue": "The analysis is perfect. Airtight. Behind every sentence, the immensity of a man who was right and knows that being right saved nothing.",
           "nextNodeId": "marcus_scaurus_convo_2_n03"
         }
       ],
@@ -90,15 +93,18 @@
     "marcus_scaurus_convo_2_n03": {
       "type": "noop",
       "id": "marcus_scaurus_convo_2_n03",
-      "npcDialogue": "\"I am writing this letter by lamplight, and my hand is not what it was. So I will end with what matters.\n\nI do not know what you will build in the ruins of what I spent my life defending. I do not know if you will be a good man or a necessary one or simply a survivor. But I know that I told you the truth about how republics die, and I believe you understood it, and that understanding is the only inheritance I have left to give.\n\nRemember that the Republic was never its buildings or its laws or its legions. It was the agreement. When enough men of sufficient character agreed to be bound by something larger than themselves, Rome governed itself. When they stopped, it didn't. Everything else is ornamentation.\n\nIf you rebuild, build that. Not the laws. Not the offices. Not the ceremonies. Build the agreement. It is the only thing that ever mattered.\n\nI am Marcus Aemilius Scaurus. I was Princeps Senatus. I kept faith with the ancestors, and I failed, and I am not ashamed, because the keeping of faith is its own justification.\n\nVale.\"",
+      "npcDialogue": "\"My hand is failing and the lamp is low, so I will end with what matters.\n\nI do not know what you will build in the ruins of what I spent my life defending. I do not know if you will be a good man, or a necessary one, or simply a survivor. These are not always the same thing, and I have lived long enough to stop pretending they are. But I know that I told you the truth about how republics die, and I believe you understood it, and that understanding is the only inheritance I have left to give. My estates will go to creditors. My reputation will go to historians who never met me. This — this knowledge of how the thing worked and why it broke — this I leave to you.\n\nRemember: the Republic was never its buildings. Never its laws or its legions or the eagles catching the light above the Forum. It was the agreement. When enough men of sufficient character consented to be bound by something larger than their own ambition, Rome governed itself. When they stopped, it didn't. Everything else — the offices, the ceremonies, the sacred chickens — ornamentation.\n\nIf you rebuild, build that. Not the marble. Not the procedures. Build the agreement. It is the only thing that ever mattered.\n\nI am Marcus Aemilius Scaurus. I was Princeps Senatus. I kept faith with the ancestors and I failed, and I am not ashamed of either, because the keeping of faith is its own justification and always has been.\n\nVale.\"",
       "options": [
-        { "playerDialogue": "You fold the letter carefully and place it inside your toga, against your chest. Then you go out into a Rome that no longer belongs to the senate.", "nextNodeId": "marcus_scaurus_convo_2_n04" }
+        {
+          "playerDialogue": "You fold the letter along its creases — slowly, precisely, the way he would have done it. You place it inside your toga, against your chest, where you can feel the weight of it. Then you walk out into a Rome that no longer belongs to the Senate.",
+          "nextNodeId": "marcus_scaurus_convo_2_n04"
+        }
       ]
     },
     "marcus_scaurus_convo_2_n04": {
       "type": "exit",
       "id": "marcus_scaurus_convo_2_n04",
-      "npcDialogue": "The slave waits, watching you. He asks if there is a reply. There is no reply. There is no one left to receive it.",
+      "npcDialogue": "The slave waits by the door, watching your face. After a moment he asks, very quietly, if there is a reply. There is no reply. There is no one left to receive one.",
       "exitStateId": "marcus_scaurus_convo_2_exit_letter_received"
     }
   },
@@ -110,10 +116,15 @@
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "severitas", "shift": 1, "reason": "Carried the weight of Scaurus's final words" }
+            {
+              "trait": "severitas",
+              "shift": 1,
+              "reason": "Carried the weight of Scaurus's final words"
+            }
           ]
         }
       ]
     }
-  ]
+  ],
+  "direction": "inbound"
 }

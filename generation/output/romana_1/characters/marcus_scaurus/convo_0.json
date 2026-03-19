@@ -3,76 +3,95 @@
   "npcId": "marcus_scaurus",
   "phaseId": "social_war",
   "sequenceIndex": 0,
-  "preconditions": [],
+  "preconditions": [
+    {
+      "type": "prior_exit_state",
+      "conversationId": "aurelia_convo_0",
+      "requiredExitStateIds": [
+        "aurelia_convo_0_exit_dutiful_son",
+        "aurelia_convo_0_exit_ambitious_upstart",
+        "aurelia_convo_0_exit_shrewd_operator"
+      ]
+    }
+  ],
   "entryNodeId": "marcus_scaurus_convo_0_n01",
   "nodes": {
     "marcus_scaurus_convo_0_n01": {
       "type": "passive",
       "id": "marcus_scaurus_convo_0_n01",
-      "npcDialogue": "I have served this Republic for longer than most men in the senate have been alive. I have watched consuls rise and fall, tribunes spend themselves like cheap coin, and generals mistake their legions for their country. You have requested an audience with the Princeps Senatus. That is either ambition or wisdom. Let me determine which.",
+      "npcDialogue": "Forty-three years in this building. I have outlasted six constitutional crises, two near-civil wars, and more consuls than I care to count — most of whom understood less about governance than the slaves who swept their offices. And now a young Veturius requests an audience with the Princeps Senatus. Your father used to sit in that same chair, did you know that? He had the same look. I could never decide whether it was ambition or grief. Which is it, in your case?",
       "responses": [
         {
           "trait": "severitas",
           "threshold": 5,
-          "playerDialogue": "I came because the constitution is under assault and the men who should defend it are busy defending their careers.",
+          "playerDialogue": "Grief. The constitution my father revered is being gutted, and the men sworn to defend it can't be troubled to look up from their dinner couches.",
           "nextNodeId": "marcus_scaurus_convo_0_n02"
         },
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "I came because Rome is tearing itself apart and I hoped someone might still remember how to hold it together.",
+          "playerDialogue": "Neither. I came because Rome is bleeding, and you're the only man left who seems to remember where the wound started.",
           "nextNodeId": "marcus_scaurus_convo_0_n03"
         },
         {
           "trait": "audacia",
           "threshold": 5,
-          "playerDialogue": "I came because power is shifting and I intend to understand where it lands before everyone else does.",
+          "playerDialogue": "Ambition. The ground is shifting and I intend to know where to stand before the rest of Rome figures out it's moving.",
           "nextNodeId": "marcus_scaurus_convo_0_n03"
         },
         {
           "trait": "calliditas",
           "threshold": 5,
-          "playerDialogue": "I came because the man who has survived every faction war in the senate for forty years must know something the rest of us don't.",
+          "playerDialogue": "I'd call it curiosity. A man who's survived every purge and faction war in the Senate for four decades — that man knows things he hasn't told anyone.",
           "nextNodeId": "marcus_scaurus_convo_0_n02"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "I came because I was told you were the man to see. I hope that's true.",
+        "playerDialogue": "I was told you were the man to see. Honestly, I'm still deciding why I'm here.",
         "nextNodeId": "marcus_scaurus_convo_0_n03"
       }
     },
     "marcus_scaurus_convo_0_n02": {
       "type": "noop",
       "id": "marcus_scaurus_convo_0_n02",
-      "npcDialogue": "Good. You see the shape of things. Sit. What I am about to tell you, I have told to perhaps four men in this generation, because the rest lack the patience to hear it. The Republic does not rest on laws. Laws are words on tablets. The Republic rests on mos maiorum — the way of the ancestors. Custom. Precedent. The unwritten understanding that there are things a Roman magistrate simply does not do, not because he cannot, but because to do so would unmake the system that gave him his power. Every crisis you have witnessed in your lifetime began when someone decided that mos maiorum applied to other men but not to him.",
+      "npcDialogue": "Good. You can see the shape of the thing. Sit — closer, my voice isn't what it was. What I am about to tell you, I have told perhaps four men of your generation. The rest lacked the patience, or the stomach. The Republic does not rest on laws. Laws are words scratched into bronze — any tribune with a mob can scratch new ones. The Republic rests on mos maiorum. The way of the ancestors. The unwritten understanding that there are things a Roman magistrate simply does not do — not because the law forbids it, but because to do so would unmake the very system that gave him his chair, his lictors, his name. Every catastrophe you have witnessed in your short life began the same way: a man decided that mos maiorum applied to other men, but not to him.",
       "options": [
-        { "playerDialogue": "And you believe that understanding is dying.", "nextNodeId": "marcus_scaurus_convo_0_n04" }
+        {
+          "playerDialogue": "And that understanding is dying. That's what you're telling me.",
+          "nextNodeId": "marcus_scaurus_convo_0_n04"
+        }
       ]
     },
     "marcus_scaurus_convo_0_n03": {
       "type": "noop",
       "id": "marcus_scaurus_convo_0_n03",
-      "npcDialogue": "Sit, then. You may yet be useful, though I confess I had hoped for a man with sharper instincts. Let me explain the thing that no one in the forum seems to understand. The Republic is not its laws. The Republic is the consensus that the laws will be obeyed — mos maiorum, the custom of the ancestors. When Tiberius Gracchus asked the assembly to remove a tribune from office, the law allowed it. The custom forbade it. And every catastrophe since has flowed from that single crack in the foundation.",
+      "npcDialogue": "Sit, then. You may yet prove useful, though I confess I'd hoped for sharper instincts — your father had them, when he cared to use them. Let me explain the thing that every man in the Forum seems determined not to understand. The Republic is not its laws. It is the consensus that the laws will be obeyed — mos maiorum, the custom of the ancestors. When Tiberius Gracchus persuaded the assembly to remove a sitting tribune, the law permitted it. The custom forbade it. And every catastrophe since — Gaius, Saturninus, all of it — has flowed from that one crack in the foundation. Do you follow?",
       "options": [
-        { "playerDialogue": "You're saying the system has no enforcement mechanism beyond good faith.", "nextNodeId": "marcus_scaurus_convo_0_n04" }
+        {
+          "playerDialogue": "You're saying the whole system runs on good faith. And good faith has no legions.",
+          "nextNodeId": "marcus_scaurus_convo_0_n04"
+        }
       ]
     },
     "marcus_scaurus_convo_0_n04": {
       "type": "active",
       "id": "marcus_scaurus_convo_0_n04",
-      "npcDialogue": "Precisely. And good faith is the first casualty of ambition. Now — Drusus has put forward his citizenship bill. The forum is on fire with it. The populares call it justice. Half my colleagues call it treason. I will tell you what it actually is: it is a question about whether the tribal voting system can absorb four hundred thousand new citizens without collapsing into a tool of whichever faction registers them first. It is mathematics, not morality. The Gracchi tried to reform Rome by overriding the senate. They are dead. Saturninus tried. He is dead. Drusus is trying. And I fear the pattern will hold. Do you understand what I am telling you?",
+      "npcDialogue": "Precisely. And good faith is the first thing ambition devours. Now — Drusus has put forward his citizenship bill. The Forum is on fire with it. The populares call it justice, half my colleagues call it treason, and neither side has bothered to read the thing carefully. I will tell you what it actually is: it is a question about the tribal voting rolls. Can they absorb four hundred thousand new citizens without becoming a weapon for whichever faction registers them first? That is arithmetic, not morality. The Gracchi tried to reform Rome by going over the Senate's head. They're dead. Saturninus tried. Dead. Drusus is trying now. And the pattern — I have watched this pattern three times, boy. It holds. Do you understand what I am telling you?",
       "options": [
         {
-          "playerDialogue": "I do. The principle is sound but the mechanism is what matters. You're saying the optimates oppose the math, not the idea.",
+          "playerDialogue": "The principle is sound but the mechanism is everything. The optimates don't object to citizenship — they object to the math of who controls the new votes.",
           "nextNodeId": "marcus_scaurus_convo_0_n05"
         },
         {
-          "playerDialogue": "With respect, Princeps — you cannot separate mathematics from morality when men are dying for the right to be counted. At what point does working through your institutions become a polite word for surrender?",
+          "playerDialogue": "With respect, Princeps — you cannot make arithmetic out of men dying for the right to be counted as Roman. At what point does 'working within the system' become a dignified word for doing nothing?",
           "nextNodeId": "marcus_scaurus_convo_0_n09"
         },
         {
-          "playerDialogue": "Then what distribution of tribes would the optimates accept? If this is mathematics, there must be a number that works. I'd rather learn from you how to reform within the system than watch another man die going around it.",
-          "visibilityRequirement": { "trait": "calliditas", "minValue": 5 },
+          "playerDialogue": "Then what distribution of tribes would the optimates accept? If this is arithmetic, there's a number that works. I'd rather learn it from you than watch another man bleed out trying to guess.",
+          "visibilityRequirement": {
+            "trait": "calliditas",
+            "minValue": 5
+          },
           "nextNodeId": "marcus_scaurus_convo_0_n07"
         }
       ]
@@ -80,56 +99,71 @@
     "marcus_scaurus_convo_0_n05": {
       "type": "passive",
       "id": "marcus_scaurus_convo_0_n05",
-      "npcDialogue": "You follow the argument where it leads. That is rarer than it should be. The senate once functioned because men like you and I could see the machinery behind the rhetoric. The question now is whether you intend to maintain that machinery or merely understand it while others tear it apart.",
+      "npcDialogue": "You follow the argument where it leads. That is rarer than it should be — rarer than it was in your father's day, certainly. The Senate once functioned because men like us could see the machinery behind the rhetoric. The question, young Veturius, is whether you mean to maintain that machinery — or merely to understand it while others take it apart for scrap.",
       "responses": [
         {
           "trait": "severitas",
           "threshold": 5,
-          "playerDialogue": "I intend to maintain it. The ancestral constitution is worth preserving even when it is inconvenient.",
+          "playerDialogue": "Maintain it. The ancestral constitution is worth defending precisely when it's inconvenient. That's the whole point of having one.",
           "nextNodeId": "marcus_scaurus_convo_0_n07"
         },
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "I intend to maintain it — but a machine that grinds up the people it governs needs repair, not just maintenance.",
+          "playerDialogue": "Maintain it — but a machine that grinds up the people it governs needs repair, not just oiling. Surely your ancestors understood that too.",
           "nextNodeId": "marcus_scaurus_convo_0_n09"
         },
         {
           "trait": "audacia",
           "threshold": 5,
-          "playerDialogue": "Understanding comes first. I'll decide what to do with that understanding when I see the full board.",
+          "playerDialogue": "Understanding comes first. I'll decide what to do with the machinery when I've seen the full board.",
           "nextNodeId": "marcus_scaurus_convo_0_n09"
         },
         {
           "trait": "calliditas",
           "threshold": 5,
-          "playerDialogue": "I intend to be useful to the men maintaining it. Which, at the moment, means being useful to you.",
+          "playerDialogue": "I intend to be useful to the men maintaining it. At the moment, that means being useful to you.",
           "nextNodeId": "marcus_scaurus_convo_0_n07"
         }
       ],
       "fallbackResponse": {
-        "playerDialogue": "I'm still learning. But I want to understand.",
+        "playerDialogue": "I'm still learning which end of the machine is which. But I want to understand it.",
         "nextNodeId": "marcus_scaurus_convo_0_n09"
       }
     },
     "marcus_scaurus_convo_0_n07": {
       "type": "active",
       "id": "marcus_scaurus_convo_0_n07",
-      "npcDialogue": "Then I will ask you something I do not ask lightly. Catulus is organizing the constitutional response to the citizenship crisis. He is competent but young in his thinking — he sees enemies where he should see potential converts. I would like you to attend his councils as my representative. Carry the message that the optimates must offer a counter-proposal, not merely obstruction. Can you do that?",
+      "npcDialogue": "Then I will ask you something I do not ask lightly. Catulus is organizing the constitutional response to this citizenship crisis. He is competent — more than competent — but he is young in his thinking. He sees enemies where he ought to see men who might yet be persuaded. I want you to attend his councils. Carry my authority. Carry the message that obstruction alone is a strategy for men who plan to lose gracefully. The optimates must offer a counter-proposal, or the field belongs to whoever shouts loudest. Can you do that?",
       "options": [
         {
-          "playerDialogue": "I can. Catulus will listen to reason if it comes from your authority.",
+          "playerDialogue": "I can. Catulus will hear reason if it arrives bearing your seal.",
           "roll": {
-            "dice": { "count": 2, "sides": 6 },
+            "dice": {
+              "count": 2,
+              "sides": 6
+            },
             "baseThreshold": 7,
-            "factors": { "personalFavor": 1, "factionAlignment": 2, "force": 0, "wealth": 0 },
-            "reputationBonus": { "trait": "severitas", "weight": 1 }
+            "factors": {
+              "personalFavor": 1,
+              "factionAlignment": 2,
+              "force": 0,
+              "wealth": 0
+            },
+            "reputationBonus": {
+              "trait": "severitas",
+              "weight": 1
+            }
           },
-          "onSuccess": { "nextNodeId": "marcus_scaurus_convo_0_n10" },
-          "onFailure": { "nextNodeId": "marcus_scaurus_convo_0_n11" }
+          "onSuccess": {
+            "nextNodeId": "marcus_scaurus_convo_0_n10"
+          },
+          "onFailure": {
+            "nextNodeId": "marcus_scaurus_convo_0_n11"
+          }
         },
         {
-          "playerDialogue": "I'll attend. But if Catulus won't listen, I won't waste your authority on a lost cause.",
+          "playerDialogue": "I'll attend. But if Catulus won't be moved, I won't spend your authority on a wall.",
           "nextNodeId": "marcus_scaurus_convo_0_n11"
         }
       ]
@@ -137,14 +171,14 @@
     "marcus_scaurus_convo_0_n09": {
       "type": "active",
       "id": "marcus_scaurus_convo_0_n09",
-      "npcDialogue": "You think independently. That is either an asset or a liability, depending on what you do with it. I have spent my career building the senate's institutional memory — the understanding that this body is older than any of us, and that its customs are not obstacles but load-bearing walls. Remove them, and the ceiling falls on everyone, reformers and conservatives alike. You do not have to agree with everything I have told you today. But I need to know: do you at least understand why I believe it?",
+      "npcDialogue": "You think independently. In my experience that is either the most useful quality in a senator or the most dangerous — it depends entirely on the man. I have spent forty years building this body's institutional memory. Reminding it — sometimes forcibly — that the Senate is older than any of us, and that its customs are not obstacles to governance but load-bearing walls. Pull one out because it inconveniences you, and the ceiling comes down on reformer and conservative alike. You do not have to agree with everything I've said today. But I need to know — do you at least understand why I believe it?",
       "options": [
         {
-          "playerDialogue": "I understand it. And I respect it, even where I disagree. The constitution you describe is worth studying, whatever I end up doing with that knowledge.",
+          "playerDialogue": "I understand it. And I respect it, even where I disagree. What you've described is worth studying — whatever I end up doing with the knowledge.",
           "nextNodeId": "marcus_scaurus_convo_0_n11"
         },
         {
-          "playerDialogue": "Honestly? I think you're describing a system designed to benefit the men who already hold power. That's not constitutional wisdom — it's institutional self-interest with a dignified name.",
+          "playerDialogue": "Honestly? I think you're describing a system built to benefit the men already holding the reins. That isn't constitutional wisdom — it's self-interest wearing a toga praetexta.",
           "nextNodeId": "marcus_scaurus_convo_0_n12"
         },
         {
@@ -156,19 +190,19 @@
     "marcus_scaurus_convo_0_n10": {
       "type": "exit",
       "id": "marcus_scaurus_convo_0_n10",
-      "npcDialogue": "Then hear me clearly. I am old, and I have spent that age learning one thing: the Republic survives not because of great men, but because ordinary men agree to be bound by customs greater than themselves. You are the kind of man I have been looking for — someone who understands that the weight of custom is not a burden but a foundation. Carry it well. I will tell Catulus to expect you. And I will be watching to see what you build on what I have taught you today.",
+      "npcDialogue": "Then hear me. I am old — older than I have any right to be — and I have spent that borrowed time learning one thing. The Republic survives not because of great men but because ordinary men consent to be bound by customs greater than themselves. That consent is the only sacred thing in Rome. Not the temples, not the eagles — the consent. You are the kind of man I have been looking for. I will tell Catulus to expect you. And I will be watching — for as long as these eyes still work — to see what you build on what I have given you today.",
       "exitStateId": "marcus_scaurus_convo_0_exit_traditionalist"
     },
     "marcus_scaurus_convo_0_n11": {
       "type": "exit",
       "id": "marcus_scaurus_convo_0_n11",
-      "npcDialogue": "You are not a disciple. I did not expect one — disciples are for philosophers, and I am a politician. But you have listened, and you have understood, and that places you ahead of most men who walk through that door. The constitutional architecture I described to you today — study it. Not because I ask you to, but because when the crisis deepens, and it will, you will need to understand what is being destroyed in order to know what is worth saving.",
+      "npcDialogue": "You are not a disciple. I did not expect one — disciples are for rhetoricians and Greeks. But you have listened, and you have understood, and that places you ahead of most men who walk through that door expecting favors and leaving with lectures. The constitutional architecture I showed you today — study it. Not for my sake. Because when the crisis deepens, and it will, you will need to understand what is being destroyed in order to know what, if anything, is worth pulling from the wreckage.",
       "exitStateId": "marcus_scaurus_convo_0_exit_skeptic"
     },
     "marcus_scaurus_convo_0_n12": {
       "type": "exit",
       "id": "marcus_scaurus_convo_0_n12",
-      "npcDialogue": "Self-interest. You reduce forty years of constitutional stewardship to self-interest. I have buried friends for this Republic. I have sacrificed consulships for this Republic. And you sit in my house and tell me I am merely protecting my position. We are finished. Do not come to me again expecting wisdom — you have already decided you know more than the men who built what you are so eager to tear down. Leave.",
+      "npcDialogue": "Self-interest. You reduce — you dare reduce forty years of service to self-interest. I have buried friends for this Republic. I turned down a second consulship because the precedent of Marius's repeated terms sickened me. And you sit in my house, in that chair where your father sat, and tell me I am merely protecting my position. We are finished. Go. Do not come back to this house expecting wisdom — you have already decided that the men who built what you so casually dismiss had nothing to teach you. The door is behind you. Use it.",
       "exitStateId": "marcus_scaurus_convo_0_exit_dismissed"
     }
   },
@@ -180,14 +214,26 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "optimates", "shift": 2, "reason": "Scaurus personally endorses you to the optimate leadership" },
-            { "factionId": "populares", "shift": -1, "reason": "Word spreads that Scaurus has taken you under his wing" }
+            {
+              "factionId": "optimates",
+              "shift": 2,
+              "reason": "Scaurus personally endorses you to the optimate leadership"
+            },
+            {
+              "factionId": "populares",
+              "shift": -1,
+              "reason": "Word spreads that Scaurus has taken you under his wing"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "severitas", "shift": 1, "reason": "Embraced the weight of constitutional tradition" }
+            {
+              "trait": "severitas",
+              "shift": 1,
+              "reason": "Embraced the weight of constitutional tradition"
+            }
           ]
         },
         {
@@ -203,13 +249,21 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "optimates", "shift": 1, "reason": "Scaurus considers you thoughtful if uncommitted" }
+            {
+              "factionId": "optimates",
+              "shift": 1,
+              "reason": "Scaurus considers you thoughtful if uncommitted"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "calliditas", "shift": 1, "reason": "Absorbed constitutional knowledge without committing to a faction" }
+            {
+              "trait": "calliditas",
+              "shift": 1,
+              "reason": "Absorbed constitutional knowledge without committing to a faction"
+            }
           ]
         },
         {
@@ -225,16 +279,25 @@
         {
           "type": "faction_standing",
           "deltas": [
-            { "factionId": "optimates", "shift": -2, "reason": "Scaurus tells his colleagues you are unserious and ungrateful" }
+            {
+              "factionId": "optimates",
+              "shift": -2,
+              "reason": "Scaurus tells his colleagues you are unserious and ungrateful"
+            }
           ]
         },
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "audacia", "shift": 1, "reason": "Challenged the most powerful man in the senate to his face" }
+            {
+              "trait": "audacia",
+              "shift": 1,
+              "reason": "Challenged the most powerful man in the senate to his face"
+            }
           ]
         }
       ]
     }
-  ]
+  ],
+  "direction": "outbound"
 }

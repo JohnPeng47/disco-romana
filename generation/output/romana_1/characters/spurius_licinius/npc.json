@@ -1,0 +1,13 @@
+{
+  "id": "spurius_licinius",
+  "name": "Spurius Licinius",
+  "factionId": "optimates",
+  "rank": "citizen",
+  "reputationProfile": {
+    "severitas": 7,
+    "clementia": 2,
+    "audacia": 1,
+    "calliditas": 8
+  },
+  "conversationArcLength": 1
+}

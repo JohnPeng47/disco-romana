@@ -1,0 +1,235 @@
+{
+  "id": "spurius_licinius_convo_0",
+  "npcId": "spurius_licinius",
+  "phaseId": "social_war",
+  "sequenceIndex": 0,
+  "preconditions": [
+    {
+      "type": "prior_exit_state",
+      "conversationId": "marcus_scaurus_convo_0",
+      "requiredExitStateIds": [
+        "marcus_scaurus_convo_0_exit_traditionalist",
+        "marcus_scaurus_convo_0_exit_skeptic",
+        "marcus_scaurus_convo_0_exit_dismissed"
+      ]
+    }
+  ],
+  "entryNodeId": "spurius_licinius_convo_0_n01",
+  "nodes": {
+    "spurius_licinius_convo_0_n01": {
+      "type": "passive",
+      "id": "spurius_licinius_convo_0_n01",
+      "npcDialogue": "The Tabularium closes in two hours and I have eleven property transfers ahead of yours. Name, tribe, census class. And before you tell me your father's name expecting it to move you up the queue -- it won't. The registers don't care who your grandfather conquered.",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 4,
+          "playerDialogue": "Gaius Veturius Crispus, Romilia, first class. I have a Samnite estate transfer that needs recording before the next lustrum.",
+          "nextNodeId": "spurius_licinius_convo_0_n02"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 4,
+          "playerDialogue": "Gaius Veturius Crispus. And I wasn't going to invoke my father -- I can see you're buried. I'll be quick.",
+          "nextNodeId": "spurius_licinius_convo_0_n02"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 4,
+          "playerDialogue": "Gaius Veturius Crispus. Romilia tribe. And I'd like to understand the process, not just survive it.",
+          "nextNodeId": "spurius_licinius_convo_0_n03"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 4,
+          "playerDialogue": "Gaius Veturius Crispus, first class, Romilia. I notice you've reorganized the tribal index since last year -- new cross-referencing system?",
+          "nextNodeId": "spurius_licinius_convo_0_n03"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "Gaius Veturius Crispus. I'm here about a property transfer. Just tell me what you need.",
+        "nextNodeId": "spurius_licinius_convo_0_n02"
+      }
+    },
+    "spurius_licinius_convo_0_n02": {
+      "type": "noop",
+      "id": "spurius_licinius_convo_0_n02",
+      "npcDialogue": "Romilia. Rural tribe, old assignment -- your family's been there since before the Samnite Wars, I'd wager. Fine. Samnite estate means allied territory, which means I need the provincial assessment, the local censitor's seal, and a declaration of use. Most patricians walk in here with none of those and expect me to conjure them. The estate itself transfers simply enough. What does not transfer simply is the tax obligation -- Samnite land has been reassessed twice since the Italian troubles started, and the rates depend on whether Rome still considers the district pacified.",
+      "options": [
+        {
+          "playerDialogue": "The district matters that much? I assumed property tax was property tax.",
+          "nextNodeId": "spurius_licinius_convo_0_n04"
+        }
+      ]
+    },
+    "spurius_licinius_convo_0_n03": {
+      "type": "noop",
+      "id": "spurius_licinius_convo_0_n03",
+      "npcDialogue": "You noticed that. Most senators couldn't find their own tribal listing if I handed them the scroll open to the page. Yes -- I rebuilt the index after the last census. The old system filed by nomen, which was adequate when the citizen rolls were two hundred thousand deep. We're past four hundred thousand now, and if certain legislation passes, we'll be looking at eight hundred thousand entries cross-referenced across thirty-five tribes, one hundred and ninety-three centuries, and five census classes. The existing architecture does not survive that. I'm the only person in this building who seems concerned by the fact.",
+      "options": [
+        {
+          "playerDialogue": "Eight hundred thousand. You're talking about the citizenship bill -- Drusus's proposal.",
+          "nextNodeId": "spurius_licinius_convo_0_n04"
+        }
+      ]
+    },
+    "spurius_licinius_convo_0_n04": {
+      "type": "active",
+      "id": "spurius_licinius_convo_0_n04",
+      "npcDialogue": "I am talking about the machinery that makes Rome a republic instead of a mob with traditions. Listen -- and I will explain this once, because no one in the Senate seems to grasp it. There are thirty-five tribes. Thirty-one are rural. Four are urban. Every citizen votes in his tribe, and every tribe casts one collective vote. That means a rural tribe with four thousand members has the same weight as an urban tribe with seventy thousand. The rural tribes control legislation. They always have. Now -- where do you suppose four hundred thousand new Italian citizens would be enrolled?",
+      "options": [
+        {
+          "playerDialogue": "The urban tribes. Pack them into four tribes where their numbers are diluted to nothing -- that's the optimate plan.",
+          "nextNodeId": "spurius_licinius_convo_0_n05"
+        },
+        {
+          "playerDialogue": "Spread across the rural tribes. Which would flip the balance in a dozen of them overnight.",
+          "nextNodeId": "spurius_licinius_convo_0_n05"
+        },
+        {
+          "playerDialogue": "That's the real fight, isn't it? Not whether they get citizenship -- but which box you file them in.",
+          "visibilityRequirement": {
+            "trait": "calliditas",
+            "minValue": 5
+          },
+          "nextNodeId": "spurius_licinius_convo_0_n06"
+        }
+      ]
+    },
+    "spurius_licinius_convo_0_n05": {
+      "type": "passive",
+      "id": "spurius_licinius_convo_0_n05",
+      "npcDialogue": "Now you begin to see it. The question is never 'shall the Italians be citizens' -- any fool with a conscience can answer that. The question is: into which of thirty-five containers do you pour them, knowing that the container determines whether their vote means anything or nothing? Put them in the rural tribes and the men who've controlled those tribes for three centuries lose their grip overnight. Put them in the urban tribes and you've given them a title with no power behind it -- citizenship as decoration. Either way, someone is being cheated. The system was not built for this. I was not built for this.",
+      "responses": [
+        {
+          "trait": "severitas",
+          "threshold": 5,
+          "playerDialogue": "Then the system needs to hold. You don't redesign the aqueducts during a flood -- you reinforce what's there.",
+          "nextNodeId": "spurius_licinius_convo_0_n07"
+        },
+        {
+          "trait": "clementia",
+          "threshold": 5,
+          "playerDialogue": "If the system can't accommodate justice, maybe the system is the problem -- not the people asking to be counted.",
+          "nextNodeId": "spurius_licinius_convo_0_n08"
+        },
+        {
+          "trait": "audacia",
+          "threshold": 5,
+          "playerDialogue": "Whoever controls the enrollment controls the Republic for a generation. That's an opportunity, not a crisis.",
+          "nextNodeId": "spurius_licinius_convo_0_n08"
+        },
+        {
+          "trait": "calliditas",
+          "threshold": 5,
+          "playerDialogue": "New tribes. Create them. Absorb the Italians into fresh containers where no one has existing leverage.",
+          "nextNodeId": "spurius_licinius_convo_0_n06"
+        }
+      ],
+      "fallbackResponse": {
+        "playerDialogue": "I hadn't thought of it that way. The enrollment is the whole game.",
+        "nextNodeId": "spurius_licinius_convo_0_n07"
+      }
+    },
+    "spurius_licinius_convo_0_n06": {
+      "type": "convergence",
+      "id": "spurius_licinius_convo_0_n06",
+      "npcDialogue": "New tribes. You know, I have written that proposal -- on my own time, unpaid, because no one asked and no one will. Eight new tribes, geographically defined, with transitional century assignments based on the Italian municipal census data I've been quietly compiling for two years. It would work. It would be clean. And it will never happen, because the Senate does not solve structural problems -- it delays them until someone dies over them. You're the first person of rank who has even understood the question well enough to reach that answer. For whatever that is worth, which historically in this Republic is nothing.",
+      "options": [
+        {
+          "playerDialogue": "Show me the proposal. If it's as sound as you say, it deserves better than a clerk's drawer.",
+          "nextNodeId": "spurius_licinius_convo_0_n09"
+        },
+        {
+          "playerDialogue": "You've done the work no one asked for. That's either admirable or tragic -- I can't tell which.",
+          "nextNodeId": "spurius_licinius_convo_0_n09"
+        }
+      ]
+    },
+    "spurius_licinius_convo_0_n07": {
+      "type": "active",
+      "id": "spurius_licinius_convo_0_n07",
+      "npcDialogue": "Reinforce what's there. Spoken like a man who's never had to rebuild a listing after a census purge. But I take your point -- stability has a value that reformers systematically undercount. Your property transfer is processed. The Samnite estate records cleanly under the existing tribal assessment. You should know that I process these documents for men on every side of this argument, and the ones who understand what I've just explained to you can be counted on one hand. If you intend to enter political life -- and your presence in the Tabularium tells me you do -- remember that the census is not a list. It is the Republic, written in names and numbers. Guard the list, and you guard everything.",
+      "options": [
+        {
+          "playerDialogue": "I'll remember. The men who maintain the machinery deserve more credit than the men who speechify about it.",
+          "nextNodeId": "spurius_licinius_convo_0_n10"
+        },
+        {
+          "playerDialogue": "Guard the list. I understand you -- even if the Senate doesn't.",
+          "nextNodeId": "spurius_licinius_convo_0_n10"
+        }
+      ]
+    },
+    "spurius_licinius_convo_0_n08": {
+      "type": "active",
+      "id": "spurius_licinius_convo_0_n08",
+      "npcDialogue": "You speak of justice, or opportunity -- either way, you speak of change. Let me tell you what change looks like from this desk. It looks like six months of re-enrollment, every record hand-copied, every tribal assignment contested by men with lawyers and legions behind their claims. It looks like me, working through the night for months, knowing that one misplaced entry could disenfranchise a thousand men or fabricate a thousand votes. The reformers never think about the clerk. They should. We are the ones who make their ideals into facts -- or, if we are careless or corrupt, into catastrophes.",
+      "options": [
+        {
+          "playerDialogue": "Then the clerks should have a voice in how this is done. You clearly know more about it than the tribunes proposing it.",
+          "nextNodeId": "spurius_licinius_convo_0_n09"
+        },
+        {
+          "playerDialogue": "I hear you. But the Italians dying outside the walls don't have the luxury of waiting for clean paperwork.",
+          "nextNodeId": "spurius_licinius_convo_0_n09"
+        }
+      ]
+    },
+    "spurius_licinius_convo_0_n09": {
+      "type": "exit",
+      "id": "spurius_licinius_convo_0_n09",
+      "npcDialogue": "I don't know why I've told you all this. I have a policy -- process the form, don't explain the system, go home, drink cheap wine. But you asked the right questions, which is so rare in this building that I mistook it for respect. Your transfer is done. If you find yourself speaking with Tribune Drusus about his citizenship bill -- and I suspect you will -- tell him that the enrollment mechanism is the bill. Everything else is rhetoric. And if he wants to know what a workable tribal distribution looks like, he knows where the Tabularium is. We close at the ninth hour. I am here every day. I have nowhere else to be.",
+      "exitStateId": "spurius_licinius_convo_0_exit_informed"
+    },
+    "spurius_licinius_convo_0_n10": {
+      "type": "exit",
+      "id": "spurius_licinius_convo_0_n10",
+      "npcDialogue": "Your transfer is stamped and filed. Romilia tribe, first class, Samnite estate -- all clean. I don't give advice, as a rule. Men of your station don't take it from men of mine, and pretending otherwise wastes both our afternoons. But since you've shown more interest in how this Republic actually functions than the last forty patricians combined -- pay attention to the census rolls this year. Watch who gets enrolled and into which tribes. That will tell you more about what's coming than any speech from the rostra. Now -- next in the queue. I have ten more of these before sundown and none of them will be as pleasant as this.",
+      "exitStateId": "spurius_licinius_convo_0_exit_bureaucratic"
+    }
+  },
+  "exitStates": [
+    {
+      "id": "spurius_licinius_convo_0_exit_informed",
+      "narrativeLabel": "The Clerk's Confidant",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "calliditas",
+              "shift": 1,
+              "reason": "Grasped the structural mechanics of tribal enrollment"
+            }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "marcus_drusus_convo_0"
+        }
+      ]
+    },
+    {
+      "id": "spurius_licinius_convo_0_exit_bureaucratic",
+      "narrativeLabel": "Respectful Citizen of the Tabularium",
+      "effects": [
+        {
+          "type": "reputation",
+          "deltas": [
+            {
+              "trait": "severitas",
+              "shift": 1,
+              "reason": "Honored the institutional machinery of the Republic"
+            }
+          ]
+        },
+        {
+          "type": "unlock_conversation",
+          "conversationId": "marcus_drusus_convo_0"
+        }
+      ]
+    }
+  ],
+  "direction": "outbound"
+}

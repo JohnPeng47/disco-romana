@@ -63,6 +63,8 @@ export interface GameState {
   personalFavors: Record<string, number>;
   exitStateHistory: { conversationId: string; exitStateId: string }[];
   visitedNodes: Set<string>;
+  firedEvents: Set<string>;
+  lastNpcId: string | null;
   force: number;
   wealth: number;
 }
@@ -80,6 +82,8 @@ export interface MessageEntry {
   text: string;
   rollData?: RollResult;
   effectPositive?: boolean;
+  conversationId?: string;
+  nodeId?: string;
 }
 
 export interface RollResult {
@@ -123,6 +127,7 @@ export type GameAction =
   | { type: 'ADD_MESSAGE'; message: Omit<MessageEntry, 'id'> }
   | { type: 'SET_CHOICES'; choices: ChoiceEntry[] | null }
   | { type: 'ADVANCE_NODE'; nodeId: string }
+  | { type: 'LOG_CHOICE'; choiceIndex: number; choiceText: string }
   | { type: 'APPLY_EXIT_EFFECTS'; convoId: string; exitStateId: string }
   | { type: 'END_CONVERSATION' }
   | { type: 'USE_TURN' }
