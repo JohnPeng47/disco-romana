@@ -24,31 +24,8 @@ export function resolveRoll<T extends string, R extends string>(
 
   let modifier = 0;
 
-  // New format: modifiers array of AxisOperations with verb 'roll'
   if (rollConfig.modifiers) {
     modifier += evalRollModifiers(state.axes, rollConfig.modifiers);
-  }
-
-  // Legacy format: factors object with named fields
-  if (rollConfig.factors) {
-    const f = rollConfig.factors;
-    // Legacy named factors → axis reads
-    if (f.axes) {
-      // Semi-migrated: factors.axes = { factions: { key: 'populares', weight: 2 }, ... }
-      for (const [axisId, spec] of Object.entries(f.axes) as [string, any][]) {
-        const val = spec.key
-          ? (state.axes.keyed[axisId]?.[spec.key] ?? 0)
-          : (state.axes.scalars[axisId] ?? 0);
-        modifier += val * (spec.weight ?? 1);
-      }
-    } else {
-      // Fully legacy: { personalFavor: 1, factionAlignment: 2, force: 0, wealth: 0 }
-      modifier +=
-        (f.personalFavor || 0) +
-        (f.factionAlignment || 0) +
-        (f.force || 0) +
-        (f.wealth || 0);
-    }
   }
 
   if (rollConfig.reputationBonus) {

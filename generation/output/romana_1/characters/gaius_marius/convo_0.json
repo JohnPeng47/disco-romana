@@ -8,9 +8,13 @@
       "type": "any_of",
       "conditions": [
         {
-          "type": "faction_standing",
-          "factionId": "populares",
-          "min": 3
+          "type": "axis_gate",
+          "op": {
+            "verb": "gate",
+            "axis": "factions",
+            "key": "populares",
+            "min": 3
+          }
         },
         {
           "type": "prior_exit_state",
@@ -27,10 +31,10 @@
     "gaius_marius_convo_0_n01": {
       "type": "active",
       "id": "gaius_marius_convo_0_n01",
-      "npcDialogue": "Sit down. No \u2014 not there. That's where Catulus sat the last time he came to lie to me. There. You know how many men I've buried? Not the official count \u2014 the real one, the one I carry. Thirty thousand at Aquae Sextiae alone. And now a perfumed Cornelian wants my command because his ancestors had better masks in their atrium. So \u2014 why are you in my house?",
+      "npcDialogue": "Sit down. No — not there. That's where Catulus sat the last time he came to lie to me. There. You know how many men I've buried? Not the official count — the real one, the one I carry. Thirty thousand at Aquae Sextiae alone. And now a perfumed Cornelian wants my command because his ancestors had better masks in their atrium. So — why are you in my house?",
       "options": [
         {
-          "playerDialogue": "Because I haven't pledged to anyone yet \u2014 and that makes me more useful than half the men in this city.",
+          "playerDialogue": "Because I haven't pledged to anyone yet — and that makes me more useful than half the men in this city.",
           "nextNodeId": "gaius_marius_convo_0_n02"
         },
         {
@@ -50,7 +54,7 @@
     "gaius_marius_convo_0_n02": {
       "type": "noop",
       "id": "gaius_marius_convo_0_n02",
-      "npcDialogue": "Unpledged. You say that like it's a virtue. I've watched this city sort itself into camps for twenty years \u2014 the optimates with their dinner lists, the populares with their dead tribunes, the Italians with their knives under their cloaks. A man with no allegiance is either very clever or very small. Which is it?",
+      "npcDialogue": "Unpledged. You say that like it's a virtue. I've watched this city sort itself into camps for twenty years — the optimates with their dinner lists, the populares with their dead tribunes, the Italians with their knives under their cloaks. A man with no allegiance is either very clever or very small. Which is it?",
       "options": [
         {
           "playerDialogue": "Give me the chance and I'll show you.",
@@ -61,7 +65,7 @@
     "gaius_marius_convo_0_n03": {
       "type": "noop",
       "id": "gaius_marius_convo_0_n03",
-      "npcDialogue": "Sulla. I taught that man how to dig a trench in Africa. He was adequate \u2014 nothing more. Adequate hands, adequate nerve, a patrician name doing all the heavy lifting. And now he thinks because he studied under me that makes us equals. It doesn't. It makes him a copy, and copies fade.",
+      "npcDialogue": "Sulla. I taught that man how to dig a trench in Africa. He was adequate — nothing more. Adequate hands, adequate nerve, a patrician name doing all the heavy lifting. And now he thinks because he studied under me that makes us equals. It doesn't. It makes him a copy, and copies fade.",
       "options": [
         {
           "playerDialogue": "Then you'll need more than contempt to stop him.",
@@ -72,7 +76,7 @@
     "gaius_marius_convo_0_n04": {
       "type": "noop",
       "id": "gaius_marius_convo_0_n04",
-      "npcDialogue": "Vercellae. Gods, the dust that day \u2014 you couldn't see ten feet in front of you, and the Cimbri were screaming in that animal language of theirs, and not one Roman line broke. Not one. That was the last day this city deserved what I gave it. You were there. Sit down \u2014 we have business.",
+      "npcDialogue": "Vercellae. Gods, the dust that day — you couldn't see ten feet in front of you, and the Cimbri were screaming in that animal language of theirs, and not one Roman line broke. Not one. That was the last day this city deserved what I gave it. You were there. Sit down — we have business.",
       "options": [
         {
           "playerDialogue": "I remember the dust. I'm listening.",
@@ -83,18 +87,18 @@
     "gaius_marius_convo_0_n05": {
       "type": "passive",
       "id": "gaius_marius_convo_0_n05",
-      "npcDialogue": "The east. Mithridates. Whoever marches against him inherits the treasury of Asia Minor \u2014 enough gold to buy every vote in Rome for a generation. That's what this is really about. Not glory, not the Republic \u2014 the power to rebuild it in your own image. Sulla thinks the senate owes it to him. The senate thinks they can control him with it. They're both wrong.",
+      "npcDialogue": "The east. Mithridates. Whoever marches against him inherits the treasury of Asia Minor — enough gold to buy every vote in Rome for a generation. That's what this is really about. Not glory, not the Republic — the power to rebuild it in your own image. Sulla thinks the senate owes it to him. The senate thinks they can control him with it. They're both wrong.",
       "responses": [
         {
           "trait": "severitas",
           "threshold": 5,
-          "playerDialogue": "The law assigned the command. Break that precedent and it won't matter who wins \u2014 the Republic is already dead.",
+          "playerDialogue": "The law assigned the command. Break that precedent and it won't matter who wins — the Republic is already dead.",
           "nextNodeId": "gaius_marius_convo_0_n06"
         },
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "Split the command. Give Sulla the fleet, take the legions yourself. A divided war is ugly \u2014 but a civil one is worse.",
+          "playerDialogue": "Split the command. Give Sulla the fleet, take the legions yourself. A divided war is ugly — but a civil one is worse.",
           "nextNodeId": "gaius_marius_convo_0_n06"
         },
         {
@@ -106,7 +110,7 @@
         {
           "trait": "calliditas",
           "threshold": 5,
-          "playerDialogue": "Use Sulpicius. A tribunician bill to transfer the command \u2014 perfectly legal, technically unimpeachable. Let Sulla try to argue with the assemblies.",
+          "playerDialogue": "Use Sulpicius. A tribunician bill to transfer the command — perfectly legal, technically unimpeachable. Let Sulla try to argue with the assemblies.",
           "nextNodeId": "gaius_marius_convo_0_n07"
         }
       ],
@@ -118,13 +122,17 @@
     "gaius_marius_convo_0_n06": {
       "type": "convergence",
       "id": "gaius_marius_convo_0_n06",
-      "npcDialogue": "You speak like a man who still believes the system works. I believed that once \u2014 before I watched them hand my legacy to a Cornelian because his grandfather had a better death mask. Let me try something more direct.",
+      "npcDialogue": "You speak like a man who still believes the system works. I believed that once — before I watched them hand my legacy to a Cornelian because his grandfather had a better death mask. Let me try something more direct.",
       "routes": [
         {
           "condition": {
-            "type": "faction_standing",
-            "factionId": "populares",
-            "min": 2
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "populares",
+              "min": 2
+            }
           },
           "nextNodeId": "gaius_marius_convo_0_n08"
         },
@@ -141,7 +149,7 @@
     "gaius_marius_convo_0_n07": {
       "type": "active",
       "id": "gaius_marius_convo_0_n07",
-      "npcDialogue": "Good. Good \u2014 you think like a soldier. Sulpicius is already scratching out the bill. When it hits the floor the optimates will scream sacrilege, declare every omen in the sky a portent against it \u2014 the usual theatre. I need a man in the forum who can hold a crowd by the throat. Not with rhetoric. With the look in his eyes that says he'll still be standing when the stones start flying.",
+      "npcDialogue": "Good. Good — you think like a soldier. Sulpicius is already scratching out the bill. When it hits the floor the optimates will scream sacrilege, declare every omen in the sky a portent against it — the usual theatre. I need a man in the forum who can hold a crowd by the throat. Not with rhetoric. With the look in his eyes that says he'll still be standing when the stones start flying.",
       "options": [
         {
           "playerDialogue": "Tell me where to stand. I'll hold the ground.",
@@ -151,16 +159,29 @@
               "sides": 6
             },
             "baseThreshold": 7,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 1,
-              "force": 2,
-              "wealth": 0
-            },
             "reputationBonus": {
               "trait": "audacia",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "gaius_marius",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "factions",
+                "key": "populares",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "force",
+                "weight": 2
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "gaius_marius_convo_0_n10"
@@ -170,7 +191,7 @@
           }
         },
         {
-          "playerDialogue": "The forum is a killing floor when it turns. I'd rather work the clients \u2014 quieter, surer.",
+          "playerDialogue": "The forum is a killing floor when it turns. I'd rather work the clients — quieter, surer.",
           "nextNodeId": "gaius_marius_convo_0_n08"
         }
       ]
@@ -178,26 +199,39 @@
     "gaius_marius_convo_0_n08": {
       "type": "active",
       "id": "gaius_marius_convo_0_n08",
-      "npcDialogue": "The populares love me, but love doesn't count tribes. I need the Italian veterans \u2014 my veterans, the ones who stood in the mud with me at Vercellae and came home to find Rome had forgotten their names. They're citizens now, or near enough. If they vote as a bloc, Sulla's senate friends become irrelevant. Can you reach them?",
+      "npcDialogue": "The populares love me, but love doesn't count tribes. I need the Italian veterans — my veterans, the ones who stood in the mud with me at Vercellae and came home to find Rome had forgotten their names. They're citizens now, or near enough. If they vote as a bloc, Sulla's senate friends become irrelevant. Can you reach them?",
       "options": [
         {
-          "playerDialogue": "I know men in the veteran quarters. Let me talk to them \u2014 quietly.",
+          "playerDialogue": "I know men in the veteran quarters. Let me talk to them — quietly.",
           "roll": {
             "dice": {
               "count": 2,
               "sides": 6
             },
             "baseThreshold": 8,
-            "factors": {
-              "personalFavor": 2,
-              "factionAlignment": 1,
-              "force": 0,
-              "wealth": 1
-            },
             "reputationBonus": {
               "trait": "calliditas",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "gaius_marius",
+                "weight": 2
+              },
+              {
+                "verb": "roll",
+                "axis": "factions",
+                "key": "populares",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "wealth",
+                "weight": 1
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "gaius_marius_convo_0_n10"
@@ -215,7 +249,7 @@
     "gaius_marius_convo_0_n09": {
       "type": "convergence",
       "id": "gaius_marius_convo_0_n09",
-      "npcDialogue": "Careful. Yes. I can see it in the way you hold your shoulders \u2014 always ready to step back. That's your right. But I'll tell you something for nothing: the months ahead will not permit distance. Every man in Rome will be made to stand somewhere, and the ground between the sides is where the bodies fall.",
+      "npcDialogue": "Careful. Yes. I can see it in the way you hold your shoulders — always ready to step back. That's your right. But I'll tell you something for nothing: the months ahead will not permit distance. Every man in Rome will be made to stand somewhere, and the ground between the sides is where the bodies fall.",
       "routes": [
         {
           "condition": {
@@ -230,13 +264,13 @@
     "gaius_marius_convo_0_n10": {
       "type": "exit",
       "id": "gaius_marius_convo_0_n10",
-      "npcDialogue": "You've got nerve. I don't say that lightly \u2014 the last three men I trusted are dead, exiled, or pretending they never knew me. But you showed up and you didn't flinch, and in this city that's rarer than an honest augur. When I move, you'll hear it from me \u2014 not the senate floor, not the rumor mills. From me.",
+      "npcDialogue": "You've got nerve. I don't say that lightly — the last three men I trusted are dead, exiled, or pretending they never knew me. But you showed up and you didn't flinch, and in this city that's rarer than an honest augur. When I move, you'll hear it from me — not the senate floor, not the rumor mills. From me.",
       "exitStateId": "gaius_marius_convo_0_exit_trusted"
     },
     "gaius_marius_convo_0_n11": {
       "type": "exit",
       "id": "gaius_marius_convo_0_n11",
-      "npcDialogue": "It didn't work. But you tried, and trying is more than most men in this city will risk with their soft hands and their careful silences. Stay close to me, Crispus. I remember the men who reached for the blade even when they couldn't grip it \u2014 and I remember the ones who kept their hands in their laps.",
+      "npcDialogue": "It didn't work. But you tried, and trying is more than most men in this city will risk with their soft hands and their careful silences. Stay close to me, Crispus. I remember the men who reached for the blade even when they couldn't grip it — and I remember the ones who kept their hands in their laps.",
       "exitStateId": "gaius_marius_convo_0_exit_noted"
     },
     "gaius_marius_convo_0_n12": {
@@ -252,15 +286,19 @@
       "narrativeLabel": "Marius's Agent",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": 3,
               "reason": "Marius considers you a reliable operative"
             },
             {
-              "factionId": "sullan_faction",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "sullan_faction",
               "shift": -2,
               "reason": "Sulla's network marks you as a Marian agent"
             }
@@ -287,10 +325,12 @@
       "narrativeLabel": "On Marius's Ledger",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": 1,
               "reason": "Marius notes your willingness, if not your success"
             }
@@ -307,10 +347,12 @@
       "narrativeLabel": "Dismissed by Marius",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": -1,
               "reason": "Marius has no time for fence-sitters"
             }

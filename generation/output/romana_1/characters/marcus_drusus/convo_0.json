@@ -144,9 +144,13 @@
       "routes": [
         {
           "condition": {
-            "type": "faction_standing",
-            "factionId": "optimates",
-            "min": 2
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "optimates",
+              "min": 2
+            }
           },
           "nextNodeId": "marcus_drusus_convo_0_n09"
         }
@@ -185,16 +189,23 @@
               "sides": 6
             },
             "baseThreshold": 7,
-            "factors": {
-              "personalFavor": 2,
-              "factionAlignment": 0,
-              "force": 0,
-              "wealth": 1
-            },
             "reputationBonus": {
               "trait": "calliditas",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "marcus_drusus",
+                "weight": 2
+              },
+              {
+                "verb": "roll",
+                "axis": "wealth",
+                "weight": 1
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "marcus_drusus_convo_0_n10"
@@ -234,20 +245,26 @@
       "narrativeLabel": "Allied with Drusus",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": 3,
               "reason": "Publicly committed to Drusus's reform coalition"
             },
             {
-              "factionId": "italian_allies",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "italian_allies",
               "shift": 1,
               "reason": "Seen as an ally of Italian citizenship"
             },
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": -2,
               "reason": "Marked as a reformer by the conservative bloc"
             }
@@ -274,10 +291,12 @@
       "narrativeLabel": "Cautious Observer",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": 1,
               "reason": "Showed sympathy without full commitment"
             }
@@ -294,15 +313,19 @@
       "narrativeLabel": "Kept Distance from Drusus",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": -1,
               "reason": "Drusus notes your refusal"
             },
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": 1,
               "reason": "Word reaches the optimates that you declined to help Drusus"
             }

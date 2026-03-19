@@ -26,15 +26,6 @@ export function resolveConvergence<T extends string, R extends string>(
       case 'axis_gate':
         matches = evalGate(state.axes, cond.op);
         break;
-      // Legacy: faction_standing convergence condition → axis gate
-      case 'faction_standing':
-        matches = evalGate(state.axes, {
-          verb: 'gate',
-          axis: 'factions',
-          key: cond.factionId,
-          min: cond.min,
-        });
-        break;
     }
     if (matches) return route.nextNodeId;
   }

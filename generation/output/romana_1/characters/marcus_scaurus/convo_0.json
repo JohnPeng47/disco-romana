@@ -144,16 +144,24 @@
               "sides": 6
             },
             "baseThreshold": 7,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 2,
-              "force": 0,
-              "wealth": 0
-            },
             "reputationBonus": {
               "trait": "severitas",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "marcus_scaurus",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "factions",
+                "key": "optimates",
+                "weight": 2
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "marcus_scaurus_convo_0_n10"
@@ -212,15 +220,19 @@
       "narrativeLabel": "Scaurus's Traditionalist Disciple",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": 2,
               "reason": "Scaurus personally endorses you to the optimate leadership"
             },
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": -1,
               "reason": "Word spreads that Scaurus has taken you under his wing"
             }
@@ -247,10 +259,12 @@
       "narrativeLabel": "Respectful Skeptic of the Old Order",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": 1,
               "reason": "Scaurus considers you thoughtful if uncommitted"
             }
@@ -277,10 +291,12 @@
       "narrativeLabel": "Dismissed by the Princeps Senatus",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": -2,
               "reason": "Scaurus tells his colleagues you are unserious and ungrateful"
             }

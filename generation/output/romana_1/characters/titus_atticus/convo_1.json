@@ -76,16 +76,23 @@
               "sides": 6
             },
             "baseThreshold": 9,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 0,
-              "force": 0,
-              "wealth": 2
-            },
             "reputationBonus": {
               "trait": "calliditas",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "titus_atticus",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "wealth",
+                "weight": 2
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "titus_atticus_convo_1_n06"
@@ -223,10 +230,12 @@
       "narrativeLabel": "Optimate Informant",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": 2,
               "reason": "Delivered valuable financial intelligence to the optimate leadership"
             }
@@ -253,10 +262,12 @@
       "narrativeLabel": "Populares Informant",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": 2,
               "reason": "Armed the populares with financial intelligence about the war economy"
             }
@@ -283,10 +294,12 @@
       "narrativeLabel": "Italian Allies Informant",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "italian_allies",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "italian_allies",
               "shift": 2,
               "reason": "Shared Roman financial vulnerabilities with the Italian confederation"
             }
@@ -313,10 +326,12 @@
       "narrativeLabel": "Sullan Informant",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "sullan_faction",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "sullan_faction",
               "shift": 2,
               "reason": "Provided Sulla's circle with critical supply economics intelligence"
             }

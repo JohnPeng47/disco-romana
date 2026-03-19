@@ -125,20 +125,26 @@
       "narrativeLabel": "Loyal Marian",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": 3,
               "reason": "Stood with Marius when Sulla marched on Rome"
             },
             {
-              "factionId": "sullan_faction",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "sullan_faction",
               "shift": -3,
               "reason": "Sulla's forces mark you as an enemy combatant"
             },
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": -1,
               "reason": "The senate moderates consider you a Marian radical"
             }
@@ -166,15 +172,19 @@
       "narrativeLabel": "Defector to Sulla",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": -5,
               "reason": "Deserted the Marian cause at the moment of crisis"
             },
             {
-              "factionId": "sullan_faction",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "sullan_faction",
               "shift": 3,
               "reason": "Defected to Sulla's side before the battle — useful but distrusted"
             }

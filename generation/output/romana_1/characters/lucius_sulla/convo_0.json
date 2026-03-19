@@ -8,14 +8,22 @@
       "type": "any_of",
       "conditions": [
         {
-          "type": "faction_standing",
-          "factionId": "optimates",
-          "min": 4
+          "type": "axis_gate",
+          "op": {
+            "verb": "gate",
+            "axis": "factions",
+            "key": "optimates",
+            "min": 4
+          }
         },
         {
-          "type": "faction_standing",
-          "factionId": "sullan_faction",
-          "min": 1
+          "type": "axis_gate",
+          "op": {
+            "verb": "gate",
+            "axis": "factions",
+            "key": "sullan_faction",
+            "min": 1
+          }
         }
       ]
     }
@@ -135,9 +143,13 @@
       "routes": [
         {
           "condition": {
-            "type": "faction_standing",
-            "factionId": "sullan_faction",
-            "min": 1
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "sullan_faction",
+              "min": 1
+            }
           },
           "nextNodeId": "lucius_sulla_convo_0_n09"
         }
@@ -176,16 +188,29 @@
               "sides": 6
             },
             "baseThreshold": 7,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 2,
-              "force": 0,
-              "wealth": 1
-            },
             "reputationBonus": {
               "trait": "audacia",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "lucius_sulla",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "factions",
+                "key": "sullan_faction",
+                "weight": 2
+              },
+              {
+                "verb": "roll",
+                "axis": "wealth",
+                "weight": 1
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "lucius_sulla_convo_0_n10"
@@ -219,15 +244,19 @@
       "narrativeLabel": "In Sulla's Confidence",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "sullan_faction",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "sullan_faction",
               "shift": 3,
               "reason": "Sulla has taken you into his confidence"
             },
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": -1,
               "reason": "Word gets out that you've met with Sulla"
             }
@@ -250,10 +279,12 @@
       "narrativeLabel": "On Sulla's List",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "sullan_faction",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "sullan_faction",
               "shift": 1,
               "reason": "Sulla has noted you as potentially useful"
             }

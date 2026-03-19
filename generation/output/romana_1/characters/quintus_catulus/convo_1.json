@@ -20,7 +20,7 @@
     "quintus_catulus_convo_1_n01": {
       "type": "active",
       "id": "quintus_catulus_convo_1_n01",
-      "npcDialogue": "The senate voted this morning. Mithridates has sacked every Roman settlement in Asia \u2014 eighty thousand dead, if the dispatches aren't exaggerating, and for once I doubt they are. Someone must go east with an army, and the question of who has turned this chamber into a cockpit. Sulla holds the legal command. Sulpicius is maneuvering to hand it to Marius through the tribal assembly. Tell me you understand what that means.",
+      "npcDialogue": "The senate voted this morning. Mithridates has sacked every Roman settlement in Asia — eighty thousand dead, if the dispatches aren't exaggerating, and for once I doubt they are. Someone must go east with an army, and the question of who has turned this chamber into a cockpit. Sulla holds the legal command. Sulpicius is maneuvering to hand it to Marius through the tribal assembly. Tell me you understand what that means.",
       "options": [
         {
           "playerDialogue": "It means the senate's authority over military appointments is finished the moment a tribune can override it with a mob vote.",
@@ -39,30 +39,30 @@
     "quintus_catulus_convo_1_n02": {
       "type": "passive",
       "id": "quintus_catulus_convo_1_n02",
-      "npcDialogue": "Precisely. Sulpicius doesn't care about Mithridates \u2014 he cares about the precedent. If the assembly can strip a consul of his lawful command, the senate becomes decorative. A painted wall. And Marius \u2014 Marius is sixty-nine years old, half-mad with ambition, and he wants one last triumph to gild his funeral. They're burning the constitution to light an old man's vanity. Do you still believe their claim has any legitimacy?",
+      "npcDialogue": "Precisely. Sulpicius doesn't care about Mithridates — he cares about the precedent. If the assembly can strip a consul of his lawful command, the senate becomes decorative. A painted wall. And Marius — Marius is sixty-nine years old, half-mad with ambition, and he wants one last triumph to gild his funeral. They're burning the constitution to light an old man's vanity. Do you still believe their claim has any legitimacy?",
       "responses": [
         {
           "trait": "severitas",
           "threshold": 5,
-          "playerDialogue": "None. The command was lawfully assigned. Transferring it by assembly vote isn't democracy \u2014 it's theft with a quorum.",
+          "playerDialogue": "None. The command was lawfully assigned. Transferring it by assembly vote isn't democracy — it's theft with a quorum.",
           "nextNodeId": "quintus_catulus_convo_1_n05"
         },
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "Their methods are wrong. But Marius did defeat the Cimbri \u2014 there's an argument he's the better general for the campaign. Can we not find a compromise that preserves the senate's dignity?",
+          "playerDialogue": "Their methods are wrong. But Marius did defeat the Cimbri — there's an argument he's the better general for the campaign. Can we not find a compromise that preserves the senate's dignity?",
           "nextNodeId": "quintus_catulus_convo_1_n05"
         },
         {
           "trait": "audacia",
           "threshold": 5,
-          "playerDialogue": "Legitimacy is whatever the man with the legions says it is. The question isn't who deserves the command \u2014 it's who can hold it.",
+          "playerDialogue": "Legitimacy is whatever the man with the legions says it is. The question isn't who deserves the command — it's who can hold it.",
           "nextNodeId": "quintus_catulus_convo_1_n06"
         },
         {
           "trait": "calliditas",
           "threshold": 5,
-          "playerDialogue": "Their claim is weak, but it doesn't matter if they have the votes. We need to undercut Sulpicius before the assembly meets \u2014 peel off three tribunes and the motion dies.",
+          "playerDialogue": "Their claim is weak, but it doesn't matter if they have the votes. We need to undercut Sulpicius before the assembly meets — peel off three tribunes and the motion dies.",
           "nextNodeId": "quintus_catulus_convo_1_n06"
         }
       ],
@@ -74,7 +74,7 @@
     "quintus_catulus_convo_1_n03": {
       "type": "noop",
       "id": "quintus_catulus_convo_1_n03",
-      "npcDialogue": "After the army sails \u2014 under whose command? That's the whole point, Crispus. Whoever boards those ships controls six legions and the wealth of the East for the next three years. Marius knows it. Sulla knows it. And Sulpicius has already drafted the bill to reassign the command through the tribal assembly, bypassing the senate entirely. This isn't a quarrel over protocol. This is the moment we discover whether the senate still governs Rome or merely occupies a building on the Capitoline.",
+      "npcDialogue": "After the army sails — under whose command? That's the whole point, Crispus. Whoever boards those ships controls six legions and the wealth of the East for the next three years. Marius knows it. Sulla knows it. And Sulpicius has already drafted the bill to reassign the command through the tribal assembly, bypassing the senate entirely. This isn't a quarrel over protocol. This is the moment we discover whether the senate still governs Rome or merely occupies a building on the Capitoline.",
       "options": [
         {
           "playerDialogue": "Then what's your plan to stop the transfer? Sulpicius has the street behind him.",
@@ -85,7 +85,7 @@
     "quintus_catulus_convo_1_n04": {
       "type": "noop",
       "id": "quintus_catulus_convo_1_n04",
-      "npcDialogue": "Both know it. And neither will yield. I've watched Sulla these past weeks \u2014 the stillness in him is not calm, it's compression. He is a man deciding how far he's willing to go, and I suspect the answer is further than anyone in this city imagines. Marius, for all his cunning, still thinks in the old categories: votes, tribunes, street gangs. He doesn't understand that Sulla is playing a different game entirely. The legions at Nola are loyal to their general, not to Rome.",
+      "npcDialogue": "Both know it. And neither will yield. I've watched Sulla these past weeks — the stillness in him is not calm, it's compression. He is a man deciding how far he's willing to go, and I suspect the answer is further than anyone in this city imagines. Marius, for all his cunning, still thinks in the old categories: votes, tribunes, street gangs. He doesn't understand that Sulla is playing a different game entirely. The legions at Nola are loyal to their general, not to Rome.",
       "options": [
         {
           "playerDialogue": "You're describing a civil war. Is that what you expect?",
@@ -96,21 +96,29 @@
     "quintus_catulus_convo_1_n05": {
       "type": "convergence",
       "id": "quintus_catulus_convo_1_n05",
-      "npcDialogue": "The senate votes on the eastern command within the week. That vote determines whether we remain a republic of laws or become a prize to be handed out by whichever faction controls the mob. I need to know where you stand \u2014 not in principle, but in practice.",
+      "npcDialogue": "The senate votes on the eastern command within the week. That vote determines whether we remain a republic of laws or become a prize to be handed out by whichever faction controls the mob. I need to know where you stand — not in principle, but in practice.",
       "routes": [
         {
           "condition": {
-            "type": "faction_standing",
-            "factionId": "optimates",
-            "min": 3
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "optimates",
+              "min": 3
+            }
           },
           "nextNodeId": "quintus_catulus_convo_1_n07"
         },
         {
           "condition": {
-            "type": "faction_standing",
-            "factionId": "sullan_faction",
-            "min": 1
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "sullan_faction",
+              "min": 1
+            }
           },
           "nextNodeId": "quintus_catulus_convo_1_n07"
         }
@@ -120,7 +128,7 @@
     "quintus_catulus_convo_1_n06": {
       "type": "active",
       "id": "quintus_catulus_convo_1_n06",
-      "npcDialogue": "You don't have enough weight in the chamber to sway the vote directly. But there's work that needs doing outside it. Sulpicius is buying muscle \u2014 gladiators, freedmen, the usual Subura filth \u2014 to pack the Forum when the assembly meets. The equestrians are frightened, and frightened men with money can be organized. Someone needs to rally them, quietly, before Sulpicius turns the vote into a riot. It requires connections among the business class. Do you have them?",
+      "npcDialogue": "You don't have enough weight in the chamber to sway the vote directly. But there's work that needs doing outside it. Sulpicius is buying muscle — gladiators, freedmen, the usual Subura filth — to pack the Forum when the assembly meets. The equestrians are frightened, and frightened men with money can be organized. Someone needs to rally them, quietly, before Sulpicius turns the vote into a riot. It requires connections among the business class. Do you have them?",
       "options": [
         {
           "playerDialogue": "I know the equestrian quarter. My father's debts taught me which doors to knock on and which to avoid.",
@@ -130,16 +138,23 @@
               "sides": 6
             },
             "baseThreshold": 7,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 0,
-              "force": 0,
-              "wealth": 2
-            },
             "reputationBonus": {
               "trait": "calliditas",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "quintus_catulus",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "wealth",
+                "weight": 2
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "quintus_catulus_convo_1_n08"
@@ -157,26 +172,34 @@
     "quintus_catulus_convo_1_n07": {
       "type": "active",
       "id": "quintus_catulus_convo_1_n07",
-      "npcDialogue": "Your standing gives you access to Sulla's officers \u2014 the men who'll carry out whatever he decides. Here's what I need: a formal resolution from the senate affirming Sulla's command, drafted in language that makes the transfer look like what it is \u2014 an assault on senatorial prerogative. I need it circulated before Sulpicius can bring his bill to the assembly floor. And I need someone to present it who doesn't look like my creature. Will you carry it?",
+      "npcDialogue": "Your standing gives you access to Sulla's officers — the men who'll carry out whatever he decides. Here's what I need: a formal resolution from the senate affirming Sulla's command, drafted in language that makes the transfer look like what it is — an assault on senatorial prerogative. I need it circulated before Sulpicius can bring his bill to the assembly floor. And I need someone to present it who doesn't look like my creature. Will you carry it?",
       "options": [
         {
-          "playerDialogue": "I'll frame it as a defense of the senate's war-making authority. Not pro-Sulla \u2014 pro-institution. That's the argument that moves the middle.",
+          "playerDialogue": "I'll frame it as a defense of the senate's war-making authority. Not pro-Sulla — pro-institution. That's the argument that moves the middle.",
           "roll": {
             "dice": {
               "count": 2,
               "sides": 6
             },
             "baseThreshold": 7,
-            "factors": {
-              "personalFavor": 2,
-              "factionAlignment": 2,
-              "force": 0,
-              "wealth": 0
-            },
             "reputationBonus": {
               "trait": "severitas",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "quintus_catulus",
+                "weight": 2
+              },
+              {
+                "verb": "roll",
+                "axis": "factions",
+                "key": "optimates",
+                "weight": 2
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "quintus_catulus_convo_1_n08"
@@ -186,7 +209,7 @@
           }
         },
         {
-          "playerDialogue": "I'll carry it, and I'll be honest about what it is. The senate defending its own authority against a tribune's overreach. No tricks, no framing \u2014 just the plain constitutional argument.",
+          "playerDialogue": "I'll carry it, and I'll be honest about what it is. The senate defending its own authority against a tribune's overreach. No tricks, no framing — just the plain constitutional argument.",
           "nextNodeId": "quintus_catulus_convo_1_n08"
         }
       ]
@@ -194,19 +217,19 @@
     "quintus_catulus_convo_1_n08": {
       "type": "exit",
       "id": "quintus_catulus_convo_1_n08",
-      "npcDialogue": "Well done. Whether this holds or not \u2014 and I am not optimistic, Crispus, I have lived too long for optimism \u2014 you conducted yourself like a man the Republic can use. That is not a small thing. In fact, in this rotting age, it may be the only thing that matters. Go carefully. Sulpicius has informants, and after today, your name will be on lists you'd rather not appear on.",
+      "npcDialogue": "Well done. Whether this holds or not — and I am not optimistic, Crispus, I have lived too long for optimism — you conducted yourself like a man the Republic can use. That is not a small thing. In fact, in this rotting age, it may be the only thing that matters. Go carefully. Sulpicius has informants, and after today, your name will be on lists you'd rather not appear on.",
       "exitStateId": "quintus_catulus_convo_1_exit_republic_served"
     },
     "quintus_catulus_convo_1_n09": {
       "type": "exit",
       "id": "quintus_catulus_convo_1_n09",
-      "npcDialogue": "It wasn't enough. These things sometimes aren't. But you stepped into the arena, which is more than I can say for half the men wearing senatorial stripes in this city. The effort counts \u2014 not with history, perhaps, but with me. If another opening presents itself, you'll hear from me. Now go, before we're seen together too long.",
+      "npcDialogue": "It wasn't enough. These things sometimes aren't. But you stepped into the arena, which is more than I can say for half the men wearing senatorial stripes in this city. The effort counts — not with history, perhaps, but with me. If another opening presents itself, you'll hear from me. Now go, before we're seen together too long.",
       "exitStateId": "quintus_catulus_convo_1_exit_tried"
     },
     "quintus_catulus_convo_1_n10": {
       "type": "exit",
       "id": "quintus_catulus_convo_1_n10",
-      "npcDialogue": "Self-preservation. I understand the instinct \u2014 it's older than the Republic itself. But mark this evening in your memory, Crispus. There will come a night when you lie awake and wonder what would have happened if you'd said yes. I've had a few of those nights myself. They accumulate. The weight of them is considerable.",
+      "npcDialogue": "Self-preservation. I understand the instinct — it's older than the Republic itself. But mark this evening in your memory, Crispus. There will come a night when you lie awake and wonder what would have happened if you'd said yes. I've had a few of those nights myself. They accumulate. The weight of them is considerable.",
       "exitStateId": "quintus_catulus_convo_1_exit_self_preserved"
     }
   },
@@ -216,15 +239,19 @@
       "narrativeLabel": "Served the Republic in Crisis",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": 2,
               "reason": "Catulus considers you essential to the optimate rebuilding effort"
             },
             {
-              "factionId": "sullan_faction",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "sullan_faction",
               "shift": 1,
               "reason": "Your work within Sulla's framework earns grudging acceptance"
             }
@@ -247,10 +274,12 @@
       "narrativeLabel": "Made the Attempt",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": 1,
               "reason": "Catulus respects the effort even in failure"
             }
@@ -263,10 +292,12 @@
       "narrativeLabel": "Chose Self-Preservation",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": -1,
               "reason": "Catulus marks you as unreliable in crisis"
             }

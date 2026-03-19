@@ -132,9 +132,13 @@
       "routes": [
         {
           "condition": {
-            "type": "faction_standing",
-            "factionId": "italian_allies",
-            "min": 1
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "italian_allies",
+              "min": 1
+            }
           },
           "nextNodeId": "herennius_samnita_convo_0_n10"
         }
@@ -175,10 +179,12 @@
       "narrativeLabel": "Witnessed the Italian Question",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "italian_allies",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "italian_allies",
               "shift": 1,
               "reason": "Herennius registers you as a Roman who listened without flinching"
             }
@@ -205,10 +211,12 @@
       "narrativeLabel": "The Courtesy of Seeing",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "italian_allies",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "italian_allies",
               "shift": 2,
               "reason": "Herennius trusts you with the Oscan word -- that means something"
             }

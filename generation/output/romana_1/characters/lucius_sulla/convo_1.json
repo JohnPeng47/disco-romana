@@ -105,16 +105,29 @@
               "sides": 6
             },
             "baseThreshold": 7,
-            "factors": {
-              "personalFavor": 2,
-              "factionAlignment": 2,
-              "force": 0,
-              "wealth": 1
-            },
             "reputationBonus": {
               "trait": "calliditas",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "lucius_sulla",
+                "weight": 2
+              },
+              {
+                "verb": "roll",
+                "axis": "factions",
+                "key": "sullan_faction",
+                "weight": 2
+              },
+              {
+                "verb": "roll",
+                "axis": "wealth",
+                "weight": 1
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "lucius_sulla_convo_1_n08"
@@ -139,9 +152,13 @@
       "routes": [
         {
           "condition": {
-            "type": "faction_standing",
-            "factionId": "sullan_faction",
-            "min": 2
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "sullan_faction",
+              "min": 2
+            }
           },
           "nextNodeId": "lucius_sulla_convo_1_n07"
         }
@@ -192,20 +209,26 @@
       "narrativeLabel": "Sulla's Inner Circle",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "sullan_faction",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "sullan_faction",
               "shift": 3,
               "reason": "Committed to Sulla's march on Rome"
             },
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": -3,
               "reason": "You are now a marked enemy of the Marian faction"
             },
             {
-              "factionId": "italian_allies",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "italian_allies",
               "shift": -1,
               "reason": "The Italians see Sulla's faction as their enemy"
             }
@@ -228,15 +251,19 @@
       "narrativeLabel": "Sulla's Enemy",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "sullan_faction",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "sullan_faction",
               "shift": -3,
               "reason": "Sulla marks you as a public enemy"
             },
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": 2,
               "reason": "Your defiance of Sulla earns respect from the Marians"
             }
@@ -259,10 +286,12 @@
       "narrativeLabel": "Neutral in the March",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "sullan_faction",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "sullan_faction",
               "shift": -1,
               "reason": "Sulla despises neutrality"
             }

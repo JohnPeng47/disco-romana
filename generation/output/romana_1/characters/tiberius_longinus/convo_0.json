@@ -118,17 +118,25 @@
       "routes": [
         {
           "condition": {
-            "type": "faction_standing",
-            "factionId": "optimates",
-            "min": 2
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "optimates",
+              "min": 2
+            }
           },
           "nextNodeId": "tiberius_longinus_convo_0_n08"
         },
         {
           "condition": {
-            "type": "faction_standing",
-            "factionId": "italian_allies",
-            "min": 1
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "italian_allies",
+              "min": 1
+            }
           },
           "nextNodeId": "tiberius_longinus_convo_0_n09"
         }
@@ -152,16 +160,23 @@
               "sides": 6
             },
             "baseThreshold": 7,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 0,
-              "force": 0,
-              "wealth": 2
-            },
             "reputationBonus": {
               "trait": "calliditas",
               "weight": 2
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "tiberius_longinus",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "wealth",
+                "weight": 2
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "tiberius_longinus_convo_0_n09"
@@ -197,17 +212,21 @@
       "narrativeLabel": "Longinus's Roman Connection",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": 2,
               "reason": "Redirected Italian supplies to Roman forces"
             },
             {
-              "factionId": "italian_allies",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "italian_allies",
               "shift": -1,
-              "reason": "The grain never arrived \u2014 the Italians suspect treachery"
+              "reason": "The grain never arrived — the Italians suspect treachery"
             }
           ]
         },
@@ -228,15 +247,19 @@
       "narrativeLabel": "Playing Both Sides",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "italian_allies",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "italian_allies",
               "shift": 2,
               "reason": "Facilitated supplies to the Italian confederacy"
             },
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": -1,
               "reason": "Suspicions arise about your Italian sympathies"
             }
@@ -259,10 +282,12 @@
       "narrativeLabel": "In Longinus's Debt",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": 1,
               "reason": "The grain seizure is seen as loyalty to Rome"
             }
@@ -274,7 +299,7 @@
             {
               "trait": "calliditas",
               "shift": 1,
-              "reason": "Attempted a scheme that went sideways \u2014 but learned from it"
+              "reason": "Attempted a scheme that went sideways — but learned from it"
             }
           ]
         },

@@ -124,16 +124,23 @@
               "sides": 6
             },
             "baseThreshold": 8,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 0,
-              "force": 0,
-              "wealth": 2
-            },
             "reputationBonus": {
               "trait": "calliditas",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "titus_atticus",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "wealth",
+                "weight": 2
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "titus_atticus_convo_0_n08"
@@ -199,10 +206,12 @@
           ]
         },
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": -1,
               "reason": "Aristocrats distrust your commercial entanglements with an equestrian banker"
             }

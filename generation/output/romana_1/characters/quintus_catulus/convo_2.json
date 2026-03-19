@@ -5,9 +5,13 @@
   "sequenceIndex": 2,
   "preconditions": [
     {
-      "type": "faction_standing",
-      "factionId": "optimates",
-      "min": 3
+      "type": "axis_gate",
+      "op": {
+        "verb": "gate",
+        "axis": "factions",
+        "key": "optimates",
+        "min": 3
+      }
     }
   ],
   "entryNodeId": "quintus_catulus_convo_2_n01",
@@ -15,7 +19,7 @@
     "quintus_catulus_convo_2_n01": {
       "type": "passive",
       "id": "quintus_catulus_convo_2_n01",
-      "npcDialogue": "Close the door. Bolt it. I have had three couriers since dawn, each confirming the last \u2014 Sulla has broken camp at Nola and is marching north with six legions. Not toward Mithridates. Toward Rome. A consul of the Roman people is bringing a consular army against his own city. I have served this Republic for forty years, Crispus. I wrote laws. I defended walls. And I never once imagined I would speak these words aloud.",
+      "npcDialogue": "Close the door. Bolt it. I have had three couriers since dawn, each confirming the last — Sulla has broken camp at Nola and is marching north with six legions. Not toward Mithridates. Toward Rome. A consul of the Roman people is bringing a consular army against his own city. I have served this Republic for forty years, Crispus. I wrote laws. I defended walls. And I never once imagined I would speak these words aloud.",
       "responses": [
         {
           "trait": "severitas",
@@ -26,7 +30,7 @@
         {
           "trait": "clementia",
           "threshold": 4,
-          "playerDialogue": "How long before he reaches the walls? There may still be time to negotiate \u2014 Sulla has real grievances. Address them and he might halt.",
+          "playerDialogue": "How long before he reaches the walls? There may still be time to negotiate — Sulla has real grievances. Address them and he might halt.",
           "nextNodeId": "quintus_catulus_convo_2_n03"
         },
         {
@@ -38,7 +42,7 @@
         {
           "trait": "calliditas",
           "threshold": 5,
-          "playerDialogue": "Six legions. Two days' march, perhaps three. Who in the senate already knows? And more to the point \u2014 who has already sent riders to meet him?",
+          "playerDialogue": "Six legions. Two days' march, perhaps three. Who in the senate already knows? And more to the point — who has already sent riders to meet him?",
           "nextNodeId": "quintus_catulus_convo_2_n03"
         }
       ],
@@ -50,7 +54,7 @@
     "quintus_catulus_convo_2_n02": {
       "type": "noop",
       "id": "quintus_catulus_convo_2_n02",
-      "npcDialogue": "The funeral. Yes. And what a thing to witness \u2014 four hundred and sixty years, and it ends not with an invasion but with Romans pointing swords at Romans over a question of legal procedure. I helped build the framework Sulpicius burned. Wrote some of those laws with my own hand. And yet \u2014 I cannot pretend there is no logic in what Sulla does. Sulpicius gave Marius the eastern command by mob vote. He stripped a sitting consul of his lawful authority. What did we imagine Sulla would do? Write a strongly worded letter to the senate?",
+      "npcDialogue": "The funeral. Yes. And what a thing to witness — four hundred and sixty years, and it ends not with an invasion but with Romans pointing swords at Romans over a question of legal procedure. I helped build the framework Sulpicius burned. Wrote some of those laws with my own hand. And yet — I cannot pretend there is no logic in what Sulla does. Sulpicius gave Marius the eastern command by mob vote. He stripped a sitting consul of his lawful authority. What did we imagine Sulla would do? Write a strongly worded letter to the senate?",
       "options": [
         {
           "playerDialogue": "So where does that leave men like us? Men who can see the law has been broken from both sides?",
@@ -61,12 +65,12 @@
     "quintus_catulus_convo_2_n03": {
       "type": "passive",
       "id": "quintus_catulus_convo_2_n03",
-      "npcDialogue": "I sent envoys at first light. Two praetors \u2014 men Sulla respects. They returned within the hour. He received them courteously, offered them wine, and sent them back with nothing. He says he comes to liberate the Republic from tyrants. The same words every usurper has used since we drove out the Tarquins. And yet \u2014 I find I cannot entirely dismiss his grievance, even as his remedy horrifies me. That is what makes this moment unbearable. Both sides have a claim. Neither has clean hands. Tell me plainly, Crispus: where do you stand?",
+      "npcDialogue": "I sent envoys at first light. Two praetors — men Sulla respects. They returned within the hour. He received them courteously, offered them wine, and sent them back with nothing. He says he comes to liberate the Republic from tyrants. The same words every usurper has used since we drove out the Tarquins. And yet — I find I cannot entirely dismiss his grievance, even as his remedy horrifies me. That is what makes this moment unbearable. Both sides have a claim. Neither has clean hands. Tell me plainly, Crispus: where do you stand?",
       "responses": [
         {
           "trait": "severitas",
           "threshold": 5,
-          "playerDialogue": "With the law \u2014 what's left of it. Sulpicius broke it, Marius exploited the breach, and now Sulla answers with legions. But Sulla at least claims restoration. That thin thread is all I have to hold.",
+          "playerDialogue": "With the law — what's left of it. Sulpicius broke it, Marius exploited the breach, and now Sulla answers with legions. But Sulla at least claims restoration. That thin thread is all I have to hold.",
           "nextNodeId": "quintus_catulus_convo_2_n05"
         },
         {
@@ -78,7 +82,7 @@
         {
           "trait": "audacia",
           "threshold": 5,
-          "playerDialogue": "With whoever wins. Six legions against the urban cohorts is not a battle \u2014 it's a parade. I'd rather be greeting Sulla at the gate than hiding from him in the Subura.",
+          "playerDialogue": "With whoever wins. Six legions against the urban cohorts is not a battle — it's a parade. I'd rather be greeting Sulla at the gate than hiding from him in the Subura.",
           "nextNodeId": "quintus_catulus_convo_2_n04"
         },
         {
@@ -96,14 +100,14 @@
     "quintus_catulus_convo_2_n04": {
       "type": "active",
       "id": "quintus_catulus_convo_2_n04",
-      "npcDialogue": "You say that with the confidence of a man who has never watched a city fall. I have. I was at Vercellae. I watched what happens when armed men lose discipline inside walls \u2014 the distinction between enemy and bystander ceases to exist. But \u2014 and I despise myself for saying this \u2014 you may be right that resistance is futile. Sulla's veterans have been killing Samnites for two years. The urban cohorts will not hold a single gate. So the question becomes this: do we ride out to meet him, openly, and claim a seat at the table he's about to build? Or do we condemn the march publicly and gamble that our defiance gives us the moral authority to restrain him once he's inside?",
+      "npcDialogue": "You say that with the confidence of a man who has never watched a city fall. I have. I was at Vercellae. I watched what happens when armed men lose discipline inside walls — the distinction between enemy and bystander ceases to exist. But — and I despise myself for saying this — you may be right that resistance is futile. Sulla's veterans have been killing Samnites for two years. The urban cohorts will not hold a single gate. So the question becomes this: do we ride out to meet him, openly, and claim a seat at the table he's about to build? Or do we condemn the march publicly and gamble that our defiance gives us the moral authority to restrain him once he's inside?",
       "options": [
         {
-          "playerDialogue": "Meet him at the gate. Publicly. Let him see the senate's best men welcoming his return. That makes us partners, not subjects \u2014 and partners negotiate.",
+          "playerDialogue": "Meet him at the gate. Publicly. Let him see the senate's best men welcoming his return. That makes us partners, not subjects — and partners negotiate.",
           "nextNodeId": "quintus_catulus_convo_2_n06"
         },
         {
-          "playerDialogue": "Condemn the march but cooperate with the outcome. We keep our constitutional principles intact while bowing to the reality. When Sulla overreaches \u2014 and he will \u2014 we'll have standing to oppose him.",
+          "playerDialogue": "Condemn the march but cooperate with the outcome. We keep our constitutional principles intact while bowing to the reality. When Sulla overreaches — and he will — we'll have standing to oppose him.",
           "nextNodeId": "quintus_catulus_convo_2_n07"
         }
       ]
@@ -111,7 +115,7 @@
     "quintus_catulus_convo_2_n05": {
       "type": "active",
       "id": "quintus_catulus_convo_2_n05",
-      "npcDialogue": "I am going to tell you something I have not said to anyone else, because I am not sure anyone else would understand it. I believe the Republic may already be dead \u2014 not because of Sulla, but because of what made Sulla possible. A system in which a tribune can hand a consul's army to his rival by popular vote. A system in which a general can march on his own capital because no institution exists to stop him. That system has a fatal defect at its heart. Sulla will win. He'll reform the constitution. And in twenty years, someone else will break it again, because the precedent is now set. This is not a crisis, Crispus. This is the beginning of the end. The only question is whether men like us can slow the fall. So I ask you plainly \u2014 will you support Sulla's march, knowing everything it means?",
+      "npcDialogue": "I am going to tell you something I have not said to anyone else, because I am not sure anyone else would understand it. I believe the Republic may already be dead — not because of Sulla, but because of what made Sulla possible. A system in which a tribune can hand a consul's army to his rival by popular vote. A system in which a general can march on his own capital because no institution exists to stop him. That system has a fatal defect at its heart. Sulla will win. He'll reform the constitution. And in twenty years, someone else will break it again, because the precedent is now set. This is not a crisis, Crispus. This is the beginning of the end. The only question is whether men like us can slow the fall. So I ask you plainly — will you support Sulla's march, knowing everything it means?",
       "options": [
         {
           "playerDialogue": "Yes. If the Republic must be reforged, let it be reforged by men who remember what it was. I'll stand with Sulla, and with you, and try to save what can be saved.",
@@ -126,13 +130,13 @@
     "quintus_catulus_convo_2_n06": {
       "type": "exit",
       "id": "quintus_catulus_convo_2_n06",
-      "npcDialogue": "Then we are decided. I will draft a letter to Sulla this hour \u2014 from both of us \u2014 welcoming his return and offering our counsel in the reconstruction of the state. Gods forgive us. We are choosing the lesser evil and calling it statesmanship. But I would rather be inside the room when the new Rome is designed than outside it, scratching epitaphs for the old one. Go. Prepare yourself. When Sulla enters the city, we will be at the Forum to receive him. History will judge us, Crispus. I pray it judges us less harshly than I judge myself.",
+      "npcDialogue": "Then we are decided. I will draft a letter to Sulla this hour — from both of us — welcoming his return and offering our counsel in the reconstruction of the state. Gods forgive us. We are choosing the lesser evil and calling it statesmanship. But I would rather be inside the room when the new Rome is designed than outside it, scratching epitaphs for the old one. Go. Prepare yourself. When Sulla enters the city, we will be at the Forum to receive him. History will judge us, Crispus. I pray it judges us less harshly than I judge myself.",
       "exitStateId": "quintus_catulus_convo_2_exit_sullan_hawk"
     },
     "quintus_catulus_convo_2_n07": {
       "type": "exit",
       "id": "quintus_catulus_convo_2_n07",
-      "npcDialogue": "I respect that more than you know. More, I think, than I respect my own position. A constitution defended only when convenient is no constitution at all \u2014 it is a decoration. Very well. We will not endorse the march. We will attend the senate, speak for the law, and accept whatever follows. Sulla may punish us. Or he may respect it \u2014 in my experience, even tyrants admire men who hold their ground, because they meet so few. Your father would have hedged, Crispus. You did not. Go with that, whatever comes.",
+      "npcDialogue": "I respect that more than you know. More, I think, than I respect my own position. A constitution defended only when convenient is no constitution at all — it is a decoration. Very well. We will not endorse the march. We will attend the senate, speak for the law, and accept whatever follows. Sulla may punish us. Or he may respect it — in my experience, even tyrants admire men who hold their ground, because they meet so few. Your father would have hedged, Crispus. You did not. Go with that, whatever comes.",
       "exitStateId": "quintus_catulus_convo_2_exit_constitutional_optimate"
     }
   },
@@ -142,15 +146,19 @@
       "narrativeLabel": "Sullan Hawk",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "sullan_faction",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "sullan_faction",
               "shift": 3,
               "reason": "You publicly endorsed Sulla's march and positioned yourself as a partner in his restoration"
             },
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": 2,
               "reason": "Catulus considers you central to the optimate-Sullan alliance"
             }
@@ -173,10 +181,12 @@
       "narrativeLabel": "Constitutional Optimate",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": 2,
               "reason": "Your principled stand earns deep respect among constitutional conservatives"
             }

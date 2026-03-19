@@ -15,9 +15,13 @@
           ]
         },
         {
-          "type": "faction_standing",
-          "factionId": "italian_allies",
-          "min": 2
+          "type": "axis_gate",
+          "op": {
+            "verb": "gate",
+            "axis": "factions",
+            "key": "italian_allies",
+            "min": 2
+          }
         }
       ]
     }
@@ -122,17 +126,25 @@
       "routes": [
         {
           "condition": {
-            "type": "faction_standing",
-            "factionId": "italian_allies",
-            "min": 1
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "italian_allies",
+              "min": 1
+            }
           },
           "nextNodeId": "quintus_poppaedius_convo_0_n08"
         },
         {
           "condition": {
-            "type": "faction_standing",
-            "factionId": "populares",
-            "min": 2
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "populares",
+              "min": 2
+            }
           },
           "nextNodeId": "quintus_poppaedius_convo_0_n07"
         }
@@ -152,16 +164,24 @@
               "sides": 6
             },
             "baseThreshold": 7,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 2,
-              "force": 0,
-              "wealth": 0
-            },
             "reputationBonus": {
               "trait": "clementia",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "quintus_poppaedius",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "factions",
+                "key": "italian_allies",
+                "weight": 2
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "quintus_poppaedius_convo_0_n10"
@@ -220,20 +240,26 @@
       "narrativeLabel": "Bridge Between Rome and Italia",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "italian_allies",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "italian_allies",
               "shift": 3,
               "reason": "Poppaedius trusts you as a genuine intermediary"
             },
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": -2,
               "reason": "Word reaches Rome that you visited the rebel camp"
             },
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": 1,
               "reason": "The populares approve of your bridge-building"
             }
@@ -260,10 +286,12 @@
       "narrativeLabel": "Cautious Contact with the Marsi",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "italian_allies",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "italian_allies",
               "shift": 1,
               "reason": "Poppaedius registers you as a Roman who at least listens"
             }
@@ -280,10 +308,12 @@
       "narrativeLabel": "Turned Away by Poppaedius",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "italian_allies",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "italian_allies",
               "shift": -1,
               "reason": "Poppaedius sees you as another empty Roman"
             }

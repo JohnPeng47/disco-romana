@@ -27,14 +27,6 @@ function checkSingle<T extends string, R extends string>(
     }
     case 'axis_gate':
       return evalGate(state.axes, p.op);
-    // Legacy: faction_standing precondition → axis gate
-    case 'faction_standing':
-      return evalGate(state.axes, {
-        verb: 'gate',
-        axis: 'factions',
-        key: p.factionId,
-        min: p.min ?? p.minStanding ?? 0,
-      });
     case 'prior_exit_state':
       return (p.requiredExitStateIds || []).some((esId: string) =>
         state.exitStateHistory.some(

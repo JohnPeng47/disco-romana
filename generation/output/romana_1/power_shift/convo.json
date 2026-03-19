@@ -11,7 +11,10 @@
       "id": "ps_n01",
       "npcDialogue": "Five legions cross the pomerium at dawn. The sound comes first — thousands of hobnailed caligae striking marble, a grinding rhythm that has never been heard inside the city walls, not once in the four centuries of the Republic. Smoke is already rising from the Esquiline where Sulpicius's men tried to hold a barricade. It didn't hold. The Senate doors are chained shut from the outside, the bronze handles still warm from the hands of the last senator who tried to enter. Gaius Veturius Crispus stands in the Forum and watches the world he was born into die.",
       "options": [
-        { "playerDialogue": "So it's come to this.", "nextNodeId": "ps_n02" }
+        {
+          "playerDialogue": "So it's come to this.",
+          "nextNodeId": "ps_n02"
+        }
       ]
     },
     "ps_n02": {
@@ -20,19 +23,51 @@
       "npcDialogue": "Somewhere in a requisitioned villa, a freedman's stylus scratches across a wax tablet — names, names, names. Sulla's clerks are building the new Rome one list at a time. Men who were senators yesterday are fugitives tonight. Men who were nothing yesterday will be magistrates by the kalends. The only question that matters now is which column holds your name — the living or the dead.",
       "routes": [
         {
-          "condition": { "type": "faction_standing", "factionId": "sullan_faction", "min": 4 },
+          "condition": {
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "sullan_faction",
+              "min": 4
+            }
+          },
           "nextNodeId": "ps_n03"
         },
         {
-          "condition": { "type": "faction_standing", "factionId": "populares", "min": 4 },
+          "condition": {
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "populares",
+              "min": 4
+            }
+          },
           "nextNodeId": "ps_n04"
         },
         {
-          "condition": { "type": "faction_standing", "factionId": "italian_allies", "min": 4 },
+          "condition": {
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "italian_allies",
+              "min": 4
+            }
+          },
           "nextNodeId": "ps_n05"
         },
         {
-          "condition": { "type": "faction_standing", "factionId": "optimates", "min": 4 },
+          "condition": {
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "optimates",
+              "min": 4
+            }
+          },
           "nextNodeId": "ps_n06"
         }
       ],
@@ -50,13 +85,35 @@
         {
           "playerDialogue": "I'll serve — but there are names on your other list that don't belong there. Give me that, and you have me completely.",
           "roll": {
-            "dice": { "count": 2, "sides": 6 },
+            "dice": {
+              "count": 2,
+              "sides": 6
+            },
             "baseThreshold": 7,
-            "factors": { "personalFavor": 2, "factionAlignment": 2, "force": 0, "wealth": 1 },
-            "reputationBonus": { "trait": "calliditas", "weight": 1 }
+            "reputationBonus": {
+              "trait": "calliditas",
+              "weight": 1
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "narrator",
+                "weight": 2
+              },
+              {
+                "verb": "roll",
+                "axis": "wealth",
+                "weight": 1
+              }
+            ]
           },
-          "onSuccess": { "nextNodeId": "ps_n08" },
-          "onFailure": { "nextNodeId": "ps_n09" }
+          "onSuccess": {
+            "nextNodeId": "ps_n08"
+          },
+          "onFailure": {
+            "nextNodeId": "ps_n09"
+          }
         }
       ]
     },
@@ -106,13 +163,30 @@
         {
           "playerDialogue": "Only if the senate governs. I won't warm a bench in a dictator's theater — I'd rather freeze outside it.",
           "roll": {
-            "dice": { "count": 2, "sides": 6 },
+            "dice": {
+              "count": 2,
+              "sides": 6
+            },
             "baseThreshold": 8,
-            "factors": { "personalFavor": 1, "factionAlignment": 1, "force": 0, "wealth": 0 },
-            "reputationBonus": { "trait": "severitas", "weight": 2 }
+            "reputationBonus": {
+              "trait": "severitas",
+              "weight": 2
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "narrator",
+                "weight": 1
+              }
+            ]
           },
-          "onSuccess": { "nextNodeId": "ps_n08" },
-          "onFailure": { "nextNodeId": "ps_n09" }
+          "onSuccess": {
+            "nextNodeId": "ps_n08"
+          },
+          "onFailure": {
+            "nextNodeId": "ps_n09"
+          }
         }
       ]
     },
@@ -122,11 +196,17 @@
       "npcDialogue": "No knock comes at your door. No rider seeks you out. No freedman whispers your name in a corridor. The terrible truth settles like ash — no one is coming for Gaius Veturius Crispus, because no one needs him. Sulla's patrols move through the streets checking names against wax tablets, and the men who aren't on any tablet at all are the ones who vanish easiest. The Marian underground passes you without a password. The Italian delegates don't know your face. You stand in the Forum at midday and the crowd parts around you like water around a stone — not hostile, not afraid, simply indifferent. In this Rome, indifference kills.",
       "routes": [
         {
-          "condition": { "type": "reputation_dominant", "trait": "audacia" },
+          "condition": {
+            "type": "reputation_dominant",
+            "trait": "audacia"
+          },
           "nextNodeId": "ps_n11"
         },
         {
-          "condition": { "type": "reputation_dominant", "trait": "calliditas" },
+          "condition": {
+            "type": "reputation_dominant",
+            "trait": "calliditas"
+          },
           "nextNodeId": "ps_n11"
         }
       ],
@@ -144,11 +224,17 @@
       "npcDialogue": "The silence after a failed gambit is the loudest sound in Rome. Sulla's men note your attempt and file it away — not with anger but with something worse, a mild contempt. You asked for something you hadn't earned the right to ask for, and the men who run the ledgers have long memories and sharp styluses. You aren't hunted. You aren't protected. You exist in the space between — the space where the overlooked go to be forgotten.",
       "routes": [
         {
-          "condition": { "type": "reputation_dominant", "trait": "calliditas" },
+          "condition": {
+            "type": "reputation_dominant",
+            "trait": "calliditas"
+          },
           "nextNodeId": "ps_n11"
         },
         {
-          "condition": { "type": "reputation_dominant", "trait": "audacia" },
+          "condition": {
+            "type": "reputation_dominant",
+            "trait": "audacia"
+          },
           "nextNodeId": "ps_n11"
         }
       ],
@@ -227,7 +313,11 @@
         {
           "type": "reputation",
           "deltas": [
-            { "trait": "calliditas", "shift": 1, "reason": "Escaped Rome with your life when others did not" }
+            {
+              "trait": "calliditas",
+              "shift": 1,
+              "reason": "Escaped Rome with your life when others did not"
+            }
           ]
         },
         {

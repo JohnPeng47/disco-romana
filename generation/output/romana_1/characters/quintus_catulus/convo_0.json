@@ -16,9 +16,13 @@
           ]
         },
         {
-          "type": "faction_standing",
-          "factionId": "optimates",
-          "min": 2
+          "type": "axis_gate",
+          "op": {
+            "verb": "gate",
+            "axis": "factions",
+            "key": "optimates",
+            "min": 2
+          }
         }
       ]
     }
@@ -28,14 +32,14 @@
     "quintus_catulus_convo_0_n01": {
       "type": "active",
       "id": "quintus_catulus_convo_0_n01",
-      "npcDialogue": "Sit. The mulsum is Falernian \u2014 don't let it go warm. I invited you because Scaurus mentioned your name twice in one week, which is once more than he mentions most men in a year. The Italian question comes before the senate tomorrow, and I find myself curious what the sons of lesser houses are thinking. Speak freely. The servants have been dismissed.",
+      "npcDialogue": "Sit. The mulsum is Falernian — don't let it go warm. I invited you because Scaurus mentioned your name twice in one week, which is once more than he mentions most men in a year. The Italian question comes before the senate tomorrow, and I find myself curious what the sons of lesser houses are thinking. Speak freely. The servants have been dismissed.",
       "options": [
         {
           "playerDialogue": "I came to listen, not to speak. A man learns more at your table than most learn in a year at the Forum.",
           "nextNodeId": "quintus_catulus_convo_0_n02"
         },
         {
-          "playerDialogue": "Freely, then. You'd risk a war over citizenship \u2014 the Italians bled for Rome at Vercellae, and you'd tell them their blood bought nothing?",
+          "playerDialogue": "Freely, then. You'd risk a war over citizenship — the Italians bled for Rome at Vercellae, and you'd tell them their blood bought nothing?",
           "nextNodeId": "quintus_catulus_convo_0_n03"
         },
         {
@@ -51,10 +55,10 @@
     "quintus_catulus_convo_0_n02": {
       "type": "noop",
       "id": "quintus_catulus_convo_0_n02",
-      "npcDialogue": "Careful modesty. Your father had the same trick \u2014 though in his case I was never sure it was a trick. Let me be plain, since you won't be. Drusus's citizenship bill isn't charity. Every new citizen needs a patron, a tribe, a man to tell him how to vote. Marius has the veterans' network already built. We hand the Italians the franchise and we hand Marius the assemblies. The populares get a permanent majority dressed in the language of justice.",
+      "npcDialogue": "Careful modesty. Your father had the same trick — though in his case I was never sure it was a trick. Let me be plain, since you won't be. Drusus's citizenship bill isn't charity. Every new citizen needs a patron, a tribe, a man to tell him how to vote. Marius has the veterans' network already built. We hand the Italians the franchise and we hand Marius the assemblies. The populares get a permanent majority dressed in the language of justice.",
       "options": [
         {
-          "playerDialogue": "My father understood more than he let on. But go on \u2014 I want to hear the rest.",
+          "playerDialogue": "My father understood more than he let on. But go on — I want to hear the rest.",
           "nextNodeId": "quintus_catulus_convo_0_n05"
         }
       ]
@@ -62,7 +66,7 @@
     "quintus_catulus_convo_0_n03": {
       "type": "noop",
       "id": "quintus_catulus_convo_0_n03",
-      "npcDialogue": "Their blood bought them exactly what they contracted for \u2014 pay, plunder, and the protection of Rome's legions on their borders. Don't confuse a business arrangement with a debt of honor. Yes, the Marsi fought well. The Samnites fought well. And Rome has defeated every Italian army for three hundred years. Citizenship doesn't reward service \u2014 it dilutes the franchise until a Roman's vote weighs no more than a goatherd's from Asculum. That is not justice. That is arithmetic.",
+      "npcDialogue": "Their blood bought them exactly what they contracted for — pay, plunder, and the protection of Rome's legions on their borders. Don't confuse a business arrangement with a debt of honor. Yes, the Marsi fought well. The Samnites fought well. And Rome has defeated every Italian army for three hundred years. Citizenship doesn't reward service — it dilutes the franchise until a Roman's vote weighs no more than a goatherd's from Asculum. That is not justice. That is arithmetic.",
       "options": [
         {
           "playerDialogue": "Cold arithmetic. What would you offer them instead?",
@@ -83,16 +87,23 @@
               "sides": 6
             },
             "baseThreshold": 8,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 0,
-              "force": 0,
-              "wealth": 2
-            },
             "reputationBonus": {
               "trait": "calliditas",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "quintus_catulus",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "wealth",
+                "weight": 2
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "quintus_catulus_convo_0_n06"
@@ -110,12 +121,12 @@
     "quintus_catulus_convo_0_n05": {
       "type": "passive",
       "id": "quintus_catulus_convo_0_n05",
-      "npcDialogue": "I'm going to ask you something, and I want an answer that doesn't sound like it was rehearsed on the walk here. When Sulla and Marius finally stop pretending they can share this city \u2014 and that day is coming, Crispus, as surely as winter \u2014 where will you be standing?",
+      "npcDialogue": "I'm going to ask you something, and I want an answer that doesn't sound like it was rehearsed on the walk here. When Sulla and Marius finally stop pretending they can share this city — and that day is coming, Crispus, as surely as winter — where will you be standing?",
       "responses": [
         {
           "trait": "severitas",
           "threshold": 5,
-          "playerDialogue": "With the law. Not with a man or a faction \u2014 with the law. If that means the losing side, so be it.",
+          "playerDialogue": "With the law. Not with a man or a faction — with the law. If that means the losing side, so be it.",
           "nextNodeId": "quintus_catulus_convo_0_n06"
         },
         {
@@ -145,7 +156,7 @@
     "quintus_catulus_convo_0_n06": {
       "type": "active",
       "id": "quintus_catulus_convo_0_n06",
-      "npcDialogue": "Good. I didn't expect that answer, which is precisely why I believe it. The optimates have enough men who mouth the right phrases at dinner. We need men who'll hold the line when the phrases stop working. One more thing \u2014 the Lex Varia. You've heard of it. Treason charges for anyone who aided the Italian cause. Some of my colleagues want blood. I think the law is a blunt instrument that will shatter in our hands. What's your view?",
+      "npcDialogue": "Good. I didn't expect that answer, which is precisely why I believe it. The optimates have enough men who mouth the right phrases at dinner. We need men who'll hold the line when the phrases stop working. One more thing — the Lex Varia. You've heard of it. Treason charges for anyone who aided the Italian cause. Some of my colleagues want blood. I think the law is a blunt instrument that will shatter in our hands. What's your view?",
       "options": [
         {
           "playerDialogue": "Kill it. A republic that prosecutes men for their political speech has already become the thing it claims to fear.",
@@ -160,13 +171,17 @@
     "quintus_catulus_convo_0_n07": {
       "type": "convergence",
       "id": "quintus_catulus_convo_0_n07",
-      "npcDialogue": "Pragmatism. Your father had none of it, which is why he died without a patron. You've learned from his mistakes \u2014 I'm simply not yet sure you've learned the right lessons.",
+      "npcDialogue": "Pragmatism. Your father had none of it, which is why he died without a patron. You've learned from his mistakes — I'm simply not yet sure you've learned the right lessons.",
       "routes": [
         {
           "condition": {
-            "type": "faction_standing",
-            "factionId": "optimates",
-            "min": 1
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "optimates",
+              "min": 1
+            }
           },
           "nextNodeId": "quintus_catulus_convo_0_n08"
         }
@@ -176,7 +191,7 @@
     "quintus_catulus_convo_0_n08": {
       "type": "active",
       "id": "quintus_catulus_convo_0_n08",
-      "npcDialogue": "Still. You came, you listened, you didn't waste my evening with flattery. That puts you ahead of most. The Lex Varia \u2014 the treason law aimed at Italian sympathizers \u2014 comes to a vote this month. Some in our faction would wield it like a cudgel. I think a cudgel in a crowded room hits the wrong skulls. Where do you stand on it?",
+      "npcDialogue": "Still. You came, you listened, you didn't waste my evening with flattery. That puts you ahead of most. The Lex Varia — the treason law aimed at Italian sympathizers — comes to a vote this month. Some in our faction would wield it like a cudgel. I think a cudgel in a crowded room hits the wrong skulls. Where do you stand on it?",
       "options": [
         {
           "playerDialogue": "Repeal it. Prosecuting political speech is the act of men who've already lost the argument.",
@@ -191,19 +206,19 @@
     "quintus_catulus_convo_0_n09": {
       "type": "exit",
       "id": "quintus_catulus_convo_0_n09",
-      "npcDialogue": "You hedge. I understand it \u2014 your position is precarious and you can't afford enemies. But understand this: when the ground opens, a man standing in the middle falls first. I'll remember your face, Crispus. Whether that serves you depends entirely on what you do with the time between now and the crisis.",
+      "npcDialogue": "You hedge. I understand it — your position is precarious and you can't afford enemies. But understand this: when the ground opens, a man standing in the middle falls first. I'll remember your face, Crispus. Whether that serves you depends entirely on what you do with the time between now and the crisis.",
       "exitStateId": "quintus_catulus_convo_0_exit_lukewarm"
     },
     "quintus_catulus_convo_0_n10": {
       "type": "exit",
       "id": "quintus_catulus_convo_0_n10",
-      "npcDialogue": "Conviction. Rome's oldest virtue and its scarcest commodity. Your father never managed it \u2014 forgive me, but you know it's true. You, however, might. Come to the senate session tomorrow evening. I'll introduce you to the men whose names you'll need to know. Consider this the beginning of a longer conversation.",
+      "npcDialogue": "Conviction. Rome's oldest virtue and its scarcest commodity. Your father never managed it — forgive me, but you know it's true. You, however, might. Come to the senate session tomorrow evening. I'll introduce you to the men whose names you'll need to know. Consider this the beginning of a longer conversation.",
       "exitStateId": "quintus_catulus_convo_0_exit_principled_ally"
     },
     "quintus_catulus_convo_0_n11": {
       "type": "exit",
       "id": "quintus_catulus_convo_0_n11",
-      "npcDialogue": "Surgical. I can work with surgical. The optimates have enough swords \u2014 what we lack are scalpels. Men who can cut precisely, without trembling. I think that may be you. I'll send word when the committee meets. Don't be late; I don't ask twice.",
+      "npcDialogue": "Surgical. I can work with surgical. The optimates have enough swords — what we lack are scalpels. Men who can cut precisely, without trembling. I think that may be you. I'll send word when the committee meets. Don't be late; I don't ask twice.",
       "exitStateId": "quintus_catulus_convo_0_exit_tactical_ally"
     }
   },
@@ -213,15 +228,19 @@
       "narrativeLabel": "Catulus's Principled Ally",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": 3,
               "reason": "Catulus champions you as a man of traditional virtue"
             },
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": -2,
               "reason": "Your alignment with the optimates bloc is now public"
             }
@@ -248,15 +267,19 @@
       "narrativeLabel": "The Optimates' Scalpel",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": 2,
               "reason": "Accepted as a useful instrument of the conservative bloc"
             },
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": -1,
               "reason": "Rumors of your optimate connections spread"
             }
@@ -283,10 +306,12 @@
       "narrativeLabel": "Catulus Notes Your Caution",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": 1,
               "reason": "Catulus records you as a possible but uncommitted ally"
             }

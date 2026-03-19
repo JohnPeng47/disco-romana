@@ -102,16 +102,24 @@
               "sides": 6
             },
             "baseThreshold": 7,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 2,
-              "force": 0,
-              "wealth": 0
-            },
             "reputationBonus": {
               "trait": "audacia",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "gaius_norbanus",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "factions",
+                "key": "populares",
+                "weight": 2
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "gaius_norbanus_convo_1_n07"
@@ -179,10 +187,12 @@
       "narrativeLabel": "Military Tribune",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": 2,
               "reason": "Volunteered for front-line service under Marian command"
             }
@@ -205,10 +215,12 @@
       "narrativeLabel": "Staff Officer",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": 1,
               "reason": "Supporting the Marian war effort from the supply lines"
             }

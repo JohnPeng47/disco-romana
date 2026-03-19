@@ -131,10 +131,12 @@
       "narrativeLabel": "Scaurus's Inheritor",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": 1,
               "reason": "Scaurus's personal seal grants you authority within the optimate network"
             }

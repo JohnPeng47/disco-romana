@@ -105,16 +105,29 @@
               "sides": 6
             },
             "baseThreshold": 8,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 1,
-              "force": 0,
-              "wealth": 1
-            },
             "reputationBonus": {
               "trait": "calliditas",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "publius_sulpicius",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "factions",
+                "key": "populares",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "wealth",
+                "weight": 1
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "publius_sulpicius_convo_1_n07"
@@ -136,9 +149,13 @@
       "routes": [
         {
           "condition": {
-            "type": "faction_standing",
-            "factionId": "populares",
-            "min": 3
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "populares",
+              "min": 3
+            }
           },
           "nextNodeId": "publius_sulpicius_convo_1_n07"
         }
@@ -173,16 +190,29 @@
               "sides": 6
             },
             "baseThreshold": 8,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 1,
-              "force": 2,
-              "wealth": 0
-            },
             "reputationBonus": {
               "trait": "audacia",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "publius_sulpicius",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "factions",
+                "key": "populares",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "force",
+                "weight": 2
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "publius_sulpicius_convo_1_n09"
@@ -216,20 +246,26 @@
       "narrativeLabel": "Stood Against the March",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": 3,
               "reason": "Stood publicly against Sulla's illegal march"
             },
             {
-              "factionId": "sullan_faction",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "sullan_faction",
               "shift": -3,
               "reason": "Sulla's proscription lists include your name"
             },
             {
-              "factionId": "italian_allies",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "italian_allies",
               "shift": 1,
               "reason": "The Italians respect those who resist tyranny"
             }
@@ -252,15 +288,19 @@
       "narrativeLabel": "Organized the Retreat",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": 1,
               "reason": "Helped Marian leaders escape Sulla's advance"
             },
             {
-              "factionId": "sullan_faction",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "sullan_faction",
               "shift": -1,
               "reason": "Sulla's agents note your involvement in the evacuation"
             }

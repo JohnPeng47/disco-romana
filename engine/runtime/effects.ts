@@ -46,18 +46,6 @@ export function applyExitEffects<T extends string, R extends string>(
           });
         }
         break;
-      // Legacy: faction_standing effect
-      case 'faction_standing':
-        for (const delta of effect.deltas) {
-          const op = { verb: 'shift' as const, axis: 'factions', key: delta.factionId, shift: delta.shift, reason: delta.reason };
-          newState = { ...newState, axes: applyShift(newState.axes, op, config.axes) };
-          results.push({
-            text: `${delta.factionId}: ${fmt(delta.shift)}`,
-            reason: delta.reason,
-            positive: delta.shift > 0,
-          });
-        }
-        break;
       case 'reputation':
         for (const delta of effect.deltas) {
           const trait = delta.trait as string as T;

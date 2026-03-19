@@ -121,16 +121,24 @@
               "sides": 6
             },
             "baseThreshold": 7,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 2,
-              "force": 0,
-              "wealth": 0
-            },
             "reputationBonus": {
               "trait": "audacia",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "gaius_norbanus",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "factions",
+                "key": "populares",
+                "weight": 2
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "gaius_norbanus_convo_0_n08"
@@ -158,16 +166,24 @@
               "sides": 6
             },
             "baseThreshold": 7,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 2,
-              "force": 0,
-              "wealth": 0
-            },
             "reputationBonus": {
               "trait": "calliditas",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "gaius_norbanus",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "factions",
+                "key": "populares",
+                "weight": 2
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "gaius_norbanus_convo_0_n08"
@@ -218,10 +234,12 @@
       "narrativeLabel": "Potential Recruit",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": 2,
               "reason": "Norbanus vouches for you to the Marian network"
             }
@@ -248,10 +266,12 @@
       "narrativeLabel": "Friendly Outsider",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": 1,
               "reason": "Norbanus considers you approachable but uncommitted"
             }
@@ -264,10 +284,12 @@
       "narrativeLabel": "Dismissed as Senatorial",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": -1,
               "reason": "The veterans see you as another senate mouthpiece"
             }

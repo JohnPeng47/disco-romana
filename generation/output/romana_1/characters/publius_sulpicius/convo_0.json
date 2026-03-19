@@ -15,9 +15,13 @@
           ]
         },
         {
-          "type": "faction_standing",
-          "factionId": "populares",
-          "min": 3
+          "type": "axis_gate",
+          "op": {
+            "verb": "gate",
+            "axis": "factions",
+            "key": "populares",
+            "min": 3
+          }
         }
       ]
     }
@@ -86,16 +90,24 @@
               "sides": 6
             },
             "baseThreshold": 7,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 1,
-              "force": 0,
-              "wealth": 0
-            },
             "reputationBonus": {
               "trait": "calliditas",
               "weight": 2
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "publius_sulpicius",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "factions",
+                "key": "populares",
+                "weight": 1
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "publius_sulpicius_convo_0_n05"
@@ -163,17 +175,25 @@
       "routes": [
         {
           "condition": {
-            "type": "faction_standing",
-            "factionId": "populares",
-            "min": 2
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "populares",
+              "min": 2
+            }
           },
           "nextNodeId": "publius_sulpicius_convo_0_n09"
         },
         {
           "condition": {
-            "type": "faction_standing",
-            "factionId": "italian_allies",
-            "min": 1
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "italian_allies",
+              "min": 1
+            }
           },
           "nextNodeId": "publius_sulpicius_convo_0_n09"
         }
@@ -193,16 +213,29 @@
               "sides": 6
             },
             "baseThreshold": 6,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 2,
-              "force": 1,
-              "wealth": 0
-            },
             "reputationBonus": {
               "trait": "audacia",
               "weight": 1
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "publius_sulpicius",
+                "weight": 1
+              },
+              {
+                "verb": "roll",
+                "axis": "factions",
+                "key": "populares",
+                "weight": 2
+              },
+              {
+                "verb": "roll",
+                "axis": "force",
+                "weight": 1
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "publius_sulpicius_convo_0_n09"
@@ -236,20 +269,26 @@
       "narrativeLabel": "Sulpicius's Operative",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": 2,
               "reason": "Embedded in Sulpicius's legislative network"
             },
             {
-              "factionId": "italian_allies",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "italian_allies",
               "shift": 1,
               "reason": "Working toward Italian citizenship distribution"
             },
             {
-              "factionId": "optimates",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "optimates",
               "shift": -2,
               "reason": "Identified as part of the tribunician bloc"
             }
@@ -276,10 +315,12 @@
       "narrativeLabel": "Known to Sulpicius",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "populares",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "populares",
               "shift": 1,
               "reason": "Sulpicius registers you as a possible future asset"
             }

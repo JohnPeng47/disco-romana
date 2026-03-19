@@ -88,16 +88,18 @@
               "sides": 6
             },
             "baseThreshold": 8,
-            "factors": {
-              "personalFavor": 1,
-              "factionAlignment": 0,
-              "force": 0,
-              "wealth": 0
-            },
             "reputationBonus": {
               "trait": "calliditas",
               "weight": 2
-            }
+            },
+            "modifiers": [
+              {
+                "verb": "roll",
+                "axis": "personalFavors",
+                "key": "marcus_drusus",
+                "weight": 1
+              }
+            ]
           },
           "onSuccess": {
             "nextNodeId": "marcus_drusus_convo_1_n08"
@@ -184,10 +186,12 @@
       "narrativeLabel": "Trusted Intermediary to the Italians",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "italian_allies",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "italian_allies",
               "shift": 2,
               "reason": "The Italian delegation considers you a trustworthy Roman contact"
             }
@@ -207,9 +211,13 @@
           "type": "unlock_conversation",
           "conversationId": "quintus_poppaedius_convo_0",
           "preconditionOverride": {
-            "type": "faction_standing",
-            "factionId": "italian_allies",
-            "min": 1
+            "type": "axis_gate",
+            "op": {
+              "verb": "gate",
+              "axis": "factions",
+              "key": "italian_allies",
+              "min": 1
+            }
           }
         }
       ]
@@ -219,10 +227,12 @@
       "narrativeLabel": "Useful But Watched",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "italian_allies",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "italian_allies",
               "shift": 1,
               "reason": "You delivered the message but failed to build personal trust"
             }
@@ -235,10 +245,12 @@
       "narrativeLabel": "Suspected Spy",
       "effects": [
         {
-          "type": "faction_standing",
-          "deltas": [
+          "type": "axis_shift",
+          "operations": [
             {
-              "factionId": "italian_allies",
+              "verb": "shift",
+              "axis": "factions",
+              "key": "italian_allies",
               "shift": -3,
               "reason": "The Italians believe you came to gather intelligence, not to build trust"
             }
