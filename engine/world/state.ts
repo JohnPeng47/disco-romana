@@ -1,23 +1,25 @@
 import type {
   PhaseId,
-  FactionId,
   NpcId,
   NodeId,
   ConversationId,
 } from "../config";
 import type { ReputationProfile } from "../conversation/effects/reputation";
+import type { AxesState } from "../axes";
+
 export interface GameState<T extends string, R extends string> {
-  seed: number;
   currentPhase: PhaseId;
   currentRank: R;
   turnsRemaining: number;
   reputation: ReputationProfile<T>;
-  factionStandings: Record<FactionId, number>;
-  personalFavors: Record<NpcId, number>;
+  /** Generic resource axes (factions, favors, force, wealth, etc.) */
+  axes: AxesState;
   /** Which exit states have been reached — drives preconditions */
   exitStateHistory: { conversationId: ConversationId; exitStateId: string }[];
   /** Which nodes have been visited — drives convergence routing */
   visitedNodes: Set<NodeId>;
-  force: number;
-  wealth: number;
+  /** Which events have fired — drives preconditions */
+  firedEvents: Set<string>;
+  /** Last NPC talked to — prevents consecutive same-NPC conversations */
+  lastNpcId: NpcId | null;
 }

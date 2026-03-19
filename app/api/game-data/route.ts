@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { loadGameData } from '@lib/data-loader';
+import { loadGameData } from '../../data-loader';
 
 export async function GET() {
   const dataPath = process.env.GAME_DATA_PATH || './generation/output';

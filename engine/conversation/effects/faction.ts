@@ -1,8 +1,4 @@
-import type { FactionId } from "../../config";
+import type { AxisOperation } from "../../axes";
 
-export interface FactionDelta {
-  factionId: FactionId;
-  shift: number; // positive = improve, negative = worsen
-  /** Why this shift happened, for narrative generation */
-  reason: string;
-}
+/** A shift operation on a named axis. Replaces the old FactionDelta. */
+export type AxisDelta = AxisOperation & { verb: 'shift' };

@@ -9,8 +9,8 @@ import type {
   Screen,
   MessageEntry,
   ChoiceEntry,
-} from '@lib/types';
-import { initState } from '@lib/engine';
+} from '../app/types';
+import { initState } from '../app/engine';
 
 function generatePlaythroughId(): string {
   const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';

@@ -1,6 +1,6 @@
 'use client';
 
-import type { ChoiceEntry } from '@lib/types';
+import type { ChoiceEntry } from '../app/types';
 
 interface Props {
   choice: ChoiceEntry;

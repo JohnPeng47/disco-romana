@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useCallback } from 'react';
 import { useGame } from './GameProvider';
-import { getAvailableConversations } from '@lib/engine';
+import { getAvailableConversations } from '../app/engine';
 
 export default function NpcSelectScreen() {
   const { data, state, dispatch } = useGame();

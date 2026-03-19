@@ -2,6 +2,7 @@
 
 import { useGame } from './GameProvider';
 import StatBar from './StatBar';
+import { readAxis } from '../engine/axes';
 
 const traitNames: Record<string, string> = {
   severitas: 'Severitas',
@@ -35,7 +36,7 @@ export default function SidebarLeft() {
           <StatBar
             key={faction.id}
             label={faction.name}
-            value={state.factionStandings[faction.id] || 0}
+            value={readAxis(state.axes, 'factions', faction.id)}
           />
         ))}
       </div>

@@ -1,4 +1,8 @@
 import type { GameConfig } from "../engine/config";
+import type { Conversation, ConversationNode, ExitState } from "../engine/conversation/models";
+import type { GameState } from "../engine/world/state";
+import type { Phase } from "../engine/world/models";
+import type { GenerationPrompt } from "../engine/world/generation";
 
 // ============================================
 // Late Roman Republic preset
@@ -26,13 +30,18 @@ export const romanaConfig = {
     calliditas: 0,
   },
   startingRank: "citizen",
+
+  axes: [
+    { id: "factions",       type: "keyed",  default: 0, min: -10, max: 10 },
+    { id: "personalFavors", type: "keyed",  default: 0, min: -10, max: 10 },
+    { id: "force",          type: "scalar", default: 0, min: 0,   max: 10 },
+    { id: "wealth",         type: "scalar", default: 0, min: 0,   max: 10 },
+  ],
 } as const satisfies GameConfig<RomanaTrait, CursusRank>;
 
 // ============================================
 // Convenience type aliases for Roman game
 // ============================================
-
-import type { Conversation, ConversationNode, GameState, Phase, GenerationPrompt } from "../engine";
 
 export type RomanaConversation = Conversation<RomanaTrait, CursusRank>;
 export type RomanaNode = ConversationNode<RomanaTrait>;

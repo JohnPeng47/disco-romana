@@ -5,8 +5,8 @@ import type {
   PhaseId,
   FactionId,
 } from "../config";
+import type { AxisOperation } from "../axes";
 import type { RollConfig } from "./effects/rolls";
-import type { FactionDelta } from "./effects/faction";
 import type { ReputationDelta } from "./effects/reputation";
 import type { ConditionalStub } from "./stubs";
 import type { ConversationPrecondition } from "./preconditions";
@@ -15,7 +15,6 @@ import type { ConversationPrecondition } from "./preconditions";
 // Conversation Structure
 // ============================================
 
-// comment: build a visualization structure for this node
 /**
  * A single conversation is a directed graph of nodes with
  * convergence points. NOT a tree — nodes can have multiple
@@ -64,10 +63,6 @@ export interface NodeBase {
  */
 export interface PassiveNode<T extends string> extends NodeBase {
   type: "passive";
-  /**
-   * Ordered by priority. First matching threshold fires.
-   * If none match, falls through to fallback.
-   */
   responses: PassiveResponse<T>[];
   fallbackResponse: {
     playerDialogue: string;
@@ -76,9 +71,7 @@ export interface PassiveNode<T extends string> extends NodeBase {
 }
 
 export interface PassiveResponse<T extends string> {
-  /** Which trait drives this response */
   trait: T;
-  /** Minimum trait value for this to fire */
   threshold: number;
   playerDialogue: string;
   nextNodeId: NodeId;
@@ -95,21 +88,10 @@ export interface ActiveNode<T extends string> extends NodeBase {
 
 export interface DialogueOption<T extends string> {
   playerDialogue: string;
-  /** If present, this option requires a roll to land */
   roll?: RollConfig<T>;
-  /** Where to go on success (or if no roll required) */
-  onSuccess: {
-    nextNodeId: NodeId;
-  };
-  /** Where to go on partial success (only if roll exists) */
-  onPartial?: {
-    nextNodeId: NodeId;
-  };
-  /** Where to go on failure (only if roll exists) */
-  onFailure?: {
-    nextNodeId: NodeId;
-  };
-  /** Skill/trait floor: option only visible if player meets this */
+  onSuccess: { nextNodeId: NodeId };
+  onPartial?: { nextNodeId: NodeId };
+  onFailure?: { nextNodeId: NodeId };
   visibilityRequirement?: {
     trait: T;
     minValue: number;
@@ -118,28 +100,21 @@ export interface DialogueOption<T extends string> {
 
 /**
  * Noop variant: player "responds" but it doesn't matter.
- * Advances the conversation. Keeps pacing natural.
  */
 export interface NoopNode extends NodeBase {
   type: "noop";
-  /** Flavor options — all lead to the same next node */
   options: {
     playerDialogue: string;
-    nextNodeId: NodeId; // all point to same node
+    nextNodeId: NodeId;
   }[];
 }
 
 /**
  * Convergence: where multiple branches collapse.
- * No player action — just routes to the appropriate
- * downstream node based on accumulated state.
+ * Routes based on accumulated state.
  */
 export interface ConvergenceNode<T extends string> extends NodeBase {
   type: "convergence";
-  /**
-   * Evaluate conditions to determine which branch to take.
-   * First match wins.
-   */
   routes: {
     condition: ConvergenceCondition<T>;
     nextNodeId: NodeId;
@@ -151,11 +126,10 @@ export type ConvergenceCondition<T extends string> =
   | { type: "reputation_dominant"; trait: T }
   | { type: "roll_history"; minSuccesses: number }
   | { type: "visited_node"; nodeId: NodeId }
-  | { type: "faction_standing"; factionId: FactionId; min: number };
+  | { type: "axis_gate"; op: AxisOperation & { verb: 'gate' } };
 
 /**
- * Exit: terminal node. Produces an ExitState
- * that feeds back into the game state.
+ * Exit: terminal node. Produces an ExitState.
  */
 export interface ExitNode extends NodeBase {
   type: "exit";
@@ -168,17 +142,16 @@ export interface ExitNode extends NodeBase {
 
 export interface ExitState<T extends string> {
   id: string;
-  /** Human-readable label for the LLM generation pass */
   narrativeLabel: string;
-  /** Mechanical consequences */
   effects: ExitEffect<T>[];
 }
 
 export type ExitEffect<T extends string, R extends string = string> =
-  | { type: "faction_standing"; deltas: FactionDelta[] }
+  | { type: "axis_shift"; operations: (AxisOperation & { verb: 'shift' })[] }
   | { type: "reputation"; deltas: ReputationDelta<T>[] }
   | { type: "turn_penalty"; shift: number; reason: string }
   | { type: "unlock_conversation"; conversationId: ConversationId }
   | { type: "lock_conversation"; conversationId: ConversationId }
   | { type: "rank_change"; newRank: R; reason: string }
+  | { type: "fire_event"; eventId: string }
   | { type: "game_over"; reason: string };

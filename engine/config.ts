@@ -1,3 +1,5 @@
+import type { ResourceAxisDef } from './axes';
+
 // ============================================
 // Generic ID types — setting-agnostic
 // ============================================
@@ -33,4 +35,7 @@ export interface GameConfig<T extends string, R extends string> {
   defaultReputation: Record<T, number>;
   /** Starting rank */
   startingRank: R;
+
+  /** Game-specific numeric resource axes (factions, favors, force, wealth, etc.) */
+  axes: readonly ResourceAxisDef[];
 }

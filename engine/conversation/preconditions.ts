@@ -1,14 +1,9 @@
-import type { FactionId, NpcId, ConversationId } from "../config";
+import type { NpcId, ConversationId } from "../config";
+import type { AxisOperation } from "../axes";
 
-// comment: okay this class is very liable to change, lets design around that
-// - improve_suggestion: lets add
-export interface ConversationPrecondition<R extends string> {
-  type: "min_rank" | "faction_standing" | "prior_exit_state" | "phase_event";
-  factionId?: FactionId;
-  npcId?: NpcId;
-  conversationId?: ConversationId;
-  /** For prior_exit_state: which exit state(s) from a prior conversation enable this one */
-  requiredExitStateIds?: string[];
-  minRank?: R;
-  minStanding?: number;
-}
+export type ConversationPrecondition<R extends string> =
+  | { type: 'min_rank'; minRank: R }
+  | { type: 'axis_gate'; op: AxisOperation & { verb: 'gate' } }
+  | { type: 'prior_exit_state'; conversationId: ConversationId; requiredExitStateIds: string[] }
+  | { type: 'phase_event'; eventId: string }
+  | { type: 'any_of'; conditions: ConversationPrecondition<R>[] };

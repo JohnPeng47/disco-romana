@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import type { MessageEntry } from '@lib/types';
+import type { MessageEntry } from '../app/types';
 import { useGame } from './GameProvider';
 
 function PinButton({ compositeId }: { compositeId: string }) {

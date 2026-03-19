@@ -10,8 +10,8 @@ import {
   resolveRoll,
   applyExitEffects,
   getNextNodeId,
-} from '@lib/engine';
-import type { ChoiceEntry, GameState } from '@lib/types';
+} from '../app/engine';
+import type { ChoiceEntry, GameState } from '../app/types';
 
 function delay(ms: number) {
   return new Promise<void>(r => setTimeout(r, ms));
@@ -41,7 +41,7 @@ export default function ConversationScreen() {
   }, [convo.messages, convo.choices, scrollToBottom]);
 
   // Helper: dispatch ADD_MESSAGE with current conversation context
-  const addMsg = useCallback((message: Omit<import('@lib/types').MessageEntry, 'id'>, nodeId?: string) => {
+  const addMsg = useCallback((message: Omit<import('../app/types').MessageEntry, 'id'>, nodeId?: string) => {
     const curConvo = convoRef.current;
     dispatch({
       type: 'ADD_MESSAGE',
@@ -146,14 +146,10 @@ export default function ConversationScreen() {
 
         const stateWithHistory: GameState = {
           ...curState2,
-          reputation: { ...curState2.reputation },
-          factionStandings: { ...curState2.factionStandings },
-          personalFavors: { ...curState2.personalFavors },
           exitStateHistory: [
             ...curState2.exitStateHistory,
             { conversationId: convoId, exitStateId: node.exitStateId },
           ],
-          visitedNodes: new Set(curState2.visitedNodes),
         };
 
         const { newState: afterEffects, results } = applyExitEffects(stateWithHistory, exitState);

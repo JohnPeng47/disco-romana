@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDb } from '@lib/db';
+import { getDb } from '../../db';
 
 // POST /api/playthrough — flush steps from the client
 // Body: { playthroughId: string, steps: { conversationId, nodeId, action, ts }[] }

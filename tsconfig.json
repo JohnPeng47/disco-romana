@@ -26,8 +26,8 @@
       "@engine/*": [
         "./engine/*"
       ],
-      "@lib/*": [
-        "./lib/*"
+      "@app/*": [
+        "./app/*"
       ],
       "@components/*": [
         "./components/*"

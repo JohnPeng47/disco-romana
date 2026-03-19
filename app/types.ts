@@ -1,10 +1,14 @@
-import type { RomanaTrait, CursusRank } from '@engine/../presets/romana';
+import type { RomanaTrait, CursusRank } from '../presets/romana';
+import type { GameState as GenericGameState } from '../engine/world/state';
 
-// Re-export for convenience
+// Re-export preset types for convenience
 export type { RomanaTrait, CursusRank };
 
+// Concrete game state for Romana
+export type GameState = GenericGameState<RomanaTrait, CursusRank>;
+
 // ============================================
-// Game Data — what the API returns
+// Wire format — what the API returns (JSON)
 // ============================================
 
 export interface NpcData {
@@ -42,6 +46,7 @@ export interface ConversationData {
   entryNodeId: string;
   nodes: Record<string, any>;
   exitStates: any[];
+  direction?: string;
 }
 
 export interface GameData {
@@ -51,26 +56,7 @@ export interface GameData {
 }
 
 // ============================================
-// Game State — managed by reducer
-// ============================================
-
-export interface GameState {
-  currentPhase: string;
-  currentRank: CursusRank;
-  turnsRemaining: number;
-  reputation: Record<RomanaTrait, number>;
-  factionStandings: Record<string, number>;
-  personalFavors: Record<string, number>;
-  exitStateHistory: { conversationId: string; exitStateId: string }[];
-  visitedNodes: Set<string>;
-  firedEvents: Set<string>;
-  lastNpcId: string | null;
-  force: number;
-  wealth: number;
-}
-
-// ============================================
-// Conversation State
+// UI State
 // ============================================
 
 export type MessageType = 'npc' | 'player' | 'system' | 'effect' | 'roll';
@@ -127,7 +113,6 @@ export type GameAction =
   | { type: 'ADD_MESSAGE'; message: Omit<MessageEntry, 'id'> }
   | { type: 'SET_CHOICES'; choices: ChoiceEntry[] | null }
   | { type: 'ADVANCE_NODE'; nodeId: string }
-  | { type: 'LOG_CHOICE'; choiceIndex: number; choiceText: string }
   | { type: 'APPLY_EXIT_EFFECTS'; convoId: string; exitStateId: string }
   | { type: 'END_CONVERSATION' }
   | { type: 'USE_TURN' }
@@ -135,4 +120,5 @@ export type GameAction =
   | { type: 'SET_WAITING_FOR_CONTINUE'; waiting: boolean }
   | { type: 'SET_LAST_AUTO_RESOLVED'; value: boolean }
   | { type: 'SET_GAME_OVER'; title: string; reason: string }
-  | { type: 'SET_GAME_STATE'; state: GameState };
+  | { type: 'SET_GAME_STATE'; state: GameState }
+  | { type: 'LOG_CHOICE'; choiceIndex: number; choiceText: string };

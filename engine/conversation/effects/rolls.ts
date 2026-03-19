@@ -1,18 +1,14 @@
-// comment: paramaterize this!
-export interface RollFactors {
-  personalFavor: number;    // -5 to +5, history with this NPC
-  factionAlignment: number; // -5 to +5, their faction's view of you
-  force: number;            // 0 to +5, military backing
-  wealth: number;           // 0 to +5, economic resources
-}
+import type { AxisOperation } from "../../axes";
 
 export interface RollConfig<T extends string> {
-  dice: { count: number; sides: number }; // e.g. { count: 2, sides: 8 }
+  dice: { count: number; sides: number };
   baseThreshold: number;
-  factors: RollFactors;
+  /** Axis-based modifiers — each reads an axis value and applies a weight */
+  modifiers: (AxisOperation & { verb: 'roll' })[];
+  /** Reputation trait bonus on top of axis modifiers */
   reputationBonus?: {
     trait: T;
-    weight: number; // how much this context rewards/punishes the trait
+    weight: number;
   };
 }
 
