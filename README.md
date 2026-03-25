@@ -13,41 +13,10 @@ The basic game design goals here are:
 - A purely text-based *progression system* that fulfills the actual videogame end of this bargain
 - Teaches players about historical periods, the characters involved, the politics between them and their factions
 
-> Weak outcome: similar to "Choose your adventure" books, which does not give reader the consequence of choice so much as letting them read a non-linear storyline
-> Strong outcome: players actually feel like a "player" of world historical events (some imagination required)
+Weak outcome: similar to "Choose your adventure" books, which does not give reader the consequence of choice so much as letting them read a non-linear storyline
+Strong outcome: players actually feel like a "player" of world historical events (some imagination required)
 
-**Conversation Graphs** -- Dialogues are directed graphs (not trees). Branches converge, creating a funnel toward distinct exit states. Node types:
 
-- **Active**: Player picks a dialogue option, optionally triggering a dice roll (success / partial / failure)
-- **Passive**: Auto-resolved by the player's dominant reputation trait -- your commitments shape your path
-- **Convergence**: Routes based on accumulated state (reputation, roll history, axis gates, visited nodes)
-- **Noop**: Flavor choices with no mechanical weight
+## Architecture
 
-**Four-Axis Power System** -- Generic scalar and keyed axes track faction standing, military force, wealth, and reputation traits (Severitas, Audacia, Clementia, Calliditas). A single `AxisOperation` contract (`gate` / `roll` / `shift`) drives preconditions, roll modifiers, and effects uniformly.
-
-**Turn Economy** -- Each phase grants a fixed turn budget. Outbound conversations cost 1 turn; inbound (NPC-initiated) conversations are free. When turns hit zero, a power-shift conversation fires -- a convergence-heavy dialogue that reads your accumulated faction standings to determine rank advancement or game over.
-
-**Preconditions & Gating** -- Conversations unlock based on rank, axis thresholds, prior exit states, and phase events. Early choices gate later content, creating perceived scarcity without permanently locking information.
-
-## Generated Conversations
-
-A two-pass hankweave pipeline produces all game content:
-
-1. **Generate** (LLM) -- From a phase seed and conversation blueprints, produces `phase.json`, per-NPC definitions (`npc.json`), and full conversation graphs (`convo_*.json`) with node typing, roll configs, exit effects, and preconditions.
-2. **Validate** (LLM) -- Reads all generated files, checks structural consistency (dangling references, dead ends, unreachable nodes), and fixes errors.
-
-Output lands in `generation/output/` as structured JSON. A runtime loader assembles it into a playable `GameState`.
-
-## Context Artifacts
-
-The generator receives three layers of context:
-
-| Artifact | Purpose |
-|---|---|
-| `generation/phase-input.json` | Phase seed: factions, narrative anchors, player rank, turn budget, random seed for deterministic generation |
-| `generation/prompts/v3/conversations.md` | Conversation blueprints: per-NPC arc specs with direction, turn budgets, layer delivery, plot function, active choices, exit states, and preconditions |
-| `generation/story/backstory.md` | Narrative grounding: scene-level prose, character voices, emotional stakes |
-
-The blueprints specify *what* each conversation must accomplish (which layers of information to reveal, which faction deltas to produce, which future conversations to unlock). The LLM decides *how* -- node graph topology, dialogue content, roll thresholds, and convergence routing.
-
-**Conditional stubs** allow event-reactive dialogue without regenerating graphs: a pool of prefab dialogue prefixes (with status-relative variants) splice onto existing conversations when phase events fire.
+See [docs/game-engine.md](./docs/game-engine.md) for a full breakdown of the engine, runtime, generation pipeline, and frontend.
