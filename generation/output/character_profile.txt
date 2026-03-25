@@ -1,0 +1,106 @@
+# Player Character Profile
+
+## Gaius Veturius Crispus
+
+### The Name
+The Veturii are a real but obscure Roman gens — patrician in origin, politically dormant for generations. This gives him pedigree without power. The cognomen "Crispus" (curly-haired) is physical, unpretentious, slightly undignified — the kind of name that gets used affectionately by friends and dismissively by enemies. People call him Crispus. He hates it a little. Not enough to correct anyone important.
+
+### Age & Position
+Twenty-six at Phase 1 start. Old enough to have done a year of inconsequential military service (a staff posting in Sicily, where nothing happened). Young enough that no one takes him seriously yet. He's completed his legal studies, knows the courts, has attended enough dinners to understand how patronage works in theory. He has never had a patron who mattered.
+
+His father died three years ago — not dramatically, just a fever that didn't break. Left the family solvent but not wealthy. Two estates: one near Rome (modest, productive), one in Samnite territory (larger, more valuable, in exactly the wrong place when the Social War starts). His mother Aurelia runs the household and the finances better than his father ever did. Crispus knows this. It bothers him in ways he hasn't examined.
+
+### The Core Wound
+Crispus grew up watching his father fail. Not spectacularly — the elder Veturius never fell, never was proscribed, never made enemies. He simply never *rose*. He attended the Senate (the family's patrician status entitled him to sit, though not to speak with authority), voted with whatever faction seemed safest, accepted whatever scraps of appointment came his way, and died a man of no consequence in a city that remembered only consequence.
+
+Crispus is terrified of repeating this. The fear manifests as a restless, almost compulsive need to *matter* — to be in rooms where decisions are made, to have his name spoken by people who shape events. He doesn't yet know whether he wants power for its own sake or simply wants to escape his father's gravity. The distinction will be determined by how the player plays him. But the hunger is there from the start, and every NPC can smell it.
+
+### What He's Like in a Room
+
+**He talks too much when he's nervous.** In early conversations (Act 1), Crispus's dialogue options should occasionally include a too-long response, an over-eager elaboration, a comment that betrays how badly he wants to impress. This isn't incompetence — he's articulate and well-educated. It's that the gap between his intelligence and his status makes him try too hard. Scaurus notices. Catulus notices. Sulla, later, finds it amusing and then interesting.
+
+**He's genuinely funny.** Crispus has a dry, quick wit that he uses as both shield and weapon. When he's uncomfortable, he deflects with humor. When he's angry, his insults are precise and memorable. This should come through in dialogue options across all Dignitas profiles — even a high-Severitas Crispus is funny, just more dryly. A high-Audacia Crispus is funnier but meaner. A high-Calliditas Crispus weaponizes humor strategically. A high-Clementia Crispus uses it to disarm.
+
+**He reads people well but reads himself badly.** He can tell within minutes whether Catulus is testing him or genuinely curious. He can spot Marius's paranoia before it manifests. But he cannot accurately assess his own motivations. He tells himself he's pursuing reform when he's pursuing status. He tells himself he's being strategic when he's being cowardly. The passive turn system should exploit this: his automatic responses sometimes reveal truths about himself that his active choices are trying to conceal.
+
+**He has a physical restlessness.** He paces. He fidgets with his toga. He picks at food without eating it. The LLM generation should include occasional physical behavior tags in his dialogue — not stage directions, but woven into the narration. "You find yourself standing before you've decided to stand." "Your hand is on the door before Catulus has finished speaking." This gives him a body, not just a voice.
+
+### Relationships with the NPC Roster
+
+**Aurelia (mother):** He loves her, resents her competence, and is ashamed of the resentment. She sees through every performance he puts on and tells him so, which is why her conversations are the only ones where he's honest. His passive responses in her conversations should be noticeably more vulnerable than anywhere else — the mask slips at home.
+
+**Scaurus:** Crispus is genuinely awed by Scaurus in a way he'd never admit. Scaurus represents what the Veturii were supposed to be — the dignified senator, the living constitution. Crispus's father tried to be this and failed. Scaurus *is* it and is dying. The emotional charge of these conversations should be filial — Crispus is looking for the father he wanted.
+
+**Catulus:** A transactional relationship that Crispus wants to be more. Catulus is exactly the kind of patron his father never secured. Getting Catulus's patronage would feel like correcting his father's failure. This makes Crispus both more eager and more resentful in these conversations — he hates needing this man's approval.
+
+**Norbanus:** The easiest relationship. Norbanus is blunt, practical, uninterested in status games. Crispus relaxes around him. Their conversations should feel looser, more natural. Crispus's humor comes out most freely here. If the player leans Marian, this becomes the game's warmest relationship — and therefore the most painful if it breaks.
+
+**Atticus:** Crispus is fascinated and slightly envious. Atticus has solved the problem Crispus is struggling with — how to have influence without commitment, how to be wealthy without being vulnerable. Crispus can't tell if Atticus's neutrality is wisdom or cowardice, and the ambiguity mirrors his own uncertainty.
+
+**Drusus:** If Crispus meets him, it should feel like meeting the person he could have been if he were braver. Drusus is everything Crispus admires — principled, eloquent, willing to risk everything for reform — and everything Crispus fears, because principled men in Rome get killed. Drusus's death should hit Crispus hard regardless of faction alignment, and the passive response should reflect genuine grief mixed with relief that it wasn't him.
+
+**Sulpicius:** Crispus is wary. Sulpicius is smarter than him and both of them know it. Their conversations have an edge — Sulpicius is always slightly condescending, and Crispus oscillates between trying to match him intellectually and retreating into deference. If the player goes deep Marian, this relationship becomes the political education subplot — Sulpicius teaches Crispus how power actually works.
+
+**Marius:** Fear. Not physical fear (though there's some of that) but existential fear. Marius is what ambition without restraint looks like. Crispus sees his own hunger reflected in Marius, distorted and enormous. The passive turns in Marius conversations should have a quality of horrified recognition — "this is what I could become." High-Audacia Crispus is drawn to Marius's intensity. High-Severitas Crispus is repelled. High-Calliditas Crispus is calculating how to use him. All three are afraid.
+
+**Sulla:** Attraction. Sulla is everything Crispus's father wasn't — decisive, brilliant, willing to break rules. Crispus admires Sulla the way young men admire dangerous older men: uncritically, with a desire to be seen as worthy. This is the game's most seductive relationship and therefore the most dangerous. A player who takes Sulla's patronage should feel the pull of it — the safety of being attached to the strongest person in the room — and only gradually realize what they've committed to.
+
+**Poppaedius Silo:** Disorientation. Silo is the first person Crispus meets who doesn't operate within the Roman frame at all. Every other NPC, even Marius, thinks in terms of the Senate, the assemblies, the cursus. Silo thinks in terms of his people, their land, their dead. Meeting him should feel like stepping outside the game's entire value system. Crispus doesn't know how to perform for Silo, which means his passive responses in these conversations are unusually authentic.
+
+### Voice Guidelines for LLM Generation
+
+These are directives for how Crispus should sound across all Dignitas profiles.
+
+**Universal (regardless of trait dominance):**
+- Educated vocabulary but not ostentatious. He knows his Ennius and his Cato but doesn't quote unless it serves a purpose.
+- Sentences that start confidently and occasionally trail off when he realizes he's overcommitted to a position — represented by em-dashes, not ellipses.
+- Self-deprecating humor that's slightly too sharp to be genuinely modest. He mocks himself before anyone else can, but the mockery has teeth.
+- A habit of reframing other people's points in his own words — partly to show he's understood, partly to make their idea sound like his. Smart people (Sulla, Sulpicius, Atticus) notice this. It's either a sign of intellectual engagement or a dominance move, depending on who's reading it.
+- Physical restlessness woven into narration. He's never entirely still.
+
+**High Severitas voice:**
+- Formal but not stiff. He invokes precedent and law with genuine conviction, not as performance. The humor becomes more sardonic — he mocks people who break norms, including himself when he's tempted to.
+- He gets quieter when he's most serious. His most important statements are understated.
+- Latent anger at people who don't take the system seriously. This reads as moral authority when it works and as priggishness when it doesn't.
+
+**High Audacia voice:**
+- Louder, faster, more interruptions. He finishes other people's sentences and sometimes regrets it.
+- The humor turns aggressive — he's genuinely funny but at other people's expense. He knows this and does it anyway.
+- A tendency to commit to positions mid-sentence and then defend them out of stubbornness. He says things he half-believes and then talks himself into fully believing them.
+- Physical descriptions emphasize forward motion — leaning in, stepping closer, gesturing broadly.
+
+**High Clementia voice:**
+- More questions, fewer declarations. He wants to understand before he judges.
+- The humor is gentler, more self-directed. He makes himself the butt of the joke to put others at ease.
+- A visible discomfort with cruelty that he tries to frame as strategic ("mercy is cheaper than revenge") but is actually emotional. He doesn't like seeing people hurt.
+- He touches people — a hand on the arm, a pat on the shoulder. Physical warmth as communication.
+
+**High Calliditas voice:**
+- Fewer words, more carefully chosen. He edits himself in real-time. Sentences are shorter.
+- The humor is subtle — double meanings, implications, things said with a straight face that only land five seconds later.
+- He asks questions he already knows the answer to, and his delivery makes this obvious to smart NPCs. Sulla finds this entertaining. Marius finds it enraging.
+- Physical descriptions emphasize stillness — the restlessness disappears when he's calculating. His body goes quiet and his eyes get focused.
+
+### The Samnite Estate (Recurring Motif)
+
+The family estate in Samnite territory is a physical anchor for the game's themes. It's Crispus's most valuable asset and his most personal vulnerability. When the Social War erupts, it's in the war zone. Italian allies may seize it, Roman troops may requisition it, or it may simply be destroyed.
+
+The estate should recur in conversations as a touchstone:
+- Aurelia mentions it in every conversation (it's her primary concern)
+- Atticus references it as a financial asset with declining value
+- Poppaedius Silo, if met, may reveal that the estate is on Marsic land and the Veturii have been extracting rent from Italian families for generations — reframing Crispus's "inheritance" as part of the structural injustice that caused the war
+- At the power shift, the estate's fate is determined by the player's factional alignment and Italian Allies standing
+
+This gives Crispus a *thing* — not just abstract factional scores but a specific, concrete stake. The estate is what his father left him, and whether he saves it, loses it, or willingly gives it up tells you who he's become.
+
+### What He Doesn't Know About Himself
+
+These are truths the game reveals gradually through passive turns:
+
+1. **He's braver than he thinks.** Crispus believes he's a coward because he compares himself to men like Drusus and Sulla. But when pressed — in crisis conversations, in the power shift — his automatic responses show more spine than he credits himself with. Even a high-Calliditas Crispus has lines he won't cross, and he discovers them by hitting them.
+
+2. **He's his mother's son.** He thinks he's trying to be his father, corrected. He's actually becoming Aurelia — sharp, strategic, managing impossible situations with insufficient resources. The passive turns in late-game conversations should occasionally echo Aurelia's phrasing from CONV-01. He doesn't notice. The player might.
+
+3. **His humor is a tell.** When Crispus makes a joke, he's feeling something he can't express directly. The worse the joke, the deeper the feeling. NPCs who know him well (Norbanus, Aurelia) can read this. NPCs who don't (Marius, early Sulla) miss it and think he's flippant.
+
+4. **The hunger doesn't go away.** Even if the player pursues the most principled, Severitas-maxed path, Crispus still wants to matter. The passive turns should occasionally betray ambition even when the player has been choosing restraint. This isn't a bug — it's the character. He's a Roman aristocrat. The desire for gloria and dignitas is in his bones. The question isn't whether he's ambitious. It's what he does with it.

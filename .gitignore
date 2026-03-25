@@ -1,1 +1,7 @@
 node_modules/
+.next/
+.env.local
+playthrough.db
+playthrough.db-shm
+playthrough.db-wal
+tsconfig.tsbuildinfo

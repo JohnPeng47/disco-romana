@@ -1343,8 +1343,6 @@ interface TurnSnapshot {
   available: string[];
   completed: string | null;
   reachableCount: number;
-  avgBranching: number;
-  width: number;
   newUnlocks: string[];
 }
 
@@ -1461,25 +1459,16 @@ function applyExitState(convoId: string, es: ExitState, gs: GameState) {
 function simulateEnvelope(allConvos: Conversation[], totalMoves: number, powerShiftId: string): TurnSnapshot[] {
   const gs = newGameState();
   const snapshots: TurnSnapshot[] = [];
-  const branchCache = new Map<string, number>();
-  for (const c of allConvos) branchCache.set(c.id, countExitNodes(c));
 
   for (let t = 0; t < totalMoves; t++) {
     const available = getAvailable(allConvos, gs, powerShiftId);
     const availIds = available.map((c) => c.id);
-
-    // Branching factor
-    const bFactors = available.map((c) => branchCache.get(c.id) || 1);
-    const avgB = bFactors.length > 0 ? bFactors.reduce((a, b) => a + b, 0) / bFactors.length : 0;
-    const width = available.length * avgB;
 
     // Pick the conversation to complete this turn (greedy: max new unlocks)
     let bestConvo: Conversation | null = null;
     let bestNewCount = -1;
 
     for (const c of available) {
-      // Try each exit of c, take the best
-      const testGs = cloneGameState(gs);
       let maxNew = 0;
       for (const es of c.exitStates) {
         const innerGs = cloneGameState(gs);
@@ -1509,8 +1498,6 @@ function simulateEnvelope(allConvos: Conversation[], totalMoves: number, powerSh
       available: availIds,
       completed: completedId,
       reachableCount: available.length,
-      avgBranching: Math.round(avgB * 10) / 10,
-      width: Math.round(width * 10) / 10,
       newUnlocks,
     });
 
@@ -1520,40 +1507,28 @@ function simulateEnvelope(allConvos: Conversation[], totalMoves: number, powerSh
   return snapshots;
 }
 
-/** Run Monte Carlo: random completion order, return min/max/avg envelope. */
+/** Run Monte Carlo: random completion order, return min/max/avg of |R(t)|. */
 function monteCarloEnvelope(
   allConvos: Conversation[],
   totalMoves: number,
   powerShiftId: string,
   runs: number
-): { min: number[]; max: number[]; avg: number[]; reachMin: number[]; reachMax: number[]; reachAvg: number[] } {
-  const widths: number[][] = Array.from({ length: totalMoves }, () => []);
+): { min: number[]; max: number[]; avg: number[]; stddev: number[] } {
   const reachCounts: number[][] = Array.from({ length: totalMoves }, () => []);
-  const branchCache = new Map<string, number>();
-  for (const c of allConvos) branchCache.set(c.id, countExitNodes(c));
 
   for (let r = 0; r < runs; r++) {
     const gs = newGameState();
     for (let t = 0; t < totalMoves; t++) {
       const available = getAvailable(allConvos, gs, powerShiftId);
-      const bFactors = available.map((c) => branchCache.get(c.id) || 1);
-      const avgB = bFactors.length > 0 ? bFactors.reduce((a, b) => a + b, 0) / bFactors.length : 0;
-      const w = available.length * avgB;
-      widths[t].push(w);
       reachCounts[t].push(available.length);
 
       if (available.length === 0) {
-        // Fill remaining turns with 0
-        for (let tt = t + 1; tt < totalMoves; tt++) {
-          widths[tt].push(0);
-          reachCounts[tt].push(0);
-        }
+        for (let tt = t + 1; tt < totalMoves; tt++) reachCounts[tt].push(0);
         break;
       }
 
-      // Random pick
+      // Random pick, random exit
       const pick = available[Math.floor(Math.random() * available.length)];
-      // Random exit
       if (pick.exitStates.length > 0) {
         const es = pick.exitStates[Math.floor(Math.random() * pick.exitStates.length)];
         applyExitState(pick.id, es, gs);
@@ -1563,96 +1538,61 @@ function monteCarloEnvelope(
     }
   }
 
+  const avg = reachCounts.map((rs) => rs.length > 0 ? rs.reduce((a, b) => a + b, 0) / rs.length : 0);
+  const stddev = reachCounts.map((rs, i) => {
+    if (rs.length === 0) return 0;
+    const mean = avg[i];
+    const variance = rs.reduce((sum, v) => sum + (v - mean) ** 2, 0) / rs.length;
+    return Math.sqrt(variance);
+  });
+
   return {
-    min: widths.map((ws) => ws.length > 0 ? Math.min(...ws) : 0),
-    max: widths.map((ws) => ws.length > 0 ? Math.max(...ws) : 0),
-    avg: widths.map((ws) => ws.length > 0 ? ws.reduce((a, b) => a + b, 0) / ws.length : 0),
-    reachMin: reachCounts.map((rs) => rs.length > 0 ? Math.min(...rs) : 0),
-    reachMax: reachCounts.map((rs) => rs.length > 0 ? Math.max(...rs) : 0),
-    reachAvg: reachCounts.map((rs) => rs.length > 0 ? rs.reduce((a, b) => a + b, 0) / rs.length : 0),
+    min: reachCounts.map((rs) => rs.length > 0 ? Math.min(...rs) : 0),
+    max: reachCounts.map((rs) => rs.length > 0 ? Math.max(...rs) : 0),
+    avg,
+    stddev,
   };
 }
 
 function renderEnvelope(allConvos: Conversation[], totalMoves: number, powerShiftId: string) {
-  const greedy = simulateEnvelope(allConvos, totalMoves, powerShiftId);
-  const mc = monteCarloEnvelope(allConvos, totalMoves, powerShiftId, 200);
+  const MC_RUNS = 500;
+  const mc = monteCarloEnvelope(allConvos, totalMoves, powerShiftId, MC_RUNS);
 
-  const peakW = Math.max(...greedy.map((s) => s.width));
-  const peakT = greedy.findIndex((s) => s.width === peakW);
+  const totalConvos = allConvos.filter((c) => c.id !== powerShiftId).length;
 
   // ── Header ──
   console.log();
   console.log(`${BOLD}${"=".repeat(78)}${RESET}`);
-  console.log(`${BOLD}  NARRATIVE WIDTH ENVELOPE${RESET}`);
+  console.log(`${BOLD}  REACHABILITY ENVELOPE${RESET}`);
   console.log(`${BOLD}${"=".repeat(78)}${RESET}`);
   console.log();
-  console.log(`  Total moves: ${totalMoves}  |  Conversations: ${allConvos.filter((c) => c.id !== powerShiftId).length}  |  Terminal: ${powerShiftId}`);
-  console.log(`  Monte Carlo: 200 random playthroughs`);
-  console.log();
+  console.log(`  Moves: ${totalMoves}  |  Conversations: ${totalConvos}  |  Terminal: ${powerShiftId}  |  Runs: ${MC_RUNS}`);
 
   // ── ASCII Chart ──
-  const chartW = 50;
-  const maxVal = Math.max(peakW, ...mc.max);
-  const scale = maxVal > 0 ? chartW / maxVal : 1;
+  const chartW = 40;
+  const maxVal = Math.max(...mc.max, 1);
+  const scale = chartW / maxVal;
 
-  console.log(`${BOLD}  Width W(t) = |R(t)| × B̄  over time${RESET}`);
-  console.log(`  ${DIM}${"─".repeat(chartW + 20)}${RESET}`);
-
-  for (let t = 0; t < greedy.length; t++) {
-    const s = greedy[t];
-    const greedyBar = Math.round(s.width * scale);
-    const mcMin = Math.round(mc.min[t] * scale);
-    const mcMax = Math.round(mc.max[t] * scale);
-    const mcAvg = Math.round(mc.avg[t] * scale);
-
-    // Build the bar: show MC range as dim, greedy as bright
-    let bar = "";
-    for (let x = 0; x < chartW; x++) {
-      if (x < mcMin) {
-        bar += " ";
-      } else if (x < mcAvg) {
-        bar += `${DIM}░${RESET}`;
-      } else if (x === mcAvg) {
-        bar += `${CYAN}▓${RESET}`;
-      } else if (x < mcMax) {
-        bar += `${DIM}░${RESET}`;
-      } else {
-        bar += " ";
-      }
-    }
-
-    const peak = t === peakT ? ` ${YELLOW}← peak${RESET}` : "";
-    const turnLabel = `t=${String(t).padStart(2)}`;
-    const stats = `${DIM}|R|=${String(s.reachableCount).padStart(2)}  B̄=${s.avgBranching.toFixed(1)}  W=${s.width.toFixed(1).padStart(5)}${RESET}`;
-    console.log(`  ${turnLabel} ${bar} ${stats}${peak}`);
-  }
-
-  console.log(`  ${DIM}${"─".repeat(chartW + 20)}${RESET}`);
-  console.log(`  ${DIM}░ = MC min..max range   ▓ = MC average${RESET}`);
   console.log();
+  console.log(`  ${BOLD}turn${RESET}  ${BOLD}${"chart".padEnd(chartW)}${RESET}  ${BOLD}min  avg   max    σ${RESET}`);
+  console.log(`  ${DIM}${"─".repeat(chartW + 30)}${RESET}`);
 
-  // ── Reachability chart ──
-  console.log(`${BOLD}  Reachable conversations |R(t)| over time${RESET}`);
-  console.log(`  ${DIM}${"─".repeat(chartW + 20)}${RESET}`);
-
-  const maxReach = Math.max(...greedy.map((s) => s.reachableCount), ...mc.reachMax);
-  const reachScale = maxReach > 0 ? chartW / maxReach : 1;
-
-  for (let t = 0; t < greedy.length; t++) {
-    const s = greedy[t];
-    const mcMin = Math.round(mc.reachMin[t] * reachScale);
-    const mcMax = Math.round(mc.reachMax[t] * reachScale);
-    const mcAvg = Math.round(mc.reachAvg[t] * reachScale);
+  for (let t = 0; t < totalMoves; t++) {
+    if (t >= mc.min.length) break;
+    const lo = Math.round(mc.min[t] * scale);
+    const hi = Math.round(mc.max[t] * scale);
+    const avg = Math.round(mc.avg[t] * scale);
+    const sigma = mc.stddev[t];
 
     let bar = "";
     for (let x = 0; x < chartW; x++) {
-      if (x < mcMin) {
+      if (x < lo) {
         bar += " ";
-      } else if (x < mcAvg) {
+      } else if (x < avg) {
         bar += `${DIM}░${RESET}`;
-      } else if (x === mcAvg) {
+      } else if (x === avg) {
         bar += `${CYAN}▓${RESET}`;
-      } else if (x < mcMax) {
+      } else if (x <= hi) {
         bar += `${DIM}░${RESET}`;
       } else {
         bar += " ";
@@ -1660,183 +1600,12 @@ function renderEnvelope(allConvos: Conversation[], totalMoves: number, powerShif
     }
 
     const turnLabel = `t=${String(t).padStart(2)}`;
-    const stats = `${DIM}|R|=${String(s.reachableCount).padStart(2)}  mc:${mc.reachMin[t].toFixed(0)}-${mc.reachMax[t].toFixed(0)}${RESET}`;
-    console.log(`  ${turnLabel} ${bar} ${stats}`);
+    const stats = `${String(mc.min[t]).padStart(3)}  ${mc.avg[t].toFixed(1).padStart(4)}  ${String(mc.max[t]).padStart(4)}  ${sigma.toFixed(1).padStart(4)}`;
+    console.log(`  ${turnLabel}  ${bar}  ${DIM}${stats}${RESET}`);
   }
 
-  console.log(`  ${DIM}${"─".repeat(chartW + 20)}${RESET}`);
-  console.log();
-
-  // ── Turn-by-turn detail ──
-  console.log(`${BOLD}  Greedy (max-envelope) turn log${RESET}`);
-  console.log(`${BOLD}${"─".repeat(78)}${RESET}`);
-
-  for (const s of greedy) {
-    const peak = s.t === peakT ? ` ${YELLOW}← peak${RESET}` : "";
-    console.log();
-    console.log(`  ${BOLD}Turn ${s.t}${RESET}  |R|=${s.reachableCount}  B̄=${s.avgBranching}  W=${s.width}${peak}`);
-    console.log(`    ${DIM}Available: ${s.available.join(", ") || "(none)"}${RESET}`);
-
-    if (s.completed) {
-      console.log(`    ${CYAN}Completed: ${s.completed}${RESET}`);
-    }
-    if (s.newUnlocks.length > 0) {
-      console.log(`    ${GREEN}Unlocked:  ${s.newUnlocks.join(", ")}${RESET}`);
-    }
-  }
-
-  // ── DAG: first-reachable turn assignment ──
-  console.log();
-  console.log(`${BOLD}${"─".repeat(78)}${RESET}`);
-  console.log(`${BOLD}  Conversation DAG (by first-reachable turn)${RESET}`);
-  console.log(`${BOLD}${"─".repeat(78)}${RESET}`);
-
-  // Build first-reachable map from greedy sim
-  const firstReachable = new Map<string, number>();
-  for (const s of greedy) {
-    for (const cId of s.available) {
-      if (!firstReachable.has(cId)) firstReachable.set(cId, s.t);
-    }
-    for (const cId of s.newUnlocks) {
-      if (!firstReachable.has(cId)) firstReachable.set(cId, s.t + 1);
-    }
-  }
-
-  // Group by turn layer
-  const layers = new Map<number, string[]>();
-  for (const [cId, t] of firstReachable) {
-    if (!layers.has(t)) layers.set(t, []);
-    layers.get(t)!.push(cId);
-  }
-
-  // Build unlock edges for the DAG display
-  const convoMap = new Map<string, Conversation>();
-  for (const c of allConvos) convoMap.set(c.id, c);
-
-  const unlockEdges = new Map<string, Set<string>>();
-  for (const c of allConvos) {
-    if (c.id === powerShiftId) continue;
-    for (const es of c.exitStates) {
-      for (const eff of es.effects) {
-        if (eff.type === "unlock_conversation" && eff.conversationId) {
-          if (!unlockEdges.has(c.id)) unlockEdges.set(c.id, new Set());
-          unlockEdges.get(c.id)!.add(eff.conversationId);
-        }
-      }
-    }
-    // Also detect implicit edges via prior_exit_state preconditions on other convos
-    for (const other of allConvos) {
-      if (other.id === c.id || other.id === powerShiftId) continue;
-      for (const pre of other.preconditions || []) {
-        if (hasExitStateDep(pre, c.id)) {
-          if (!unlockEdges.has(c.id)) unlockEdges.set(c.id, new Set());
-          unlockEdges.get(c.id)!.add(other.id);
-        }
-      }
-    }
-  }
-
-  const sortedTurns = [...layers.keys()].sort((a, b) => a - b);
-  for (const t of sortedTurns) {
-    const convosAtT = layers.get(t)!.sort();
-    const labels = convosAtT.map((cId) => {
-      const c = convoMap.get(cId);
-      const npc = c ? c.npcId : "?";
-      const seq = c ? c.sequenceIndex : 0;
-      return `${npc}#${seq}`;
-    });
-
-    console.log();
-    console.log(`  ${BOLD}t=${t}${RESET}  ${labels.map((l) => `[${l}]`).join(" ")}`);
-
-    // Show unlock edges from this layer
-    for (const cId of convosAtT) {
-      const targets = unlockEdges.get(cId);
-      if (!targets || targets.size === 0) continue;
-      const c = convoMap.get(cId);
-      const srcLabel = c ? `${c.npcId}#${c.sequenceIndex}` : cId;
-      for (const tgt of targets) {
-        const tc = convoMap.get(tgt);
-        const tgtLabel = tc ? `${tc.npcId}#${tc.sequenceIndex}` : tgt;
-        const tgtTurn = firstReachable.get(tgt);
-        if (tgtTurn !== undefined && tgtTurn > t) {
-          console.log(`    ${DIM}${srcLabel} ──→ ${tgtLabel} (t=${tgtTurn})${RESET}`);
-        }
-      }
-    }
-  }
-
-  // Power shift at the bottom
-  console.log();
-  console.log(`  ${BOLD}t=end${RESET}  ${RED}[power_shift]${RESET}`);
-
-  // ── Diagnosis ──
-  console.log();
-  console.log(`${BOLD}${"─".repeat(78)}${RESET}`);
-  console.log(`${BOLD}  Envelope Diagnosis${RESET}`);
-  console.log(`${BOLD}${"─".repeat(78)}${RESET}`);
-  console.log();
-
-  // Flatness score: what % of convos are available at t=0?
-  const totalConvos = allConvos.filter((c) => c.id !== powerShiftId).length;
-  const t0avail = greedy.length > 0 ? greedy[0].reachableCount : 0;
-  const flatness = totalConvos > 0 ? t0avail / totalConvos : 0;
-
-  // Width variance (MC)
-  const avgWidths = mc.avg.slice(0, greedy.length);
-  const meanW = avgWidths.length > 0 ? avgWidths.reduce((a, b) => a + b, 0) / avgWidths.length : 0;
-  const variance = avgWidths.length > 0
-    ? avgWidths.reduce((a, w) => a + (w - meanW) ** 2, 0) / avgWidths.length
-    : 0;
-  const stddev = Math.sqrt(variance);
-
-  // Peak vs start ratio
-  const startW = greedy.length > 0 ? greedy[0].width : 0;
-  const peakRatio = startW > 0 ? peakW / startW : 0;
-
-  // Turns until width halves from peak
-  let halfLife = greedy.length;
-  for (let t = peakT; t < greedy.length; t++) {
-    if (greedy[t].width <= peakW / 2) { halfLife = t - peakT; break; }
-  }
-
-  console.log(`  Flatness:        ${(flatness * 100).toFixed(0)}% of conversations available at t=0`);
-  if (flatness > 0.6) {
-    console.log(`    ${YELLOW}→ High flatness: most content is frontloaded. Consider adding cross-NPC`);
-    console.log(`      preconditions or faction-standing gates on early conversations.${RESET}`);
-  } else if (flatness < 0.3) {
-    console.log(`    ${GREEN}→ Good layering: content unlocks progressively.${RESET}`);
-  }
-
-  console.log(`  Peak width:      W=${peakW.toFixed(1)} at t=${peakT}`);
-  console.log(`  Peak/start:      ${peakRatio.toFixed(2)}x`);
-  if (peakRatio < 1.3) {
-    console.log(`    ${YELLOW}→ Low peak/start ratio: narrative doesn't widen much. The player has`);
-    console.log(`      similar choice density throughout. Consider unlock cascades.${RESET}`);
-  }
-
-  console.log(`  Width σ (MC):    ${stddev.toFixed(1)}  (higher = more shape variation across playthroughs)`);
-  if (stddev < 3) {
-    console.log(`    ${YELLOW}→ Low variance: different play orderings produce similar envelopes.`);
-    console.log(`      Player choices don't meaningfully reshape available content.${RESET}`);
-  }
-
-  console.log(`  Half-life:       ${halfLife} turns after peak`);
-  console.log(`  MC width range:  ${mc.min[peakT]?.toFixed(1) ?? 0} – ${mc.max[peakT]?.toFixed(1) ?? 0} at peak turn`);
-
-  // Funnel quality: does content thin out toward the end?
-  const lastThird = greedy.slice(Math.floor(greedy.length * 0.66));
-  const endAvg = lastThird.length > 0
-    ? lastThird.reduce((a, s) => a + s.reachableCount, 0) / lastThird.length
-    : 0;
-
-  if (endAvg < 2) {
-    console.log(`  ${GREEN}Funnel:${RESET}          Content narrows to ${endAvg.toFixed(1)} avg conversations in final third — good funnel.`);
-  } else {
-    console.log(`  ${YELLOW}Funnel:${RESET}          ${endAvg.toFixed(1)} avg conversations still available in final third.`);
-    console.log(`    ${YELLOW}→ Weak funnel: player still has too many open threads near the power shift.${RESET}`);
-  }
-
+  console.log(`  ${DIM}${"─".repeat(chartW + 30)}${RESET}`);
+  console.log(`  ${DIM}░ min..max   ▓ average   σ = std deviation across ${MC_RUNS} runs${RESET}`);
   console.log();
 }
 
@@ -1847,6 +1616,453 @@ function hasExitStateDep(pre: Precondition, convoId: string): boolean {
     return pre.conditions.some((c) => hasExitStateDep(c, convoId));
   }
   return false;
+}
+
+// ── Check: Sanity Checks ──
+
+interface CheckIssue {
+  severity: "error" | "warning";
+  convoId: string;
+  nodeId?: string;
+  message: string;
+}
+
+function runChecks(convos: Conversation[]): CheckIssue[] {
+  const issues: CheckIssue[] = [];
+  const WORD_LIMIT = 70;
+
+  // ── Collect all events fired and required across all conversations ──
+  const eventsFired = new Map<string, string[]>(); // eventId → convoIds that fire it
+  const eventsRequired = new Map<string, string[]>(); // eventId → convoIds that require it
+
+  for (const convo of convos) {
+    // Collect fire_event from exit state effects
+    for (const es of convo.exitStates) {
+      for (const eff of es.effects) {
+        if (eff.type === "fire_event" && (eff as any).eventId) {
+          const eventId = (eff as any).eventId;
+          if (!eventsFired.has(eventId)) eventsFired.set(eventId, []);
+          eventsFired.get(eventId)!.push(convo.id);
+        }
+      }
+    }
+
+    // Collect event/game_event preconditions
+    collectEventPreconditions(convo.preconditions || [], convo.id, eventsRequired);
+  }
+
+  // ── Event integrity checks ──
+
+  // Events required but never fired
+  for (const [eventId, requiredBy] of eventsRequired) {
+    if (!eventsFired.has(eventId)) {
+      for (const convoId of requiredBy) {
+        issues.push({
+          severity: "error",
+          convoId,
+          message: `requires event "${eventId}" but nothing fires it — conversation is unreachable via events`,
+        });
+      }
+    }
+  }
+
+  // Events fired but never required (not an error, but worth noting)
+  for (const [eventId, firedBy] of eventsFired) {
+    if (!eventsRequired.has(eventId)) {
+      for (const convoId of firedBy) {
+        issues.push({
+          severity: "warning",
+          convoId,
+          message: `fires event "${eventId}" but no conversation requires it`,
+        });
+      }
+    }
+  }
+
+  // ── Schema validation ──
+
+  const VALID_NODE_TYPES = ["active", "passive", "noop", "convergence", "exit"];
+  const VALID_TRAITS = ["severitas", "clementia", "audacia", "calliditas"];
+  const VALID_EFFECT_TYPES = [
+    "faction_standing", "reputation", "turn_penalty",
+    "unlock_conversation", "lock_conversation",
+    "rank_change", "game_over", "fire_event",
+  ];
+  const VALID_PRECONDITION_TYPES = [
+    "min_rank", "faction_standing", "prior_exit_state",
+    "phase_event", "event", "any_of",
+  ];
+  const VALID_CONVERGENCE_TYPES = [
+    "reputation_dominant", "roll_history", "visited_node", "faction_standing",
+  ];
+
+  for (const convo of convos) {
+    // Top-level required fields
+    for (const field of ["id", "npcId", "phaseId", "entryNodeId", "nodes", "exitStates"] as const) {
+      if ((convo as any)[field] === undefined) {
+        issues.push({ severity: "error", convoId: convo.id || "unknown", message: `missing required field "${field}"` });
+      }
+    }
+    if (typeof convo.sequenceIndex !== "number") {
+      issues.push({ severity: "error", convoId: convo.id, message: `missing or non-number "sequenceIndex"` });
+    }
+
+    // Precondition schema
+    for (const pre of convo.preconditions || []) {
+      if (!VALID_PRECONDITION_TYPES.includes(pre.type)) {
+        issues.push({ severity: "error", convoId: convo.id, message: `unknown precondition type "${pre.type}"` });
+      }
+      if (pre.type === "prior_exit_state") {
+        if (!pre.conversationId) issues.push({ severity: "error", convoId: convo.id, message: `prior_exit_state precondition missing "conversationId"` });
+        if (!pre.requiredExitStateIds || pre.requiredExitStateIds.length === 0) {
+          issues.push({ severity: "error", convoId: convo.id, message: `prior_exit_state precondition missing "requiredExitStateIds"` });
+        }
+      }
+      if (pre.type === "faction_standing" && !pre.factionId) {
+        issues.push({ severity: "error", convoId: convo.id, message: `faction_standing precondition missing "factionId"` });
+      }
+      if ((pre.type === "event" || pre.type === "phase_event") && !(pre as any).eventId) {
+        issues.push({ severity: "error", convoId: convo.id, message: `${pre.type} precondition missing "eventId"` });
+      }
+    }
+
+    // Node schema
+    for (const node of Object.values(convo.nodes)) {
+      if (!node.id) {
+        issues.push({ severity: "error", convoId: convo.id, message: `node missing "id" field` });
+        continue;
+      }
+      if (!node.type || !VALID_NODE_TYPES.includes(node.type)) {
+        issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `invalid node type "${node.type}"` });
+        continue;
+      }
+      if (!node.npcDialogue && node.npcDialogue !== "") {
+        issues.push({ severity: "warning", convoId: convo.id, nodeId: node.id, message: `missing "npcDialogue"` });
+      }
+
+      switch (node.type) {
+        case "active": {
+          if (!node.options || node.options.length === 0) {
+            issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `active node has no options` });
+          }
+          for (const opt of node.options || []) {
+            if (!opt.playerDialogue) {
+              issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `option missing "playerDialogue"` });
+            }
+            // Must have either nextNodeId or onSuccess
+            if (!opt.nextNodeId && !(opt.onSuccess && opt.onSuccess.nextNodeId)) {
+              issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `option has no nextNodeId or onSuccess.nextNodeId` });
+            }
+            if (opt.roll) {
+              if (!opt.roll.dice || !opt.roll.dice.count || !opt.roll.dice.sides) {
+                issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `roll missing dice config` });
+              }
+              if (typeof opt.roll.baseThreshold !== "number") {
+                issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `roll missing baseThreshold` });
+              }
+              if (opt.roll.reputationBonus && !VALID_TRAITS.includes(opt.roll.reputationBonus.trait)) {
+                issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `roll reputationBonus uses invalid trait "${opt.roll.reputationBonus.trait}"` });
+              }
+            }
+            if (opt.visibilityRequirement) {
+              if (!VALID_TRAITS.includes(opt.visibilityRequirement.trait)) {
+                issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `visibilityRequirement uses invalid trait "${opt.visibilityRequirement.trait}"` });
+              }
+            }
+          }
+          break;
+        }
+        case "passive": {
+          if (!node.responses || node.responses.length === 0) {
+            issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `passive node has no responses` });
+          }
+          for (const resp of node.responses || []) {
+            if (!VALID_TRAITS.includes(resp.trait)) {
+              issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `passive response uses invalid trait "${resp.trait}"` });
+            }
+            if (typeof resp.threshold !== "number") {
+              issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `passive response missing "threshold"` });
+            }
+            if (!resp.playerDialogue) {
+              issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `passive response missing "playerDialogue"` });
+            }
+            if (!resp.nextNodeId) {
+              issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `passive response missing "nextNodeId"` });
+            }
+          }
+          if (!node.fallbackResponse) {
+            issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `passive node missing "fallbackResponse"` });
+          } else {
+            if (!node.fallbackResponse.playerDialogue) {
+              issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `fallbackResponse missing "playerDialogue"` });
+            }
+            if (!node.fallbackResponse.nextNodeId) {
+              issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `fallbackResponse missing "nextNodeId"` });
+            }
+          }
+          break;
+        }
+        case "noop": {
+          if (!node.options || node.options.length === 0) {
+            issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `noop node has no options` });
+          }
+          for (const opt of node.options || []) {
+            if (!opt.playerDialogue) {
+              issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `noop option missing "playerDialogue"` });
+            }
+            if (!opt.nextNodeId) {
+              issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `noop option missing "nextNodeId"` });
+            }
+          }
+          break;
+        }
+        case "convergence": {
+          if (!node.routes || node.routes.length === 0) {
+            issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `convergence node has no routes` });
+          }
+          for (const route of node.routes || []) {
+            if (!route.condition || !VALID_CONVERGENCE_TYPES.includes(route.condition.type)) {
+              issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `convergence route has invalid condition type "${route.condition?.type}"` });
+            }
+            if (!route.nextNodeId) {
+              issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `convergence route missing "nextNodeId"` });
+            }
+            if (route.condition?.type === "reputation_dominant" && !VALID_TRAITS.includes(route.condition.trait!)) {
+              issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `convergence condition uses invalid trait "${route.condition.trait}"` });
+            }
+          }
+          if (!node.fallbackNodeId) {
+            issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `convergence node missing "fallbackNodeId"` });
+          }
+          break;
+        }
+        case "exit": {
+          if (!node.exitStateId) {
+            issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `exit node missing "exitStateId"` });
+          } else {
+            const found = convo.exitStates.some((es) => es.id === node.exitStateId);
+            if (!found) {
+              issues.push({ severity: "error", convoId: convo.id, nodeId: node.id, message: `exitStateId "${node.exitStateId}" not found in exitStates` });
+            }
+          }
+          break;
+        }
+      }
+    }
+
+    // Exit state schema
+    for (const es of convo.exitStates) {
+      if (!es.id) {
+        issues.push({ severity: "error", convoId: convo.id, message: `exit state missing "id"` });
+      }
+      if (!es.narrativeLabel) {
+        issues.push({ severity: "warning", convoId: convo.id, message: `exit state "${es.id}" missing "narrativeLabel"` });
+      }
+      if (!es.effects || !Array.isArray(es.effects)) {
+        issues.push({ severity: "error", convoId: convo.id, message: `exit state "${es.id}" missing "effects" array` });
+        continue;
+      }
+      for (const eff of es.effects) {
+        if (!VALID_EFFECT_TYPES.includes(eff.type)) {
+          issues.push({ severity: "error", convoId: convo.id, message: `exit state "${es.id}" has unknown effect type "${eff.type}"` });
+        }
+        if (eff.type === "faction_standing" && eff.deltas) {
+          for (const d of eff.deltas) {
+            if (!d.factionId) issues.push({ severity: "error", convoId: convo.id, message: `faction_standing delta missing "factionId" in "${es.id}"` });
+            if (typeof d.shift !== "number") issues.push({ severity: "error", convoId: convo.id, message: `faction_standing delta missing "shift" in "${es.id}"` });
+          }
+        }
+        if (eff.type === "reputation" && eff.deltas) {
+          for (const d of eff.deltas) {
+            if (!VALID_TRAITS.includes(d.trait!)) {
+              issues.push({ severity: "error", convoId: convo.id, message: `reputation delta uses invalid trait "${d.trait}" in "${es.id}"` });
+            }
+            if (typeof d.shift !== "number") issues.push({ severity: "error", convoId: convo.id, message: `reputation delta missing "shift" in "${es.id}"` });
+          }
+        }
+        if (eff.type === "fire_event" && !(eff as any).eventId) {
+          issues.push({ severity: "error", convoId: convo.id, message: `fire_event effect missing "eventId" in "${es.id}"` });
+        }
+      }
+
+      // Check that at least one exit node references this exit state
+      const referenced = Object.values(convo.nodes).some((n) => n.type === "exit" && n.exitStateId === es.id);
+      if (!referenced) {
+        issues.push({ severity: "warning", convoId: convo.id, message: `exit state "${es.id}" is never referenced by an exit node` });
+      }
+    }
+  }
+
+  // ── Per-conversation checks ──
+
+  for (const convo of convos) {
+    // 1. Reachability: all nodes reachable from entryNodeId
+    const reachable = bfsReachable(convo);
+    for (const nodeId of Object.keys(convo.nodes)) {
+      if (!reachable.has(nodeId)) {
+        issues.push({
+          severity: "error",
+          convoId: convo.id,
+          nodeId,
+          message: `unreachable node (no path from entry)`,
+        });
+      }
+    }
+
+    // 2. Word count on all dialogue lines
+    for (const node of Object.values(convo.nodes)) {
+      if (node.npcDialogue) {
+        const words = node.npcDialogue.split(/\s+/).length;
+        if (words > WORD_LIMIT) {
+          issues.push({
+            severity: "warning",
+            convoId: convo.id,
+            nodeId: node.id,
+            message: `npcDialogue is ${words} words (limit ${WORD_LIMIT})`,
+          });
+        }
+      }
+
+      if (node.options) {
+        for (const opt of node.options) {
+          const words = opt.playerDialogue.split(/\s+/).length;
+          if (words > WORD_LIMIT) {
+            issues.push({
+              severity: "warning",
+              convoId: convo.id,
+              nodeId: node.id,
+              message: `playerDialogue is ${words} words (limit ${WORD_LIMIT}): "${opt.playerDialogue.slice(0, 60)}..."`,
+            });
+          }
+        }
+      }
+
+      if (node.responses) {
+        for (const resp of node.responses) {
+          const words = resp.playerDialogue.split(/\s+/).length;
+          if (words > WORD_LIMIT) {
+            issues.push({
+              severity: "warning",
+              convoId: convo.id,
+              nodeId: node.id,
+              message: `playerDialogue is ${words} words (limit ${WORD_LIMIT}): "${resp.playerDialogue.slice(0, 60)}..."`,
+            });
+          }
+        }
+      }
+
+      if (node.fallbackResponse) {
+        const words = node.fallbackResponse.playerDialogue.split(/\s+/).length;
+        if (words > WORD_LIMIT) {
+          issues.push({
+            severity: "warning",
+            convoId: convo.id,
+            nodeId: node.id,
+            message: `fallback playerDialogue is ${words} words (limit ${WORD_LIMIT}): "${node.fallbackResponse.playerDialogue.slice(0, 60)}..."`,
+          });
+        }
+      }
+    }
+  }
+
+  return issues;
+}
+
+/** Recursively collect event/game_event preconditions from a precondition tree. */
+function collectEventPreconditions(preconditions: Precondition[], convoId: string, out: Map<string, string[]>) {
+  for (const pre of preconditions) {
+    if ((pre.type === "event" || pre.type === "game_event") && (pre as any).eventId) {
+      const eventId = (pre as any).eventId;
+      if (!out.has(eventId)) out.set(eventId, []);
+      out.get(eventId)!.push(convoId);
+    }
+    if (pre.type === "any_of" && pre.conditions) {
+      collectEventPreconditions(pre.conditions, convoId, out);
+    }
+  }
+}
+
+function renderChecks(convos: Conversation[]) {
+  const issues = runChecks(convos);
+
+  console.log();
+  console.log(`${BOLD}${"=".repeat(70)}${RESET}`);
+  console.log(`${BOLD}  SANITY CHECK${RESET}`);
+  console.log(`${BOLD}${"=".repeat(70)}${RESET}`);
+  console.log();
+  console.log(`  Checked ${convos.length} conversations`);
+
+  const errors = issues.filter((i) => i.severity === "error");
+  const warnings = issues.filter((i) => i.severity === "warning");
+
+  // Categorize issues
+  const schemaErrors = errors.filter((e) => !e.message.includes("event") && !e.message.includes("unreachable"));
+  const eventErrors = errors.filter((e) => e.message.includes("event"));
+  const reachErrors = errors.filter((e) => e.message.includes("unreachable"));
+  const eventWarnings = warnings.filter((w) => w.message.includes("fires event"));
+  const schemaWarnings = warnings.filter((w) => !w.message.includes("fires event") && !w.message.includes("words"));
+  const wordWarnings = warnings.filter((w) => w.message.includes("words"));
+
+  if (issues.length === 0) {
+    console.log();
+    console.log(`  ${GREEN}All checks passed.${RESET}`);
+    console.log();
+    return;
+  }
+
+  // Schema validation section
+  if (schemaErrors.length > 0 || schemaWarnings.length > 0) {
+    console.log();
+    console.log(`  ${BOLD}Schema${RESET}  ${schemaErrors.length > 0 ? RED + schemaErrors.length + " error" + (schemaErrors.length !== 1 ? "s" : "") + RESET : ""}${schemaWarnings.length > 0 ? " " + YELLOW + schemaWarnings.length + " warning" + (schemaWarnings.length !== 1 ? "s" : "") + RESET : ""}`);
+    for (const e of schemaErrors) {
+      const loc = e.nodeId ? `${e.convoId} → ${shortNodeId(e.nodeId)}` : e.convoId;
+      console.log(`    ${RED}ERROR${RESET}  ${loc}: ${e.message}`);
+    }
+    for (const w of schemaWarnings) {
+      const loc = w.nodeId ? `${w.convoId} → ${shortNodeId(w.nodeId)}` : w.convoId;
+      console.log(`    ${YELLOW}WARN${RESET}   ${loc}: ${w.message}`);
+    }
+  }
+
+  // Event integrity section
+  if (eventErrors.length > 0 || eventWarnings.length > 0) {
+    console.log();
+    console.log(`  ${BOLD}Events${RESET}`);
+    for (const e of eventErrors) {
+      console.log(`    ${RED}ERROR${RESET}  ${e.convoId}: ${e.message}`);
+    }
+    for (const w of eventWarnings) {
+      console.log(`    ${YELLOW}WARN${RESET}   ${w.convoId}: ${w.message}`);
+    }
+  }
+
+  // Node reachability section
+  if (reachErrors.length > 0) {
+    console.log();
+    console.log(`  ${BOLD}Reachability${RESET}  ${RED}${reachErrors.length} error${reachErrors.length !== 1 ? "s" : ""}${RESET}`);
+    for (const e of reachErrors) {
+      const loc = e.nodeId ? `${e.convoId} → ${shortNodeId(e.nodeId)}` : e.convoId;
+      console.log(`    ${RED}ERROR${RESET}  ${loc}: ${e.message}`);
+    }
+    console.log();
+  }
+
+  // Word count section
+  if (wordWarnings.length > 0) {
+    console.log();
+    console.log(`  ${BOLD}Word count${RESET}  ${YELLOW}${wordWarnings.length} warning${wordWarnings.length !== 1 ? "s" : ""}${RESET}`);
+    for (const w of wordWarnings) {
+      const loc = w.nodeId ? `${w.convoId} → ${shortNodeId(w.nodeId)}` : w.convoId;
+      console.log(`    ${YELLOW}WARN${RESET}   ${loc}: ${w.message}`);
+    }
+  }
+
+  // Summary
+  console.log();
+  console.log(`  ${BOLD}Total:${RESET} ${errors.length} error${errors.length !== 1 ? "s" : ""}, ${warnings.length} warning${warnings.length !== 1 ? "s" : ""}`);
+  console.log();
+
+  if (errors.length > 0) process.exit(1);
 }
 
 function pct(a: number, b: number): string {
@@ -1868,6 +2084,7 @@ Commands:
   tree            Render intra-conversation DAG as a tree view
   flow            Render cross-conversation phase progression DAG
   envelope        Narrative width envelope W(t) over turns
+  check           Schema validation + event integrity + reachability + word counts
 
 Options:
   --path <dir>    Path to output directory (default: generation/output)
@@ -1887,7 +2104,7 @@ function parseArgs() {
   let command = "analyze";
   const positional = args.filter((a) => !a.startsWith("--"));
 
-  if (positional.length > 0 && ["analyze", "tree", "flow", "envelope"].includes(positional[0])) {
+  if (positional.length > 0 && ["analyze", "tree", "flow", "envelope", "check"].includes(positional[0])) {
     command = positional[0];
   }
 
@@ -1940,6 +2157,10 @@ function main() {
 
     case "flow":
       renderFlow(allConvos);
+      break;
+
+    case "check":
+      renderChecks(convos);
       break;
 
     case "envelope": {
